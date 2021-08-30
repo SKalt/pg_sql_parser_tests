@@ -1,0 +1,1 @@
+CREATE FOREIGN DATA WRAPPER file HANDLER file_fdw_handler;

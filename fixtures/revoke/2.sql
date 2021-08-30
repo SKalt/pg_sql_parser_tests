@@ -1,0 +1,1 @@
+REVOKE admins FROM joe;

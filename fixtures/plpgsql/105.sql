@@ -1,0 +1,1 @@
+\i filename.sql

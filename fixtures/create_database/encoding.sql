@@ -1,0 +1,4 @@
+CREATE DATABASE music2
+    LOCALE 'sv_SE.iso885915'
+    ENCODING LATIN9
+    TEMPLATE template0;

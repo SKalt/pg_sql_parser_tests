@@ -1,0 +1,1 @@
+SELECT XMLQUERY('$a is $b' PASSING BY REF 

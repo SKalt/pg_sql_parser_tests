@@ -1,0 +1,1 @@
+\setshell variable_to_be_assigned command literal_argument :variable ::literal_starting_with_colon

@@ -1,0 +1,1 @@
+CREATE DATABASE dbname TEMPLATE template0;

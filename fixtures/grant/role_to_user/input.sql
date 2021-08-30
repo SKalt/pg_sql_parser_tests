@@ -1,0 +1,1 @@
+GRANT admins TO joe;

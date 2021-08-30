@@ -1,0 +1,3 @@
+INSERT INTO mytable VALUES(1);
+SELECT 1/0;
+INSERT INTO mytable VALUES(2);

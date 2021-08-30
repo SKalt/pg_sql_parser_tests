@@ -1,0 +1,1 @@
+substring('foobar' from 'o.b')     

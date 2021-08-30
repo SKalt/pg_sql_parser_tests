@@ -1,0 +1,1 @@
+SELECT somefunc() OR true;

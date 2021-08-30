@@ -1,0 +1,1 @@
+CREATE VIEW myview AS SELECT * FROM mytab;

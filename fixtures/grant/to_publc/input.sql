@@ -1,0 +1,1 @@
+GRANT INSERT ON films TO PUBLIC;

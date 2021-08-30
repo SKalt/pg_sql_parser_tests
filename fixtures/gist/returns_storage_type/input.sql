@@ -1,0 +1,4 @@
+CREATE OR REPLACE FUNCTION my_union(internal, internal)
+RETURNS storage_type
+AS 'MODULE_PATHNAME'
+LANGUAGE C STRICT;

@@ -1,0 +1,10 @@
+GROUPING SETS (
+    ( a, b, c ),
+    ( a, b    ),
+    ( a,    c ),
+    ( a       ),
+    (    b, c ),
+    (    b    ),
+    (       c ),
+    (         )
+)

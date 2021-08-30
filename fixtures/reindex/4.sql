@@ -1,0 +1,1 @@
+REINDEX TABLE CONCURRENTLY my_broken_table;
