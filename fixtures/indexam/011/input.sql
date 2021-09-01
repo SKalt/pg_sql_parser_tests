@@ -1,0 +1,2 @@
+bool
+amvalidate (Oid opclassoid);

@@ -1,0 +1,2 @@
+ForeignDataWrapper *
+GetForeignDataWrapper(Oid fdwid);

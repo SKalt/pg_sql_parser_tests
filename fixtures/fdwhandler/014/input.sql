@@ -1,0 +1,2 @@
+int
+GetForeignModifyBatchSize(ResultRelInfo *rinfo);

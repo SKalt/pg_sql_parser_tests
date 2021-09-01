@@ -1,0 +1,1 @@
+GROUP BY DISTINCT ROLLUP (a, b), ROLLUP (a, c)

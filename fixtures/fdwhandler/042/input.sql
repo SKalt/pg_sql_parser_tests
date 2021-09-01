@@ -1,0 +1,2 @@
+void
+ForeignAsyncRequest(AsyncRequest *areq);

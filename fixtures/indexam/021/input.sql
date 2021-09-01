@@ -1,0 +1,2 @@
+void
+aminitparallelscan (void *target);

@@ -1,0 +1,1 @@
+Europe & Russia*@ & !Transportation

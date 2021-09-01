@@ -1,0 +1,1 @@
+make MAX_CONNECTIONS=5 check

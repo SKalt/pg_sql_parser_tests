@@ -1,0 +1,1 @@
+void (*ReScanCustomScan) (CustomScanState *node);

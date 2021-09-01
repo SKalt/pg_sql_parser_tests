@@ -1,1 +1,0 @@
-WITH RECURSIVE search_graph(id, link, data, depth, 

@@ -1,0 +1,2 @@
+ForeignTable *
+GetForeignTable(Oid relid);

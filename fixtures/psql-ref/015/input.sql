@@ -1,0 +1,1 @@
+testdb=> \set foo bar

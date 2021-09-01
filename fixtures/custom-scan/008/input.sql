@@ -1,0 +1,1 @@
+TupleTableSlot *(*ExecCustomScan) (CustomScanState *node);

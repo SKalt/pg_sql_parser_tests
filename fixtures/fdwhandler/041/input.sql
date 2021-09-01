@@ -1,0 +1,2 @@
+bool
+IsForeignPathAsyncCapable(ForeignPath *path);

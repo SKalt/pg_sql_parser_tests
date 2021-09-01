@@ -1,0 +1,1 @@
+CALLED_AS_EVENT_TRIGGER(fcinfo)

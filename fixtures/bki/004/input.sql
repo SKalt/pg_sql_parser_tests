@@ -1,0 +1,5 @@
+-    /* is it an aggregate? */
+-    bool        proisagg BKI_DEFAULT(f);
+-
+-    /* is it a window function? */
+-    bool        proiswindow BKI_DEFAULT(f);

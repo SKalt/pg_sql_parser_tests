@@ -1,0 +1,2 @@
+void
+amparallelrescan (IndexScanDesc scan);

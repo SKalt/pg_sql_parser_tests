@@ -1,0 +1,1 @@
+HeapTupleGetDatum(HeapTuple tuple)

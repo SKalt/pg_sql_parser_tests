@@ -1,0 +1,14 @@
+EXEC SQL BEGIN DECLARE SECTION;
+int ii_a[8];
+EXEC SQL END DECLARE SECTION;
+
+EXEC SQL DECLARE cur1 CURSOR FOR SELECT ii[1], ii[2], ii[3], ii[4] FROM t3;
+EXEC SQL OPEN cur1;
+
+EXEC SQL WHENEVER NOT FOUND DO BREAK;
+
+while (1)
+{
+    EXEC SQL FETCH FROM cur1 INTO :ii_a[0], :ii_a[1], :ii_a[2], :ii_a[3];
+    ...
+}

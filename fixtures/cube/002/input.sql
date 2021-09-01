@@ -1,0 +1,1 @@
+SELECT c FROM test ORDER BY c ~> 3 DESC LIMIT 5;

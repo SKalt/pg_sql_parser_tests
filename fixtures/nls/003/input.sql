@@ -1,0 +1,1 @@
+AVAIL_LANGUAGES := de fr

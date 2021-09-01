@@ -1,0 +1,4 @@
+EXEC SQL BEGIN DECLARE SECTION;
+    int   *intp;
+    char **charp;
+EXEC SQL END DECLARE SECTION;

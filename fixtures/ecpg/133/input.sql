@@ -1,0 +1,1 @@
+EXEC SQL GET DESCRIPTOR d :d_count = COUNT;

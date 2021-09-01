@@ -1,0 +1,1 @@
+CALLED_AS_TRIGGER(fcinfo)

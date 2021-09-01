@@ -1,0 +1,1 @@
+CREATE DATABASE foo WITH TEMPLATE template0;

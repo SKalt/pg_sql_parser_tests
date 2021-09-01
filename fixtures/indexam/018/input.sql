@@ -1,0 +1,2 @@
+void
+ammarkpos (IndexScanDesc scan);

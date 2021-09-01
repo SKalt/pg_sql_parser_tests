@@ -1,0 +1,2 @@
+int
+IsForeignRelUpdatable(Relation rel);

@@ -1,0 +1,2 @@
+TupleTableSlot *
+IterateDirectModify(ForeignScanState *node);

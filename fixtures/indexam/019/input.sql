@@ -1,0 +1,2 @@
+void
+amrestrpos (IndexScanDesc scan);

@@ -1,0 +1,2 @@
+CREATE ROLE name LOGIN;
+CREATE USER name;

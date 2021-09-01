@@ -1,0 +1,8 @@
+EXEC SQL BEGIN DECLARE SECTION;
+VARCHAR val;
+int val_ind;
+EXEC SQL END DECLARE SECTION:
+
+ ...
+
+EXEC SQL SELECT b INTO :val :val_ind FROM test1;

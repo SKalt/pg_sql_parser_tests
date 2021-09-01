@@ -1,0 +1,1 @@
+NUMERIC(precision, scale)

@@ -1,0 +1,1 @@
+TupleDesc BlessTupleDesc(TupleDesc tupdesc)
