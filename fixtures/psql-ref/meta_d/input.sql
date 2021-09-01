@@ -1,0 +1,1 @@
+\d my_table
