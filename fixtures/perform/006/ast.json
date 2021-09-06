@@ -1,0 +1,159 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "a",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 17,
+                "relname": "b",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 20,
+                "relname": "c",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "a"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 28
+                      }
+                    },
+                    "location": 33,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "b"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 35
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "b"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "ref"
+                            }
+                          }
+                        ],
+                        "location": 44
+                      }
+                    },
+                    "location": 50,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "c"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 52
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 40
+            }
+          }
+        }
+      },
+      "stmt_len": 56
+    }
+  ],
+  "version": 130003
+}

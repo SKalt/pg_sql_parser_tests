@@ -1,0 +1,65 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "objargs": [
+                  {
+                    "TypeName": {
+                      "location": 17,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "int4"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  },
+                  {
+                    "TypeName": {
+                      "location": 26,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "int4"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                ],
+                "objname": [
+                  {
+                    "String": {
+                      "str": "^"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_OPERATOR"
+        }
+      },
+      "stmt_len": 34
+    }
+  ],
+  "version": 130003
+}

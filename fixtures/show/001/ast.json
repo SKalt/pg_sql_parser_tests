@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableShowStmt": {
+          "name": "geqo"
+        }
+      },
+      "stmt_len": 9
+    }
+  ],
+  "version": 130003
+}

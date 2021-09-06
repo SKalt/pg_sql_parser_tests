@@ -1,0 +1,63 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreatedbStmt": {
+          "dbname": "korean",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "EUC_KR"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "encoding",
+                "location": 28
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "ko_KR.euckr"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "lc_collate",
+                "location": 46
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "ko_KR.euckr"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "lc_ctype",
+                "location": 71
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "template0"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "template",
+                "location": 94
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 112
+    }
+  ],
+  "version": 130003
+}

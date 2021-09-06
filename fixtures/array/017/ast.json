@@ -1,0 +1,92 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 34,
+                "relname": "sal_emp",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "schedule"
+                              }
+                            }
+                          ],
+                          "location": 19
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "cardinality"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "name"
+                      }
+                    }
+                  ],
+                  "location": 48
+                }
+              },
+              "location": 53,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 55,
+                  "val": {
+                    "String": {
+                      "str": "Carol"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 62
+    }
+  ],
+  "version": 130003
+}

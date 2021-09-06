@@ -1,0 +1,61 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateRangeStmt": {
+          "params": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 45,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float8"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "subtype",
+                "location": 35
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 68,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float8mi"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "subtype_diff",
+                "location": 53
+              }
+            }
+          ],
+          "typeName": [
+            {
+              "String": {
+                "str": "float8_range"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 77
+    }
+  ],
+  "version": 130003
+}

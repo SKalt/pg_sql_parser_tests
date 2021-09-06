@@ -1,0 +1,122 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "my_table",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 22
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 31,
+            "relname": "my_table",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 44,
+                "name": "a",
+                "val": {
+                  "A_Const": {
+                    "location": 48,
+                    "val": {
+                      "Integer": {
+                        "ival": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 26,
+      "stmt_location": 23
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 63,
+            "relname": "my_table",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 80,
+                          "val": {
+                            "Integer": {
+                              "ival": 3
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 83,
+                          "val": {
+                            "String": {
+                              "str": "hi there"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 44,
+      "stmt_location": 50
+    }
+  ],
+  "version": 130003
+}

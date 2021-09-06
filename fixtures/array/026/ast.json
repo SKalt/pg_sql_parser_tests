@@ -1,0 +1,463 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 21,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 30,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 2
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 32,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 3
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 24
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_prepend"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 35
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 105,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 124,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 126,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 2
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 118
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 130,
+                          "val": {
+                            "Integer": {
+                              "ival": 3
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_append"
+                        }
+                      }
+                    ],
+                    "location": 105
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 96,
+      "stmt_location": 36
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 200,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 216,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 218,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 2
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 210
+                        }
+                      },
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 228,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 3
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 230,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 4
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 222
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_cat"
+                        }
+                      }
+                    ],
+                    "location": 200
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 100,
+      "stmt_location": 133
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 297,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_ArrayExpr": {
+                                "elements": [
+                                  {
+                                    "A_Const": {
+                                      "location": 314,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 1
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 316,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 2
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "location": 313
+                              }
+                            },
+                            {
+                              "A_ArrayExpr": {
+                                "elements": [
+                                  {
+                                    "A_Const": {
+                                      "location": 320,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 3
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 322,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 4
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "location": 319
+                              }
+                            }
+                          ],
+                          "location": 307
+                        }
+                      },
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 333,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 5
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 335,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 6
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 327
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_cat"
+                        }
+                      }
+                    ],
+                    "location": 297
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 104,
+      "stmt_location": 234
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 427,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 443,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 5
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 445,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 6
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 437
+                        }
+                      },
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_ArrayExpr": {
+                                "elements": [
+                                  {
+                                    "A_Const": {
+                                      "location": 456,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 1
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 458,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 2
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "location": 455
+                              }
+                            },
+                            {
+                              "A_ArrayExpr": {
+                                "elements": [
+                                  {
+                                    "A_Const": {
+                                      "location": 462,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 3
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 464,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 4
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "location": 461
+                              }
+                            }
+                          ],
+                          "location": 449
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_cat"
+                        }
+                      }
+                    ],
+                    "location": 427
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 129,
+      "stmt_location": 339
+    }
+  ],
+  "version": 130003
+}

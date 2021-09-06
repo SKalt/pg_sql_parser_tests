@@ -1,0 +1,134 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 16
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "internallength",
+                "location": 25
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 57,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_in"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "input",
+                "location": 49
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 81,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_out"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "output",
+                "location": 72
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 107,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_recv"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "receive",
+                "location": 97
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 131,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_send"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "send",
+                "location": 124
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 160,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "double"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "alignment",
+                "location": 148
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "complex"
+              }
+            }
+          ],
+          "kind": "OBJECT_TYPE"
+        }
+      },
+      "stmt_len": 168
+    }
+  ],
+  "version": 130003
+}

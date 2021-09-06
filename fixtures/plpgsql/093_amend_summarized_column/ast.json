@@ -1,0 +1,1384 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 67,
+            "relname": "time_dimension",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "time_key",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 124
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 88,
+                "typeName": {
+                  "location": 116,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "day_of_week",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 174
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 138,
+                "typeName": {
+                  "location": 166,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "day_of_month",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 224
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 188,
+                "typeName": {
+                  "location": 216,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "month",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 274
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 238,
+                "typeName": {
+                  "location": 266,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "quarter",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 324
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 288,
+                "typeName": {
+                  "location": 316,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "year",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 374
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 338,
+                "typeName": {
+                  "location": 366,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 384
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "time_dimension_key",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "time_key",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 428,
+            "relname": "time_dimension",
+            "relpersistence": "p"
+          },
+          "unique": true
+        }
+      },
+      "stmt_len": 67,
+      "stmt_location": 385
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 468,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "time_key",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 521
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 485,
+                "typeName": {
+                  "location": 513,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "product_key",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 571
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 535,
+                "typeName": {
+                  "location": 563,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "store_key",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 621
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 585,
+                "typeName": {
+                  "location": 613,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "amount_sold",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 677
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 635,
+                "typeName": {
+                  "location": 663,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 671,
+                        "val": {
+                          "Integer": {
+                            "ival": 12
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Const": {
+                        "location": 674,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "units_sold",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 727
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 691,
+                "typeName": {
+                  "location": 719,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "amount_cost",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 783
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 741,
+                "typeName": {
+                  "location": 769,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 777,
+                        "val": {
+                          "Integer": {
+                            "ival": 12
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Const": {
+                        "location": 780,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 340,
+      "stmt_location": 453
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "sales_fact_time",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "time_key",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 827,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 53,
+      "stmt_location": 794
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 903,
+            "relname": "sales_summary_bytime",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "time_key",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 966
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 930,
+                "typeName": {
+                  "location": 958,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "amount_sold",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 1022
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 980,
+                "typeName": {
+                  "location": 1008,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 1016,
+                        "val": {
+                          "Integer": {
+                            "ival": 15
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Const": {
+                        "location": 1019,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "units_sold",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 1076
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 1036,
+                "typeName": {
+                  "location": 1064,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 1072,
+                        "val": {
+                          "Integer": {
+                            "ival": 12
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "amount_cost",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 1132
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 1090,
+                "typeName": {
+                  "location": 1118,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 1126,
+                        "val": {
+                          "Integer": {
+                            "ival": 15
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Const": {
+                        "location": 1129,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 294,
+      "stmt_location": 848
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "sales_summary_bytime_key",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "time_key",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 1192,
+            "relname": "sales_summary_bytime",
+            "relpersistence": "p"
+          },
+          "unique": true
+        }
+      },
+      "stmt_len": 79,
+      "stmt_location": 1143
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "maint_sales_summary_bytime"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n    DECLARE\n        delta_time_key          integer;\n        delta_amount_sold       numeric(15,2);\n        delta_units_sold        numeric(12);\n        delta_amount_cost       numeric(15,2);\n    BEGIN\n\n        -- Work out the increment/decrement amount(s).\n        IF (TG_OP = 'DELETE') THEN\n\n            delta_time_key = OLD.time_key;\n            delta_amount_sold = -1 * OLD.amount_sold;\n            delta_units_sold = -1 * OLD.units_sold;\n            delta_amount_cost = -1 * OLD.amount_cost;\n\n        ELSIF (TG_OP = 'UPDATE') THEN\n\n            -- forbid updates that change the time_key -\n            -- (probably not too onerous, as DELETE + INSERT is how most\n            -- changes will be made).\n            IF ( OLD.time_key != NEW.time_key) THEN\n                RAISE EXCEPTION 'Update of time_key : % -\u003e % not allowed',\n                                                      OLD.time_key, NEW.time_key;\n            END IF;\n\n            delta_time_key = OLD.time_key;\n            delta_amount_sold = NEW.amount_sold - OLD.amount_sold;\n            delta_units_sold = NEW.units_sold - OLD.units_sold;\n            delta_amount_cost = NEW.amount_cost - OLD.amount_cost;\n\n        ELSIF (TG_OP = 'INSERT') THEN\n\n            delta_time_key = NEW.time_key;\n            delta_amount_sold = NEW.amount_sold;\n            delta_units_sold = NEW.units_sold;\n            delta_amount_cost = NEW.amount_cost;\n\n        END IF;\n\n\n        -- Insert or update the summary row with the new values.\n        \u003c\u003cinsert_update\u003e\u003e\n        LOOP\n            UPDATE sales_summary_bytime\n                SET amount_sold = amount_sold + delta_amount_sold,\n                    units_sold = units_sold + delta_units_sold,\n                    amount_cost = amount_cost + delta_amount_cost\n                WHERE time_key = delta_time_key;\n\n            EXIT insert_update WHEN found;\n\n            BEGIN\n                INSERT INTO sales_summary_bytime (\n                            time_key,\n                            amount_sold,\n                            units_sold,\n                            amount_cost)\n                    VALUES (\n                            delta_time_key,\n                            delta_amount_sold,\n                            delta_units_sold,\n                            delta_amount_cost\n                           );\n\n                EXIT insert_update;\n\n            EXCEPTION\n                WHEN UNIQUE_VIOLATION THEN\n                    -- do nothing\n            END;\n        END LOOP insert_update;\n\n        RETURN NULL;\n\n    END;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 1384
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpgsql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 3992
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 1376,
+            "names": [
+              {
+                "String": {
+                  "str": "trigger"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 2785,
+      "stmt_location": 1223
+    },
+    {
+      "stmt": {
+        "CreateTrigStmt": {
+          "events": 28,
+          "funcname": [
+            {
+              "String": {
+                "str": "maint_sales_summary_bytime"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 4089,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "row": true,
+          "trigname": "maint_sales_summary_bytime"
+        }
+      },
+      "stmt_len": 153,
+      "stmt_location": 4009
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 4177,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 4195,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4197,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4199,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4201,
+                          "val": {
+                            "Integer": {
+                              "ival": 10
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4204,
+                          "val": {
+                            "Integer": {
+                              "ival": 3
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4206,
+                          "val": {
+                            "Integer": {
+                              "ival": 15
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 46,
+      "stmt_location": 4163
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 4223,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 4241,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4243,
+                          "val": {
+                            "Integer": {
+                              "ival": 2
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4245,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4247,
+                          "val": {
+                            "Integer": {
+                              "ival": 20
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4250,
+                          "val": {
+                            "Integer": {
+                              "ival": 5
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4252,
+                          "val": {
+                            "Integer": {
+                              "ival": 35
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 45,
+      "stmt_location": 4210
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 4269,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 4287,
+                          "val": {
+                            "Integer": {
+                              "ival": 2
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4289,
+                          "val": {
+                            "Integer": {
+                              "ival": 2
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4291,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4293,
+                          "val": {
+                            "Integer": {
+                              "ival": 40
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4296,
+                          "val": {
+                            "Integer": {
+                              "ival": 15
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4299,
+                          "val": {
+                            "Integer": {
+                              "ival": 135
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 47,
+      "stmt_location": 4256
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 4317,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 4335,
+                          "val": {
+                            "Integer": {
+                              "ival": 2
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4337,
+                          "val": {
+                            "Integer": {
+                              "ival": 3
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4339,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4341,
+                          "val": {
+                            "Integer": {
+                              "ival": 10
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4344,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 4346,
+                          "val": {
+                            "Integer": {
+                              "ival": 13
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 45,
+      "stmt_location": 4304
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 4365,
+                "relname": "sales_summary_bytime",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 4358,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 4358
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 35,
+      "stmt_location": 4350
+    },
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 4399,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "product_key"
+                      }
+                    }
+                  ],
+                  "location": 4416
+                }
+              },
+              "location": 4428,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 4430,
+                  "val": {
+                    "Integer": {
+                      "ival": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 45,
+      "stmt_location": 4386
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 4447,
+                "relname": "sales_summary_bytime",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 4440,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 4440
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 35,
+      "stmt_location": 4432
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 4476,
+            "relname": "sales_fact",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 4491,
+                "name": "units_sold",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "units_sold"
+                            }
+                          }
+                        ],
+                        "location": 4504
+                      }
+                    },
+                    "location": 4515,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "*"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 4517,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 4468
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 4534,
+                "relname": "sales_summary_bytime",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 4527,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 4527
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 35,
+      "stmt_location": 4519
+    }
+  ],
+  "version": 130003
+}

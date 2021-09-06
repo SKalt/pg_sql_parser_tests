@@ -1,0 +1,35 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterObjectDependsStmt": {
+          "extname": {
+            "String": {
+              "str": "emplib"
+            }
+          },
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "emp_stamp"
+                  }
+                }
+              ]
+            }
+          },
+          "objectType": "OBJECT_TRIGGER",
+          "relation": {
+            "inh": true,
+            "location": 27,
+            "relname": "emp",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 58
+    }
+  ],
+  "version": 130003
+}

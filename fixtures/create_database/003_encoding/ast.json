@@ -1,0 +1,51 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreatedbStmt": {
+          "dbname": "music2",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sv_SE.iso885915"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "locale",
+                "location": 27
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "latin9"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "encoding",
+                "location": 56
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "template0"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "template",
+                "location": 76
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 94
+    }
+  ],
+  "version": 130003
+}

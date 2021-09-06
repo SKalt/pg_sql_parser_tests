@@ -1,0 +1,150 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 85,
+                "relname": "states",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "name"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 13,
+                "val": {
+                  "SubLink": {
+                    "location": 13,
+                    "subLinkType": "EXPR_SUBLINK",
+                    "subselect": {
+                      "SelectStmt": {
+                        "fromClause": [
+                          {
+                            "RangeVar": {
+                              "inh": true,
+                              "location": 35,
+                              "relname": "cities",
+                              "relpersistence": "p"
+                            }
+                          }
+                        ],
+                        "limitOption": "LIMIT_OPTION_DEFAULT",
+                        "op": "SETOP_NONE",
+                        "targetList": [
+                          {
+                            "ResTarget": {
+                              "location": 21,
+                              "val": {
+                                "FuncCall": {
+                                  "args": [
+                                    {
+                                      "ColumnRef": {
+                                        "fields": [
+                                          {
+                                            "String": {
+                                              "str": "pop"
+                                            }
+                                          }
+                                        ],
+                                        "location": 25
+                                      }
+                                    }
+                                  ],
+                                  "funcname": [
+                                    {
+                                      "String": {
+                                        "str": "max"
+                                      }
+                                    }
+                                  ],
+                                  "location": 21
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "whereClause": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "cities"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "state"
+                                    }
+                                  }
+                                ],
+                                "location": 48
+                              }
+                            },
+                            "location": 61,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "="
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "states"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "name"
+                                    }
+                                  }
+                                ],
+                                "location": 63
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 91
+    }
+  ],
+  "version": 130003
+}

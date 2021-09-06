@@ -1,0 +1,1106 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "GIN index access method",
+          "object": {
+            "String": {
+              "str": "gin"
+            }
+          },
+          "objtype": "OBJECT_ACCESS_METHOD"
+        }
+      },
+      "stmt_len": 57
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Computes sample variance",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 94,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "float8"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "my_aggregate"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_AGGREGATE"
+        }
+      },
+      "stmt_len": 83,
+      "stmt_location": 58
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Allow casts from text to int4",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "TypeName": {
+                    "location": 160,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 168,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_CAST"
+        }
+      },
+      "stmt_len": 66,
+      "stmt_location": 142
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Canadian French",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "fr_CA"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_COLLATION"
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 209
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Employee ID number",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_table"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "my_column"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_COLUMN"
+        }
+      },
+      "stmt_len": 61,
+      "stmt_location": 260
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Conversion to UTF8",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_conv"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_CONVERSION"
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 322
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Constrains column col",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "bar"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "bar_col_cons"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TABCONSTRAINT"
+        }
+      },
+      "stmt_len": 69,
+      "stmt_location": 377
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Constrains col of domain",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "TypeName": {
+                    "location": -1,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "dom"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "String": {
+                    "str": "dom_col_constr"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_DOMCONSTRAINT"
+        }
+      },
+      "stmt_len": 81,
+      "stmt_location": 447
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Development Database",
+          "object": {
+            "String": {
+              "str": "my_database"
+            }
+          },
+          "objtype": "OBJECT_DATABASE"
+        }
+      },
+      "stmt_len": 58,
+      "stmt_location": 529
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Email Address Domain",
+          "object": {
+            "TypeName": {
+              "location": 607,
+              "names": [
+                {
+                  "String": {
+                    "str": "my_domain"
+                  }
+                }
+              ],
+              "typemod": -1
+            }
+          },
+          "objtype": "OBJECT_DOMAIN"
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 588
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Aborts all DDL commands",
+          "object": {
+            "String": {
+              "str": "abort_ddl"
+            }
+          },
+          "objtype": "OBJECT_EVENT_TRIGGER"
+        }
+      },
+      "stmt_len": 64,
+      "stmt_location": 643
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "implements the hstore data type",
+          "object": {
+            "String": {
+              "str": "hstore"
+            }
+          },
+          "objtype": "OBJECT_EXTENSION"
+        }
+      },
+      "stmt_len": 65,
+      "stmt_location": 708
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "my foreign data wrapper",
+          "object": {
+            "String": {
+              "str": "mywrapper"
+            }
+          },
+          "objtype": "OBJECT_FDW"
+        }
+      },
+      "stmt_len": 71,
+      "stmt_location": 774
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Employee Information in other database",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_foreign_table"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_FOREIGN_TABLE"
+        }
+      },
+      "stmt_len": 86,
+      "stmt_location": 846
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Returns Roman Numeral",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 967,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "timestamp"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "my_function"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_FUNCTION"
+        }
+      },
+      "stmt_len": 71,
+      "stmt_location": 933
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Enforces uniqueness on employee ID",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_index"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_INDEX"
+        }
+      },
+      "stmt_len": 66,
+      "stmt_location": 1005
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Python support for stored procedures",
+          "object": {
+            "String": {
+              "str": "plpython"
+            }
+          },
+          "objtype": "OBJECT_LANGUAGE"
+        }
+      },
+      "stmt_len": 71,
+      "stmt_location": 1072
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Planning document",
+          "object": {
+            "Integer": {
+              "ival": 346344
+            }
+          },
+          "objtype": "OBJECT_LARGEOBJECT"
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 1144
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Summary of order history",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_matview"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_MATVIEW"
+        }
+      },
+      "stmt_len": 70,
+      "stmt_location": 1199
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Performs intersection of two texts",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 1294,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 1300,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "^"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPERATOR"
+        }
+      },
+      "stmt_len": 75,
+      "stmt_location": 1270
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Unary minus",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {},
+                {
+                  "TypeName": {
+                    "location": 1376,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "-"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPERATOR"
+        }
+      },
+      "stmt_len": 55,
+      "stmt_location": 1346
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "4 byte integer operators for btrees",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "btree"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "int4ops"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPCLASS"
+        }
+      },
+      "stmt_len": 87,
+      "stmt_location": 1402
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "all integer operators for btrees",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "btree"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "integer_ops"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPFAMILY"
+        }
+      },
+      "stmt_len": 89,
+      "stmt_location": 1490
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Filter rows by users",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "mytable"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "my_policy"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_POLICY"
+        }
+      },
+      "stmt_len": 65,
+      "stmt_location": 1580
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Runs a report",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 1677,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 1686,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "my_proc"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 67,
+      "stmt_location": 1646
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Publishes all operations on all tables",
+          "object": {
+            "String": {
+              "str": "alltables"
+            }
+          },
+          "objtype": "OBJECT_PUBLICATION"
+        }
+      },
+      "stmt_len": 77,
+      "stmt_location": 1714
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Administration group for finance tables",
+          "object": {
+            "String": {
+              "str": "my_role"
+            }
+          },
+          "objtype": "OBJECT_ROLE"
+        }
+      },
+      "stmt_len": 69,
+      "stmt_location": 1792
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Runs a routine (which is a function or procedure)",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 1894,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 1903,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "my_routine"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_ROUTINE"
+        }
+      },
+      "stmt_len": 104,
+      "stmt_location": 1862
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Logs updates of employee records",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_table"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "my_rule"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_RULE"
+        }
+      },
+      "stmt_len": 74,
+      "stmt_location": 1967
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Departmental data",
+          "object": {
+            "String": {
+              "str": "my_schema"
+            }
+          },
+          "objtype": "OBJECT_SCHEMA"
+        }
+      },
+      "stmt_len": 51,
+      "stmt_location": 2042
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Used to generate primary keys",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_sequence"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_SEQUENCE"
+        }
+      },
+      "stmt_len": 67,
+      "stmt_location": 2094
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "my foreign server",
+          "object": {
+            "String": {
+              "str": "myserver"
+            }
+          },
+          "objtype": "OBJECT_FOREIGN_SERVER"
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 2162
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Improves planner row estimations",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_statistics"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_STATISTIC_EXT"
+        }
+      },
+      "stmt_len": 74,
+      "stmt_location": 2213
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Subscription for all operations on all tables",
+          "object": {
+            "String": {
+              "str": "alltables"
+            }
+          },
+          "objtype": "OBJECT_SUBSCRIPTION"
+        }
+      },
+      "stmt_len": 85,
+      "stmt_location": 2288
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Employee Information",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_schema"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "my_table"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 62,
+      "stmt_location": 2374
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Tablespace for indexes",
+          "object": {
+            "String": {
+              "str": "my_tablespace"
+            }
+          },
+          "objtype": "OBJECT_TABLESPACE"
+        }
+      },
+      "stmt_len": 64,
+      "stmt_location": 2437
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Special word filtering",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_config"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSCONFIGURATION"
+        }
+      },
+      "stmt_len": 75,
+      "stmt_location": 2502
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Snowball stemmer for Swedish language",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "swedish"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSDICTIONARY"
+        }
+      },
+      "stmt_len": 85,
+      "stmt_location": 2578
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Splits text into words",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_parser"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSPARSER"
+        }
+      },
+      "stmt_len": 68,
+      "stmt_location": 2664
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Snowball stemmer",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "snowball"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSTEMPLATE"
+        }
+      },
+      "stmt_len": 63,
+      "stmt_location": 2733
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Transform between hstore and Python dict",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "TypeName": {
+                    "location": 2823,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "hstore"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "String": {
+                    "str": "plpythonu"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TRANSFORM"
+        }
+      },
+      "stmt_len": 97,
+      "stmt_location": 2797
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Used for RI",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_table"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "my_trigger"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TRIGGER"
+        }
+      },
+      "stmt_len": 59,
+      "stmt_location": 2895
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Complex number data type",
+          "object": {
+            "TypeName": {
+              "location": 2972,
+              "names": [
+                {
+                  "String": {
+                    "str": "complex"
+                  }
+                }
+              ],
+              "typemod": -1
+            }
+          },
+          "objtype": "OBJECT_TYPE"
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 2955
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "View of departmental costs",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_view"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_VIEW"
+        }
+      },
+      "stmt_len": 56,
+      "stmt_location": 3010
+    }
+  ],
+  "version": 130003
+}

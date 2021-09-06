@@ -1,0 +1,46 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "distinctClause": [
+            {}
+          ],
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 30,
+                "relname": "weather",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 16,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 16
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 37
+    }
+  ],
+  "version": 130003
+}

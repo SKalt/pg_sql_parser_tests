@@ -1,0 +1,102 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "orders",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "BooleanTest": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "billed"
+                            }
+                          }
+                        ],
+                        "location": 27
+                      }
+                    },
+                    "booltesttype": "IS_NOT_TRUE",
+                    "location": 34
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "order_nr"
+                            }
+                          }
+                        ],
+                        "location": 50
+                      }
+                    },
+                    "location": 59,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003c"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 61,
+                        "val": {
+                          "Integer": {
+                            "ival": 10000
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 46
+            }
+          }
+        }
+      },
+      "stmt_len": 66
+    }
+  ],
+  "version": 130003
+}

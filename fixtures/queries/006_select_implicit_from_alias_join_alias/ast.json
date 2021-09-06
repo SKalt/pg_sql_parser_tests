@@ -1,0 +1,107 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_INNER",
+                "larg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "s"
+                    },
+                    "inh": true,
+                    "location": 14,
+                    "relname": "some_very_long_table_name",
+                    "relpersistence": "p"
+                  }
+                },
+                "quals": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "s"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 77
+                      }
+                    },
+                    "location": 82,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "a"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "num"
+                            }
+                          }
+                        ],
+                        "location": 84
+                      }
+                    }
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "a"
+                    },
+                    "inh": true,
+                    "location": 47,
+                    "relname": "another_fairly_long_name",
+                    "relpersistence": "p"
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 89
+    }
+  ],
+  "version": 130003
+}

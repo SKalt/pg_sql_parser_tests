@@ -1,0 +1,192 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "kind": "TRANS_STMT_BEGIN"
+        }
+      },
+      "stmt_len": 10
+    },
+    {
+      "stmt": {
+        "LockStmt": {
+          "mode": 6,
+          "relations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 23,
+                "relname": "films",
+                "relpersistence": "p"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 45,
+      "stmt_location": 11
+    },
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 70,
+            "relname": "films_user_comments",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "SubLink": {
+              "location": 99,
+              "subLinkType": "ANY_SUBLINK",
+              "subselect": {
+                "SelectStmt": {
+                  "fromClause": [
+                    {
+                      "RangeVar": {
+                        "inh": true,
+                        "location": 122,
+                        "relname": "films",
+                        "relpersistence": "p"
+                      }
+                    }
+                  ],
+                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                  "op": "SETOP_NONE",
+                  "targetList": [
+                    {
+                      "ResTarget": {
+                        "location": 114,
+                        "val": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "id"
+                                }
+                              }
+                            ],
+                            "location": 114
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "whereClause": {
+                    "A_Expr": {
+                      "kind": "AEXPR_OP",
+                      "lexpr": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "rating"
+                              }
+                            }
+                          ],
+                          "location": 134
+                        }
+                      },
+                      "location": 141,
+                      "name": [
+                        {
+                          "String": {
+                            "str": "\u003c"
+                          }
+                        }
+                      ],
+                      "rexpr": {
+                        "A_Const": {
+                          "location": 143,
+                          "val": {
+                            "Integer": {
+                              "ival": 5
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "testexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "id"
+                      }
+                    }
+                  ],
+                  "location": 96
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 88,
+      "stmt_location": 57
+    },
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 159,
+            "relname": "films",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "rating"
+                      }
+                    }
+                  ],
+                  "location": 171
+                }
+              },
+              "location": 178,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003c"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 180,
+                  "val": {
+                    "Integer": {
+                      "ival": 5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 35,
+      "stmt_location": 146
+    },
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "kind": "TRANS_STMT_COMMIT"
+        }
+      },
+      "stmt_len": 12,
+      "stmt_location": 182
+    }
+  ],
+  "version": 130003
+}

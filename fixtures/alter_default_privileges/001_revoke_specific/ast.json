@@ -1,0 +1,101 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterDefaultPrivilegesStmt": {
+          "action": {
+            "behavior": "DROP_RESTRICT",
+            "grantees": [
+              {
+                "RoleSpec": {
+                  "location": 73,
+                  "roletype": "ROLESPEC_PUBLIC"
+                }
+              }
+            ],
+            "objtype": "OBJECT_TABLE",
+            "privileges": [
+              {
+                "AccessPriv": {
+                  "priv_name": "select"
+                }
+              }
+            ],
+            "targtype": "ACL_TARGET_DEFAULTS"
+          },
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "myschema"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "schemas",
+                "location": 25
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 79
+    },
+    {
+      "stmt": {
+        "AlterDefaultPrivilegesStmt": {
+          "action": {
+            "behavior": "DROP_RESTRICT",
+            "grantees": [
+              {
+                "RoleSpec": {
+                  "location": 154,
+                  "rolename": "webuser",
+                  "roletype": "ROLESPEC_CSTRING"
+                }
+              }
+            ],
+            "objtype": "OBJECT_TABLE",
+            "privileges": [
+              {
+                "AccessPriv": {
+                  "priv_name": "insert"
+                }
+              }
+            ],
+            "targtype": "ACL_TARGET_DEFAULTS"
+          },
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "myschema"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "schemas",
+                "location": 106
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 81,
+      "stmt_location": 80
+    }
+  ],
+  "version": 130003
+}

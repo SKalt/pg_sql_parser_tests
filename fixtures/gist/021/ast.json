@@ -1,0 +1,93 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "my_sortsupport"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "MODULE_PATHNAME"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 65
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "c"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 86
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "strict",
+                "location": 97
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 42,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "internal"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 60,
+            "names": [
+              {
+                "String": {
+                  "str": "void"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 103
+    }
+  ],
+  "version": 130003
+}

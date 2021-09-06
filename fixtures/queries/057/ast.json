@@ -1,0 +1,369 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 312,
+                "relname": "included_parts",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "groupClause": [
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "sub_part"
+                    }
+                  }
+                ],
+                "location": 336
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 265,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "sub_part"
+                        }
+                      }
+                    ],
+                    "location": 265
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 275,
+                "name": "total_quantity",
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "quantity"
+                              }
+                            }
+                          ],
+                          "location": 279
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "sum"
+                        }
+                      }
+                    ],
+                    "location": 275
+                  }
+                }
+              }
+            }
+          ],
+          "withClause": {
+            "ctes": [
+              {
+                "CommonTableExpr": {
+                  "aliascolnames": [
+                    {
+                      "String": {
+                        "str": "sub_part"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "part"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "quantity"
+                      }
+                    }
+                  ],
+                  "ctematerialized": "CTEMaterializeDefault",
+                  "ctename": "included_parts",
+                  "ctequery": {
+                    "SelectStmt": {
+                      "all": true,
+                      "larg": {
+                        "fromClause": [
+                          {
+                            "RangeVar": {
+                              "inh": true,
+                              "location": 102,
+                              "relname": "parts",
+                              "relpersistence": "p"
+                            }
+                          }
+                        ],
+                        "limitOption": "LIMIT_OPTION_DEFAULT",
+                        "op": "SETOP_NONE",
+                        "targetList": [
+                          {
+                            "ResTarget": {
+                              "location": 72,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "sub_part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 72
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ResTarget": {
+                              "location": 82,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 82
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ResTarget": {
+                              "location": 88,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "quantity"
+                                      }
+                                    }
+                                  ],
+                                  "location": 88
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "whereClause": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "part"
+                                    }
+                                  }
+                                ],
+                                "location": 114
+                              }
+                            },
+                            "location": 119,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "="
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 121,
+                                "val": {
+                                  "String": {
+                                    "str": "our_product"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "limitOption": "LIMIT_OPTION_DEFAULT",
+                      "op": "SETOP_UNION",
+                      "rarg": {
+                        "fromClause": [
+                          {
+                            "RangeVar": {
+                              "alias": {
+                                "aliasname": "pr"
+                              },
+                              "inh": true,
+                              "location": 198,
+                              "relname": "included_parts",
+                              "relpersistence": "p"
+                            }
+                          },
+                          {
+                            "RangeVar": {
+                              "alias": {
+                                "aliasname": "p"
+                              },
+                              "inh": true,
+                              "location": 217,
+                              "relname": "parts",
+                              "relpersistence": "p"
+                            }
+                          }
+                        ],
+                        "limitOption": "LIMIT_OPTION_DEFAULT",
+                        "op": "SETOP_NONE",
+                        "targetList": [
+                          {
+                            "ResTarget": {
+                              "location": 158,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "p"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "sub_part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 158
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ResTarget": {
+                              "location": 170,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "p"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 170
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ResTarget": {
+                              "location": 178,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "p"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "quantity"
+                                      }
+                                    }
+                                  ],
+                                  "location": 178
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "whereClause": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "p"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "part"
+                                    }
+                                  }
+                                ],
+                                "location": 235
+                              }
+                            },
+                            "location": 242,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "="
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "pr"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "sub_part"
+                                    }
+                                  }
+                                ],
+                                "location": 244
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "location": 15
+                }
+              }
+            ],
+            "recursive": true
+          }
+        }
+      }
+    }
+  ],
+  "version": 130003
+}

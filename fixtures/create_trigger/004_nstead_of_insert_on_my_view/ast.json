@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTrigStmt": {
+          "events": 4,
+          "funcname": [
+            {
+              "String": {
+                "str": "view_insert_row"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 52,
+            "relname": "my_view",
+            "relpersistence": "p"
+          },
+          "row": true,
+          "timing": 64,
+          "trigname": "view_insert"
+        }
+      },
+      "stmt_len": 115
+    }
+  ],
+  "version": 130003
+}

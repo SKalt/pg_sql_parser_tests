@@ -1,0 +1,191 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "weather",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 19,
+                "name": "temp_lo",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "temp_lo"
+                            }
+                          }
+                        ],
+                        "location": 29
+                      }
+                    },
+                    "location": 36,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "+"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 37,
+                        "val": {
+                          "Integer": {
+                            "ival": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 40,
+                "name": "temp_hi",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "temp_lo"
+                            }
+                          }
+                        ],
+                        "location": 50
+                      }
+                    },
+                    "location": 57,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "+"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 58,
+                        "val": {
+                          "Integer": {
+                            "ival": 15
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 62,
+                "name": "prcp",
+                "val": {
+                  "SetToDefault": {
+                    "location": 69
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "city"
+                            }
+                          }
+                        ],
+                        "location": 85
+                      }
+                    },
+                    "location": 90,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 92,
+                        "val": {
+                          "String": {
+                            "str": "San Francisco"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "date"
+                            }
+                          }
+                        ],
+                        "location": 112
+                      }
+                    },
+                    "location": 117,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 119,
+                        "val": {
+                          "String": {
+                            "str": "2003-07-03"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 108
+            }
+          }
+        }
+      },
+      "stmt_len": 131
+    }
+  ],
+  "version": 130003
+}

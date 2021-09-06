@@ -1,0 +1,231 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "file_fdw"
+        }
+      },
+      "stmt_len": 25
+    },
+    {
+      "stmt": {
+        "CreateForeignServerStmt": {
+          "fdwname": "file_fdw",
+          "servername": "local_file"
+        }
+      },
+      "stmt_len": 55,
+      "stmt_location": 26
+    },
+    {
+      "stmt": {
+        "CreateForeignTableStmt": {
+          "base": {
+            "oncommit": "ONCOMMIT_NOOP",
+            "relation": {
+              "inh": true,
+              "location": 104,
+              "relname": "words",
+              "relpersistence": "p"
+            },
+            "tableElts": [
+              {
+                "ColumnDef": {
+                  "colname": "word",
+                  "constraints": [
+                    {
+                      "Constraint": {
+                        "contype": "CONSTR_NOTNULL",
+                        "location": 121
+                      }
+                    }
+                  ],
+                  "is_local": true,
+                  "location": 111,
+                  "typeName": {
+                    "location": 116,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              }
+            ]
+          },
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "/usr/share/dict/words"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "filename",
+                "location": 162
+              }
+            }
+          ],
+          "servername": "local_file"
+        }
+      },
+      "stmt_len": 113,
+      "stmt_location": 82
+    },
+    {
+      "stmt": {
+        "CreateTableAsStmt": {
+          "into": {
+            "onCommit": "ONCOMMIT_NOOP",
+            "rel": {
+              "inh": true,
+              "location": 222,
+              "relname": "wrd",
+              "relpersistence": "p"
+            }
+          },
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 243,
+                    "relname": "words",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 236,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 236
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "relkind": "OBJECT_MATVIEW"
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 196
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "wrd_word",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "word",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 282,
+            "relname": "wrd",
+            "relpersistence": "p"
+          },
+          "unique": true
+        }
+      },
+      "stmt_len": 43,
+      "stmt_location": 249
+    },
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "pg_trgm"
+        }
+      },
+      "stmt_len": 25,
+      "stmt_location": 293
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "gist",
+          "idxname": "wrd_trgm",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "word",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "opclass": [
+                  {
+                    "String": {
+                      "str": "gist_trgm_ops"
+                    }
+                  }
+                ],
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 345,
+            "relname": "wrd",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 61,
+      "stmt_location": 319
+    },
+    {
+      "stmt": {
+        "VacuumStmt": {
+          "is_vacuumcmd": true,
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 389
+              }
+            }
+          ],
+          "rels": [
+            {
+              "VacuumRelation": {
+                "relation": {
+                  "inh": true,
+                  "location": 397,
+                  "relname": "wrd",
+                  "relpersistence": "p"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 19,
+      "stmt_location": 381
+    }
+  ],
+  "version": 130003
+}

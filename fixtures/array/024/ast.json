@@ -1,0 +1,305 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "A_ArrayExpr": {
+                              "elements": [
+                                {
+                                  "A_Const": {
+                                    "location": 24,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 1
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "A_Const": {
+                                    "location": 26,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 2
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "location": 18
+                            }
+                          },
+                          "location": 29,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "||"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_ArrayExpr": {
+                              "elements": [
+                                {
+                                  "A_Const": {
+                                    "location": 38,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 3
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "A_Const": {
+                                    "location": 40,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 4
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "A_Const": {
+                                    "location": 42,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 5
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "location": 32
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_dims"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 45
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 107,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "A_ArrayExpr": {
+                              "elements": [
+                                {
+                                  "A_ArrayExpr": {
+                                    "elements": [
+                                      {
+                                        "A_Const": {
+                                          "location": 125,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 1
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "A_Const": {
+                                          "location": 127,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 2
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "location": 124
+                                  }
+                                },
+                                {
+                                  "A_ArrayExpr": {
+                                    "elements": [
+                                      {
+                                        "A_Const": {
+                                          "location": 131,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 3
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "A_Const": {
+                                          "location": 133,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 4
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "location": 130
+                                  }
+                                }
+                              ],
+                              "location": 118
+                            }
+                          },
+                          "location": 137,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "||"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_ArrayExpr": {
+                              "elements": [
+                                {
+                                  "A_ArrayExpr": {
+                                    "elements": [
+                                      {
+                                        "A_Const": {
+                                          "location": 147,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 5
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "A_Const": {
+                                          "location": 149,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 6
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "location": 146
+                                  }
+                                },
+                                {
+                                  "A_ArrayExpr": {
+                                    "elements": [
+                                      {
+                                        "A_Const": {
+                                          "location": 153,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 7
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "A_Const": {
+                                          "location": 155,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 8
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "location": 152
+                                  }
+                                },
+                                {
+                                  "A_ArrayExpr": {
+                                    "elements": [
+                                      {
+                                        "A_Const": {
+                                          "location": 159,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 9
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "A_Const": {
+                                          "location": 161,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 0
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "location": 158
+                                  }
+                                }
+                              ],
+                              "location": 140
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_dims"
+                        }
+                      }
+                    ],
+                    "location": 107
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 119,
+      "stmt_location": 46
+    }
+  ],
+  "version": 130003
+}

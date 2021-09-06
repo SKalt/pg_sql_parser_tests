@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "String": {
+                "str": "mypublication"
+              }
+            }
+          ],
+          "removeType": "OBJECT_PUBLICATION"
+        }
+      },
+      "stmt_len": 30
+    }
+  ],
+  "version": 130003
+}

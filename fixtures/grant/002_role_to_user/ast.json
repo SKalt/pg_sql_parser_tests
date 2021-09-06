@@ -1,0 +1,30 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "GrantRoleStmt": {
+          "behavior": "DROP_RESTRICT",
+          "granted_roles": [
+            {
+              "AccessPriv": {
+                "priv_name": "admins"
+              }
+            }
+          ],
+          "grantee_roles": [
+            {
+              "RoleSpec": {
+                "location": 16,
+                "rolename": "joe",
+                "roletype": "ROLESPEC_CSTRING"
+              }
+            }
+          ],
+          "is_grant": true
+        }
+      },
+      "stmt_len": 19
+    }
+  ],
+  "version": 130003
+}

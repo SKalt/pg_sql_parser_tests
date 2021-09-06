@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "LoadStmt": {
+          "filename": "auto_explain"
+        }
+      },
+      "stmt_len": 19
+    }
+  ],
+  "version": 130003
+}

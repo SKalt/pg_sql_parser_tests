@@ -1,0 +1,62 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 55,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "synonym"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "template",
+                "location": 44
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 79,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_dict"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "synonyms",
+                "location": 68
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "pg_dict"
+              }
+            }
+          ],
+          "kind": "OBJECT_TSDICTIONARY"
+        }
+      },
+      "stmt_len": 88
+    }
+  ],
+  "version": 130003
+}

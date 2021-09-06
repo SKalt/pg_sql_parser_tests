@@ -1,0 +1,191 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "partspec": {
+            "location": 124,
+            "partParams": [
+              {
+                "PartitionElem": {
+                  "expr": {
+                    "FuncCall": {
+                      "args": [
+                        {
+                          "A_Const": {
+                            "location": 152,
+                            "val": {
+                              "String": {
+                                "str": "year"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "logdate"
+                                }
+                              }
+                            ],
+                            "location": 162
+                          }
+                        }
+                      ],
+                      "funcname": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "date_part"
+                          }
+                        }
+                      ],
+                      "location": 144
+                    }
+                  },
+                  "location": 144
+                }
+              },
+              {
+                "PartitionElem": {
+                  "expr": {
+                    "FuncCall": {
+                      "args": [
+                        {
+                          "A_Const": {
+                            "location": 180,
+                            "val": {
+                              "String": {
+                                "str": "month"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "logdate"
+                                }
+                              }
+                            ],
+                            "location": 191
+                          }
+                        }
+                      ],
+                      "funcname": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "date_part"
+                          }
+                        }
+                      ],
+                      "location": 172
+                    }
+                  },
+                  "location": 172
+                }
+              }
+            ],
+            "strategy": "range"
+          },
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "measurement_year_month",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "logdate",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 63
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 42,
+                "typeName": {
+                  "location": 58,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "date"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "peaktemp",
+                "is_local": true,
+                "location": 77,
+                "typeName": {
+                  "location": 93,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "unitsales",
+                "is_local": true,
+                "location": 102,
+                "typeName": {
+                  "location": 118,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 200
+    }
+  ],
+  "version": 130003
+}

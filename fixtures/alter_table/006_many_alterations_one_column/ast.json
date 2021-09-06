@@ -1,0 +1,175 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "name": "foo_timestamp",
+                "subtype": "AT_ColumnDefault"
+              }
+            },
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "ColumnDef": {
+                    "location": 78,
+                    "raw_default": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "TypeCast": {
+                            "arg": {
+                              "A_Const": {
+                                "location": 165,
+                                "val": {
+                                  "String": {
+                                    "str": "epoch"
+                                  }
+                                }
+                              }
+                            },
+                            "location": -1,
+                            "typeName": {
+                              "location": 140,
+                              "names": [
+                                {
+                                  "String": {
+                                    "str": "pg_catalog"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "timestamptz"
+                                  }
+                                }
+                              ],
+                              "typemod": -1
+                            }
+                          }
+                        },
+                        "location": 173,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "+"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "foo_timestamp"
+                                    }
+                                  }
+                                ],
+                                "location": 175
+                              }
+                            },
+                            "location": 189,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "TypeCast": {
+                                "arg": {
+                                  "A_Const": {
+                                    "location": 200,
+                                    "val": {
+                                      "String": {
+                                        "str": "1 second"
+                                      }
+                                    }
+                                  }
+                                },
+                                "location": -1,
+                                "typeName": {
+                                  "location": 191,
+                                  "names": [
+                                    {
+                                      "String": {
+                                        "str": "pg_catalog"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "interval"
+                                      }
+                                    }
+                                  ],
+                                  "typemod": -1
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "typeName": {
+                      "location": 97,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "timestamptz"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                },
+                "name": "foo_timestamp",
+                "subtype": "AT_AlterColumnType"
+              }
+            },
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "FuncCall": {
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "now"
+                        }
+                      }
+                    ],
+                    "location": 255
+                  }
+                },
+                "name": "foo_timestamp",
+                "subtype": "AT_ColumnDefault"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 260
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropRoleStmt": {
+          "roles": [
+            {
+              "RoleSpec": {
+                "location": 10,
+                "rolename": "jonathan",
+                "roletype": "ROLESPEC_CSTRING"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 18
+    }
+  ],
+  "version": 130003
+}

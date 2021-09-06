@@ -1,0 +1,111 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "perl_max"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n    my ($x, $y) = @_;\n    if (not defined $x) {\n        return undef if not defined $y;\n        return $y;\n    }\n    return $x if not defined $y;\n    return $x if $x \u003e $y;\n    return $y;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 60
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plperl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 256
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 26,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 35,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 52,
+            "names": [
+              {
+                "String": {
+                  "str": "pg_catalog"
+                }
+              },
+              {
+                "String": {
+                  "str": "int4"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 271
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "TypeName": {
+                "location": 10,
+                "names": [
+                  {
+                    "String": {
+                      "str": "box"
+                    }
+                  }
+                ],
+                "typemod": -1
+              }
+            }
+          ],
+          "removeType": "OBJECT_TYPE"
+        }
+      },
+      "stmt_len": 13
+    }
+  ],
+  "version": 130003
+}

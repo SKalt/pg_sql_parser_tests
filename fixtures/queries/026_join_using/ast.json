@@ -1,0 +1,206 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_LEFT",
+                "larg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "p"
+                    },
+                    "inh": true,
+                    "location": 70,
+                    "relname": "products",
+                    "relpersistence": "p"
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "s"
+                    },
+                    "inh": true,
+                    "location": 91,
+                    "relname": "sales",
+                    "relpersistence": "p"
+                  }
+                },
+                "usingClause": [
+                  {
+                    "String": {
+                      "str": "product_id"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "groupClause": [
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "product_id"
+                    }
+                  }
+                ],
+                "location": 131
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "p"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "name"
+                    }
+                  }
+                ],
+                "location": 143
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "p"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "price"
+                    }
+                  }
+                ],
+                "location": 151
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "product_id"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 19,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "p"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "name"
+                        }
+                      }
+                    ],
+                    "location": 19
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 27,
+                "name": "sales",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "s"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "units"
+                                  }
+                                }
+                              ],
+                              "location": 32
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "sum"
+                            }
+                          }
+                        ],
+                        "location": 28
+                      }
+                    },
+                    "location": 41,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "*"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "p"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "price"
+                            }
+                          }
+                        ],
+                        "location": 43
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 158
+    }
+  ],
+  "version": 130003
+}

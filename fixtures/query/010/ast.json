@@ -1,0 +1,119 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "weather",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "city"
+                            }
+                          }
+                        ],
+                        "location": 32
+                      }
+                    },
+                    "location": 37,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 39,
+                        "val": {
+                          "String": {
+                            "str": "San Francisco"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "prcp"
+                            }
+                          }
+                        ],
+                        "location": 59
+                      }
+                    },
+                    "location": 64,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 66,
+                        "val": {
+                          "Float": {
+                            "str": "0.0"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 55
+            }
+          }
+        }
+      },
+      "stmt_len": 69
+    }
+  ],
+  "version": 130003
+}

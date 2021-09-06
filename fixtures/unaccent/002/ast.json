@@ -1,0 +1,55 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 17,
+                          "val": {
+                            "String": {
+                              "str": "unaccent"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 28,
+                          "val": {
+                            "String": {
+                              "str": "H\u0026ocirc;tel"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "ts_lexize"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 42
+    }
+  ],
+  "version": 130003
+}

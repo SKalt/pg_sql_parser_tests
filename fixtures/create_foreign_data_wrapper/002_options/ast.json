@@ -1,0 +1,27 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFdwStmt": {
+          "fdwname": "mywrapper",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "true"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "debug",
+                "location": 51
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 64
+    }
+  ],
+  "version": 130003
+}

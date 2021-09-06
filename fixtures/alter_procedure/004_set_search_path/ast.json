@@ -1,0 +1,74 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterFunctionStmt": {
+          "actions": [
+            {
+              "DefElem": {
+                "arg": {
+                  "VariableSetStmt": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 55,
+                          "val": {
+                            "String": {
+                              "str": "admin"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 62,
+                          "val": {
+                            "String": {
+                              "str": "pg_temp"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "kind": "VAR_SET_VALUE",
+                    "name": "search_path"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "set",
+                "location": 37
+              }
+            }
+          ],
+          "func": {
+            "objargs": [
+              {
+                "TypeName": {
+                  "location": 31,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            ],
+            "objname": [
+              {
+                "String": {
+                  "str": "check_password"
+                }
+              }
+            ]
+          },
+          "objtype": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 69
+    }
+  ],
+  "version": 130003
+}

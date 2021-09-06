@@ -1,0 +1,41 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "PartitionCmd": {
+                    "bound": {
+                      "is_default": true,
+                      "location": 55
+                    },
+                    "name": {
+                      "inh": true,
+                      "location": 40,
+                      "relname": "cities_partdef",
+                      "relpersistence": "p"
+                    }
+                  }
+                },
+                "subtype": "AT_AttachPartition"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "cities",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 62
+    }
+  ],
+  "version": 130003
+}

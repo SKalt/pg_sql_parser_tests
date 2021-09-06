@@ -1,0 +1,100 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 57,
+            "relname": "table_name",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 84,
+                          "val": {
+                            "String": {
+                              "str": "a"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 72,
+                "name": "jsonb_field",
+                "val": {
+                  "A_Const": {
+                    "location": 91,
+                    "val": {
+                      "String": {
+                        "str": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 94
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 149,
+            "relname": "table_name",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 176,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 164,
+                "name": "jsonb_field",
+                "val": {
+                  "A_Const": {
+                    "location": 181,
+                    "val": {
+                      "String": {
+                        "str": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 89,
+      "stmt_location": 95
+    }
+  ],
+  "version": 130003
+}

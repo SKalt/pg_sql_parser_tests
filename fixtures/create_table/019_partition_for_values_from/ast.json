@@ -1,0 +1,84 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 51,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 102,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 108,
+                  "val": {
+                    "String": {
+                      "str": "2016-07-01"
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 126,
+                  "val": {
+                    "String": {
+                      "str": "2016-08-01"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "measurement_y2016m07",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "unitsales",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_DEFAULT",
+                      "location": 79,
+                      "raw_expr": {
+                        "A_Const": {
+                          "location": 87,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 69
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 139
+    }
+  ],
+  "version": 130003
+}

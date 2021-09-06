@@ -1,0 +1,170 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateSchemaStmt": {
+          "schemaElts": [
+            {
+              "CreateStmt": {
+                "oncommit": "ONCOMMIT_NOOP",
+                "relation": {
+                  "inh": true,
+                  "location": 41,
+                  "relname": "films",
+                  "relpersistence": "p"
+                },
+                "tableElts": [
+                  {
+                    "ColumnDef": {
+                      "colname": "title",
+                      "is_local": true,
+                      "location": 48,
+                      "typeName": {
+                        "location": 54,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "release",
+                      "is_local": true,
+                      "location": 60,
+                      "typeName": {
+                        "location": 68,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "date"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "awards",
+                      "is_local": true,
+                      "location": 74,
+                      "typeName": {
+                        "arrayBounds": [
+                          {
+                            "Integer": {
+                              "ival": -1
+                            }
+                          }
+                        ],
+                        "location": 81,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ViewStmt": {
+                "query": {
+                  "SelectStmt": {
+                    "fromClause": [
+                      {
+                        "RangeVar": {
+                          "inh": true,
+                          "location": 151,
+                          "relname": "films",
+                          "relpersistence": "p"
+                        }
+                      }
+                    ],
+                    "limitOption": "LIMIT_OPTION_DEFAULT",
+                    "op": "SETOP_NONE",
+                    "targetList": [
+                      {
+                        "ResTarget": {
+                          "location": 131,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "title"
+                                  }
+                                }
+                              ],
+                              "location": 131
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "ResTarget": {
+                          "location": 138,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "release"
+                                  }
+                                }
+                              ],
+                              "location": 138
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "whereClause": {
+                      "NullTest": {
+                        "arg": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "awards"
+                                }
+                              }
+                            ],
+                            "location": 163
+                          }
+                        },
+                        "location": 170,
+                        "nulltesttype": "IS_NOT_NULL"
+                      }
+                    }
+                  }
+                },
+                "view": {
+                  "inh": true,
+                  "location": 105,
+                  "relname": "winners",
+                  "relpersistence": "p"
+                },
+                "withCheckOption": "NO_CHECK_OPTION"
+              }
+            }
+          ],
+          "schemaname": "hollywood"
+        }
+      },
+      "stmt_len": 181
+    }
+  ],
+  "version": 130003
+}

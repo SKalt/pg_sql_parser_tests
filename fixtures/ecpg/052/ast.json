@@ -1,0 +1,110 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "create_complex"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 67
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "immutable"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "volatility",
+                "location": 80
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": " SELECT $1 * complex '(1,0')' + $2 * complex '(0,1)' "
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 90
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 33,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "double"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN",
+                "name": "r"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 43,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "double"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN",
+                "name": "i"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 59,
+            "names": [
+              {
+                "String": {
+                  "str": "complex"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 150
+    }
+  ],
+  "version": 130003
+}

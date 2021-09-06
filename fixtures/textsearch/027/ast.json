@@ -1,0 +1,51 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTSConfigurationStmt": {
+          "cfgname": [
+            {
+              "String": {
+                "str": "russian"
+              }
+            }
+          ],
+          "dicts": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "thesaurus_simple"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "ALTER_TSCONFIG_ALTER_MAPPING_FOR_TOKEN",
+          "override": true,
+          "tokentype": [
+            {
+              "String": {
+                "str": "asciiword"
+              }
+            },
+            {
+              "String": {
+                "str": "asciihword"
+              }
+            },
+            {
+              "String": {
+                "str": "hword_asciipart"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 126
+    }
+  ],
+  "version": 130003
+}

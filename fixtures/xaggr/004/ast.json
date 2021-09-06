@@ -1,0 +1,151 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "args": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "FunctionParameter": {
+                      "argType": {
+                        "location": 29,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "float8"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      },
+                      "mode": "FUNC_PARAM_IN"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "Integer": {
+                "ival": -1
+              }
+            }
+          ],
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 51,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float8"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "stype",
+                "location": 43
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 71,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float8pl"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "sfunc",
+                "location": 63
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 94,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float8"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "mstype",
+                "location": 85
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 115,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float8pl"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "msfunc",
+                "location": 106
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 140,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float8mi"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "minvfunc",
+                "location": 129
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "unsafe_sum"
+              }
+            }
+          ],
+          "kind": "OBJECT_AGGREGATE"
+        }
+      },
+      "stmt_len": 150
+    }
+  ],
+  "version": 130003
+}

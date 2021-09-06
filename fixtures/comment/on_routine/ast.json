@@ -1,0 +1,63 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Runs a routine (which is a function or procedure)",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 31,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 40,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "my_routine"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_ROUTINE"
+        }
+      },
+      "stmt_len": 103
+    }
+  ],
+  "version": 130003
+}

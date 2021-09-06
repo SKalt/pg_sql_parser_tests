@@ -1,0 +1,20 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ReindexStmt": {
+          "concurrent": true,
+          "kind": "REINDEX_OBJECT_TABLE",
+          "relation": {
+            "inh": true,
+            "location": 27,
+            "relname": "my_broken_table",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 42
+    }
+  ],
+  "version": 130003
+}

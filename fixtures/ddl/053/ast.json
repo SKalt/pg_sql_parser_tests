@@ -1,0 +1,502 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 47,
+                "val": {
+                  "String": {
+                    "str": "admin"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "role"
+        }
+      },
+      "stmt_len": 52
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 67,
+                "relname": "passwd",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": -1,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": -1
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 20,
+      "stmt_location": 53
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 632,
+                "val": {
+                  "String": {
+                    "str": "alice"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "role"
+        }
+      },
+      "stmt_len": 563,
+      "stmt_location": 74
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 652,
+                "relname": "passwd",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": -1,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": -1
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 20,
+      "stmt_location": 638
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 778,
+                "relname": "passwd",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 716,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "user_name"
+                        }
+                      }
+                    ],
+                    "location": 716
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 726,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "real_name"
+                        }
+                      }
+                    ],
+                    "location": 726
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 736,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "home_phone"
+                        }
+                      }
+                    ],
+                    "location": 736
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 747,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "extra_info"
+                        }
+                      }
+                    ],
+                    "location": 747
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 758,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "home_dir"
+                        }
+                      }
+                    ],
+                    "location": 758
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 767,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shell"
+                        }
+                      }
+                    ],
+                    "location": 767
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 125,
+      "stmt_location": 659
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 1203,
+            "relname": "passwd",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1214,
+                "name": "user_name",
+                "val": {
+                  "A_Const": {
+                    "location": 1226,
+                    "val": {
+                      "String": {
+                        "str": "joe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 446,
+      "stmt_location": 785
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 1352,
+            "relname": "passwd",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1363,
+                "name": "real_name",
+                "val": {
+                  "A_Const": {
+                    "location": 1375,
+                    "val": {
+                      "String": {
+                        "str": "Alice Doe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 154,
+      "stmt_location": 1232
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 1407,
+            "relname": "passwd",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1418,
+                "name": "real_name",
+                "val": {
+                  "A_Const": {
+                    "location": 1430,
+                    "val": {
+                      "String": {
+                        "str": "John Doe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "user_name"
+                      }
+                    }
+                  ],
+                  "location": 1447
+                }
+              },
+              "location": 1457,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 1459,
+                  "val": {
+                    "String": {
+                      "str": "admin"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 79,
+      "stmt_location": 1387
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 1487,
+            "relname": "passwd",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1498,
+                "name": "shell",
+                "val": {
+                  "A_Const": {
+                    "location": 1506,
+                    "val": {
+                      "String": {
+                        "str": "/bin/xx"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 48,
+      "stmt_location": 1467
+    },
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 1588,
+            "relname": "passwd",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 78,
+      "stmt_location": 1516
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 1665,
+                "name": "user_name"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 1657,
+            "relname": "passwd",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 1684,
+                          "val": {
+                            "String": {
+                              "str": "xxx"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 95,
+      "stmt_location": 1595
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 1828,
+            "relname": "passwd",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1839,
+                "name": "pwhash",
+                "val": {
+                  "A_Const": {
+                    "location": 1848,
+                    "val": {
+                      "String": {
+                        "str": "abc"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 162,
+      "stmt_location": 1691
+    }
+  ],
+  "version": 130003
+}

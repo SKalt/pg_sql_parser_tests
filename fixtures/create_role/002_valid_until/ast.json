@@ -1,0 +1,52 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateRoleStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "canlogin",
+                "location": 24
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "jw8s0F4"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "password",
+                "location": 30
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "2005-01-01"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "validUntil",
+                "location": 49
+              }
+            }
+          ],
+          "role": "miriam",
+          "stmt_type": "ROLESTMT_ROLE"
+        }
+      },
+      "stmt_len": 73
+    }
+  ],
+  "version": 130003
+}

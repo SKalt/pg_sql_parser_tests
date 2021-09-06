@@ -1,0 +1,24 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VacuumStmt": {
+          "rels": [
+            {
+              "VacuumRelation": {
+                "relation": {
+                  "inh": true,
+                  "location": 8,
+                  "relname": "measurement",
+                  "relpersistence": "p"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 19
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,224 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "mytable",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "h",
+                "is_local": true,
+                "location": 22,
+                "typeName": {
+                  "location": 24,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "hstore"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 31
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 45,
+            "relname": "mytable",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 61,
+                          "val": {
+                            "String": {
+                              "str": "a=\u003eb, c=\u003ed"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 42,
+      "stmt_location": 32
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 95,
+                "relname": "mytable",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 83,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "h"
+                            }
+                          }
+                        ],
+                        "location": 83
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Indices": {
+                          "uidx": {
+                            "A_Const": {
+                              "location": 85,
+                              "val": {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 27,
+      "stmt_location": 75
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 142,
+            "relname": "mytable",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 156,
+                          "val": {
+                            "String": {
+                              "str": "c"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 154,
+                "name": "h",
+                "val": {
+                  "A_Const": {
+                    "location": 163,
+                    "val": {
+                      "String": {
+                        "str": "new"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 65,
+      "stmt_location": 103
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 184,
+                "relname": "mytable",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 177,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "h"
+                        }
+                      }
+                    ],
+                    "location": 177
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 22,
+      "stmt_location": 169
+    }
+  ],
+  "version": 130003
+}

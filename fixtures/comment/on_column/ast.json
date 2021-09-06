@@ -1,0 +1,30 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Employee ID number",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_table"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "my_column"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_COLUMN"
+        }
+      },
+      "stmt_len": 60
+    }
+  ],
+  "version": 130003
+}

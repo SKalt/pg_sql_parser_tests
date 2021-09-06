@@ -1,0 +1,511 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "reservation",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "room",
+                "is_local": true,
+                "location": 26,
+                "typeName": {
+                  "location": 31,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "during",
+                "is_local": true,
+                "location": 36,
+                "typeName": {
+                  "location": 43,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "tsrange"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 51
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 65,
+            "relname": "reservation",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 89,
+                          "val": {
+                            "Integer": {
+                              "ival": 1108
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 95,
+                          "val": {
+                            "String": {
+                              "str": "[2010-01-01 14:30, 2010-01-01 15:30)"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 82,
+      "stmt_location": 52
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 159,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 169,
+                              "val": {
+                                "Integer": {
+                                  "ival": 10
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 173,
+                              "val": {
+                                "Integer": {
+                                  "ival": 20
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "int4range"
+                            }
+                          }
+                        ],
+                        "location": 159
+                      }
+                    },
+                    "location": 177,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "@\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 180,
+                        "val": {
+                          "Integer": {
+                            "ival": 3
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 46,
+      "stmt_location": 135
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 203,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 212,
+                              "val": {
+                                "Float": {
+                                  "str": "11.1"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 218,
+                              "val": {
+                                "Float": {
+                                  "str": "22.2"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "numrange"
+                            }
+                          }
+                        ],
+                        "location": 203
+                      }
+                    },
+                    "location": 224,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u0026\u0026"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 236,
+                              "val": {
+                                "Float": {
+                                  "str": "20.0"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 242,
+                              "val": {
+                                "Float": {
+                                  "str": "30.0"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "numrange"
+                            }
+                          }
+                        ],
+                        "location": 227
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 65,
+      "stmt_location": 182
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 284,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 300,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 15
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 304,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 25
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "int8range"
+                              }
+                            }
+                          ],
+                          "location": 290
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "upper"
+                        }
+                      }
+                    ],
+                    "location": 284
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 60,
+      "stmt_location": 248
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 346,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 356,
+                              "val": {
+                                "Integer": {
+                                  "ival": 10
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 360,
+                              "val": {
+                                "Integer": {
+                                  "ival": 20
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "int4range"
+                            }
+                          }
+                        ],
+                        "location": 346
+                      }
+                    },
+                    "location": 364,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "*"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 376,
+                              "val": {
+                                "Integer": {
+                                  "ival": 15
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 380,
+                              "val": {
+                                "Integer": {
+                                  "ival": 25
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "int4range"
+                            }
+                          }
+                        ],
+                        "location": 366
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 74,
+      "stmt_location": 309
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 416,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 433,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 436,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 5
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "numrange"
+                              }
+                            }
+                          ],
+                          "location": 424
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "isempty"
+                        }
+                      }
+                    ],
+                    "location": 416
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 55,
+      "stmt_location": 384
+    }
+  ],
+  "version": 130003
+}

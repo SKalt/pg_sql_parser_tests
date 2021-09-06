@@ -1,0 +1,80 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 22,
+                    "relname": "foo",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 15,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 15
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "i"
+                          }
+                        }
+                      ],
+                      "location": 32
+                    }
+                  },
+                  "location": 34,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "A_Const": {
+                      "location": 36,
+                      "val": {
+                        "Integer": {
+                          "ival": 4
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 37
+    }
+  ],
+  "version": 130003
+}

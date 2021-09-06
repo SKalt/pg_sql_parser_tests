@@ -1,0 +1,165 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 40,
+                "relname": "cities",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "listdatums": [
+              {
+                "A_Const": {
+                  "location": 118,
+                  "val": {
+                    "String": {
+                      "str": "a"
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 123,
+                  "val": {
+                    "String": {
+                      "str": "b"
+                    }
+                  }
+                }
+              }
+            ],
+            "location": 114,
+            "strategy": "l"
+          },
+          "partspec": {
+            "location": 128,
+            "partParams": [
+              {
+                "PartitionElem": {
+                  "location": 148,
+                  "name": "population"
+                }
+              }
+            ],
+            "strategy": "range"
+          },
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "cities_ab",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "Constraint": {
+                "conname": "city_id_nonzero",
+                "contype": "CONSTR_CHECK",
+                "initially_valid": true,
+                "location": 53,
+                "raw_expr": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "city_id"
+                            }
+                          }
+                        ],
+                        "location": 87
+                      }
+                    },
+                    "location": 95,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003c\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 98,
+                        "val": {
+                          "Integer": {
+                            "ival": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 159
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 218,
+                "relname": "cities_ab",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 239,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 245,
+                  "val": {
+                    "Integer": {
+                      "ival": 10000
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 256,
+                  "val": {
+                    "Integer": {
+                      "ival": 100000
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 175,
+            "relname": "cities_ab_10000_to_100000",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 103,
+      "stmt_location": 160
+    }
+  ],
+  "version": 130003
+}

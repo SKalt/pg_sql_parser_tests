@@ -1,0 +1,199 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 17,
+                "relname": "t1",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 21,
+                "relname": "t2",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "t2"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "b"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "t1"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "a"
+                      }
+                    }
+                  ],
+                  "location": 30
+                }
+              },
+              "location": 35,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "t2"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "a"
+                      }
+                    }
+                  ],
+                  "location": 37
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 41
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 72,
+                "relname": "t2",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 51,
+            "relname": "t1",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 58,
+                "name": "b",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "t2"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "b"
+                        }
+                      }
+                    ],
+                    "location": 62
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "t1"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "a"
+                      }
+                    }
+                  ],
+                  "location": 81
+                }
+              },
+              "location": 86,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "t2"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "a"
+                      }
+                    }
+                  ],
+                  "location": 88
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 42
+    }
+  ],
+  "version": 130003
+}

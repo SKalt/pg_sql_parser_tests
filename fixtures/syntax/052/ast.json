@@ -1,0 +1,175 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "concat_lower_or_upper"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n SELECT CASE\n        WHEN $3 THEN UPPER($1 || ' ' || $2)\n        ELSE LOWER($1 || ' ' || $2)\n        END;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 100
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 215
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "immutable"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "volatility",
+                "location": 228
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "strict",
+                "location": 238
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 40,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN",
+                "name": "a"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 48,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN",
+                "name": "b"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 64,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "bool"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "defexpr": {
+                  "TypeCast": {
+                    "arg": {
+                      "A_Const": {
+                        "location": 80,
+                        "val": {
+                          "String": {
+                            "str": "f"
+                          }
+                        }
+                      }
+                    },
+                    "location": -1,
+                    "typeName": {
+                      "location": -1,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "bool"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                },
+                "mode": "FUNC_PARAM_IN",
+                "name": "uppercase"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 95,
+            "names": [
+              {
+                "String": {
+                  "str": "text"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 244
+    }
+  ],
+  "version": 130003
+}

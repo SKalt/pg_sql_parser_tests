@@ -1,0 +1,120 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 56,
+                "relname": "w",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 49,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 49
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "key"
+                      }
+                    }
+                  ],
+                  "location": 64
+                }
+              },
+              "location": 68,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 70,
+                  "val": {
+                    "Integer": {
+                      "ival": 123
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "withClause": {
+            "ctes": [
+              {
+                "CommonTableExpr": {
+                  "ctematerialized": "CTEMaterializeDefault",
+                  "ctename": "w",
+                  "ctequery": {
+                    "SelectStmt": {
+                      "fromClause": [
+                        {
+                          "RangeVar": {
+                            "inh": true,
+                            "location": 30,
+                            "relname": "big_table",
+                            "relpersistence": "p"
+                          }
+                        }
+                      ],
+                      "limitOption": "LIMIT_OPTION_DEFAULT",
+                      "op": "SETOP_NONE",
+                      "targetList": [
+                        {
+                          "ResTarget": {
+                            "location": 23,
+                            "val": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "A_Star": {}
+                                  }
+                                ],
+                                "location": 23
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "location": 5
+                }
+              }
+            ]
+          }
+        }
+      },
+      "stmt_len": 73
+    }
+  ],
+  "version": 130003
+}

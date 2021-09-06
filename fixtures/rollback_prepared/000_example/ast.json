@@ -1,0 +1,14 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "gid": "foobar",
+          "kind": "TRANS_STMT_ROLLBACK_PREPARED"
+        }
+      },
+      "stmt_len": 26
+    }
+  ],
+  "version": 130003
+}

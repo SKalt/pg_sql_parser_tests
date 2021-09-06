@@ -1,0 +1,38 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "films"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "distributors"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 30
+    }
+  ],
+  "version": 130003
+}

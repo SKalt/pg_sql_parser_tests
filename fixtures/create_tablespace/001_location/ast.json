@@ -1,0 +1,14 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTableSpaceStmt": {
+          "location": "/data/dbs",
+          "tablespacename": "dbspace"
+        }
+      },
+      "stmt_len": 46
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,27 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "title_idx"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_INDEX"
+        }
+      },
+      "stmt_len": 20
+    }
+  ],
+  "version": 130003
+}

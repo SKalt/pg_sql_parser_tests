@@ -1,0 +1,52 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreatePolicyStmt": {
+          "cmd_name": "all",
+          "policy_name": "admin_local_only",
+          "qual": {
+            "NullTest": {
+              "arg": {
+                "FuncCall": {
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "inet_client_addr"
+                      }
+                    }
+                  ],
+                  "location": 76
+                }
+              },
+              "location": 106,
+              "nulltesttype": "IS_NULL"
+            }
+          },
+          "roles": [
+            {
+              "RoleSpec": {
+                "location": 59,
+                "rolename": "admin",
+                "roletype": "ROLESPEC_CSTRING"
+              }
+            }
+          ],
+          "table": {
+            "inh": true,
+            "location": 34,
+            "relname": "passwd",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 114
+    }
+  ],
+  "version": 130003
+}

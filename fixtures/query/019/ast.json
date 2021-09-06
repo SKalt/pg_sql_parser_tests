@@ -1,0 +1,101 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_LEFT",
+                "larg": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 18,
+                    "relname": "weather",
+                    "relpersistence": "p"
+                  }
+                },
+                "quals": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "weather"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "city"
+                            }
+                          }
+                        ],
+                        "location": 52
+                      }
+                    },
+                    "location": 65,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "cities"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "name"
+                            }
+                          }
+                        ],
+                        "location": 67
+                      }
+                    }
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 42,
+                    "relname": "cities",
+                    "relpersistence": "p"
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 78
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,61 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "kind": "TRANS_STMT_BEGIN",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "A_Const": {
+                    "location": 34,
+                    "val": {
+                      "String": {
+                        "str": "repeatable read"
+                      }
+                    }
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "transaction_isolation",
+                "location": 18
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 49
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 58,
+                "val": {
+                  "FuncCall": {
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_export_snapshot"
+                        }
+                      }
+                    ],
+                    "location": 58
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 28,
+      "stmt_location": 50
+    }
+  ],
+  "version": 130003
+}

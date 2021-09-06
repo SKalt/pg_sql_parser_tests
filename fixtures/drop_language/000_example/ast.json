@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "String": {
+                "str": "plsample"
+              }
+            }
+          ],
+          "removeType": "OBJECT_LANGUAGE"
+        }
+      },
+      "stmt_len": 22
+    }
+  ],
+  "version": 130003
+}

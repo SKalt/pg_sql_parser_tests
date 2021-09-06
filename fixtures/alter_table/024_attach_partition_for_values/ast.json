@@ -1,0 +1,63 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "PartitionCmd": {
+                    "bound": {
+                      "listdatums": [
+                        {
+                          "A_Const": {
+                            "location": 65,
+                            "val": {
+                              "String": {
+                                "str": "a"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "A_Const": {
+                            "location": 70,
+                            "val": {
+                              "String": {
+                                "str": "b"
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "location": 61,
+                      "strategy": "l"
+                    },
+                    "name": {
+                      "inh": true,
+                      "location": 40,
+                      "relname": "cities_ab",
+                      "relpersistence": "p"
+                    }
+                  }
+                },
+                "subtype": "AT_AttachPartition"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "cities",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 74
+    }
+  ],
+  "version": 130003
+}

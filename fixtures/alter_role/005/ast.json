@@ -1,0 +1,33 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterRoleSetStmt": {
+          "role": {
+            "location": 11,
+            "rolename": "worker_bee",
+            "roletype": "ROLESPEC_CSTRING"
+          },
+          "setstmt": {
+            "args": [
+              {
+                "A_Const": {
+                  "location": 49,
+                  "val": {
+                    "Integer": {
+                      "ival": 100000
+                    }
+                  }
+                }
+              }
+            ],
+            "kind": "VAR_SET_VALUE",
+            "name": "maintenance_work_mem"
+          }
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

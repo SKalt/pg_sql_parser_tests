@@ -1,0 +1,52 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "tab",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 17,
+                          "val": {
+                            "String": {
+                              "str": "c"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 15,
+                "name": "h",
+                "val": {
+                  "A_Const": {
+                    "location": 24,
+                    "val": {
+                      "String": {
+                        "str": "3"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 27
+    }
+  ],
+  "version": 130003
+}

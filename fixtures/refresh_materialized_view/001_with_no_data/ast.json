@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RefreshMatViewStmt": {
+          "relation": {
+            "inh": true,
+            "location": 26,
+            "relname": "annual_statistics_basis",
+            "relpersistence": "p"
+          },
+          "skipData": true
+        }
+      },
+      "stmt_len": 62
+    }
+  ],
+  "version": 130003
+}

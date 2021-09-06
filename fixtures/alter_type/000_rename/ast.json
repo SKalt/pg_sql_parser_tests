@@ -1,0 +1,27 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RenameStmt": {
+          "behavior": "DROP_RESTRICT",
+          "newname": "email",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "electronic_mail"
+                  }
+                }
+              ]
+            }
+          },
+          "relationType": "OBJECT_ACCESS_METHOD",
+          "renameType": "OBJECT_TYPE"
+        }
+      },
+      "stmt_len": 42
+    }
+  ],
+  "version": 130003
+}

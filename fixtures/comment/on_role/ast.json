@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Administration group for finance tables",
+          "object": {
+            "String": {
+              "str": "my_role"
+            }
+          },
+          "objtype": "OBJECT_ROLE"
+        }
+      },
+      "stmt_len": 68
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,235 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "am"
+                },
+                "inh": true,
+                "location": 162,
+                "relname": "pg_am",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "opc"
+                },
+                "inh": true,
+                "location": 172,
+                "relname": "pg_opclass",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "sortClause": [
+            {
+              "SortBy": {
+                "location": -1,
+                "node": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "index_method"
+                        }
+                      }
+                    ],
+                    "location": 233
+                  }
+                },
+                "sortby_dir": "SORTBY_DEFAULT",
+                "sortby_nulls": "SORTBY_NULLS_DEFAULT"
+              }
+            },
+            {
+              "SortBy": {
+                "location": -1,
+                "node": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "opclass_name"
+                        }
+                      }
+                    ],
+                    "location": 247
+                  }
+                },
+                "sortby_dir": "SORTBY_DEFAULT",
+                "sortby_nulls": "SORTBY_NULLS_DEFAULT"
+              }
+            }
+          ],
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "name": "index_method",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "am"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "amname"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 41,
+                "name": "opclass_name",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "opc"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "opcname"
+                        }
+                      }
+                    ],
+                    "location": 41
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 77,
+                "name": "indexed_type",
+                "val": {
+                  "TypeCast": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "opc"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "opcintype"
+                            }
+                          }
+                        ],
+                        "location": 77
+                      }
+                    },
+                    "location": 90,
+                    "typeName": {
+                      "location": 92,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "regtype"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 124,
+                "name": "is_default",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "opc"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "opcdefault"
+                        }
+                      }
+                    ],
+                    "location": 124
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "opc"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "opcmethod"
+                      }
+                    }
+                  ],
+                  "location": 197
+                }
+              },
+              "location": 211,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "am"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "oid"
+                      }
+                    }
+                  ],
+                  "location": 213
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 259
+    }
+  ],
+  "version": 130003
+}

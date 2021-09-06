@@ -1,0 +1,80 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "snitch"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nBEGIN\n    RAISE NOTICE 'snitch: % %', tg_event, tg_tag;\nEND;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 58
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpgsql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 128
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 44,
+            "names": [
+              {
+                "String": {
+                  "str": "event_trigger"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 144
+    },
+    {
+      "stmt": {
+        "CreateEventTrigStmt": {
+          "eventname": "ddl_command_start",
+          "funcname": [
+            {
+              "String": {
+                "str": "snitch"
+              }
+            }
+          ],
+          "trigname": "snitch"
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 145
+    }
+  ],
+  "version": 130003
+}

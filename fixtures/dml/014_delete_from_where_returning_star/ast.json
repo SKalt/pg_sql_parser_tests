@@ -1,0 +1,70 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "products",
+            "relpersistence": "p"
+          },
+          "returningList": [
+            {
+              "ResTarget": {
+                "location": 67,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 67
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "obsoletion_date"
+                      }
+                    }
+                  ],
+                  "location": 29
+                }
+              },
+              "location": 45,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 47,
+                  "val": {
+                    "String": {
+                      "str": "today"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 68
+    }
+  ],
+  "version": 130003
+}

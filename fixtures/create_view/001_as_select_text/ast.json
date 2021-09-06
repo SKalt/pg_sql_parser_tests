@@ -1,0 +1,59 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 28,
+                    "name": "hello",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Const": {
+                            "location": 33,
+                            "val": {
+                              "String": {
+                                "str": "Hello World"
+                              }
+                            }
+                          }
+                        },
+                        "location": -1,
+                        "typeName": {
+                          "location": 28,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "text"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 12,
+            "relname": "vista",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "NO_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

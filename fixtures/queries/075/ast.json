@@ -1,0 +1,308 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 238,
+            "relname": "parts",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "SubLink": {
+              "location": 257,
+              "subLinkType": "ANY_SUBLINK",
+              "subselect": {
+                "SelectStmt": {
+                  "fromClause": [
+                    {
+                      "RangeVar": {
+                        "inh": true,
+                        "location": 278,
+                        "relname": "included_parts",
+                        "relpersistence": "p"
+                      }
+                    }
+                  ],
+                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                  "op": "SETOP_NONE",
+                  "targetList": [
+                    {
+                      "ResTarget": {
+                        "location": 268,
+                        "val": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "part"
+                                }
+                              }
+                            ],
+                            "location": 268
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "testexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "part"
+                      }
+                    }
+                  ],
+                  "location": 252
+                }
+              }
+            }
+          },
+          "withClause": {
+            "ctes": [
+              {
+                "CommonTableExpr": {
+                  "aliascolnames": [
+                    {
+                      "String": {
+                        "str": "sub_part"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "part"
+                      }
+                    }
+                  ],
+                  "ctematerialized": "CTEMaterializeDefault",
+                  "ctename": "included_parts",
+                  "ctequery": {
+                    "SelectStmt": {
+                      "all": true,
+                      "larg": {
+                        "fromClause": [
+                          {
+                            "RangeVar": {
+                              "inh": true,
+                              "location": 82,
+                              "relname": "parts",
+                              "relpersistence": "p"
+                            }
+                          }
+                        ],
+                        "limitOption": "LIMIT_OPTION_DEFAULT",
+                        "op": "SETOP_NONE",
+                        "targetList": [
+                          {
+                            "ResTarget": {
+                              "location": 62,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "sub_part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 62
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ResTarget": {
+                              "location": 72,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 72
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "whereClause": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "part"
+                                    }
+                                  }
+                                ],
+                                "location": 94
+                              }
+                            },
+                            "location": 99,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "="
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 101,
+                                "val": {
+                                  "String": {
+                                    "str": "our_product"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "limitOption": "LIMIT_OPTION_DEFAULT",
+                      "op": "SETOP_UNION",
+                      "rarg": {
+                        "fromClause": [
+                          {
+                            "RangeVar": {
+                              "alias": {
+                                "aliasname": "pr"
+                              },
+                              "inh": true,
+                              "location": 166,
+                              "relname": "included_parts",
+                              "relpersistence": "p"
+                            }
+                          },
+                          {
+                            "RangeVar": {
+                              "alias": {
+                                "aliasname": "p"
+                              },
+                              "inh": true,
+                              "location": 185,
+                              "relname": "parts",
+                              "relpersistence": "p"
+                            }
+                          }
+                        ],
+                        "limitOption": "LIMIT_OPTION_DEFAULT",
+                        "op": "SETOP_NONE",
+                        "targetList": [
+                          {
+                            "ResTarget": {
+                              "location": 138,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "p"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "sub_part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 138
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ResTarget": {
+                              "location": 150,
+                              "val": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "p"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "part"
+                                      }
+                                    }
+                                  ],
+                                  "location": 150
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "whereClause": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "p"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "part"
+                                    }
+                                  }
+                                ],
+                                "location": 203
+                              }
+                            },
+                            "location": 210,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "="
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "pr"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "sub_part"
+                                    }
+                                  }
+                                ],
+                                "location": 212
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "location": 15
+                }
+              }
+            ],
+            "recursive": true
+          }
+        }
+      },
+      "stmt_len": 293
+    }
+  ],
+  "version": 130003
+}

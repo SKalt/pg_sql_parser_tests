@@ -1,0 +1,53 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "computer",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "manufacturer"
+                      }
+                    }
+                  ],
+                  "location": 27
+                }
+              },
+              "location": 40,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 42,
+                  "val": {
+                    "String": {
+                      "str": "bim"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 47
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,213 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "crosstab_float8_5_cols"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "$libdir/tablefunc"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "crosstab"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 265
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "c"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 299
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "stable"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "volatility",
+                "location": 310
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "strict",
+                "location": 317
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 58,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 84,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_OUT",
+                "name": "my_row_name"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 112,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_OUT",
+                "name": "my_category_1"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 142,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_OUT",
+                "name": "my_category_2"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 172,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_OUT",
+                "name": "my_category_3"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 202,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_OUT",
+                "name": "my_category_4"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 232,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_OUT",
+                "name": "my_category_5"
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 256,
+            "names": [
+              {
+                "String": {
+                  "str": "record"
+                }
+              }
+            ],
+            "setof": true,
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 323
+    }
+  ],
+  "version": 130003
+}

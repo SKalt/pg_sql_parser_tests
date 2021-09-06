@@ -1,0 +1,98 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "SQLValueFunction": {
+                    "location": 7,
+                    "op": "SVFOP_SESSION_USER",
+                    "typmod": -1
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 21,
+                "val": {
+                  "SQLValueFunction": {
+                    "location": 21,
+                    "op": "SVFOP_CURRENT_USER",
+                    "typmod": -1
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 33
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 137,
+                "val": {
+                  "String": {
+                    "str": "paul"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "role"
+        }
+      },
+      "stmt_len": 109,
+      "stmt_location": 34
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 153,
+                "val": {
+                  "SQLValueFunction": {
+                    "location": 153,
+                    "op": "SVFOP_SESSION_USER",
+                    "typmod": -1
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 167,
+                "val": {
+                  "SQLValueFunction": {
+                    "location": 167,
+                    "op": "SVFOP_CURRENT_USER",
+                    "typmod": -1
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 35,
+      "stmt_location": 144
+    }
+  ],
+  "version": 130003
+}

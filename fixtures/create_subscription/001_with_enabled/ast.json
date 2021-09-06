@@ -1,0 +1,35 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateSubscriptionStmt": {
+          "conninfo": "host=192.168.1.50 port=5432 user=foo dbname=foodb",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "false"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "enabled",
+                "location": 151
+              }
+            }
+          ],
+          "publication": [
+            {
+              "String": {
+                "str": "insert_only"
+              }
+            }
+          ],
+          "subname": "mysub"
+        }
+      },
+      "stmt_len": 167
+    }
+  ],
+  "version": 130003
+}

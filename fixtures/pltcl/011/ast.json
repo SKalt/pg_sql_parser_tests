@@ -1,0 +1,111 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "t1_count"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n    if {![ info exists GD(plan) ]} {\n        # prepare the saved plan on the first call\n        set GD(plan) [ spi_prepare \\\n                \"SELECT count(*) AS cnt FROM t1 WHERE num \u003e= \\$1 AND num \u003c= \\$2\" \\\n                [ list int4 int4 ] ]\n    }\n    spi_execp -count 1 $GD(plan) [ list $1 $2 ]\n    return $cnt\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 59
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "pltcl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 383
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 25,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 34,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 51,
+            "names": [
+              {
+                "String": {
+                  "str": "pg_catalog"
+                }
+              },
+              {
+                "String": {
+                  "str": "int4"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 397
+    }
+  ],
+  "version": 130003
+}

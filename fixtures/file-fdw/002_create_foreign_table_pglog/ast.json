@@ -1,0 +1,575 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateForeignTableStmt": {
+          "base": {
+            "oncommit": "ONCOMMIT_NOOP",
+            "relation": {
+              "inh": true,
+              "location": 21,
+              "relname": "pglog",
+              "relpersistence": "p"
+            },
+            "tableElts": [
+              {
+                "ColumnDef": {
+                  "colname": "log_time",
+                  "is_local": true,
+                  "location": 31,
+                  "typeName": {
+                    "location": 40,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "timestamptz"
+                        }
+                      }
+                    ],
+                    "typemod": -1,
+                    "typmods": [
+                      {
+                        "A_Const": {
+                          "location": 50,
+                          "val": {
+                            "Integer": {
+                              "ival": 3
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "user_name",
+                  "is_local": true,
+                  "location": 71,
+                  "typeName": {
+                    "location": 81,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "database_name",
+                  "is_local": true,
+                  "location": 89,
+                  "typeName": {
+                    "location": 103,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "process_id",
+                  "is_local": true,
+                  "location": 111,
+                  "typeName": {
+                    "location": 122,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "connection_from",
+                  "is_local": true,
+                  "location": 133,
+                  "typeName": {
+                    "location": 149,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "session_id",
+                  "is_local": true,
+                  "location": 157,
+                  "typeName": {
+                    "location": 168,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "session_line_num",
+                  "is_local": true,
+                  "location": 176,
+                  "typeName": {
+                    "location": 193,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int8"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "command_tag",
+                  "is_local": true,
+                  "location": 203,
+                  "typeName": {
+                    "location": 215,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "session_start_time",
+                  "is_local": true,
+                  "location": 223,
+                  "typeName": {
+                    "location": 242,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "timestamptz"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "virtual_transaction_id",
+                  "is_local": true,
+                  "location": 270,
+                  "typeName": {
+                    "location": 293,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "transaction_id",
+                  "is_local": true,
+                  "location": 301,
+                  "typeName": {
+                    "location": 316,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int8"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "error_severity",
+                  "is_local": true,
+                  "location": 326,
+                  "typeName": {
+                    "location": 341,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "sql_state_code",
+                  "is_local": true,
+                  "location": 349,
+                  "typeName": {
+                    "location": 364,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "message",
+                  "is_local": true,
+                  "location": 372,
+                  "typeName": {
+                    "location": 380,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "detail",
+                  "is_local": true,
+                  "location": 388,
+                  "typeName": {
+                    "location": 395,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "hint",
+                  "is_local": true,
+                  "location": 403,
+                  "typeName": {
+                    "location": 408,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "internal_query",
+                  "is_local": true,
+                  "location": 416,
+                  "typeName": {
+                    "location": 431,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "internal_query_pos",
+                  "is_local": true,
+                  "location": 439,
+                  "typeName": {
+                    "location": 458,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "context",
+                  "is_local": true,
+                  "location": 469,
+                  "typeName": {
+                    "location": 477,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "query",
+                  "is_local": true,
+                  "location": 485,
+                  "typeName": {
+                    "location": 491,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "query_pos",
+                  "is_local": true,
+                  "location": 499,
+                  "typeName": {
+                    "location": 509,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "location",
+                  "is_local": true,
+                  "location": 520,
+                  "typeName": {
+                    "location": 529,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "application_name",
+                  "is_local": true,
+                  "location": 537,
+                  "typeName": {
+                    "location": 554,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "backend_type",
+                  "is_local": true,
+                  "location": 562,
+                  "typeName": {
+                    "location": 575,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "leader_pid",
+                  "is_local": true,
+                  "location": 583,
+                  "typeName": {
+                    "location": 594,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              },
+              {
+                "ColumnDef": {
+                  "colname": "query_id",
+                  "is_local": true,
+                  "location": 605,
+                  "typeName": {
+                    "location": 614,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int8"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              }
+            ]
+          },
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "log/pglog.csv"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "filename",
+                "location": 646
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "csv"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "format",
+                "location": 672
+              }
+            }
+          ],
+          "servername": "pglog"
+        }
+      },
+      "stmt_len": 686
+    }
+  ],
+  "version": 130003
+}

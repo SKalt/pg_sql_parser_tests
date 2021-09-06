@@ -1,0 +1,143 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 25,
+                "relname": "t",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "RowExpr": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "t"
+                              }
+                            },
+                            {
+                              "A_Star": {}
+                            }
+                          ],
+                          "location": 11
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 16,
+                          "val": {
+                            "Integer": {
+                              "ival": 42
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "location": 7,
+                    "row_format": "COERCE_EXPLICIT_CALL"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 26
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 60,
+                "relname": "t",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 35,
+                "val": {
+                  "RowExpr": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "t"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "f1"
+                              }
+                            }
+                          ],
+                          "location": 39
+                        }
+                      },
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "t"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "f2"
+                              }
+                            }
+                          ],
+                          "location": 45
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 51,
+                          "val": {
+                            "Integer": {
+                              "ival": 42
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "location": 35,
+                    "row_format": "COERCE_EXPLICIT_CALL"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 34,
+      "stmt_location": 27
+    }
+  ],
+  "version": 130003
+}

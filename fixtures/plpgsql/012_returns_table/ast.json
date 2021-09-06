@@ -1,0 +1,136 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "extended_sales"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nBEGIN\n    RETURN QUERY SELECT s.quantity, s.quantity * s.price FROM sales AS s\n                 WHERE s.itemno = p_itemno;\nEND;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 88
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpgsql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 225
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 40,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN",
+                "name": "p_itemno"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 68,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_TABLE",
+                "name": "quantity"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 79,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_TABLE",
+                "name": "total"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 53,
+            "names": [
+              {
+                "String": {
+                  "str": "pg_catalog"
+                }
+              },
+              {
+                "String": {
+                  "str": "record"
+                }
+              }
+            ],
+            "setof": true,
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 241
+    }
+  ],
+  "version": 130003
+}

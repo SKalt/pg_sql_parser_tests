@@ -1,0 +1,54 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "test2_info_nulls_low",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "info",
+                "nulls_ordering": "SORTBY_NULLS_FIRST",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 37,
+            "relname": "test2",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 61
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "test3_desc_index",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "id",
+                "nulls_ordering": "SORTBY_NULLS_LAST",
+                "ordering": "SORTBY_DESC"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 96,
+            "relname": "test3",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 60,
+      "stmt_location": 62
+    }
+  ],
+  "version": 130003
+}

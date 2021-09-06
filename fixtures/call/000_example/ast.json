@@ -1,0 +1,22 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CallStmt": {
+          "funccall": {
+            "funcname": [
+              {
+                "String": {
+                  "str": "do_db_maintenance"
+                }
+              }
+            ],
+            "location": 5
+          }
+        }
+      },
+      "stmt_len": 24
+    }
+  ],
+  "version": 130003
+}

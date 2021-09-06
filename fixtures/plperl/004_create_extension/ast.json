@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "bool_plperl"
+        }
+      },
+      "stmt_len": 28
+    }
+  ],
+  "version": 130003
+}

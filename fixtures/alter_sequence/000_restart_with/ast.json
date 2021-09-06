@@ -1,0 +1,32 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterSeqStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 105
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "restart",
+                "location": 22
+              }
+            }
+          ],
+          "sequence": {
+            "inh": true,
+            "location": 15,
+            "relname": "serial",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 38
+    }
+  ],
+  "version": 130003
+}

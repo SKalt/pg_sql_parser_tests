@@ -1,0 +1,285 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 47,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 74,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 80,
+                  "val": {
+                    "String": {
+                      "str": "2006-02-01"
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 98,
+                  "val": {
+                    "String": {
+                      "str": "2006-03-01"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "measurement_y2006m02",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 111
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 161,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 188,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 194,
+                  "val": {
+                    "String": {
+                      "str": "2006-03-01"
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 212,
+                  "val": {
+                    "String": {
+                      "str": "2006-04-01"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 127,
+            "relname": "measurement_y2006m03",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 113,
+      "stmt_location": 112
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 282,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 309,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 315,
+                  "val": {
+                    "String": {
+                      "str": "2007-11-01"
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 333,
+                  "val": {
+                    "String": {
+                      "str": "2007-12-01"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 248,
+            "relname": "measurement_y2007m11",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 120,
+      "stmt_location": 226
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 396,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 423,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 429,
+                  "val": {
+                    "String": {
+                      "str": "2007-12-01"
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 447,
+                  "val": {
+                    "String": {
+                      "str": "2008-01-01"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 362,
+            "relname": "measurement_y2007m12",
+            "relpersistence": "p"
+          },
+          "tablespacename": "fasttablespace"
+        }
+      },
+      "stmt_len": 143,
+      "stmt_location": 347
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 540,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 4
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "parallel_workers",
+                "location": 615
+              }
+            }
+          ],
+          "partbound": {
+            "location": 567,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 573,
+                  "val": {
+                    "String": {
+                      "str": "2008-01-01"
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 591,
+                  "val": {
+                    "String": {
+                      "str": "2008-02-01"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 506,
+            "relname": "measurement_y2008m01",
+            "relpersistence": "p"
+          },
+          "tablespacename": "fasttablespace"
+        }
+      },
+      "stmt_len": 175,
+      "stmt_location": 491
+    }
+  ],
+  "version": 130003
+}

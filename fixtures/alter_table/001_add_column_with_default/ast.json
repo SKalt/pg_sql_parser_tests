@@ -1,0 +1,70 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "ColumnDef": {
+                    "colname": "mtime",
+                    "constraints": [
+                      {
+                        "Constraint": {
+                          "contype": "CONSTR_DEFAULT",
+                          "location": 69,
+                          "raw_expr": {
+                            "FuncCall": {
+                              "funcname": [
+                                {
+                                  "String": {
+                                    "str": "now"
+                                  }
+                                }
+                              ],
+                              "location": 77
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "is_local": true,
+                    "location": 38,
+                    "typeName": {
+                      "location": 44,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "timestamptz"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                },
+                "subtype": "AT_AddColumn"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "measurements",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 82
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,14 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateForeignServerStmt": {
+          "fdwname": "file_fdw",
+          "servername": "pglog"
+        }
+      },
+      "stmt_len": 49
+    }
+  ],
+  "version": 130003
+}

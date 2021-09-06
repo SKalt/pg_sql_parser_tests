@@ -1,0 +1,86 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "t",
+                  "colnames": [
+                    {
+                      "String": {
+                        "str": "ls"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "n"
+                      }
+                    }
+                  ]
+                },
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 67,
+                                  "val": {
+                                    "String": {
+                                      "str": "."
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pg_ls_dir"
+                                }
+                              }
+                            ],
+                            "location": 57
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ],
+                "ordinality": true
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 50,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 50
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 98
+    }
+  ],
+  "version": 130003
+}

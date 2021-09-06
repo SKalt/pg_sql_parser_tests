@@ -1,0 +1,14 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropSubscriptionStmt": {
+          "behavior": "DROP_RESTRICT",
+          "subname": "mysub"
+        }
+      },
+      "stmt_len": 23
+    }
+  ],
+  "version": 130003
+}

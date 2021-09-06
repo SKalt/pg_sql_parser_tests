@@ -1,0 +1,502 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "f"
+                },
+                "inh": true,
+                "location": 18,
+                "relname": "films",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeSubselect": {
+                "alias": {
+                  "aliasname": "t",
+                  "colnames": [
+                    {
+                      "String": {
+                        "str": "studio"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "kind"
+                      }
+                    }
+                  ]
+                },
+                "subquery": {
+                  "SelectStmt": {
+                    "limitOption": "LIMIT_OPTION_DEFAULT",
+                    "op": "SETOP_NONE",
+                    "valuesLists": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "A_Const": {
+                                "location": 35,
+                                "val": {
+                                  "String": {
+                                    "str": "MGM"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 42,
+                                "val": {
+                                  "String": {
+                                    "str": "Horror"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "A_Const": {
+                                "location": 54,
+                                "val": {
+                                  "String": {
+                                    "str": "UA"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 60,
+                                "val": {
+                                  "String": {
+                                    "str": "Sci-Fi"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "f"
+                        }
+                      },
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "f"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "studio"
+                            }
+                          }
+                        ],
+                        "location": 99
+                      }
+                    },
+                    "location": 108,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "t"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "studio"
+                            }
+                          }
+                        ],
+                        "location": 110
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "f"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "kind"
+                            }
+                          }
+                        ],
+                        "location": 123
+                      }
+                    },
+                    "location": 130,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "t"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "kind"
+                            }
+                          }
+                        ],
+                        "location": 132
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 119
+            }
+          }
+        }
+      },
+      "stmt_len": 138
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "fromClause": [
+            {
+              "RangeSubselect": {
+                "alias": {
+                  "aliasname": "v",
+                  "colnames": [
+                    {
+                      "String": {
+                        "str": "depno"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "target"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "increase"
+                      }
+                    }
+                  ]
+                },
+                "subquery": {
+                  "SelectStmt": {
+                    "limitOption": "LIMIT_OPTION_DEFAULT",
+                    "op": "SETOP_NONE",
+                    "valuesLists": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "A_Const": {
+                                "location": 206,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 209,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 200000
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 217,
+                                "val": {
+                                  "Float": {
+                                    "str": "1.2"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "A_Const": {
+                                "location": 224,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 2
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 227,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 400000
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 235,
+                                "val": {
+                                  "Float": {
+                                    "str": "1.4"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 148,
+            "relname": "employees",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 162,
+                "name": "salary",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "salary"
+                            }
+                          }
+                        ],
+                        "location": 171
+                      }
+                    },
+                    "location": 178,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "*"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "v"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "increase"
+                            }
+                          }
+                        ],
+                        "location": 180
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "employees"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "depno"
+                            }
+                          }
+                        ],
+                        "location": 280
+                      }
+                    },
+                    "location": 296,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "v"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "depno"
+                            }
+                          }
+                        ],
+                        "location": 298
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "employees"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "sales"
+                            }
+                          }
+                        ],
+                        "location": 310
+                      }
+                    },
+                    "location": 326,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003e="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "v"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "target"
+                            }
+                          }
+                        ],
+                        "location": 329
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 306
+            }
+          }
+        }
+      },
+      "stmt_len": 198,
+      "stmt_location": 139
+    }
+  ],
+  "version": 130003
+}

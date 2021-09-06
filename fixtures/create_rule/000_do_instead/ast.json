@@ -1,0 +1,145 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "SelectStmt": {
+                "fromClause": [
+                  {
+                    "RangeVar": {
+                      "inh": true,
+                      "location": 82,
+                      "relname": "t2",
+                      "relpersistence": "p"
+                    }
+                  }
+                ],
+                "limitOption": "LIMIT_OPTION_DEFAULT",
+                "op": "SETOP_NONE",
+                "targetList": [
+                  {
+                    "ResTarget": {
+                      "location": 75,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "A_Star": {}
+                            }
+                          ],
+                          "location": 75
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "event": "CMD_SELECT",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 42,
+            "relname": "t1",
+            "relpersistence": "p"
+          },
+          "rulename": "_RETURN"
+        }
+      },
+      "stmt_len": 84
+    },
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "SelectStmt": {
+                "fromClause": [
+                  {
+                    "RangeVar": {
+                      "inh": true,
+                      "location": 169,
+                      "relname": "t1",
+                      "relpersistence": "p"
+                    }
+                  }
+                ],
+                "limitOption": "LIMIT_OPTION_DEFAULT",
+                "op": "SETOP_NONE",
+                "targetList": [
+                  {
+                    "ResTarget": {
+                      "location": 162,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "A_Star": {}
+                            }
+                          ],
+                          "location": 162
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "event": "CMD_SELECT",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 129,
+            "relname": "t2",
+            "relpersistence": "p"
+          },
+          "rulename": "_RETURN"
+        }
+      },
+      "stmt_len": 86,
+      "stmt_location": 85
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 188,
+                "relname": "t1",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 181,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 181
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 18,
+      "stmt_location": 172
+    }
+  ],
+  "version": 130003
+}

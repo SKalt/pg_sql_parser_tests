@@ -1,0 +1,80 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "perlsnitch"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n  elog(NOTICE, \"perlsnitch: \" . $_TD-\u003e{event} . \" \" . $_TD-\u003e{tag} . \" \");\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 62
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plperl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 145
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 48,
+            "names": [
+              {
+                "String": {
+                  "str": "event_trigger"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 160
+    },
+    {
+      "stmt": {
+        "CreateEventTrigStmt": {
+          "eventname": "ddl_command_start",
+          "funcname": [
+            {
+              "String": {
+                "str": "perlsnitch"
+              }
+            }
+          ],
+          "trigname": "perl_a_snitch"
+        }
+      },
+      "stmt_len": 95,
+      "stmt_location": 161
+    }
+  ],
+  "version": 130003
+}

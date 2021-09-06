@@ -1,0 +1,162 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "LoadStmt": {
+          "filename": "auto_explain"
+        }
+      },
+      "stmt_len": 19
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 57,
+                "val": {
+                  "Integer": {
+                    "ival": 0
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "auto_explain.log_min_duration"
+        }
+      },
+      "stmt_len": 38,
+      "stmt_location": 20
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 91,
+                "val": {
+                  "String": {
+                    "str": "true"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "auto_explain.log_analyze"
+        }
+      },
+      "stmt_len": 36,
+      "stmt_location": 59
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 120,
+                "relname": "pg_class",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 130,
+                "relname": "pg_index",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 104,
+                "val": {
+                  "FuncCall": {
+                    "agg_star": true,
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "count"
+                        }
+                      }
+                    ],
+                    "location": 104
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "oid"
+                            }
+                          }
+                        ],
+                        "location": 147
+                      }
+                    },
+                    "location": 151,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "indrelid"
+                            }
+                          }
+                        ],
+                        "location": 153
+                      }
+                    }
+                  }
+                },
+                {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "indisunique"
+                        }
+                      }
+                    ],
+                    "location": 166
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 162
+            }
+          }
+        }
+      },
+      "stmt_len": 81,
+      "stmt_location": 96
+    }
+  ],
+  "version": 130003
+}

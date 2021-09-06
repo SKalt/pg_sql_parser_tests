@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Tablespace for indexes",
+          "object": {
+            "String": {
+              "str": "my_tablespace"
+            }
+          },
+          "objtype": "OBJECT_TABLESPACE"
+        }
+      },
+      "stmt_len": 63
+    }
+  ],
+  "version": 130003
+}

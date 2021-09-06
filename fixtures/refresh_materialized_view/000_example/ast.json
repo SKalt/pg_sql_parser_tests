@@ -1,0 +1,18 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RefreshMatViewStmt": {
+          "relation": {
+            "inh": true,
+            "location": 26,
+            "relname": "order_summary",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 39
+    }
+  ],
+  "version": 130003
+}

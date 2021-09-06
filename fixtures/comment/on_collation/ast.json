@@ -1,0 +1,25 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Canadian French",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "fr_CA"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_COLLATION"
+        }
+      },
+      "stmt_len": 49
+    }
+  ],
+  "version": 130003
+}

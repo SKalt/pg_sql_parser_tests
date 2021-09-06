@@ -1,0 +1,65 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeTableSample": {
+                "args": [
+                  {
+                    "A_Const": {
+                      "location": 47,
+                      "val": {
+                        "Integer": {
+                          "ival": 1000
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 35,
+                "method": [
+                  {
+                    "String": {
+                      "str": "system_time"
+                    }
+                  }
+                ],
+                "relation": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 14,
+                    "relname": "my_table",
+                    "relpersistence": "p"
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 52
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,764 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 15,
+                          "val": {
+                            "String": {
+                              "str": "hello world!"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "soundex"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 30
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 40,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 48,
+                          "val": {
+                            "String": {
+                              "str": "Anne"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "soundex"
+                        }
+                      }
+                    ],
+                    "location": 40
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 57,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 65,
+                          "val": {
+                            "String": {
+                              "str": "Ann"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "soundex"
+                        }
+                      }
+                    ],
+                    "location": 57
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 73,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 84,
+                          "val": {
+                            "String": {
+                              "str": "Anne"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 92,
+                          "val": {
+                            "String": {
+                              "str": "Ann"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "difference"
+                        }
+                      }
+                    ],
+                    "location": 73
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 67,
+      "stmt_location": 31
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 107,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 115,
+                          "val": {
+                            "String": {
+                              "str": "Anne"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "soundex"
+                        }
+                      }
+                    ],
+                    "location": 107
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 124,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 132,
+                          "val": {
+                            "String": {
+                              "str": "Andrew"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "soundex"
+                        }
+                      }
+                    ],
+                    "location": 124
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 143,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 154,
+                          "val": {
+                            "String": {
+                              "str": "Anne"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 162,
+                          "val": {
+                            "String": {
+                              "str": "Andrew"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "difference"
+                        }
+                      }
+                    ],
+                    "location": 143
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 72,
+      "stmt_location": 99
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 180,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 188,
+                          "val": {
+                            "String": {
+                              "str": "Anne"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "soundex"
+                        }
+                      }
+                    ],
+                    "location": 180
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 197,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 205,
+                          "val": {
+                            "String": {
+                              "str": "Margaret"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "soundex"
+                        }
+                      }
+                    ],
+                    "location": 197
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 218,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 229,
+                          "val": {
+                            "String": {
+                              "str": "Anne"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 237,
+                          "val": {
+                            "String": {
+                              "str": "Margaret"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "difference"
+                        }
+                      }
+                    ],
+                    "location": 218
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 172
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 264,
+            "relname": "s",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "nm",
+                "is_local": true,
+                "location": 267,
+                "typeName": {
+                  "location": 270,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 26,
+      "stmt_location": 249
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 290,
+            "relname": "s",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 300,
+                          "val": {
+                            "String": {
+                              "str": "john"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 31,
+      "stmt_location": 276
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 321,
+            "relname": "s",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 331,
+                          "val": {
+                            "String": {
+                              "str": "joan"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 30,
+      "stmt_location": 308
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 352,
+            "relname": "s",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 362,
+                          "val": {
+                            "String": {
+                              "str": "wobbly"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 32,
+      "stmt_location": 339
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 385,
+            "relname": "s",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 395,
+                          "val": {
+                            "String": {
+                              "str": "jack"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 30,
+      "stmt_location": 372
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 419,
+                "relname": "s",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 412,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 412
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "nm"
+                            }
+                          }
+                        ],
+                        "location": 435
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "soundex"
+                      }
+                    }
+                  ],
+                  "location": 427
+                }
+              },
+              "location": 439,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "A_Const": {
+                        "location": 449,
+                        "val": {
+                          "String": {
+                            "str": "john"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "soundex"
+                      }
+                    }
+                  ],
+                  "location": 441
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 53,
+      "stmt_location": 403
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 473,
+                "relname": "s",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 466,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 466
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "s"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "nm"
+                            }
+                          }
+                        ],
+                        "location": 492
+                      }
+                    },
+                    {
+                      "A_Const": {
+                        "location": 498,
+                        "val": {
+                          "String": {
+                            "str": "john"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "difference"
+                      }
+                    }
+                  ],
+                  "location": 481
+                }
+              },
+              "location": 506,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 508,
+                  "val": {
+                    "Integer": {
+                      "ival": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 457
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,33 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFdwStmt": {
+          "fdwname": "file",
+          "func_options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "file_fdw_handler"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "handler",
+                "location": 33
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 57
+    }
+  ],
+  "version": 130003
+}

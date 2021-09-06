@@ -1,0 +1,202 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ViewStmt": {
+          "aliases": [
+            {
+              "String": {
+                "str": "n"
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": -1,
+                    "relname": "nums_1_100",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": -1,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "n"
+                            }
+                          }
+                        ],
+                        "location": -1
+                      }
+                    }
+                  }
+                }
+              ],
+              "withClause": {
+                "ctes": [
+                  {
+                    "CommonTableExpr": {
+                      "aliascolnames": [
+                        {
+                          "String": {
+                            "str": "n"
+                          }
+                        }
+                      ],
+                      "ctematerialized": "CTEMaterializeDefault",
+                      "ctename": "nums_1_100",
+                      "ctequery": {
+                        "SelectStmt": {
+                          "all": true,
+                          "larg": {
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "valuesLists": [
+                              {
+                                "List": {
+                                  "items": [
+                                    {
+                                      "A_Const": {
+                                        "location": 59,
+                                        "val": {
+                                          "Integer": {
+                                            "ival": 1
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "limitOption": "LIMIT_OPTION_DEFAULT",
+                          "op": "SETOP_UNION",
+                          "rarg": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "inh": true,
+                                  "location": 92,
+                                  "relname": "nums_1_100",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 83,
+                                  "val": {
+                                    "A_Expr": {
+                                      "kind": "AEXPR_OP",
+                                      "lexpr": {
+                                        "ColumnRef": {
+                                          "fields": [
+                                            {
+                                              "String": {
+                                                "str": "n"
+                                              }
+                                            }
+                                          ],
+                                          "location": 83
+                                        }
+                                      },
+                                      "location": 84,
+                                      "name": [
+                                        {
+                                          "String": {
+                                            "str": "+"
+                                          }
+                                        }
+                                      ],
+                                      "rexpr": {
+                                        "A_Const": {
+                                          "location": 85,
+                                          "val": {
+                                            "Integer": {
+                                              "ival": 1
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "n"
+                                        }
+                                      }
+                                    ],
+                                    "location": 109
+                                  }
+                                },
+                                "location": 111,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "\u003c"
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "A_Const": {
+                                    "location": 113,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 100
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "location": -1
+                    }
+                  }
+                ],
+                "location": -1,
+                "recursive": true
+              }
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 22,
+            "relname": "nums_1_100",
+            "relpersistence": "p",
+            "schemaname": "public"
+          },
+          "withCheckOption": "NO_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 116
+    }
+  ],
+  "version": 130003
+}

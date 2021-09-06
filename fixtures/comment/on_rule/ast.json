@@ -1,0 +1,30 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Logs updates of employee records",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_table"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "my_rule"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_RULE"
+        }
+      },
+      "stmt_len": 73
+    }
+  ],
+  "version": 130003
+}

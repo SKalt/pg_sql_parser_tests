@@ -1,0 +1,81 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "String": {
+                      "str": "r"
+                    }
+                  }
+                ],
+                "location": 19,
+                "name": "complex_col"
+              }
+            },
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "String": {
+                      "str": "i"
+                    }
+                  }
+                ],
+                "location": 34,
+                "name": "complex_col"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "mytab",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 56,
+                          "val": {
+                            "Float": {
+                              "str": "1.1"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 61,
+                          "val": {
+                            "Float": {
+                              "str": "2.2"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 65
+    }
+  ],
+  "version": 130003
+}

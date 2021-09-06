@@ -1,0 +1,35 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 44,
+                    "relname": "measurement",
+                    "relpersistence": "p"
+                  }
+                },
+                "subtype": "AT_DropInherit"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "measurement_y2006m02",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

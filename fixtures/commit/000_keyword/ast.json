@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "kind": "TRANS_STMT_COMMIT"
+        }
+      },
+      "stmt_len": 6
+    }
+  ],
+  "version": 130003
+}

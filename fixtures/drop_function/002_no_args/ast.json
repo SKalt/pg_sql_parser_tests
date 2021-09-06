@@ -1,0 +1,28 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "args_unspecified": true,
+                "objname": [
+                  {
+                    "String": {
+                      "str": "update_employee_salaries"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_FUNCTION"
+        }
+      },
+      "stmt_len": 38
+    }
+  ],
+  "version": 130003
+}

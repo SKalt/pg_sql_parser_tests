@@ -1,0 +1,87 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 49,
+                    "relname": "comedies",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 38,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 38
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "classification"
+                          }
+                        }
+                      ],
+                      "location": 68
+                    }
+                  },
+                  "location": 83,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "A_Const": {
+                      "location": 85,
+                      "val": {
+                        "String": {
+                          "str": "PG"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 12,
+            "relname": "pg_comedies",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "CASCADED_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 120
+    }
+  ],
+  "version": 130003
+}

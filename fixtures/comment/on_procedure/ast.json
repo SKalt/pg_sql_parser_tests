@@ -1,0 +1,63 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Runs a report",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 30,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 39,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "my_proc"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 66
+    }
+  ],
+  "version": 130003
+}

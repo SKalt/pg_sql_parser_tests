@@ -1,0 +1,538 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterOpFamilyStmt": {
+          "amname": "btree",
+          "items": [
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 85,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 91,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003c"
+                      }
+                    }
+                  ]
+                },
+                "number": 1
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 116,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 122,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003c="
+                      }
+                    }
+                  ]
+                },
+                "number": 2
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 146,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 152,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ]
+                },
+                "number": 3
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 177,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 183,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003e="
+                      }
+                    }
+                  ]
+                },
+                "number": 4
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 207,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 213,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003e"
+                      }
+                    }
+                  ]
+                },
+                "number": 5
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 245,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 251,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "btint42cmp"
+                      }
+                    }
+                  ]
+                },
+                "number": 1
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 294,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 300,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003c"
+                      }
+                    }
+                  ]
+                },
+                "number": 1
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 325,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 331,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003c="
+                      }
+                    }
+                  ]
+                },
+                "number": 2
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 355,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 361,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ]
+                },
+                "number": 3
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 386,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 392,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003e="
+                      }
+                    }
+                  ]
+                },
+                "number": 4
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 416,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 422,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003e"
+                      }
+                    }
+                  ]
+                },
+                "number": 5
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 454,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 460,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "btint24cmp"
+                      }
+                    }
+                  ]
+                },
+                "number": 1
+              }
+            }
+          ],
+          "opfamilyname": [
+            {
+              "String": {
+                "str": "integer_ops"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 466
+    }
+  ],
+  "version": 130003
+}

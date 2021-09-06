@@ -1,0 +1,30 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "all integer operators for btrees",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "btree"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "integer_ops"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPFAMILY"
+        }
+      },
+      "stmt_len": 88
+    }
+  ],
+  "version": 130003
+}

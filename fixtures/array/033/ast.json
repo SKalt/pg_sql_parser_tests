@@ -1,0 +1,250 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 28,
+                                "val": {
+                                  "String": {
+                                    "str": "sun"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 34,
+                                "val": {
+                                  "String": {
+                                    "str": "mon"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 40,
+                                "val": {
+                                  "String": {
+                                    "str": "tue"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 46,
+                                "val": {
+                                  "String": {
+                                    "str": "wed"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 52,
+                                "val": {
+                                  "String": {
+                                    "str": "thu"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 58,
+                                "val": {
+                                  "String": {
+                                    "str": "fri"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 64,
+                                "val": {
+                                  "String": {
+                                    "str": "sat"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 22
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 72,
+                          "val": {
+                            "String": {
+                              "str": "mon"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_position"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 78
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 157,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_ArrayExpr": {
+                          "elements": [
+                            {
+                              "A_Const": {
+                                "location": 179,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 182,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 4
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 185,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 3
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 188,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 191,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 3
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 194,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 4
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 197,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 2
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 200,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 173
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 204,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "array_positions"
+                        }
+                      }
+                    ],
+                    "location": 157
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 127,
+      "stmt_location": 79
+    }
+  ],
+  "version": 130003
+}

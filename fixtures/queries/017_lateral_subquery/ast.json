@@ -1,0 +1,129 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "foo",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeSubselect": {
+                "alias": {
+                  "aliasname": "ss"
+                },
+                "lateral": true,
+                "subquery": {
+                  "SelectStmt": {
+                    "fromClause": [
+                      {
+                        "RangeVar": {
+                          "inh": true,
+                          "location": 42,
+                          "relname": "bar",
+                          "relpersistence": "p"
+                        }
+                      }
+                    ],
+                    "limitOption": "LIMIT_OPTION_DEFAULT",
+                    "op": "SETOP_NONE",
+                    "targetList": [
+                      {
+                        "ResTarget": {
+                          "location": 35,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "A_Star": {}
+                                }
+                              ],
+                              "location": 35
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "whereClause": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "bar"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "id"
+                                }
+                              }
+                            ],
+                            "location": 52
+                          }
+                        },
+                        "location": 59,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "foo"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "bar_id"
+                                }
+                              }
+                            ],
+                            "location": 61
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 75
+    }
+  ],
+  "version": 130003
+}

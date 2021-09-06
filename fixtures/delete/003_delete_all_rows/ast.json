@@ -1,0 +1,18 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "films",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 17
+    }
+  ],
+  "version": 130003
+}

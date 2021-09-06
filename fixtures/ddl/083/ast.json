@@ -1,0 +1,124 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "measurement",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "city_id",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 51
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 31,
+                "typeName": {
+                  "location": 47,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "logdate",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 86
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 65,
+                "typeName": {
+                  "location": 81,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "date"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "peaktemp",
+                "is_local": true,
+                "location": 100,
+                "typeName": {
+                  "location": 116,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "unitsales",
+                "is_local": true,
+                "location": 125,
+                "typeName": {
+                  "location": 141,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 146
+    }
+  ],
+  "version": 130003
+}

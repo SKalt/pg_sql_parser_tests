@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Planning document",
+          "object": {
+            "Integer": {
+              "ival": 346344
+            }
+          },
+          "objtype": "OBJECT_LARGEOBJECT"
+        }
+      },
+      "stmt_len": 53
+    }
+  ],
+  "version": 130003
+}

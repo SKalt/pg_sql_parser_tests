@@ -1,0 +1,131 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "a"
+                },
+                "inh": true,
+                "location": 14,
+                "relname": "accounts",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "p"
+                },
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 40,
+                                  "val": {
+                                    "String": {
+                                      "str": "accounts"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pgrowlocks"
+                                }
+                              }
+                            ],
+                            "location": 29
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "p"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "locked_row"
+                      }
+                    }
+                  ],
+                  "location": 65
+                }
+              },
+              "location": 78,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "a"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "ctid"
+                      }
+                    }
+                  ],
+                  "location": 80
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 86
+    }
+  ],
+  "version": 130003
+}

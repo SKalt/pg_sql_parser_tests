@@ -1,0 +1,47 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "TypeCast": {
+                    "arg": {
+                      "A_Const": {
+                        "location": 7,
+                        "val": {
+                          "String": {
+                            "str": "a:1A fat:2B,4C cat:5D"
+                          }
+                        }
+                      }
+                    },
+                    "location": 30,
+                    "typeName": {
+                      "location": 32,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "tsvector"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 40
+    }
+  ],
+  "version": 130003
+}

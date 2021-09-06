@@ -1,0 +1,45 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 22,
+                    "relname": "foo",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 15,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 15
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 25
+    }
+  ],
+  "version": 130003
+}

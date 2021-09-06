@@ -1,0 +1,22 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RenameStmt": {
+          "behavior": "DROP_RESTRICT",
+          "newname": "bar",
+          "relation": {
+            "inh": true,
+            "location": 24,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relationType": "OBJECT_ACCESS_METHOD",
+          "renameType": "OBJECT_MATVIEW"
+        }
+      },
+      "stmt_len": 41
+    }
+  ],
+  "version": 130003
+}

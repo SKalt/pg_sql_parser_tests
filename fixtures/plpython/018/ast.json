@@ -1,0 +1,82 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "greet"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n  class producer:\n    def __init__ (self, how, who):\n      self.how = how\n      self.who = who\n      self.ndx = -1\n\n    def __iter__ (self):\n      return self\n\n    def next (self):\n      self.ndx += 1\n      if self.ndx == len(self.who):\n        raise StopIteration\n      return ( self.how, self.who[self.ndx] )\n\n  return producer(how, [ \"World\", \"PostgreSQL\", \"PL/Python\" ])\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 58
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpythonu"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 442
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 27,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN",
+                "name": "how"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 49,
+            "names": [
+              {
+                "String": {
+                  "str": "greeting"
+                }
+              }
+            ],
+            "setof": true,
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 460
+    }
+  ],
+  "version": 130003
+}

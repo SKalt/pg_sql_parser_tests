@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "module_name"
+        }
+      },
+      "stmt_len": 28
+    }
+  ],
+  "version": 130003
+}

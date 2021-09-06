@@ -1,0 +1,43 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 15,
+                "name": "dataval",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "myval"
+                        }
+                      }
+                    ],
+                    "location": 25
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "CurrentOfExpr": {
+              "cursor_name": "curs1"
+            }
+          }
+        }
+      },
+      "stmt_len": 53
+    }
+  ],
+  "version": 130003
+}

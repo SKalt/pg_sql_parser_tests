@@ -1,0 +1,246 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 180,
+            "relname": "employees_log",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 227,
+                    "relname": "upd",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 201,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 201
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 204,
+                    "val": {
+                      "SQLValueFunction": {
+                        "location": 204,
+                        "op": "SVFOP_CURRENT_TIMESTAMP",
+                        "typmod": -1
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "withClause": {
+            "ctes": [
+              {
+                "CommonTableExpr": {
+                  "ctematerialized": "CTEMaterializeDefault",
+                  "ctename": "upd",
+                  "ctequery": {
+                    "UpdateStmt": {
+                      "relation": {
+                        "inh": true,
+                        "location": 23,
+                        "relname": "employees",
+                        "relpersistence": "p"
+                      },
+                      "returningList": [
+                        {
+                          "ResTarget": {
+                            "location": 164,
+                            "val": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "A_Star": {}
+                                  }
+                                ],
+                                "location": 164
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "targetList": [
+                        {
+                          "ResTarget": {
+                            "location": 37,
+                            "name": "sales_count",
+                            "val": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "sales_count"
+                                        }
+                                      }
+                                    ],
+                                    "location": 51
+                                  }
+                                },
+                                "location": 63,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "+"
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "A_Const": {
+                                    "location": 65,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 1
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "whereClause": {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "id"
+                                  }
+                                }
+                              ],
+                              "location": 73
+                            }
+                          },
+                          "location": 76,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "="
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "SubLink": {
+                              "location": 82,
+                              "subLinkType": "EXPR_SUBLINK",
+                              "subselect": {
+                                "SelectStmt": {
+                                  "fromClause": [
+                                    {
+                                      "RangeVar": {
+                                        "inh": true,
+                                        "location": 108,
+                                        "relname": "accounts",
+                                        "relpersistence": "p"
+                                      }
+                                    }
+                                  ],
+                                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                                  "op": "SETOP_NONE",
+                                  "targetList": [
+                                    {
+                                      "ResTarget": {
+                                        "location": 90,
+                                        "val": {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "sales_person"
+                                                }
+                                              }
+                                            ],
+                                            "location": 90
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "whereClause": {
+                                    "A_Expr": {
+                                      "kind": "AEXPR_OP",
+                                      "lexpr": {
+                                        "ColumnRef": {
+                                          "fields": [
+                                            {
+                                              "String": {
+                                                "str": "name"
+                                              }
+                                            }
+                                          ],
+                                          "location": 123
+                                        }
+                                      },
+                                      "location": 128,
+                                      "name": [
+                                        {
+                                          "String": {
+                                            "str": "="
+                                          }
+                                        }
+                                      ],
+                                      "rexpr": {
+                                        "A_Const": {
+                                          "location": 130,
+                                          "val": {
+                                            "String": {
+                                              "str": "Acme Corporation"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "location": 5
+                }
+              }
+            ]
+          }
+        }
+      },
+      "stmt_len": 230
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,82 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 19,
+                              "val": {
+                                "String": {
+                                  "str": "fat cats ate fat rats"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "to_tsvector"
+                            }
+                          }
+                        ],
+                        "location": 7
+                      }
+                    },
+                    "location": 44,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "@@"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 58,
+                              "val": {
+                                "String": {
+                                  "str": "fat \u0026 rat"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "to_tsquery"
+                            }
+                          }
+                        ],
+                        "location": 47
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 70
+    }
+  ],
+  "version": 130003
+}

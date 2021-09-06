@@ -1,0 +1,133 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 17,
+                          "val": {
+                            "Integer": {
+                              "ival": 33
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_typeof"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 20
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 83,
+                "relname": "pg_type",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 71,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "typlen"
+                        }
+                      }
+                    ],
+                    "location": 71
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "oid"
+                      }
+                    }
+                  ],
+                  "location": 97
+                }
+              },
+              "location": 101,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "A_Const": {
+                        "location": 113,
+                        "val": {
+                          "Integer": {
+                            "ival": 33
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "pg_typeof"
+                      }
+                    }
+                  ],
+                  "location": 103
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 95,
+      "stmt_location": 21
+    }
+  ],
+  "version": 130003
+}

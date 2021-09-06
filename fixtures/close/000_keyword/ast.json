@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ClosePortalStmt": {
+          "portalname": "liahona"
+        }
+      },
+      "stmt_len": 13
+    }
+  ],
+  "version": 130003
+}

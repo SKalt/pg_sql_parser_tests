@@ -1,0 +1,144 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CompositeTypeStmt": {
+          "coldeflist": [
+            {
+              "ColumnDef": {
+                "colname": "r",
+                "is_local": true,
+                "location": 29,
+                "typeName": {
+                  "location": 37,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "i",
+                "is_local": true,
+                "location": 59,
+                "typeName": {
+                  "location": 67,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ],
+          "typevar": {
+            "location": 12,
+            "relname": "complex",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 85
+    },
+    {
+      "stmt": {
+        "CompositeTypeStmt": {
+          "coldeflist": [
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 124,
+                "typeName": {
+                  "location": 140,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "supplier_id",
+                "is_local": true,
+                "location": 150,
+                "typeName": {
+                  "location": 166,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "price",
+                "is_local": true,
+                "location": 179,
+                "typeName": {
+                  "location": 195,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ],
+          "typevar": {
+            "location": 100,
+            "relname": "inventory_item",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 118,
+      "stmt_location": 86
+    }
+  ],
+  "version": 130003
+}

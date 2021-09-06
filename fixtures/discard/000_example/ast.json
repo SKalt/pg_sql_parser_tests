@@ -1,0 +1,100 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ClosePortalStmt": {}
+      },
+      "stmt_len": 9
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "kind": "VAR_SET_DEFAULT",
+          "name": "session_authorization"
+        }
+      },
+      "stmt_len": 34,
+      "stmt_location": 10
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "kind": "VAR_RESET_ALL"
+        }
+      },
+      "stmt_len": 10,
+      "stmt_location": 45
+    },
+    {
+      "stmt": {
+        "DeallocateStmt": {}
+      },
+      "stmt_len": 15,
+      "stmt_location": 56
+    },
+    {
+      "stmt": {
+        "UnlistenStmt": {}
+      },
+      "stmt_len": 11,
+      "stmt_location": 72
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 92,
+                "val": {
+                  "FuncCall": {
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_advisory_unlock_all"
+                        }
+                      }
+                    ],
+                    "location": 92
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 32,
+      "stmt_location": 84
+    },
+    {
+      "stmt": {
+        "DiscardStmt": {
+          "target": "DISCARD_PLANS"
+        }
+      },
+      "stmt_len": 14,
+      "stmt_location": 117
+    },
+    {
+      "stmt": {
+        "DiscardStmt": {
+          "target": "DISCARD_TEMP"
+        }
+      },
+      "stmt_len": 13,
+      "stmt_location": 132
+    },
+    {
+      "stmt": {
+        "DiscardStmt": {
+          "target": "DISCARD_SEQUENCES"
+        }
+      },
+      "stmt_len": 18,
+      "stmt_location": 146
+    }
+  ],
+  "version": 130003
+}

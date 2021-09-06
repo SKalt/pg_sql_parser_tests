@@ -1,0 +1,222 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStatsStmt": {
+          "defnames": [
+            {
+              "String": {
+                "str": "stts"
+              }
+            }
+          ],
+          "exprs": [
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "a"
+                    }
+                  }
+                ],
+                "location": 41
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "b"
+                    }
+                  }
+                ],
+                "location": 44
+              }
+            }
+          ],
+          "relations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 51,
+                "relname": "t",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "stat_types": [
+            {
+              "String": {
+                "str": "dependencies"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 52
+    },
+    {
+      "stmt": {
+        "VacuumStmt": {
+          "rels": [
+            {
+              "VacuumRelation": {
+                "relation": {
+                  "inh": true,
+                  "location": 62,
+                  "relname": "t",
+                  "relpersistence": "p"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 10,
+      "stmt_location": 53
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 74
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "off"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "timing",
+                "location": 83
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 109,
+                    "relname": "t",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 102,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 102
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "BoolExpr": {
+                  "args": [
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            ],
+                            "location": 117
+                          }
+                        },
+                        "location": 119,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 121,
+                            "val": {
+                              "Integer": {
+                                "ival": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "b"
+                                }
+                              }
+                            ],
+                            "location": 127
+                          }
+                        },
+                        "location": 129,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 131,
+                            "val": {
+                              "Integer": {
+                                "ival": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "boolop": "AND_EXPR",
+                  "location": 123
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 68,
+      "stmt_location": 64
+    }
+  ],
+  "version": 130003
+}

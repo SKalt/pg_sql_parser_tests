@@ -1,0 +1,32 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "films"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "if_dist_exists"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_TRIGGER"
+        }
+      },
+      "stmt_len": 36
+    }
+  ],
+  "version": 130003
+}

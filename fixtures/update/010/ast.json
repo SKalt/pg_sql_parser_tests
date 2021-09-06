@@ -1,0 +1,41 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "films",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 17,
+                "name": "kind",
+                "val": {
+                  "A_Const": {
+                    "location": 24,
+                    "val": {
+                      "String": {
+                        "str": "Dramatic"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "CurrentOfExpr": {
+              "cursor_name": "c_films"
+            }
+          }
+        }
+      },
+      "stmt_len": 59
+    }
+  ],
+  "version": 130003
+}

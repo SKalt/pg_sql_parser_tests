@@ -1,0 +1,38 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DoStmt": {
+          "args": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "\n    # PL/Perl code\n"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 3
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plperl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 28
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 43
+    }
+  ],
+  "version": 130003
+}

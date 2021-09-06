@@ -1,0 +1,283 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_INNER",
+                "larg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "w1"
+                    },
+                    "inh": true,
+                    "location": 118,
+                    "relname": "weather",
+                    "relpersistence": "p"
+                  }
+                },
+                "quals": {
+                  "BoolExpr": {
+                    "args": [
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "w1"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "temp_lo"
+                                  }
+                                }
+                              ],
+                              "location": 156
+                            }
+                          },
+                          "location": 167,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003c"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "w2"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "temp_lo"
+                                  }
+                                }
+                              ],
+                              "location": 169
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "w1"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "temp_hi"
+                                  }
+                                }
+                              ],
+                              "location": 184
+                            }
+                          },
+                          "location": 195,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003e"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "w2"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "temp_hi"
+                                  }
+                                }
+                              ],
+                              "location": 197
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "boolop": "AND_EXPR",
+                    "location": 180
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "w2"
+                    },
+                    "inh": true,
+                    "location": 134,
+                    "relname": "weather",
+                    "relpersistence": "p"
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "w1"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 16,
+                "name": "low",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "w1"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "temp_lo"
+                        }
+                      }
+                    ],
+                    "location": 16
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 35,
+                "name": "high",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "w1"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "temp_hi"
+                        }
+                      }
+                    ],
+                    "location": 35
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 62,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "w2"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 62
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 71,
+                "name": "low",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "w2"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "temp_lo"
+                        }
+                      }
+                    ],
+                    "location": 71
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 90,
+                "name": "high",
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "w2"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "temp_hi"
+                        }
+                      }
+                    ],
+                    "location": 90
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 207
+    }
+  ],
+  "version": 130003
+}

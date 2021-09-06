@@ -1,0 +1,221 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "complex_add"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "filename"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "complex_add"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 70
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "c"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 103
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "immutable"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "volatility",
+                "location": 114
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "strict",
+                "location": 124
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 28,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "complex"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 37,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "complex"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 58,
+            "names": [
+              {
+                "String": {
+                  "str": "complex"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 130
+    },
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 167,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "leftarg",
+                "location": 157
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 191,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "rightarg",
+                "location": 180
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 215,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_add"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "function",
+                "location": 204
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "+"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "commutator",
+                "location": 232
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "+"
+              }
+            }
+          ],
+          "kind": "OBJECT_OPERATOR"
+        }
+      },
+      "stmt_len": 117,
+      "stmt_location": 131
+    }
+  ],
+  "version": 130003
+}

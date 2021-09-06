@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "String": {
+                "str": "dbi"
+              }
+            }
+          ],
+          "removeType": "OBJECT_FDW"
+        }
+      },
+      "stmt_len": 29
+    }
+  ],
+  "version": 130003
+}

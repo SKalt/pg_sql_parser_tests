@@ -1,0 +1,74 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "DeleteStmt": {
+                "relation": {
+                  "inh": true,
+                  "location": 69,
+                  "relname": "software",
+                  "relpersistence": "p"
+                },
+                "whereClause": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "hostname"
+                            }
+                          }
+                        ],
+                        "location": 84
+                      }
+                    },
+                    "location": 93,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "old"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "hostname"
+                            }
+                          }
+                        ],
+                        "location": 95
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "event": "CMD_DELETE",
+          "relation": {
+            "inh": true,
+            "location": 41,
+            "relname": "computer",
+            "relpersistence": "p"
+          },
+          "rulename": "computer_del"
+        }
+      },
+      "stmt_len": 107
+    }
+  ],
+  "version": 130003
+}

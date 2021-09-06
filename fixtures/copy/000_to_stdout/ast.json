@@ -1,0 +1,32 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CopyStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "|"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "delimiter",
+                "location": 24
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 5,
+            "relname": "country",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 38
+    }
+  ],
+  "version": 130003
+}

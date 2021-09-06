@@ -1,0 +1,88 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTSConfigurationStmt": {
+          "cfgname": [
+            {
+              "String": {
+                "str": "pg"
+              }
+            }
+          ],
+          "dicts": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "pg_dict"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "english_ispell"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "english_stem"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "ALTER_TSCONFIG_ALTER_MAPPING_FOR_TOKEN",
+          "override": true,
+          "tokentype": [
+            {
+              "String": {
+                "str": "asciiword"
+              }
+            },
+            {
+              "String": {
+                "str": "asciihword"
+              }
+            },
+            {
+              "String": {
+                "str": "hword_asciipart"
+              }
+            },
+            {
+              "String": {
+                "str": "word"
+              }
+            },
+            {
+              "String": {
+                "str": "hword"
+              }
+            },
+            {
+              "String": {
+                "str": "hword_part"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 189
+    }
+  ],
+  "version": 130003
+}

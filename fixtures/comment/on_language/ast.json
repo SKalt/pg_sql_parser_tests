@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Python support for stored procedures",
+          "object": {
+            "String": {
+              "str": "plpython"
+            }
+          },
+          "objtype": "OBJECT_LANGUAGE"
+        }
+      },
+      "stmt_len": 70
+    }
+  ],
+  "version": 130003
+}

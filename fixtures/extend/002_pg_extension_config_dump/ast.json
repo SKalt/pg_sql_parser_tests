@@ -1,0 +1,183 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "my_config",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "key",
+                "is_local": true,
+                "location": 24,
+                "typeName": {
+                  "location": 28,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "value",
+                "is_local": true,
+                "location": 34,
+                "typeName": {
+                  "location": 40,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 45
+    },
+    {
+      "stmt": {
+        "CreateSeqStmt": {
+          "sequence": {
+            "inh": true,
+            "location": 63,
+            "relname": "my_config_seq",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 30,
+      "stmt_location": 46
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 86,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 122,
+                          "val": {
+                            "String": {
+                              "str": "my_config"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 135,
+                          "val": {
+                            "String": {
+                              "str": ""
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "pg_extension_config_dump"
+                        }
+                      }
+                    ],
+                    "location": 86
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 61,
+      "stmt_location": 77
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 147,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 183,
+                          "val": {
+                            "String": {
+                              "str": "my_config_seq"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 200,
+                          "val": {
+                            "String": {
+                              "str": ""
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "pg_extension_config_dump"
+                        }
+                      }
+                    ],
+                    "location": 147
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 64,
+      "stmt_location": 139
+    }
+  ],
+  "version": 130003
+}

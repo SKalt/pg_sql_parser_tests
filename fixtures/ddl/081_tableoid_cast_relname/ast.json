@@ -1,0 +1,151 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "c"
+                },
+                "inh": true,
+                "location": 54,
+                "relname": "cities",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "TypeCast": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "c"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "tableoid"
+                            }
+                          }
+                        ],
+                        "location": 7
+                      }
+                    },
+                    "location": 17,
+                    "typeName": {
+                      "location": 19,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "regclass"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 29,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "c"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "name"
+                        }
+                      }
+                    ],
+                    "location": 29
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 37,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "c"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "elevation"
+                        }
+                      }
+                    ],
+                    "location": 37
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "c"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "elevation"
+                      }
+                    }
+                  ],
+                  "location": 69
+                }
+              },
+              "location": 81,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 83,
+                  "val": {
+                    "Integer": {
+                      "ival": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 86
+    }
+  ],
+  "version": 130003
+}

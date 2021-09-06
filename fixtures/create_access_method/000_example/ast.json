@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateAmStmt": {
+          "amname": "heptree",
+          "amtype": "i",
+          "handler_name": [
+            {
+              "String": {
+                "str": "heptree_handler"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 63
+    }
+  ],
+  "version": 130003
+}

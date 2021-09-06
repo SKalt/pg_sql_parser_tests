@@ -1,0 +1,60 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CompositeTypeStmt": {
+          "coldeflist": [
+            {
+              "ColumnDef": {
+                "colname": "position",
+                "is_local": true,
+                "location": 36,
+                "typeName": {
+                  "location": 45,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "colname",
+                "is_local": true,
+                "location": 50,
+                "typeName": {
+                  "location": 58,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ],
+          "typevar": {
+            "location": 12,
+            "relname": "dblink_pkey_results",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 63
+    }
+  ],
+  "version": 130003
+}

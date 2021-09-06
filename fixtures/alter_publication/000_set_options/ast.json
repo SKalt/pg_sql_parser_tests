@@ -1,0 +1,28 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterPublicationStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "update, delete"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "publish",
+                "location": 32
+              }
+            }
+          ],
+          "pubname": "noinsert",
+          "tableAction": "DEFELEM_UNSPEC"
+        }
+      },
+      "stmt_len": 59
+    }
+  ],
+  "version": 130003
+}

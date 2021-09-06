@@ -1,0 +1,102 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 64,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "ispell"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "template",
+                "location": 53
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 87,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "en_us"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "dictfile",
+                "location": 76
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 108,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "en_us"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "afffile",
+                "location": 98
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 131,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "english"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "stopwords",
+                "location": 119
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "english_hunspell"
+              }
+            }
+          ],
+          "kind": "OBJECT_TSDICTIONARY"
+        }
+      },
+      "stmt_len": 139
+    }
+  ],
+  "version": 130003
+}

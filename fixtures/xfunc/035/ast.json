@@ -1,0 +1,163 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 56,
+                "relname": "emp",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "name"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 13,
+                "name": "overpaid",
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "emp"
+                              }
+                            }
+                          ],
+                          "location": 24
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 29,
+                          "val": {
+                            "Integer": {
+                              "ival": 1500
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "c_overpaid"
+                        }
+                      }
+                    ],
+                    "location": 13
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "name"
+                            }
+                          }
+                        ],
+                        "location": 70
+                      }
+                    },
+                    "location": 75,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 77,
+                        "val": {
+                          "String": {
+                            "str": "Bill"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "name"
+                            }
+                          }
+                        ],
+                        "location": 87
+                      }
+                    },
+                    "location": 92,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 94,
+                        "val": {
+                          "String": {
+                            "str": "Sam"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "OR_EXPR",
+              "location": 84
+            }
+          }
+        }
+      },
+      "stmt_len": 99
+    }
+  ],
+  "version": 130003
+}

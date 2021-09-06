@@ -1,0 +1,58 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 9,
+                "val": {
+                  "String": {
+                    "str": "joe"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "role"
+        }
+      },
+      "stmt_len": 12
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 23,
+                "val": {
+                  "String": {
+                    "str": "none"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "role"
+        }
+      },
+      "stmt_len": 14,
+      "stmt_location": 13
+    },
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "kind": "VAR_RESET",
+          "name": "role"
+        }
+      },
+      "stmt_len": 11,
+      "stmt_location": 28
+    }
+  ],
+  "version": 130003
+}

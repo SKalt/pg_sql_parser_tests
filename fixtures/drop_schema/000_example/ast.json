@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_CASCADE",
+          "objects": [
+            {
+              "String": {
+                "str": "mystuff"
+              }
+            }
+          ],
+          "removeType": "OBJECT_SCHEMA"
+        }
+      },
+      "stmt_len": 27
+    }
+  ],
+  "version": 130003
+}

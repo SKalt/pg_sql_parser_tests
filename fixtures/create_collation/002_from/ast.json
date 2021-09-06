@@ -1,0 +1,40 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "de_DE"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "from",
+                "location": 29
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "german"
+              }
+            }
+          ],
+          "kind": "OBJECT_COLLATION"
+        }
+      },
+      "stmt_len": 36
+    }
+  ],
+  "version": 130003
+}

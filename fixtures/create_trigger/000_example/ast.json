@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTrigStmt": {
+          "events": 16,
+          "funcname": [
+            {
+              "String": {
+                "str": "check_account_update"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 49,
+            "relname": "accounts",
+            "relpersistence": "p"
+          },
+          "row": true,
+          "timing": 2,
+          "trigname": "check_update"
+        }
+      },
+      "stmt_len": 118
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,83 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "weather",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 28,
+                          "val": {
+                            "String": {
+                              "str": "Berkeley"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 40,
+                          "val": {
+                            "Integer": {
+                              "ival": 45
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 44,
+                          "val": {
+                            "Integer": {
+                              "ival": 53
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 48,
+                          "val": {
+                            "Float": {
+                              "str": "0.0"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 53,
+                          "val": {
+                            "String": {
+                              "str": "1994-11-28"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 66
+    }
+  ],
+  "version": 130003
+}

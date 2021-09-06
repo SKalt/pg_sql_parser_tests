@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Publishes all operations on all tables",
+          "object": {
+            "String": {
+              "str": "alltables"
+            }
+          },
+          "objtype": "OBJECT_PUBLICATION"
+        }
+      },
+      "stmt_len": 76
+    }
+  ],
+  "version": 130003
+}

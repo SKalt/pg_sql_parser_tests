@@ -1,0 +1,54 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "A_Const": {
+                        "location": 7,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    },
+                    "location": 8,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "+"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 9,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 10
+    }
+  ],
+  "version": 130003
+}

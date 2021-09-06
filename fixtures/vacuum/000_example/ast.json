@@ -1,0 +1,41 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VacuumStmt": {
+          "is_vacuumcmd": true,
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "verbose",
+                "location": 8
+              }
+            },
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 17
+              }
+            }
+          ],
+          "rels": [
+            {
+              "VacuumRelation": {
+                "relation": {
+                  "inh": true,
+                  "location": 26,
+                  "relname": "onek",
+                  "relpersistence": "p"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 30
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,67 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "distinctClause": [
+            {}
+          ],
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 30,
+                "relname": "weather",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "sortClause": [
+            {
+              "SortBy": {
+                "location": -1,
+                "node": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 51
+                  }
+                },
+                "sortby_dir": "SORTBY_DEFAULT",
+                "sortby_nulls": "SORTBY_NULLS_DEFAULT"
+              }
+            }
+          ],
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 16,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 16
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

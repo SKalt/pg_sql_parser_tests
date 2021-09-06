@@ -1,0 +1,316 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 30,
+                "relname": "pg_class",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeSubselect": {
+                "alias": {
+                  "aliasname": "ss"
+                },
+                "subquery": {
+                  "SelectStmt": {
+                    "fromClause": [
+                      {
+                        "RangeVar": {
+                          "inh": true,
+                          "location": 78,
+                          "relname": "pg_class",
+                          "relpersistence": "p"
+                        }
+                      }
+                    ],
+                    "limitOption": "LIMIT_OPTION_DEFAULT",
+                    "op": "SETOP_NONE",
+                    "targetList": [
+                      {
+                        "ResTarget": {
+                          "location": 53,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "reltoastrelid"
+                                  }
+                                }
+                              ],
+                              "location": 53
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "whereClause": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "relname"
+                                }
+                              }
+                            ],
+                            "location": 99
+                          }
+                        },
+                        "location": 107,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 109,
+                            "val": {
+                              "String": {
+                                "str": "customer"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "sortClause": [
+            {
+              "SortBy": {
+                "location": -1,
+                "node": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "relname"
+                        }
+                      }
+                    ],
+                    "location": 274
+                  }
+                },
+                "sortby_dir": "SORTBY_DEFAULT",
+                "sortby_nulls": "SORTBY_NULLS_DEFAULT"
+              }
+            }
+          ],
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "relname"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 16,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "relpages"
+                        }
+                      }
+                    ],
+                    "location": 16
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "oid"
+                            }
+                          }
+                        ],
+                        "location": 133
+                      }
+                    },
+                    "location": 137,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "ss"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "reltoastrelid"
+                            }
+                          }
+                        ],
+                        "location": 139
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "oid"
+                            }
+                          }
+                        ],
+                        "location": 165
+                      }
+                    },
+                    "location": 169,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "SubLink": {
+                        "location": 171,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "inh": true,
+                                  "location": 208,
+                                  "relname": "pg_index",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 179,
+                                  "val": {
+                                    "ColumnRef": {
+                                      "fields": [
+                                        {
+                                          "String": {
+                                            "str": "indexrelid"
+                                          }
+                                        }
+                                      ],
+                                      "location": 179
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "indrelid"
+                                        }
+                                      }
+                                    ],
+                                    "location": 236
+                                  }
+                                },
+                                "location": 245,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "ss"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "reltoastrelid"
+                                        }
+                                      }
+                                    ],
+                                    "location": 247
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "OR_EXPR",
+              "location": 156
+            }
+          }
+        }
+      },
+      "stmt_len": 281
+    }
+  ],
+  "version": 130003
+}

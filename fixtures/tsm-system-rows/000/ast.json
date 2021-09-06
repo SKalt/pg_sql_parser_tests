@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "tsm_system_rows"
+        }
+      },
+      "stmt_len": 32
+    }
+  ],
+  "version": 130003
+}

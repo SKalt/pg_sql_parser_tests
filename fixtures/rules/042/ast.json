@@ -1,0 +1,71 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "shoelace_data",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 25,
+                "name": "sl_color",
+                "val": {
+                  "A_Const": {
+                    "location": 36,
+                    "val": {
+                      "String": {
+                        "str": "green"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "sl_name"
+                      }
+                    }
+                  ],
+                  "location": 51
+                }
+              },
+              "location": 59,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 61,
+                  "val": {
+                    "String": {
+                      "str": "sl7"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 66
+    }
+  ],
+  "version": 130003
+}

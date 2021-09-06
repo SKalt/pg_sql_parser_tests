@@ -1,0 +1,57 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "FuncCall": {
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "uuid_ns_url"
+                              }
+                            }
+                          ],
+                          "location": 24
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 39,
+                          "val": {
+                            "String": {
+                              "str": "http://www.postgresql.org"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "uuid_generate_v3"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 67
+    }
+  ],
+  "version": 130003
+}

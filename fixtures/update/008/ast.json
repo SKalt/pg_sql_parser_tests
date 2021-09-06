@@ -1,0 +1,863 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "alias": {
+              "aliasname": "s"
+            },
+            "inh": true,
+            "location": 7,
+            "relname": "summary",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 22,
+                "name": "sum_x",
+                "val": {
+                  "MultiAssignRef": {
+                    "colno": 1,
+                    "ncolumns": 4,
+                    "source": {
+                      "SubLink": {
+                        "location": 56,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "alias": {
+                                    "aliasname": "d"
+                                  },
+                                  "inh": true,
+                                  "location": 100,
+                                  "relname": "data",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 64,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 68
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 64
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 72,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 76
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 72
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 80,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 84
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 80
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 88,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 92
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 88
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "d"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 118
+                                  }
+                                },
+                                "location": 129,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "s"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 131
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 29,
+                "name": "sum_y",
+                "val": {
+                  "MultiAssignRef": {
+                    "colno": 2,
+                    "ncolumns": 4,
+                    "source": {
+                      "SubLink": {
+                        "location": 56,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "alias": {
+                                    "aliasname": "d"
+                                  },
+                                  "inh": true,
+                                  "location": 100,
+                                  "relname": "data",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 64,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 68
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 64
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 72,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 76
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 72
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 80,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 84
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 80
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 88,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 92
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 88
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "d"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 118
+                                  }
+                                },
+                                "location": 129,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "s"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 131
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 36,
+                "name": "avg_x",
+                "val": {
+                  "MultiAssignRef": {
+                    "colno": 3,
+                    "ncolumns": 4,
+                    "source": {
+                      "SubLink": {
+                        "location": 56,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "alias": {
+                                    "aliasname": "d"
+                                  },
+                                  "inh": true,
+                                  "location": 100,
+                                  "relname": "data",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 64,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 68
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 64
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 72,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 76
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 72
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 80,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 84
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 80
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 88,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 92
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 88
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "d"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 118
+                                  }
+                                },
+                                "location": 129,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "s"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 131
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 43,
+                "name": "avg_y",
+                "val": {
+                  "MultiAssignRef": {
+                    "colno": 4,
+                    "ncolumns": 4,
+                    "source": {
+                      "SubLink": {
+                        "location": 56,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "alias": {
+                                    "aliasname": "d"
+                                  },
+                                  "inh": true,
+                                  "location": 100,
+                                  "relname": "data",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 64,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 68
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 64
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 72,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 76
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "sum"
+                                          }
+                                        }
+                                      ],
+                                      "location": 72
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 80,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "x"
+                                                }
+                                              }
+                                            ],
+                                            "location": 84
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 80
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 88,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "y"
+                                                }
+                                              }
+                                            ],
+                                            "location": 92
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 88
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "d"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 118
+                                  }
+                                },
+                                "location": 129,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "s"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "group_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 131
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 142
+    }
+  ],
+  "version": 130003
+}

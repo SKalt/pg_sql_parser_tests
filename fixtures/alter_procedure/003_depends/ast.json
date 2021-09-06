@@ -1,0 +1,67 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterObjectDependsStmt": {
+          "extname": {
+            "String": {
+              "str": "myext"
+            }
+          },
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 28,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 37,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "insert_data"
+                  }
+                }
+              ]
+            }
+          },
+          "objectType": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 72
+    }
+  ],
+  "version": 130003
+}

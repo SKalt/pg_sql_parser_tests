@@ -1,0 +1,63 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 30,
+                "relname": "sal_emp",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "pay_by_quarter"
+                            }
+                          }
+                        ],
+                        "location": 7
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Indices": {
+                          "uidx": {
+                            "A_Const": {
+                              "location": 22,
+                              "val": {
+                                "Integer": {
+                                  "ival": 3
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 37
+    }
+  ],
+  "version": 130003
+}

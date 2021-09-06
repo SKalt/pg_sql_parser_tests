@@ -1,0 +1,85 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Const": {
+                    "location": 7,
+                    "val": {
+                      "Integer": {
+                        "ival": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 8
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 17,
+                "val": {
+                  "A_Const": {
+                    "location": 17,
+                    "val": {
+                      "Integer": {
+                        "ival": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 9,
+      "stmt_location": 9
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 27,
+                "val": {
+                  "A_Const": {
+                    "location": 27,
+                    "val": {
+                      "Integer": {
+                        "ival": 3
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 9,
+      "stmt_location": 19
+    }
+  ],
+  "version": 130003
+}

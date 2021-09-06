@@ -1,0 +1,79 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "ColumnDef": {
+                    "location": 28,
+                    "raw_default": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "hstorecol"
+                                }
+                              }
+                            ],
+                            "location": 56
+                          }
+                        },
+                        "location": 66,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "||"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 69,
+                            "val": {
+                              "String": {
+                                "str": ""
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "typeName": {
+                      "location": 43,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "hstore"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                },
+                "name": "hstorecol",
+                "subtype": "AT_AlterColumnType"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "tablename",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 71
+    }
+  ],
+  "version": 130003
+}

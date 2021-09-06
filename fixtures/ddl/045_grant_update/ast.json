@@ -1,0 +1,42 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "GrantStmt": {
+          "behavior": "DROP_RESTRICT",
+          "grantees": [
+            {
+              "RoleSpec": {
+                "location": 28,
+                "rolename": "joe",
+                "roletype": "ROLESPEC_CSTRING"
+              }
+            }
+          ],
+          "is_grant": true,
+          "objects": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 16,
+                "relname": "accounts",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "objtype": "OBJECT_TABLE",
+          "privileges": [
+            {
+              "AccessPriv": {
+                "priv_name": "update"
+              }
+            }
+          ],
+          "targtype": "ACL_TARGET_OBJECT"
+        }
+      },
+      "stmt_len": 31
+    }
+  ],
+  "version": 130003
+}

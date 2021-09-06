@@ -1,0 +1,23 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "TruncateStmt": {
+          "behavior": "DROP_CASCADE",
+          "relations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 9,
+                "relname": "othertable",
+                "relpersistence": "p"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 27
+    }
+  ],
+  "version": 130003
+}

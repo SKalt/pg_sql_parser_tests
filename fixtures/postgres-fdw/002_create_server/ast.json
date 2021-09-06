@@ -1,0 +1,52 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateForeignServerStmt": {
+          "fdwname": "postgres_fdw",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "192.83.123.89"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "host",
+                "location": 88
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "5432"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "port",
+                "location": 110
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "foreign_db"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "dbname",
+                "location": 123
+              }
+            }
+          ],
+          "servername": "foreign_server"
+        }
+      },
+      "stmt_len": 143
+    }
+  ],
+  "version": 130003
+}

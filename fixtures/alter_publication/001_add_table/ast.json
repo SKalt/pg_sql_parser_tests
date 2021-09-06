@@ -1,0 +1,32 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterPublicationStmt": {
+          "pubname": "mypublication",
+          "tableAction": "DEFELEM_ADD",
+          "tables": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 42,
+                "relname": "users",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 49,
+                "relname": "departments",
+                "relpersistence": "p"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 60
+    }
+  ],
+  "version": 130003
+}

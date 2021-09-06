@@ -1,0 +1,27 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "my_parser"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_TSPARSER"
+        }
+      },
+      "stmt_len": 33
+    }
+  ],
+  "version": 130003
+}

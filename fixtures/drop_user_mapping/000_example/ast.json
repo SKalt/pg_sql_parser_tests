@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropUserMappingStmt": {
+          "missing_ok": true,
+          "servername": "foo",
+          "user": {
+            "location": 32,
+            "rolename": "bob",
+            "roletype": "ROLESPEC_CSTRING"
+          }
+        }
+      },
+      "stmt_len": 46
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateSubscriptionStmt": {
+          "conninfo": "dbname=foo host=bar user=repuser",
+          "publication": [
+            {
+              "String": {
+                "str": "mypub"
+              }
+            }
+          ],
+          "subname": "mysub"
+        }
+      },
+      "stmt_len": 89
+    }
+  ],
+  "version": 130003
+}

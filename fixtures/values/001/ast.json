@@ -1,0 +1,130 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "all": true,
+          "larg": {
+            "all": true,
+            "larg": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 7,
+                    "name": "column1",
+                    "val": {
+                      "A_Const": {
+                        "location": 7,
+                        "val": {
+                          "Integer": {
+                            "ival": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 21,
+                    "name": "column2",
+                    "val": {
+                      "A_Const": {
+                        "location": 21,
+                        "val": {
+                          "String": {
+                            "str": "one"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "limitOption": "LIMIT_OPTION_DEFAULT",
+            "op": "SETOP_UNION",
+            "rarg": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 55,
+                    "val": {
+                      "A_Const": {
+                        "location": 55,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 58,
+                    "val": {
+                      "A_Const": {
+                        "location": 58,
+                        "val": {
+                          "String": {
+                            "str": "two"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_UNION",
+          "rarg": {
+            "limitOption": "LIMIT_OPTION_DEFAULT",
+            "op": "SETOP_NONE",
+            "targetList": [
+              {
+                "ResTarget": {
+                  "location": 81,
+                  "val": {
+                    "A_Const": {
+                      "location": 81,
+                      "val": {
+                        "Integer": {
+                          "ival": 3
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "ResTarget": {
+                  "location": 84,
+                  "val": {
+                    "A_Const": {
+                      "location": 84,
+                      "val": {
+                        "String": {
+                          "str": "three"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "stmt_len": 91
+    }
+  ],
+  "version": 130003
+}

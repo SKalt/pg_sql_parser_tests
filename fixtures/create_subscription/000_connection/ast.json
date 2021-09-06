@@ -1,0 +1,26 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateSubscriptionStmt": {
+          "conninfo": "host=192.168.1.50 port=5432 user=foo dbname=foodb",
+          "publication": [
+            {
+              "String": {
+                "str": "mypublication"
+              }
+            },
+            {
+              "String": {
+                "str": "insert_only"
+              }
+            }
+          ],
+          "subname": "mysub"
+        }
+      },
+      "stmt_len": 144
+    }
+  ],
+  "version": 130003
+}

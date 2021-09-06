@@ -1,0 +1,204 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeFunction": {
+                    "alias": {
+                      "aliasname": "t1"
+                    },
+                    "coldeflist": [
+                      {
+                        "ColumnDef": {
+                          "colname": "proname",
+                          "is_local": true,
+                          "location": 166,
+                          "typeName": {
+                            "location": 174,
+                            "names": [
+                              {
+                                "String": {
+                                  "str": "name"
+                                }
+                              }
+                            ],
+                            "typemod": -1
+                          }
+                        }
+                      },
+                      {
+                        "ColumnDef": {
+                          "colname": "prosrc",
+                          "is_local": true,
+                          "location": 180,
+                          "typeName": {
+                            "location": 187,
+                            "names": [
+                              {
+                                "String": {
+                                  "str": "text"
+                                }
+                              }
+                            ],
+                            "typemod": -1
+                          }
+                        }
+                      }
+                    ],
+                    "functions": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "FuncCall": {
+                                "args": [
+                                  {
+                                    "A_Const": {
+                                      "location": 59,
+                                      "val": {
+                                        "String": {
+                                          "str": "dbname=postgres options=-csearch_path="
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 117,
+                                      "val": {
+                                        "String": {
+                                          "str": "select proname, prosrc from pg_proc"
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "dblink"
+                                    }
+                                  }
+                                ],
+                                "location": 52
+                              }
+                            },
+                            {}
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 41,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 41
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 12,
+            "relname": "myremote_pg_proc",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "NO_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 192
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 209,
+                "relname": "myremote_pg_proc",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 202,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 202
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_LIKE",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "proname"
+                      }
+                    }
+                  ],
+                  "location": 232
+                }
+              },
+              "location": 240,
+              "name": [
+                {
+                  "String": {
+                    "str": "~~"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 245,
+                  "val": {
+                    "String": {
+                      "str": "bytea%"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 60,
+      "stmt_location": 193
+    }
+  ],
+  "version": 130003
+}

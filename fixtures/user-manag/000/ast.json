@@ -1,0 +1,38 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateRoleStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "canlogin",
+                "location": 17
+              }
+            }
+          ],
+          "role": "name",
+          "stmt_type": "ROLESTMT_ROLE"
+        }
+      },
+      "stmt_len": 22
+    },
+    {
+      "stmt": {
+        "CreateRoleStmt": {
+          "role": "name",
+          "stmt_type": "ROLESTMT_USER"
+        }
+      },
+      "stmt_len": 17,
+      "stmt_location": 23
+    }
+  ],
+  "version": 130003
+}

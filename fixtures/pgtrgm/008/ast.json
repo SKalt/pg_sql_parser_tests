@@ -1,0 +1,160 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 58,
+                "relname": "test_trgm",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "sortClause": [
+            {
+              "SortBy": {
+                "location": -1,
+                "node": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "sml"
+                        }
+                      }
+                    ],
+                    "location": 100
+                  }
+                },
+                "sortby_dir": "SORTBY_DESC",
+                "sortby_nulls": "SORTBY_NULLS_DEFAULT"
+              }
+            },
+            {
+              "SortBy": {
+                "location": -1,
+                "node": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "t"
+                        }
+                      }
+                    ],
+                    "location": 110
+                  }
+                },
+                "sortby_dir": "SORTBY_DEFAULT",
+                "sortby_nulls": "SORTBY_NULLS_DEFAULT"
+              }
+            }
+          ],
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "t"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 10,
+                "name": "sml",
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 33,
+                          "val": {
+                            "String": {
+                              "str": "word"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "t"
+                              }
+                            }
+                          ],
+                          "location": 41
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "strict_word_similarity"
+                        }
+                      }
+                    ],
+                    "location": 10
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "A_Const": {
+                  "location": 76,
+                  "val": {
+                    "String": {
+                      "str": "word"
+                    }
+                  }
+                }
+              },
+              "location": 83,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003c\u003c%"
+                  }
+                }
+              ],
+              "rexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "t"
+                      }
+                    }
+                  ],
+                  "location": 87
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 111
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,300 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 51,
+                "relname": "measurement_year_month",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 89,
+            "lowerdatums": [
+              {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "minvalue"
+                      }
+                    }
+                  ],
+                  "location": 95
+                }
+              },
+              {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "minvalue"
+                      }
+                    }
+                  ],
+                  "location": 105
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 119,
+                  "val": {
+                    "Integer": {
+                      "ival": 2016
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 125,
+                  "val": {
+                    "Integer": {
+                      "ival": 11
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "measurement_ym_older",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 128
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 185,
+                "relname": "measurement_year_month",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 223,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 229,
+                  "val": {
+                    "Integer": {
+                      "ival": 2016
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 235,
+                  "val": {
+                    "Integer": {
+                      "ival": 11
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 243,
+                  "val": {
+                    "Integer": {
+                      "ival": 2016
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 249,
+                  "val": {
+                    "Integer": {
+                      "ival": 12
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 144,
+            "relname": "measurement_ym_y2016m11",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 123,
+      "stmt_location": 129
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 309,
+                "relname": "measurement_year_month",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 347,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 353,
+                  "val": {
+                    "Integer": {
+                      "ival": 2016
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 359,
+                  "val": {
+                    "Integer": {
+                      "ival": 12
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 367,
+                  "val": {
+                    "Integer": {
+                      "ival": 2017
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 373,
+                  "val": {
+                    "Integer": {
+                      "ival": 1
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 268,
+            "relname": "measurement_ym_y2016m12",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 123,
+      "stmt_location": 253
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 433,
+                "relname": "measurement_year_month",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "partbound": {
+            "location": 471,
+            "lowerdatums": [
+              {
+                "A_Const": {
+                  "location": 477,
+                  "val": {
+                    "Integer": {
+                      "ival": 2017
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 483,
+                  "val": {
+                    "Integer": {
+                      "ival": 1
+                    }
+                  }
+                }
+              }
+            ],
+            "strategy": "r",
+            "upperdatums": [
+              {
+                "A_Const": {
+                  "location": 491,
+                  "val": {
+                    "Integer": {
+                      "ival": 2017
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 497,
+                  "val": {
+                    "Integer": {
+                      "ival": 2
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "relation": {
+            "inh": true,
+            "location": 392,
+            "relname": "measurement_ym_y2017m01",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 123,
+      "stmt_location": 377
+    }
+  ],
+  "version": 130003
+}

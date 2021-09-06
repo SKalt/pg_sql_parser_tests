@@ -1,0 +1,148 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 123,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "measurement_y2008m02",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "Constraint": {
+                "contype": "CONSTR_CHECK",
+                "initially_valid": true,
+                "location": 40,
+                "raw_expr": {
+                  "BoolExpr": {
+                    "args": [
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "logdate"
+                                  }
+                                }
+                              ],
+                              "location": 48
+                            }
+                          },
+                          "location": 56,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003e="
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "TypeCast": {
+                              "arg": {
+                                "A_Const": {
+                                  "location": 64,
+                                  "val": {
+                                    "String": {
+                                      "str": "2008-02-01"
+                                    }
+                                  }
+                                }
+                              },
+                              "location": -1,
+                              "typeName": {
+                                "location": 59,
+                                "names": [
+                                  {
+                                    "String": {
+                                      "str": "date"
+                                    }
+                                  }
+                                ],
+                                "typemod": -1
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "logdate"
+                                  }
+                                }
+                              ],
+                              "location": 81
+                            }
+                          },
+                          "location": 89,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003c"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "TypeCast": {
+                              "arg": {
+                                "A_Const": {
+                                  "location": 96,
+                                  "val": {
+                                    "String": {
+                                      "str": "2008-03-01"
+                                    }
+                                  }
+                                }
+                              },
+                              "location": -1,
+                              "typeName": {
+                                "location": 91,
+                                "names": [
+                                  {
+                                    "String": {
+                                      "str": "date"
+                                    }
+                                  }
+                                ],
+                                "typemod": -1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "boolop": "AND_EXPR",
+                    "location": 77
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 135
+    }
+  ],
+  "version": 130003
+}

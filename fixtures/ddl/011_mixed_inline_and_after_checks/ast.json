@@ -1,0 +1,239 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "products",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "product_no",
+                "is_local": true,
+                "location": 28,
+                "typeName": {
+                  "location": 39,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 52,
+                "typeName": {
+                  "location": 57,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "price",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_CHECK",
+                      "initially_valid": true,
+                      "location": 81,
+                      "raw_expr": {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "price"
+                                  }
+                                }
+                              ],
+                              "location": 88
+                            }
+                          },
+                          "location": 94,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003e"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_Const": {
+                              "location": 96,
+                              "val": {
+                                "Integer": {
+                                  "ival": 0
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 67,
+                "typeName": {
+                  "location": 73,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "discounted_price",
+                "is_local": true,
+                "location": 104,
+                "typeName": {
+                  "location": 121,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "Constraint": {
+                "contype": "CONSTR_CHECK",
+                "initially_valid": true,
+                "location": 134,
+                "raw_expr": {
+                  "BoolExpr": {
+                    "args": [
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "discounted_price"
+                                  }
+                                }
+                              ],
+                              "location": 141
+                            }
+                          },
+                          "location": 158,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003e"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_Const": {
+                              "location": 160,
+                              "val": {
+                                "Integer": {
+                                  "ival": 0
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "price"
+                                  }
+                                }
+                              ],
+                              "location": 166
+                            }
+                          },
+                          "location": 172,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003e"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "discounted_price"
+                                  }
+                                }
+                              ],
+                              "location": 174
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "boolop": "AND_EXPR",
+                    "location": 162
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 193
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,34 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterRoleSetStmt": {
+          "database": "devel",
+          "role": {
+            "location": 11,
+            "rolename": "fred",
+            "roletype": "ROLESPEC_CSTRING"
+          },
+          "setstmt": {
+            "args": [
+              {
+                "A_Const": {
+                  "location": 60,
+                  "val": {
+                    "String": {
+                      "str": "debug"
+                    }
+                  }
+                }
+              }
+            ],
+            "kind": "VAR_SET_VALUE",
+            "name": "client_min_messages"
+          }
+        }
+      },
+      "stmt_len": 65
+    }
+  ],
+  "version": 130003
+}

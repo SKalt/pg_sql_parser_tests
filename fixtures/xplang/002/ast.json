@@ -1,0 +1,35 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreatePLangStmt": {
+          "plhandler": [
+            {
+              "String": {
+                "str": "plperl_call_handler"
+              }
+            }
+          ],
+          "plinline": [
+            {
+              "String": {
+                "str": "plperl_inline_handler"
+              }
+            }
+          ],
+          "plname": "plperl",
+          "pltrusted": true,
+          "plvalidator": [
+            {
+              "String": {
+                "str": "plperl_validator"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 126
+    }
+  ],
+  "version": 130003
+}

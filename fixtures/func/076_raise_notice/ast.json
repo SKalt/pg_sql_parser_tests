@@ -1,0 +1,79 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "test_event_trigger_table_rewrite_oid"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpgsql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 79
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nBEGIN\n  RAISE NOTICE 'rewriting table % for reason %',\n                pg_event_trigger_table_rewrite_oid()::regclass,\n                pg_event_trigger_table_rewrite_reason();\nEND;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 96
+              }
+            }
+          ],
+          "returnType": {
+            "location": 64,
+            "names": [
+              {
+                "String": {
+                  "str": "event_trigger"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 285
+    },
+    {
+      "stmt": {
+        "CreateEventTrigStmt": {
+          "eventname": "table_rewrite",
+          "funcname": [
+            {
+              "String": {
+                "str": "test_event_trigger_table_rewrite_oid"
+              }
+            }
+          ],
+          "trigname": "test_table_rewrite_oid"
+        }
+      },
+      "stmt_len": 139,
+      "stmt_location": 286
+    }
+  ],
+  "version": 130003
+}

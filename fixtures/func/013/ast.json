@@ -1,0 +1,116 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 22,
+                          "val": {
+                            "String": {
+                              "str": "foo"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 29,
+                          "val": {
+                            "String": {
+                              "str": "not there"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "regexp_matches"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 41
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 102,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 117,
+                          "val": {
+                            "String": {
+                              "str": "foobarbequebazilbarfbonk"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 145,
+                          "val": {
+                            "String": {
+                              "str": "(b[^b]+)(b[^b]+)"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 165,
+                          "val": {
+                            "String": {
+                              "str": "g"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "regexp_matches"
+                        }
+                      }
+                    ],
+                    "location": 102
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 127,
+      "stmt_location": 42
+    }
+  ],
+  "version": 130003
+}

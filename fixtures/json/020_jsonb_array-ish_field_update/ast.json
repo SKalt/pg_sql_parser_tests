@@ -1,0 +1,52 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 116,
+            "relname": "table_name",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 143,
+                          "val": {
+                            "Integer": {
+                              "ival": 2
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 131,
+                "name": "jsonb_field",
+                "val": {
+                  "A_Const": {
+                    "location": 148,
+                    "val": {
+                      "String": {
+                        "str": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 151
+    }
+  ],
+  "version": 130003
+}

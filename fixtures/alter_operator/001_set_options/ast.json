@@ -1,0 +1,91 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterOperatorStmt": {
+          "opername": {
+            "objargs": [
+              {
+                "TypeName": {
+                  "location": 19,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "_int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              },
+              {
+                "TypeName": {
+                  "location": 26,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "_int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            ],
+            "objname": [
+              {
+                "String": {
+                  "str": "\u0026\u0026"
+                }
+              }
+            ]
+          },
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 49,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "_int_contsel"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "restrict",
+                "location": 38
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 70,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "_int_contjoinsel"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "join",
+                "location": 63
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 87
+    }
+  ],
+  "version": 130003
+}

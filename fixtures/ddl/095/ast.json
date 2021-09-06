@@ -1,0 +1,129 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 47,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "measurement_y2006m02",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 59
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 108,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 74,
+            "relname": "measurement_y2006m03",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 60,
+      "stmt_location": 60
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 176,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 142,
+            "relname": "measurement_y2007m11",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 67,
+      "stmt_location": 121
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 237,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 203,
+            "relname": "measurement_y2007m12",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 60,
+      "stmt_location": 189
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "inhRelations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 298,
+                "relname": "measurement",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 264,
+            "relname": "measurement_y2008m01",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 60,
+      "stmt_location": 250
+    }
+  ],
+  "version": 130003
+}

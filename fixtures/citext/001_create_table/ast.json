@@ -1,0 +1,630 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "users",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "nick",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_PRIMARY",
+                      "location": 37
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 25,
+                "typeName": {
+                  "location": 30,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "citext"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "pass",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 66
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 54,
+                "typeName": {
+                  "location": 59,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 76
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 91,
+            "relname": "users",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 106,
+                          "val": {
+                            "String": {
+                              "str": "larry"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "TypeCast": {
+                                "arg": {
+                                  "TypeCast": {
+                                    "arg": {
+                                      "FuncCall": {
+                                        "funcname": [
+                                          {
+                                            "String": {
+                                              "str": "random"
+                                            }
+                                          }
+                                        ],
+                                        "location": 123
+                                      }
+                                    },
+                                    "location": 131,
+                                    "typeName": {
+                                      "location": 133,
+                                      "names": [
+                                        {
+                                          "String": {
+                                            "str": "text"
+                                          }
+                                        }
+                                      ],
+                                      "typemod": -1
+                                    }
+                                  }
+                                },
+                                "location": 137,
+                                "typeName": {
+                                  "location": 139,
+                                  "names": [
+                                    {
+                                      "String": {
+                                        "str": "bytea"
+                                      }
+                                    }
+                                  ],
+                                  "typemod": -1
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "sha256"
+                              }
+                            }
+                          ],
+                          "location": 116
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 70,
+      "stmt_location": 77
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 161,
+            "relname": "users",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 176,
+                          "val": {
+                            "String": {
+                              "str": "Tom"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "TypeCast": {
+                                "arg": {
+                                  "TypeCast": {
+                                    "arg": {
+                                      "FuncCall": {
+                                        "funcname": [
+                                          {
+                                            "String": {
+                                              "str": "random"
+                                            }
+                                          }
+                                        ],
+                                        "location": 193
+                                      }
+                                    },
+                                    "location": 201,
+                                    "typeName": {
+                                      "location": 203,
+                                      "names": [
+                                        {
+                                          "String": {
+                                            "str": "text"
+                                          }
+                                        }
+                                      ],
+                                      "typemod": -1
+                                    }
+                                  }
+                                },
+                                "location": 207,
+                                "typeName": {
+                                  "location": 209,
+                                  "names": [
+                                    {
+                                      "String": {
+                                        "str": "bytea"
+                                      }
+                                    }
+                                  ],
+                                  "typemod": -1
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "sha256"
+                              }
+                            }
+                          ],
+                          "location": 186
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 69,
+      "stmt_location": 148
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 231,
+            "relname": "users",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 246,
+                          "val": {
+                            "String": {
+                              "str": "Damian"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "TypeCast": {
+                                "arg": {
+                                  "TypeCast": {
+                                    "arg": {
+                                      "FuncCall": {
+                                        "funcname": [
+                                          {
+                                            "String": {
+                                              "str": "random"
+                                            }
+                                          }
+                                        ],
+                                        "location": 263
+                                      }
+                                    },
+                                    "location": 271,
+                                    "typeName": {
+                                      "location": 273,
+                                      "names": [
+                                        {
+                                          "String": {
+                                            "str": "text"
+                                          }
+                                        }
+                                      ],
+                                      "typemod": -1
+                                    }
+                                  }
+                                },
+                                "location": 277,
+                                "typeName": {
+                                  "location": 279,
+                                  "names": [
+                                    {
+                                      "String": {
+                                        "str": "bytea"
+                                      }
+                                    }
+                                  ],
+                                  "typemod": -1
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "sha256"
+                              }
+                            }
+                          ],
+                          "location": 256
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 69,
+      "stmt_location": 218
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 301,
+            "relname": "users",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 316,
+                          "val": {
+                            "String": {
+                              "str": "NEAL"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "TypeCast": {
+                                "arg": {
+                                  "TypeCast": {
+                                    "arg": {
+                                      "FuncCall": {
+                                        "funcname": [
+                                          {
+                                            "String": {
+                                              "str": "random"
+                                            }
+                                          }
+                                        ],
+                                        "location": 333
+                                      }
+                                    },
+                                    "location": 341,
+                                    "typeName": {
+                                      "location": 343,
+                                      "names": [
+                                        {
+                                          "String": {
+                                            "str": "text"
+                                          }
+                                        }
+                                      ],
+                                      "typemod": -1
+                                    }
+                                  }
+                                },
+                                "location": 347,
+                                "typeName": {
+                                  "location": 349,
+                                  "names": [
+                                    {
+                                      "String": {
+                                        "str": "bytea"
+                                      }
+                                    }
+                                  ],
+                                  "typemod": -1
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "sha256"
+                              }
+                            }
+                          ],
+                          "location": 326
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 69,
+      "stmt_location": 288
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 371,
+            "relname": "users",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 386,
+                          "val": {
+                            "String": {
+                              "str": "Bj\u0026oslash;rn"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "TypeCast": {
+                                "arg": {
+                                  "TypeCast": {
+                                    "arg": {
+                                      "FuncCall": {
+                                        "funcname": [
+                                          {
+                                            "String": {
+                                              "str": "random"
+                                            }
+                                          }
+                                        ],
+                                        "location": 410
+                                      }
+                                    },
+                                    "location": 418,
+                                    "typeName": {
+                                      "location": 420,
+                                      "names": [
+                                        {
+                                          "String": {
+                                            "str": "text"
+                                          }
+                                        }
+                                      ],
+                                      "typemod": -1
+                                    }
+                                  }
+                                },
+                                "location": 424,
+                                "typeName": {
+                                  "location": 426,
+                                  "names": [
+                                    {
+                                      "String": {
+                                        "str": "bytea"
+                                      }
+                                    }
+                                  ],
+                                  "typemod": -1
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "sha256"
+                              }
+                            }
+                          ],
+                          "location": 403
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 358
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 451,
+                "relname": "users",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 444,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 444
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "nick"
+                      }
+                    }
+                  ],
+                  "location": 463
+                }
+              },
+              "location": 468,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 470,
+                  "val": {
+                    "String": {
+                      "str": "Larry"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 42,
+      "stmt_location": 435
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,103 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 64,
+                "relname": "tab",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "col1"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 13,
+                "val": {
+                  "SubLink": {
+                    "location": 13,
+                    "subLinkType": "EXPR_SUBLINK",
+                    "subselect": {
+                      "SelectStmt": {
+                        "limitOption": "LIMIT_OPTION_DEFAULT",
+                        "op": "SETOP_NONE",
+                        "targetList": [
+                          {
+                            "ResTarget": {
+                              "location": 21,
+                              "val": {
+                                "FuncCall": {
+                                  "args": [
+                                    {
+                                      "ColumnRef": {
+                                        "fields": [
+                                          {
+                                            "String": {
+                                              "str": "col2"
+                                            }
+                                          }
+                                        ],
+                                        "location": 36
+                                      }
+                                    },
+                                    {
+                                      "A_Const": {
+                                        "location": 42,
+                                        "val": {
+                                          "String": {
+                                            "str": "(bar)(beque)"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "funcname": [
+                                    {
+                                      "String": {
+                                        "str": "regexp_matches"
+                                      }
+                                    }
+                                  ],
+                                  "location": 21
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 67
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,47 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeclareCursorStmt": {
+          "options": 32,
+          "portalname": "liahona",
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 41,
+                    "relname": "films",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 34,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 34
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 46
+    }
+  ],
+  "version": 130003
+}

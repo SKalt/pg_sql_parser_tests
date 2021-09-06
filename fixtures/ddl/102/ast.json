@@ -1,0 +1,63 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "measurement_insert_trigger"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nBEGIN\n    IF ( NEW.logdate \u003e= DATE '2006-02-01' AND\n         NEW.logdate \u003c DATE '2006-03-01' ) THEN\n        INSERT INTO measurement_y2006m02 VALUES (NEW.*);\n    ELSIF ( NEW.logdate \u003e= DATE '2006-03-01' AND\n            NEW.logdate \u003c DATE '2006-04-01' ) THEN\n        INSERT INTO measurement_y2006m03 VALUES (NEW.*);\n    ...\n    ELSIF ( NEW.logdate \u003e= DATE '2008-01-01' AND\n            NEW.logdate \u003c DATE '2008-02-01' ) THEN\n        INSERT INTO measurement_y2008m01 VALUES (NEW.*);\n    ELSE\n        RAISE EXCEPTION 'Date out of range.  Fix the measurement_insert_trigger() function!';\n    END IF;\n    RETURN NULL;\nEND;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 72
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpgsql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 697
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 64,
+            "names": [
+              {
+                "String": {
+                  "str": "trigger"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 713
+    }
+  ],
+  "version": 130003
+}

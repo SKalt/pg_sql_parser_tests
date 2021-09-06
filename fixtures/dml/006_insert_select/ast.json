@@ -1,0 +1,143 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 22,
+                "name": "product_no"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 34,
+                "name": "name"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 40,
+                "name": "price"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "products",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 85,
+                    "relname": "new_products",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 56,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "product_no"
+                            }
+                          }
+                        ],
+                        "location": 56
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 68,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "name"
+                            }
+                          }
+                        ],
+                        "location": 68
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 74,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "price"
+                            }
+                          }
+                        ],
+                        "location": 74
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "release_date"
+                          }
+                        }
+                      ],
+                      "location": 108
+                    }
+                  },
+                  "location": 121,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "A_Const": {
+                      "location": 123,
+                      "val": {
+                        "String": {
+                          "str": "today"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 130
+    }
+  ],
+  "version": 130003
+}

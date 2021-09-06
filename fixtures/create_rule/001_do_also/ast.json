@@ -1,0 +1,94 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "NotifyStmt": {
+                "conditionname": "mytable"
+              }
+            }
+          ],
+          "event": "CMD_UPDATE",
+          "relation": {
+            "inh": true,
+            "location": 38,
+            "relname": "mytable",
+            "relpersistence": "p"
+          },
+          "rulename": "notify_me"
+        }
+      },
+      "stmt_len": 68
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 78,
+            "relname": "mytable",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 90,
+                "name": "name",
+                "val": {
+                  "A_Const": {
+                    "location": 97,
+                    "val": {
+                      "String": {
+                        "str": "foo"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "id"
+                      }
+                    }
+                  ],
+                  "location": 109
+                }
+              },
+              "location": 112,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 114,
+                  "val": {
+                    "Integer": {
+                      "ival": 42
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 47,
+      "stmt_location": 69
+    }
+  ],
+  "version": 130003
+}

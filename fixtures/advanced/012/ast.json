@@ -1,0 +1,356 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "capitals",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 26,
+                "typeName": {
+                  "location": 37,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "population",
+                "is_local": true,
+                "location": 45,
+                "typeName": {
+                  "location": 56,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "float4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "elevation",
+                "is_local": true,
+                "location": 64,
+                "typeName": {
+                  "location": 75,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "state",
+                "is_local": true,
+                "location": 96,
+                "typeName": {
+                  "location": 107,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "bpchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 112,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 116
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 132,
+            "relname": "non_capitals",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 149,
+                "typeName": {
+                  "location": 160,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "population",
+                "is_local": true,
+                "location": 168,
+                "typeName": {
+                  "location": 179,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "float4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "elevation",
+                "is_local": true,
+                "location": 187,
+                "typeName": {
+                  "location": 198,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 101,
+      "stmt_location": 117
+    },
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "larg": {
+                "fromClause": [
+                  {
+                    "RangeVar": {
+                      "inh": true,
+                      "location": 285,
+                      "relname": "capitals",
+                      "relpersistence": "p"
+                    }
+                  }
+                ],
+                "limitOption": "LIMIT_OPTION_DEFAULT",
+                "op": "SETOP_NONE",
+                "targetList": [
+                  {
+                    "ResTarget": {
+                      "location": 252,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "name"
+                              }
+                            }
+                          ],
+                          "location": 252
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 258,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "population"
+                              }
+                            }
+                          ],
+                          "location": 258
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 270,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "elevation"
+                              }
+                            }
+                          ],
+                          "location": 270
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_UNION",
+              "rarg": {
+                "fromClause": [
+                  {
+                    "RangeVar": {
+                      "inh": true,
+                      "location": 346,
+                      "relname": "non_capitals",
+                      "relpersistence": "p"
+                    }
+                  }
+                ],
+                "limitOption": "LIMIT_OPTION_DEFAULT",
+                "op": "SETOP_NONE",
+                "targetList": [
+                  {
+                    "ResTarget": {
+                      "location": 313,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "name"
+                              }
+                            }
+                          ],
+                          "location": 313
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 319,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "population"
+                              }
+                            }
+                          ],
+                          "location": 319
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 331,
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "elevation"
+                              }
+                            }
+                          ],
+                          "location": 331
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 233,
+            "relname": "cities",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "NO_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 139,
+      "stmt_location": 219
+    }
+  ],
+  "version": 130003
+}

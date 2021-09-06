@@ -1,0 +1,46 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "Constraint": {
+                    "conname": "dist_id_zipcode_key",
+                    "contype": "CONSTR_UNIQUE",
+                    "keys": [
+                      {
+                        "String": {
+                          "str": "dist_id"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "zipcode"
+                        }
+                      }
+                    ],
+                    "location": 29
+                  }
+                },
+                "subtype": "AT_AddConstraint"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 85
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "title_idx_nulls_low",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "title",
+                "nulls_ordering": "SORTBY_NULLS_FIRST",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 36,
+            "relname": "films",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 61
+    }
+  ],
+  "version": 130003
+}

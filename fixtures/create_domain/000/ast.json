@@ -1,0 +1,113 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 17,
+                "name": "domcol"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "tab",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "SubLink": {
+                          "location": 33,
+                          "subLinkType": "EXPR_SUBLINK",
+                          "subselect": {
+                            "SelectStmt": {
+                              "fromClause": [
+                                {
+                                  "RangeVar": {
+                                    "inh": true,
+                                    "location": 53,
+                                    "relname": "tab",
+                                    "relpersistence": "p"
+                                  }
+                                }
+                              ],
+                              "limitOption": "LIMIT_OPTION_DEFAULT",
+                              "op": "SETOP_NONE",
+                              "targetList": [
+                                {
+                                  "ResTarget": {
+                                    "location": 41,
+                                    "val": {
+                                      "ColumnRef": {
+                                        "fields": [
+                                          {
+                                            "String": {
+                                              "str": "domcol"
+                                            }
+                                          }
+                                        ],
+                                        "location": 41
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "whereClause": {
+                                "TypeCast": {
+                                  "arg": {
+                                    "A_Const": {
+                                      "location": 63,
+                                      "val": {
+                                        "String": {
+                                          "str": "f"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "location": -1,
+                                  "typeName": {
+                                    "location": -1,
+                                    "names": [
+                                      {
+                                        "String": {
+                                          "str": "pg_catalog"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "bool"
+                                        }
+                                      }
+                                    ],
+                                    "typemod": -1
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 70
+    }
+  ],
+  "version": 130003
+}

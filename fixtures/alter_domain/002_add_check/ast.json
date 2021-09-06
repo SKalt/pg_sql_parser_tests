@@ -1,0 +1,78 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterDomainStmt": {
+          "behavior": "DROP_RESTRICT",
+          "def": {
+            "Constraint": {
+              "conname": "zipchk",
+              "contype": "CONSTR_CHECK",
+              "initially_valid": true,
+              "location": 25,
+              "raw_expr": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "FuncCall": {
+                      "args": [
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "value"
+                                }
+                              }
+                            ],
+                            "location": 62
+                          }
+                        }
+                      ],
+                      "funcname": [
+                        {
+                          "String": {
+                            "str": "char_length"
+                          }
+                        }
+                      ],
+                      "location": 50
+                    }
+                  },
+                  "location": 69,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "A_Const": {
+                      "location": 71,
+                      "val": {
+                        "Integer": {
+                          "ival": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "subtype": "C",
+          "typeName": [
+            {
+              "String": {
+                "str": "zipcode"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 73
+    }
+  ],
+  "version": 130003
+}

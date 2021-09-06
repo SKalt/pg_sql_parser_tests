@@ -1,0 +1,329 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "p1"
+                },
+                "inh": true,
+                "location": 33,
+                "relname": "polygons",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "p2"
+                },
+                "inh": true,
+                "location": 46,
+                "relname": "polygons",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "v1"
+                },
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "p1"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "poly"
+                                      }
+                                    }
+                                  ],
+                                  "location": 81
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "vertices"
+                                }
+                              }
+                            ],
+                            "location": 72
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ],
+                "lateral": true
+              }
+            },
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "v2"
+                },
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "p2"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "poly"
+                                      }
+                                    }
+                                  ],
+                                  "location": 116
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "vertices"
+                                }
+                              }
+                            ],
+                            "location": 107
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ],
+                "lateral": true
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "p1"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "id"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 14,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "p2"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "id"
+                        }
+                      }
+                    ],
+                    "location": 14
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 21,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "v1"
+                        }
+                      }
+                    ],
+                    "location": 21
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 25,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "v2"
+                        }
+                      }
+                    ],
+                    "location": 25
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "v1"
+                                }
+                              }
+                            ],
+                            "location": 135
+                          }
+                        },
+                        "location": 138,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "\u003c-\u003e"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "v2"
+                                }
+                              }
+                            ],
+                            "location": 142
+                          }
+                        }
+                      }
+                    },
+                    "location": 146,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003c"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 148,
+                        "val": {
+                          "Integer": {
+                            "ival": 10
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "p1"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 155
+                      }
+                    },
+                    "location": 161,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003c\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "p2"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 164
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 151
+            }
+          }
+        }
+      },
+      "stmt_len": 169
+    }
+  ],
+  "version": 130003
+}

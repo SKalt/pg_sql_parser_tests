@@ -1,0 +1,214 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 26,
+                "relname": "some_table",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "x"
+                                  }
+                                }
+                              ],
+                              "location": 15
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "myfunc"
+                            }
+                          }
+                        ],
+                        "location": 8
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Star": {}
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 36
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 94,
+                "relname": "some_table",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 45,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "x"
+                                  }
+                                }
+                              ],
+                              "location": 53
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "myfunc"
+                            }
+                          }
+                        ],
+                        "location": 46
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "String": {
+                          "str": "a"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 60,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "x"
+                                  }
+                                }
+                              ],
+                              "location": 68
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "myfunc"
+                            }
+                          }
+                        ],
+                        "location": 61
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "String": {
+                          "str": "b"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 75,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "x"
+                                  }
+                                }
+                              ],
+                              "location": 83
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "myfunc"
+                            }
+                          }
+                        ],
+                        "location": 76
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "String": {
+                          "str": "c"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 67,
+      "stmt_location": 37
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,30 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "4 byte integer operators for btrees",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "btree"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "int4ops"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPCLASS"
+        }
+      },
+      "stmt_len": 86
+    }
+  ],
+  "version": 130003
+}

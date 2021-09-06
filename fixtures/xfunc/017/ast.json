@@ -1,0 +1,141 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 69,
+                "relname": "tab",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "x"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 10,
+                "val": {
+                  "CaseExpr": {
+                    "args": [
+                      {
+                        "CaseWhen": {
+                          "expr": {
+                            "A_Expr": {
+                              "kind": "AEXPR_OP",
+                              "lexpr": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "y"
+                                      }
+                                    }
+                                  ],
+                                  "location": 20
+                                }
+                              },
+                              "location": 22,
+                              "name": [
+                                {
+                                  "String": {
+                                    "str": "\u003e"
+                                  }
+                                }
+                              ],
+                              "rexpr": {
+                                "A_Const": {
+                                  "location": 24,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 0
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "location": 15,
+                          "result": {
+                            "FuncCall": {
+                              "args": [
+                                {
+                                  "A_Const": {
+                                    "location": 47,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 1
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "z"
+                                        }
+                                      }
+                                    ],
+                                    "location": 50
+                                  }
+                                }
+                              ],
+                              "funcname": [
+                                {
+                                  "String": {
+                                    "str": "generate_series"
+                                  }
+                                }
+                              ],
+                              "location": 31
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "defresult": {
+                      "A_Const": {
+                        "location": 58,
+                        "val": {
+                          "Integer": {
+                            "ival": 5
+                          }
+                        }
+                      }
+                    },
+                    "location": 10
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 72
+    }
+  ],
+  "version": 130003
+}

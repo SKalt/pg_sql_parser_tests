@@ -1,0 +1,270 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "btree_gist"
+        }
+      },
+      "stmt_len": 27
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 42,
+            "relname": "room_reservation",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "room",
+                "is_local": true,
+                "location": 65,
+                "typeName": {
+                  "location": 70,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "during",
+                "is_local": true,
+                "location": 80,
+                "typeName": {
+                  "location": 87,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "tsrange"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "Constraint": {
+                "access_method": "gist",
+                "contype": "CONSTR_EXCLUSION",
+                "exclusions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "IndexElem": {
+                            "name": "room",
+                            "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                            "ordering": "SORTBY_DEFAULT"
+                          }
+                        },
+                        {
+                          "List": {
+                            "items": [
+                              {
+                                "String": {
+                                  "str": "="
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "IndexElem": {
+                            "name": "during",
+                            "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                            "ordering": "SORTBY_DEFAULT"
+                          }
+                        },
+                        {
+                          "List": {
+                            "items": [
+                              {
+                                "String": {
+                                  "str": "\u0026\u0026"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "location": 100
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 122,
+      "stmt_location": 28
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 165,
+            "relname": "room_reservation",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 194,
+                          "val": {
+                            "String": {
+                              "str": "123A"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 202,
+                          "val": {
+                            "String": {
+                              "str": "[2010-01-01 14:00, 2010-01-01 15:00)"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 90,
+      "stmt_location": 151
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 270,
+            "relname": "room_reservation",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 299,
+                          "val": {
+                            "String": {
+                              "str": "123A"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 307,
+                          "val": {
+                            "String": {
+                              "str": "[2010-01-01 14:30, 2010-01-01 15:30)"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 104,
+      "stmt_location": 242
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 646,
+            "relname": "room_reservation",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 675,
+                          "val": {
+                            "String": {
+                              "str": "123B"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 683,
+                          "val": {
+                            "String": {
+                              "str": "[2010-01-01 14:30, 2010-01-01 15:30)"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 375,
+      "stmt_location": 347
+    }
+  ],
+  "version": 130003
+}

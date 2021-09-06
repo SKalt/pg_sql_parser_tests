@@ -1,0 +1,14 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "kind": "VAR_SET_DEFAULT",
+          "name": "configuration_parameter"
+        }
+      },
+      "stmt_len": 38
+    }
+  ],
+  "version": 130003
+}

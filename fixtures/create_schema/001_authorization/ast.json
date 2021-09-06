@@ -1,0 +1,17 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateSchemaStmt": {
+          "authrole": {
+            "location": 28,
+            "rolename": "joe",
+            "roletype": "ROLESPEC_CSTRING"
+          }
+        }
+      },
+      "stmt_len": 31
+    }
+  ],
+  "version": 130003
+}

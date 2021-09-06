@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterDomainStmt": {
+          "behavior": "DROP_RESTRICT",
+          "subtype": "N",
+          "typeName": [
+            {
+              "String": {
+                "str": "zipcode"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 34
+    }
+  ],
+  "version": 130003
+}

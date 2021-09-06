@@ -1,0 +1,175 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "trigfunc_modcount"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n    switch $TG_op {\n        INSERT {\n            set NEW($1) 0\n        }\n        UPDATE {\n            set NEW($1) $OLD($1)\n            incr NEW($1)\n        }\n        default {\n            return OK\n        }\n    }\n    return [array get NEW]\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 52
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "pltcl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 302
+              }
+            }
+          ],
+          "returnType": {
+            "location": 44,
+            "names": [
+              {
+                "String": {
+                  "str": "trigger"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 316
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 332,
+            "relname": "mytab",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "num",
+                "is_local": true,
+                "location": 339,
+                "typeName": {
+                  "location": 343,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "description",
+                "is_local": true,
+                "location": 352,
+                "typeName": {
+                  "location": 364,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "modcnt",
+                "is_local": true,
+                "location": 370,
+                "typeName": {
+                  "location": 377,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 68,
+      "stmt_location": 317
+    },
+    {
+      "stmt": {
+        "CreateTrigStmt": {
+          "args": [
+            {
+              "String": {
+                "str": "modcnt"
+              }
+            }
+          ],
+          "events": 20,
+          "funcname": [
+            {
+              "String": {
+                "str": "trigfunc_modcount"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 450,
+            "relname": "mytab",
+            "relpersistence": "p"
+          },
+          "row": true,
+          "timing": 2,
+          "trigname": "trig_mytab_modcount"
+        }
+      },
+      "stmt_len": 131,
+      "stmt_location": 386
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,27 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "serial"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_SEQUENCE"
+        }
+      },
+      "stmt_len": 20
+    }
+  ],
+  "version": 130003
+}

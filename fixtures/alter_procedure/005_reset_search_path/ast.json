@@ -1,0 +1,52 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterFunctionStmt": {
+          "actions": [
+            {
+              "DefElem": {
+                "arg": {
+                  "VariableSetStmt": {
+                    "kind": "VAR_RESET",
+                    "name": "search_path"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "set",
+                "location": 37
+              }
+            }
+          ],
+          "func": {
+            "objargs": [
+              {
+                "TypeName": {
+                  "location": 31,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            ],
+            "objname": [
+              {
+                "String": {
+                  "str": "check_password"
+                }
+              }
+            ]
+          },
+          "objtype": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 54
+    }
+  ],
+  "version": 130003
+}

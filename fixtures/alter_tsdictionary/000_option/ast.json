@@ -1,0 +1,41 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTSDictionaryStmt": {
+          "dictname": [
+            {
+              "String": {
+                "str": "my_dict"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 51,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "newrussian"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "stopwords",
+                "location": 39
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 63
+    }
+  ],
+  "version": 130003
+}

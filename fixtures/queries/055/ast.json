@@ -1,0 +1,440 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 355,
+                "relname": "orders",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "groupClause": [
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "region"
+                    }
+                  }
+                ],
+                "location": 420
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "product"
+                    }
+                  }
+                ],
+                "location": 428
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 251,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "region"
+                        }
+                      }
+                    ],
+                    "location": 251
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 266,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "product"
+                        }
+                      }
+                    ],
+                    "location": 266
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 282,
+                "name": "product_units",
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "quantity"
+                              }
+                            }
+                          ],
+                          "location": 286
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "sum"
+                        }
+                      }
+                    ],
+                    "location": 282
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 321,
+                "name": "product_sales",
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "amount"
+                              }
+                            }
+                          ],
+                          "location": 325
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "sum"
+                        }
+                      }
+                    ],
+                    "location": 321
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "SubLink": {
+              "location": 375,
+              "subLinkType": "ANY_SUBLINK",
+              "subselect": {
+                "SelectStmt": {
+                  "fromClause": [
+                    {
+                      "RangeVar": {
+                        "inh": true,
+                        "location": 398,
+                        "relname": "top_regions",
+                        "relpersistence": "p"
+                      }
+                    }
+                  ],
+                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                  "op": "SETOP_NONE",
+                  "targetList": [
+                    {
+                      "ResTarget": {
+                        "location": 386,
+                        "val": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "region"
+                                }
+                              }
+                            ],
+                            "location": 386
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "testexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "region"
+                      }
+                    }
+                  ],
+                  "location": 368
+                }
+              }
+            }
+          },
+          "withClause": {
+            "ctes": [
+              {
+                "CommonTableExpr": {
+                  "ctematerialized": "CTEMaterializeDefault",
+                  "ctename": "regional_sales",
+                  "ctequery": {
+                    "SelectStmt": {
+                      "fromClause": [
+                        {
+                          "RangeVar": {
+                            "inh": true,
+                            "location": 80,
+                            "relname": "orders",
+                            "relpersistence": "p"
+                          }
+                        }
+                      ],
+                      "groupClause": [
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "region"
+                                }
+                              }
+                            ],
+                            "location": 100
+                          }
+                        }
+                      ],
+                      "limitOption": "LIMIT_OPTION_DEFAULT",
+                      "op": "SETOP_NONE",
+                      "targetList": [
+                        {
+                          "ResTarget": {
+                            "location": 36,
+                            "val": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "region"
+                                    }
+                                  }
+                                ],
+                                "location": 36
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "ResTarget": {
+                            "location": 44,
+                            "name": "total_sales",
+                            "val": {
+                              "FuncCall": {
+                                "args": [
+                                  {
+                                    "ColumnRef": {
+                                      "fields": [
+                                        {
+                                          "String": {
+                                            "str": "amount"
+                                          }
+                                        }
+                                      ],
+                                      "location": 48
+                                    }
+                                  }
+                                ],
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "sum"
+                                    }
+                                  }
+                                ],
+                                "location": 44
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "location": 5
+                }
+              },
+              {
+                "CommonTableExpr": {
+                  "ctematerialized": "CTEMaterializeDefault",
+                  "ctename": "top_regions",
+                  "ctequery": {
+                    "SelectStmt": {
+                      "fromClause": [
+                        {
+                          "RangeVar": {
+                            "inh": true,
+                            "location": 154,
+                            "relname": "regional_sales",
+                            "relpersistence": "p"
+                          }
+                        }
+                      ],
+                      "limitOption": "LIMIT_OPTION_DEFAULT",
+                      "op": "SETOP_NONE",
+                      "targetList": [
+                        {
+                          "ResTarget": {
+                            "location": 138,
+                            "val": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "region"
+                                    }
+                                  }
+                                ],
+                                "location": 138
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "whereClause": {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "total_sales"
+                                  }
+                                }
+                              ],
+                              "location": 179
+                            }
+                          },
+                          "location": 191,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003e"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "SubLink": {
+                              "location": 193,
+                              "subLinkType": "EXPR_SUBLINK",
+                              "subselect": {
+                                "SelectStmt": {
+                                  "fromClause": [
+                                    {
+                                      "RangeVar": {
+                                        "inh": true,
+                                        "location": 226,
+                                        "relname": "regional_sales",
+                                        "relpersistence": "p"
+                                      }
+                                    }
+                                  ],
+                                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                                  "op": "SETOP_NONE",
+                                  "targetList": [
+                                    {
+                                      "ResTarget": {
+                                        "location": 201,
+                                        "val": {
+                                          "A_Expr": {
+                                            "kind": "AEXPR_OP",
+                                            "lexpr": {
+                                              "FuncCall": {
+                                                "args": [
+                                                  {
+                                                    "ColumnRef": {
+                                                      "fields": [
+                                                        {
+                                                          "String": {
+                                                            "str": "total_sales"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "location": 205
+                                                    }
+                                                  }
+                                                ],
+                                                "funcname": [
+                                                  {
+                                                    "String": {
+                                                      "str": "sum"
+                                                    }
+                                                  }
+                                                ],
+                                                "location": 201
+                                              }
+                                            },
+                                            "location": 217,
+                                            "name": [
+                                              {
+                                                "String": {
+                                                  "str": "/"
+                                                }
+                                              }
+                                            ],
+                                            "rexpr": {
+                                              "A_Const": {
+                                                "location": 218,
+                                                "val": {
+                                                  "Integer": {
+                                                    "ival": 10
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "location": 110
+                }
+              }
+            ]
+          }
+        }
+      },
+      "stmt_len": 435
+    }
+  ],
+  "version": 130003
+}

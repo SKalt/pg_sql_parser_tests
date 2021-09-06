@@ -1,0 +1,72 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "BoolExpr": {
+                    "args": [
+                      {
+                        "TypeCast": {
+                          "arg": {
+                            "A_Const": {
+                              "location": 7,
+                              "val": {
+                                "String": {
+                                  "str": "t"
+                                }
+                              }
+                            }
+                          },
+                          "location": -1,
+                          "typeName": {
+                            "location": -1,
+                            "names": [
+                              {
+                                "String": {
+                                  "str": "pg_catalog"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "bool"
+                                }
+                              }
+                            ],
+                            "typemod": -1
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "somefunc"
+                              }
+                            }
+                          ],
+                          "location": 15
+                        }
+                      }
+                    ],
+                    "boolop": "OR_EXPR",
+                    "location": 12
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 25
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,129 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "measurement_y2006m02_logdate",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "logdate",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 45,
+            "relname": "measurement_y2006m02",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 75
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "measurement_y2006m03_logdate",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "logdate",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 122,
+            "relname": "measurement_y2006m03",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 76
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "measurement_y2007m11_logdate",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "logdate",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 199,
+            "relname": "measurement_y2007m11",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 153
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "measurement_y2007m12_logdate",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "logdate",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 276,
+            "relname": "measurement_y2007m12",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 230
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "measurement_y2008m01_logdate",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "logdate",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 353,
+            "relname": "measurement_y2008m01",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 307
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,130 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_LEFT",
+                "larg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "pl"
+                    },
+                    "inh": true,
+                    "location": 14,
+                    "relname": "pg_locks",
+                    "relpersistence": "p"
+                  }
+                },
+                "quals": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "pl"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "virtualtransaction"
+                            }
+                          }
+                        ],
+                        "location": 65
+                      }
+                    },
+                    "location": 87,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "A_Const": {
+                            "location": 89,
+                            "val": {
+                              "String": {
+                                "str": "-1/"
+                              }
+                            }
+                          }
+                        },
+                        "location": 95,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "||"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "ppx"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "transaction"
+                                }
+                              }
+                            ],
+                            "location": 98
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "ppx"
+                    },
+                    "inh": true,
+                    "location": 36,
+                    "relname": "pg_prepared_xacts",
+                    "relpersistence": "p"
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 113
+    }
+  ],
+  "version": 130003
+}

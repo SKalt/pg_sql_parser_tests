@@ -1,0 +1,634 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "mytable",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "f1",
+                "is_local": true,
+                "location": 21,
+                "typeName": {
+                  "location": 24,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "f2",
+                "is_local": true,
+                "location": 29,
+                "typeName": {
+                  "location": 32,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "float8"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "f3",
+                "is_local": true,
+                "location": 39,
+                "typeName": {
+                  "location": 42,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 47
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "getf1"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "SELECT $1.f1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 93
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 111
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 72,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "mytable"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 89,
+            "names": [
+              {
+                "String": {
+                  "str": "pg_catalog"
+                }
+              },
+              {
+                "String": {
+                  "str": "int4"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 75,
+      "stmt_location": 48
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 181,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "RowExpr": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 191,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 193,
+                                "val": {
+                                  "Float": {
+                                    "str": "2.5"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 197,
+                                "val": {
+                                  "String": {
+                                    "str": "this is a test"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 187,
+                          "row_format": "COERCE_EXPLICIT_CALL"
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "getf1"
+                        }
+                      }
+                    ],
+                    "location": 181
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 91,
+      "stmt_location": 124
+    },
+    {
+      "stmt": {
+        "CompositeTypeStmt": {
+          "coldeflist": [
+            {
+              "ColumnDef": {
+                "colname": "f1",
+                "is_local": true,
+                "location": 286,
+                "typeName": {
+                  "location": 289,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "f2",
+                "is_local": true,
+                "location": 294,
+                "typeName": {
+                  "location": 297,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "f3",
+                "is_local": true,
+                "location": 303,
+                "typeName": {
+                  "location": 306,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ],
+          "typevar": {
+            "location": 272,
+            "relname": "myrowtype",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 98,
+      "stmt_location": 216
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "getf1"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "SELECT $1.f1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 362
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 380
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 339,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "myrowtype"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 358,
+            "names": [
+              {
+                "String": {
+                  "str": "pg_catalog"
+                }
+              },
+              {
+                "String": {
+                  "str": "int4"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 77,
+      "stmt_location": 315
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 460,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "RowExpr": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 470,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 472,
+                                "val": {
+                                  "Float": {
+                                    "str": "2.5"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 476,
+                                "val": {
+                                  "String": {
+                                    "str": "this is a test"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 466,
+                          "row_format": "COERCE_EXPLICIT_CALL"
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "getf1"
+                        }
+                      }
+                    ],
+                    "location": 460
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 101,
+      "stmt_location": 393
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 552,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "TypeCast": {
+                          "arg": {
+                            "RowExpr": {
+                              "args": [
+                                {
+                                  "A_Const": {
+                                    "location": 562,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 1
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "A_Const": {
+                                    "location": 564,
+                                    "val": {
+                                      "Float": {
+                                        "str": "2.5"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "A_Const": {
+                                    "location": 568,
+                                    "val": {
+                                      "String": {
+                                        "str": "this is a test"
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "location": 558,
+                              "row_format": "COERCE_EXPLICIT_CALL"
+                            }
+                          },
+                          "location": 585,
+                          "typeName": {
+                            "location": 587,
+                            "names": [
+                              {
+                                "String": {
+                                  "str": "mytable"
+                                }
+                              }
+                            ],
+                            "typemod": -1
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "getf1"
+                        }
+                      }
+                    ],
+                    "location": 552
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 100,
+      "stmt_location": 495
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 647,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "TypeCast": {
+                          "arg": {
+                            "RowExpr": {
+                              "args": [
+                                {
+                                  "A_Const": {
+                                    "location": 662,
+                                    "val": {
+                                      "Integer": {
+                                        "ival": 11
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "A_Const": {
+                                    "location": 665,
+                                    "val": {
+                                      "String": {
+                                        "str": "this is a test"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "A_Const": {
+                                    "location": 682,
+                                    "val": {
+                                      "Float": {
+                                        "str": "2.5"
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "location": 658,
+                              "row_format": "COERCE_EXPLICIT_CALL"
+                            }
+                          },
+                          "location": 653,
+                          "typeName": {
+                            "location": 690,
+                            "names": [
+                              {
+                                "String": {
+                                  "str": "myrowtype"
+                                }
+                              }
+                            ],
+                            "typemod": -1
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "getf1"
+                        }
+                      }
+                    ],
+                    "location": 647
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 105,
+      "stmt_location": 596
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,16 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterSystemStmt": {
+          "setstmt": {
+            "kind": "VAR_RESET",
+            "name": "wal_level"
+          }
+        }
+      },
+      "stmt_len": 28
+    }
+  ],
+  "version": 130003
+}

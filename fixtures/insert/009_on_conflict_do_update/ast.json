@@ -1,0 +1,134 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 26,
+                "name": "did"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 31,
+                "name": "dname"
+              }
+            }
+          ],
+          "onConflictClause": {
+            "action": "ONCONFLICT_UPDATE",
+            "infer": {
+              "indexElems": [
+                {
+                  "IndexElem": {
+                    "name": "did",
+                    "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                    "ordering": "SORTBY_DEFAULT"
+                  }
+                }
+              ],
+              "location": 124
+            },
+            "location": 112,
+            "targetList": [
+              {
+                "ResTarget": {
+                  "location": 144,
+                  "name": "dname",
+                  "val": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "excluded"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "dname"
+                          }
+                        }
+                      ],
+                      "location": 152
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 50,
+                          "val": {
+                            "Integer": {
+                              "ival": 5
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 53,
+                          "val": {
+                            "String": {
+                              "str": "Gizmo Transglobal"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 76,
+                          "val": {
+                            "Integer": {
+                              "ival": 6
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 79,
+                          "val": {
+                            "String": {
+                              "str": "Associated Computing, Inc"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 166
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,177 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "PrepareStmt": {
+          "argtypes": [
+            {
+              "TypeName": {
+                "location": 17,
+                "names": [
+                  {
+                    "String": {
+                      "str": "pg_catalog"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "int4"
+                    }
+                  }
+                ],
+                "typemod": -1
+              }
+            },
+            {
+              "TypeName": {
+                "location": 22,
+                "names": [
+                  {
+                    "String": {
+                      "str": "text"
+                    }
+                  }
+                ],
+                "typemod": -1
+              }
+            },
+            {
+              "TypeName": {
+                "location": 28,
+                "names": [
+                  {
+                    "String": {
+                      "str": "bool"
+                    }
+                  }
+                ],
+                "typemod": -1
+              }
+            },
+            {
+              "TypeName": {
+                "location": 34,
+                "names": [
+                  {
+                    "String": {
+                      "str": "pg_catalog"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "numeric"
+                    }
+                  }
+                ],
+                "typemod": -1
+              }
+            }
+          ],
+          "name": "fooplan",
+          "query": {
+            "InsertStmt": {
+              "override": "OVERRIDING_NOT_SET",
+              "relation": {
+                "inh": true,
+                "location": 62,
+                "relname": "foo",
+                "relpersistence": "p"
+              },
+              "selectStmt": {
+                "SelectStmt": {
+                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                  "op": "SETOP_NONE",
+                  "valuesLists": [
+                    {
+                      "List": {
+                        "items": [
+                          {
+                            "ParamRef": {
+                              "location": 73,
+                              "number": 1
+                            }
+                          },
+                          {
+                            "ParamRef": {
+                              "location": 77,
+                              "number": 2
+                            }
+                          },
+                          {
+                            "ParamRef": {
+                              "location": 81,
+                              "number": 3
+                            }
+                          },
+                          {
+                            "ParamRef": {
+                              "location": 85,
+                              "number": 4
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 88
+    },
+    {
+      "stmt": {
+        "ExecuteStmt": {
+          "name": "fooplan",
+          "params": [
+            {
+              "A_Const": {
+                "location": 106,
+                "val": {
+                  "Integer": {
+                    "ival": 1
+                  }
+                }
+              }
+            },
+            {
+              "A_Const": {
+                "location": 109,
+                "val": {
+                  "String": {
+                    "str": "Hunter Valley"
+                  }
+                }
+              }
+            },
+            {
+              "A_Const": {
+                "location": 126,
+                "val": {
+                  "String": {
+                    "str": "t"
+                  }
+                }
+              }
+            },
+            {
+              "A_Const": {
+                "location": 131,
+                "val": {
+                  "Float": {
+                    "str": "200.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 49,
+      "stmt_location": 89
+    }
+  ],
+  "version": 130003
+}

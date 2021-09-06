@@ -1,0 +1,89 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 16,
+                "relname": "some_table",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "m"
+                },
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "x"
+                                      }
+                                    }
+                                  ],
+                                  "location": 43
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "myfunc"
+                                }
+                              }
+                            ],
+                            "location": 36
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ],
+                "lateral": true
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "m"
+                        }
+                      },
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 50
+    }
+  ],
+  "version": 130003
+}

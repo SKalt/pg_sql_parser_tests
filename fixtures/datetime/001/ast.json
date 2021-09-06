@@ -1,0 +1,47 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "TypeCast": {
+                    "arg": {
+                      "A_Const": {
+                        "location": 7,
+                        "val": {
+                          "String": {
+                            "str": "2018-11-04 02:30"
+                          }
+                        }
+                      }
+                    },
+                    "location": 25,
+                    "typeName": {
+                      "location": 27,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "timestamptz"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 38
+    }
+  ],
+  "version": 130003
+}

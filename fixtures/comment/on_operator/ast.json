@@ -1,0 +1,95 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Performs intersection of two texts",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 23,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "TypeName": {
+                    "location": 29,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "text"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "^"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPERATOR"
+        }
+      },
+      "stmt_len": 74
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Unary minus",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {},
+                {
+                  "TypeName": {
+                    "location": 105,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "-"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_OPERATOR"
+        }
+      },
+      "stmt_len": 55,
+      "stmt_location": 75
+    }
+  ],
+  "version": 130003
+}

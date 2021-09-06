@@ -1,0 +1,169 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CompositeTypeStmt": {
+          "coldeflist": [
+            {
+              "ColumnDef": {
+                "colname": "intval",
+                "is_local": true,
+                "location": 23,
+                "typeName": {
+                  "location": 30,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "textval",
+                "is_local": true,
+                "location": 39,
+                "typeName": {
+                  "location": 47,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "varchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 55,
+                        "val": {
+                          "Integer": {
+                            "ival": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "typevar": {
+            "location": 12,
+            "relname": "comp_t",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 59
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 74,
+            "relname": "t4",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "compval",
+                "is_local": true,
+                "location": 78,
+                "typeName": {
+                  "location": 86,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "comp_t"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 33,
+      "stmt_location": 60
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 107,
+            "relname": "t4",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "RowExpr": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 120,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 256
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 125,
+                                "val": {
+                                  "String": {
+                                    "str": "PostgreSQL"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "location": 119,
+                          "row_format": "COERCE_IMPLICIT_CAST"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 46,
+      "stmt_location": 94
+    }
+  ],
+  "version": 130003
+}

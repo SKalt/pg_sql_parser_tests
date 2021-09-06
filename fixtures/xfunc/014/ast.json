@@ -1,0 +1,111 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 17,
+                "relname": "tab",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "g"
+                },
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 46,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 1
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 48,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 5
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "generate_series"
+                                }
+                              }
+                            ],
+                            "location": 30
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ],
+                "lateral": true
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "x"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 10,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "g"
+                        }
+                      }
+                    ],
+                    "location": 10
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

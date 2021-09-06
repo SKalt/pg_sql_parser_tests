@@ -1,0 +1,17 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RenameStmt": {
+          "behavior": "DROP_RESTRICT",
+          "newname": "fast_raid",
+          "relationType": "OBJECT_ACCESS_METHOD",
+          "renameType": "OBJECT_TABLESPACE",
+          "subname": "index_space"
+        }
+      },
+      "stmt_len": 48
+    }
+  ],
+  "version": 130003
+}

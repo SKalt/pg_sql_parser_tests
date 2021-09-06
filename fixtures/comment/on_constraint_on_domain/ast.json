@@ -1,0 +1,38 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Constrains col of domain",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "TypeName": {
+                    "location": -1,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "dom"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "String": {
+                    "str": "dom_col_constr"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_DOMCONSTRAINT"
+        }
+      },
+      "stmt_len": 80
+    }
+  ],
+  "version": 130003
+}

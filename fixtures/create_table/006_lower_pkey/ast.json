@@ -1,0 +1,175 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "did",
+                "is_local": true,
+                "location": 32,
+                "typeName": {
+                  "location": 40,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 53,
+                "typeName": {
+                  "location": 61,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "varchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 69,
+                        "val": {
+                          "Integer": {
+                            "ival": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "Constraint": {
+                "contype": "CONSTR_PRIMARY",
+                "keys": [
+                  {
+                    "String": {
+                      "str": "did"
+                    }
+                  }
+                ],
+                "location": 78
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 96
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 112,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "did",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_PRIMARY",
+                      "location": 147
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 131,
+                "typeName": {
+                  "location": 139,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 164,
+                "typeName": {
+                  "location": 172,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "varchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 180,
+                        "val": {
+                          "Integer": {
+                            "ival": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 88,
+      "stmt_location": 97
+    }
+  ],
+  "version": 130003
+}

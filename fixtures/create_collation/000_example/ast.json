@@ -1,0 +1,34 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "fr_FR.utf8"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "locale",
+                "location": 25
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "french"
+              }
+            }
+          ],
+          "kind": "OBJECT_COLLATION"
+        }
+      },
+      "stmt_len": 47
+    }
+  ],
+  "version": 130003
+}

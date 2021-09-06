@@ -1,0 +1,28 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "args_unspecified": true,
+                "objname": [
+                  {
+                    "String": {
+                      "str": "do_db_maintenance"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 32
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,30 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Constrains column col",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "bar"
+                  }
+                },
+                {
+                  "String": {
+                    "str": "bar_col_cons"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TABCONSTRAINT"
+        }
+      },
+      "stmt_len": 68
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,67 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 41,
+                                "val": {
+                                  "String": {
+                                    "str": "serial"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "nextval"
+                              }
+                            }
+                          ],
+                          "location": 33
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 52,
+                          "val": {
+                            "String": {
+                              "str": "nothing"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 62
+    }
+  ],
+  "version": 130003
+}

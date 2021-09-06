@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTableSpaceStmt": {
+          "location": "/data/indexes",
+          "owner": {
+            "location": 35,
+            "rolename": "genevieve",
+            "roletype": "ROLESPEC_CSTRING"
+          },
+          "tablespacename": "indexspace"
+        }
+      },
+      "stmt_len": 69
+    }
+  ],
+  "version": 130003
+}

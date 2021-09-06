@@ -1,0 +1,71 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "films",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 17,
+                "name": "kind",
+                "val": {
+                  "A_Const": {
+                    "location": 24,
+                    "val": {
+                      "String": {
+                        "str": "Dramatic"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "kind"
+                      }
+                    }
+                  ],
+                  "location": 41
+                }
+              },
+              "location": 46,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 48,
+                  "val": {
+                    "String": {
+                      "str": "Drama"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

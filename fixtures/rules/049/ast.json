@@ -1,0 +1,241 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "shoelace_arrive",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "arr_name",
+                "is_local": true,
+                "location": 35,
+                "typeName": {
+                  "location": 47,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "arr_quant",
+                "is_local": true,
+                "location": 57,
+                "typeName": {
+                  "location": 69,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 78
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 94,
+            "relname": "shoelace_ok",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "ok_name",
+                "is_local": true,
+                "location": 112,
+                "typeName": {
+                  "location": 124,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "ok_quant",
+                "is_local": true,
+                "location": 134,
+                "typeName": {
+                  "location": 146,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 76,
+      "stmt_location": 79
+    },
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "UpdateStmt": {
+                "relation": {
+                  "inh": true,
+                  "location": 240,
+                  "relname": "shoelace",
+                  "relpersistence": "p"
+                },
+                "targetList": [
+                  {
+                    "ResTarget": {
+                      "location": 260,
+                      "name": "sl_avail",
+                      "val": {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "sl_avail"
+                                  }
+                                }
+                              ],
+                              "location": 271
+                            }
+                          },
+                          "location": 280,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "+"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "new"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "ok_quant"
+                                  }
+                                }
+                              ],
+                              "location": 282
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "whereClause": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "sl_name"
+                            }
+                          }
+                        ],
+                        "location": 306
+                      }
+                    },
+                    "location": 314,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "new"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "ok_name"
+                            }
+                          }
+                        ],
+                        "location": 316
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "event": "CMD_INSERT",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 202,
+            "relname": "shoelace_ok",
+            "relpersistence": "p"
+          },
+          "rulename": "shoelace_ok_ins"
+        }
+      },
+      "stmt_len": 171,
+      "stmt_location": 156
+    }
+  ],
+  "version": 130003
+}

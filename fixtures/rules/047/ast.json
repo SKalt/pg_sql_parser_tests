@@ -1,0 +1,392 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "InsertStmt": {
+                "override": "OVERRIDING_NOT_SET",
+                "relation": {
+                  "inh": true,
+                  "location": 81,
+                  "relname": "shoelace_data",
+                  "relpersistence": "p"
+                },
+                "selectStmt": {
+                  "SelectStmt": {
+                    "limitOption": "LIMIT_OPTION_DEFAULT",
+                    "op": "SETOP_NONE",
+                    "valuesLists": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "new"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "sl_name"
+                                    }
+                                  }
+                                ],
+                                "location": 115
+                              }
+                            },
+                            {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "new"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "sl_avail"
+                                    }
+                                  }
+                                ],
+                                "location": 139
+                              }
+                            },
+                            {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "new"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "sl_color"
+                                    }
+                                  }
+                                ],
+                                "location": 164
+                              }
+                            },
+                            {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "new"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "sl_len"
+                                    }
+                                  }
+                                ],
+                                "location": 189
+                              }
+                            },
+                            {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "new"
+                                    }
+                                  },
+                                  {
+                                    "String": {
+                                      "str": "sl_unit"
+                                    }
+                                  }
+                                ],
+                                "location": 212
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "event": "CMD_INSERT",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 41,
+            "relname": "shoelace",
+            "relpersistence": "p"
+          },
+          "rulename": "shoelace_ins"
+        }
+      },
+      "stmt_len": 229
+    },
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "UpdateStmt": {
+                "relation": {
+                  "inh": true,
+                  "location": 308,
+                  "relname": "shoelace_data",
+                  "relpersistence": "p"
+                },
+                "targetList": [
+                  {
+                    "ResTarget": {
+                      "location": 333,
+                      "name": "sl_name",
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "new"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "sl_name"
+                              }
+                            }
+                          ],
+                          "location": 343
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 367,
+                      "name": "sl_avail",
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "new"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "sl_avail"
+                              }
+                            }
+                          ],
+                          "location": 378
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 403,
+                      "name": "sl_color",
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "new"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "sl_color"
+                              }
+                            }
+                          ],
+                          "location": 414
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 439,
+                      "name": "sl_len",
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "new"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "sl_len"
+                              }
+                            }
+                          ],
+                          "location": 448
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ResTarget": {
+                      "location": 471,
+                      "name": "sl_unit",
+                      "val": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "new"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "sl_unit"
+                              }
+                            }
+                          ],
+                          "location": 481
+                        }
+                      }
+                    }
+                  }
+                ],
+                "whereClause": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "sl_name"
+                            }
+                          }
+                        ],
+                        "location": 504
+                      }
+                    },
+                    "location": 512,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "old"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "sl_name"
+                            }
+                          }
+                        ],
+                        "location": 514
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "event": "CMD_UPDATE",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 273,
+            "relname": "shoelace",
+            "relpersistence": "p"
+          },
+          "rulename": "shoelace_upd"
+        }
+      },
+      "stmt_len": 295,
+      "stmt_location": 230
+    },
+    {
+      "stmt": {
+        "RuleStmt": {
+          "actions": [
+            {
+              "DeleteStmt": {
+                "relation": {
+                  "inh": true,
+                  "location": 609,
+                  "relname": "shoelace_data",
+                  "relpersistence": "p"
+                },
+                "whereClause": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "sl_name"
+                            }
+                          }
+                        ],
+                        "location": 634
+                      }
+                    },
+                    "location": 642,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "old"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "sl_name"
+                            }
+                          }
+                        ],
+                        "location": 644
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "event": "CMD_DELETE",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 569,
+            "relname": "shoelace",
+            "relpersistence": "p"
+          },
+          "rulename": "shoelace_del"
+        }
+      },
+      "stmt_len": 129,
+      "stmt_location": 526
+    }
+  ],
+  "version": 130003
+}

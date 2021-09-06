@@ -1,0 +1,146 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "GrantStmt": {
+          "behavior": "DROP_RESTRICT",
+          "grantees": [
+            {
+              "RoleSpec": {
+                "location": 27,
+                "roletype": "ROLESPEC_PUBLIC"
+              }
+            }
+          ],
+          "is_grant": true,
+          "objects": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 16,
+                "relname": "mytable",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "objtype": "OBJECT_TABLE",
+          "privileges": [
+            {
+              "AccessPriv": {
+                "priv_name": "select"
+              }
+            }
+          ],
+          "targtype": "ACL_TARGET_OBJECT"
+        }
+      },
+      "stmt_len": 33
+    },
+    {
+      "stmt": {
+        "GrantStmt": {
+          "behavior": "DROP_RESTRICT",
+          "grantees": [
+            {
+              "RoleSpec": {
+                "location": 78,
+                "rolename": "admin",
+                "roletype": "ROLESPEC_CSTRING"
+              }
+            }
+          ],
+          "is_grant": true,
+          "objects": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 67,
+                "relname": "mytable",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "objtype": "OBJECT_TABLE",
+          "privileges": [
+            {
+              "AccessPriv": {
+                "priv_name": "select"
+              }
+            },
+            {
+              "AccessPriv": {
+                "priv_name": "update"
+              }
+            },
+            {
+              "AccessPriv": {
+                "priv_name": "insert"
+              }
+            }
+          ],
+          "targtype": "ACL_TARGET_OBJECT"
+        }
+      },
+      "stmt_len": 49,
+      "stmt_location": 34
+    },
+    {
+      "stmt": {
+        "GrantStmt": {
+          "behavior": "DROP_RESTRICT",
+          "grantees": [
+            {
+              "RoleSpec": {
+                "location": 134,
+                "rolename": "miriam_rw",
+                "roletype": "ROLESPEC_CSTRING"
+              }
+            }
+          ],
+          "is_grant": true,
+          "objects": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 123,
+                "relname": "mytable",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "objtype": "OBJECT_TABLE",
+          "privileges": [
+            {
+              "AccessPriv": {
+                "cols": [
+                  {
+                    "String": {
+                      "str": "col1"
+                    }
+                  }
+                ],
+                "priv_name": "select"
+              }
+            },
+            {
+              "AccessPriv": {
+                "cols": [
+                  {
+                    "String": {
+                      "str": "col1"
+                    }
+                  }
+                ],
+                "priv_name": "update"
+              }
+            }
+          ],
+          "targtype": "ACL_TARGET_OBJECT"
+        }
+      },
+      "stmt_len": 59,
+      "stmt_location": 84
+    }
+  ],
+  "version": 130003
+}

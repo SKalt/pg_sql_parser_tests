@@ -1,0 +1,1234 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "t3",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "a",
+                "is_local": true,
+                "location": 22,
+                "typeName": {
+                  "location": 26,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "timestamp"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 37
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 52,
+            "relname": "t3",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeFunction": {
+                    "alias": {
+                      "aliasname": "s",
+                      "colnames": [
+                        {
+                          "String": {
+                            "str": "i"
+                          }
+                        }
+                      ]
+                    },
+                    "functions": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "FuncCall": {
+                                "args": [
+                                  {
+                                    "TypeCast": {
+                                      "arg": {
+                                        "A_Const": {
+                                          "location": 85,
+                                          "val": {
+                                            "String": {
+                                              "str": "2020-01-01"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "location": 97,
+                                      "typeName": {
+                                        "location": 99,
+                                        "names": [
+                                          {
+                                            "String": {
+                                              "str": "pg_catalog"
+                                            }
+                                          },
+                                          {
+                                            "String": {
+                                              "str": "timestamp"
+                                            }
+                                          }
+                                        ],
+                                        "typemod": -1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "TypeCast": {
+                                      "arg": {
+                                        "A_Const": {
+                                          "location": 155,
+                                          "val": {
+                                            "String": {
+                                              "str": "2020-12-31"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "location": 167,
+                                      "typeName": {
+                                        "location": 169,
+                                        "names": [
+                                          {
+                                            "String": {
+                                              "str": "pg_catalog"
+                                            }
+                                          },
+                                          {
+                                            "String": {
+                                              "str": "timestamp"
+                                            }
+                                          }
+                                        ],
+                                        "typemod": -1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "TypeCast": {
+                                      "arg": {
+                                        "A_Const": {
+                                          "location": 225,
+                                          "val": {
+                                            "String": {
+                                              "str": "1 minute"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "location": 235,
+                                      "typeName": {
+                                        "location": 237,
+                                        "names": [
+                                          {
+                                            "String": {
+                                              "str": "pg_catalog"
+                                            }
+                                          },
+                                          {
+                                            "String": {
+                                              "str": "interval"
+                                            }
+                                          }
+                                        ],
+                                        "typemod": -1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "generate_series"
+                                    }
+                                  }
+                                ],
+                                "location": 69
+                              }
+                            },
+                            {}
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 62,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "i"
+                            }
+                          }
+                        ],
+                        "location": 62
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 213,
+      "stmt_location": 38
+    },
+    {
+      "stmt": {
+        "VacuumStmt": {
+          "rels": [
+            {
+              "VacuumRelation": {
+                "relation": {
+                  "inh": true,
+                  "location": 262,
+                  "relname": "t3",
+                  "relpersistence": "p"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 12,
+      "stmt_location": 252
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 342
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 364,
+                    "relname": "t3",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 357,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 357
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "FuncCall": {
+                      "args": [
+                        {
+                          "A_Const": {
+                            "location": 386,
+                            "val": {
+                              "String": {
+                                "str": "month"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            ],
+                            "location": 395
+                          }
+                        }
+                      ],
+                      "funcname": [
+                        {
+                          "String": {
+                            "str": "date_trunc"
+                          }
+                        }
+                      ],
+                      "location": 375
+                    }
+                  },
+                  "location": 398,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "TypeCast": {
+                      "arg": {
+                        "A_Const": {
+                          "location": 400,
+                          "val": {
+                            "String": {
+                              "str": "2020-01-01"
+                            }
+                          }
+                        }
+                      },
+                      "location": 412,
+                      "typeName": {
+                        "location": 414,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "timestamp"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 158,
+      "stmt_location": 265
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 434
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 456,
+                    "relname": "t3",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 449,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 449
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_BETWEEN",
+                  "lexpr": {
+                    "FuncCall": {
+                      "args": [
+                        {
+                          "A_Const": {
+                            "location": 478,
+                            "val": {
+                              "String": {
+                                "str": "day"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            ],
+                            "location": 485
+                          }
+                        }
+                      ],
+                      "funcname": [
+                        {
+                          "String": {
+                            "str": "date_trunc"
+                          }
+                        }
+                      ],
+                      "location": 467
+                    }
+                  },
+                  "location": 488,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "BETWEEN"
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "List": {
+                      "items": [
+                        {
+                          "TypeCast": {
+                            "arg": {
+                              "A_Const": {
+                                "location": 496,
+                                "val": {
+                                  "String": {
+                                    "str": "2020-01-01"
+                                  }
+                                }
+                              }
+                            },
+                            "location": 508,
+                            "typeName": {
+                              "location": 510,
+                              "names": [
+                                {
+                                  "String": {
+                                    "str": "pg_catalog"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "timestamp"
+                                  }
+                                }
+                              ],
+                              "typemod": -1
+                            }
+                          }
+                        },
+                        {
+                          "TypeCast": {
+                            "arg": {
+                              "A_Const": {
+                                "location": 557,
+                                "val": {
+                                  "String": {
+                                    "str": "2020-06-30"
+                                  }
+                                }
+                              }
+                            },
+                            "location": 569,
+                            "typeName": {
+                              "location": 571,
+                              "names": [
+                                {
+                                  "String": {
+                                    "str": "pg_catalog"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "timestamp"
+                                  }
+                                }
+                              ],
+                              "typemod": -1
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 156,
+      "stmt_location": 424
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 591
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 659,
+                    "relname": "t3",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "groupClause": [
+                {
+                  "A_Const": {
+                    "location": 671,
+                    "val": {
+                      "Integer": {
+                        "ival": 1
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Const": {
+                    "location": 674,
+                    "val": {
+                      "Integer": {
+                        "ival": 2
+                      }
+                    }
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 606,
+                    "val": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 617,
+                              "val": {
+                                "String": {
+                                  "str": "month"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "a"
+                                  }
+                                }
+                              ],
+                              "location": 626
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "date_trunc"
+                            }
+                          }
+                        ],
+                        "location": 606
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 630,
+                    "val": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 641,
+                              "val": {
+                                "String": {
+                                  "str": "day"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "a"
+                                  }
+                                }
+                              ],
+                              "location": 648
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "date_trunc"
+                            }
+                          }
+                        ],
+                        "location": 630
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 94,
+      "stmt_location": 581
+    },
+    {
+      "stmt": {
+        "CreateStatsStmt": {
+          "defnames": [
+            {
+              "String": {
+                "str": "s3"
+              }
+            }
+          ],
+          "exprs": [
+            {
+              "FuncCall": {
+                "args": [
+                  {
+                    "A_Const": {
+                      "location": 837,
+                      "val": {
+                        "String": {
+                          "str": "month"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "a"
+                          }
+                        }
+                      ],
+                      "location": 846
+                    }
+                  }
+                ],
+                "funcname": [
+                  {
+                    "String": {
+                      "str": "date_trunc"
+                    }
+                  }
+                ],
+                "location": 826
+              }
+            },
+            {
+              "FuncCall": {
+                "args": [
+                  {
+                    "A_Const": {
+                      "location": 861,
+                      "val": {
+                        "String": {
+                          "str": "day"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "a"
+                          }
+                        }
+                      ],
+                      "location": 868
+                    }
+                  }
+                ],
+                "funcname": [
+                  {
+                    "String": {
+                      "str": "date_trunc"
+                    }
+                  }
+                ],
+                "location": 850
+              }
+            }
+          ],
+          "relations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 876,
+                "relname": "t3",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "stat_types": [
+            {
+              "String": {
+                "str": "ndistinct"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 202,
+      "stmt_location": 676
+    },
+    {
+      "stmt": {
+        "VacuumStmt": {
+          "rels": [
+            {
+              "VacuumRelation": {
+                "relation": {
+                  "inh": true,
+                  "location": 889,
+                  "relname": "t3",
+                  "relpersistence": "p"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 12,
+      "stmt_location": 879
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 952
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 974,
+                    "relname": "t3",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 967,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 967
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "FuncCall": {
+                      "args": [
+                        {
+                          "A_Const": {
+                            "location": 996,
+                            "val": {
+                              "String": {
+                                "str": "month"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            ],
+                            "location": 1005
+                          }
+                        }
+                      ],
+                      "funcname": [
+                        {
+                          "String": {
+                            "str": "date_trunc"
+                          }
+                        }
+                      ],
+                      "location": 985
+                    }
+                  },
+                  "location": 1008,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "TypeCast": {
+                      "arg": {
+                        "A_Const": {
+                          "location": 1010,
+                          "val": {
+                            "String": {
+                              "str": "2020-01-01"
+                            }
+                          }
+                        }
+                      },
+                      "location": 1022,
+                      "typeName": {
+                        "location": 1024,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "timestamp"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 141,
+      "stmt_location": 892
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 1044
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 1066,
+                    "relname": "t3",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 1059,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 1059
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_BETWEEN",
+                  "lexpr": {
+                    "FuncCall": {
+                      "args": [
+                        {
+                          "A_Const": {
+                            "location": 1088,
+                            "val": {
+                              "String": {
+                                "str": "day"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            ],
+                            "location": 1095
+                          }
+                        }
+                      ],
+                      "funcname": [
+                        {
+                          "String": {
+                            "str": "date_trunc"
+                          }
+                        }
+                      ],
+                      "location": 1077
+                    }
+                  },
+                  "location": 1098,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "BETWEEN"
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "List": {
+                      "items": [
+                        {
+                          "TypeCast": {
+                            "arg": {
+                              "A_Const": {
+                                "location": 1106,
+                                "val": {
+                                  "String": {
+                                    "str": "2020-01-01"
+                                  }
+                                }
+                              }
+                            },
+                            "location": 1118,
+                            "typeName": {
+                              "location": 1120,
+                              "names": [
+                                {
+                                  "String": {
+                                    "str": "pg_catalog"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "timestamp"
+                                  }
+                                }
+                              ],
+                              "typemod": -1
+                            }
+                          }
+                        },
+                        {
+                          "TypeCast": {
+                            "arg": {
+                              "A_Const": {
+                                "location": 1167,
+                                "val": {
+                                  "String": {
+                                    "str": "2020-06-30"
+                                  }
+                                }
+                              }
+                            },
+                            "location": 1179,
+                            "typeName": {
+                              "location": 1181,
+                              "names": [
+                                {
+                                  "String": {
+                                    "str": "pg_catalog"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "timestamp"
+                                  }
+                                }
+                              ],
+                              "typemod": -1
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 156,
+      "stmt_location": 1034
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 1201
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 1269,
+                    "relname": "t3",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "groupClause": [
+                {
+                  "A_Const": {
+                    "location": 1281,
+                    "val": {
+                      "Integer": {
+                        "ival": 1
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Const": {
+                    "location": 1284,
+                    "val": {
+                      "Integer": {
+                        "ival": 2
+                      }
+                    }
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 1216,
+                    "val": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 1227,
+                              "val": {
+                                "String": {
+                                  "str": "month"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "a"
+                                  }
+                                }
+                              ],
+                              "location": 1236
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "date_trunc"
+                            }
+                          }
+                        ],
+                        "location": 1216
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 1240,
+                    "val": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 1251,
+                              "val": {
+                                "String": {
+                                  "str": "day"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "a"
+                                  }
+                                }
+                              ],
+                              "location": 1258
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "date_trunc"
+                            }
+                          }
+                        ],
+                        "location": 1240
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 94,
+      "stmt_location": 1191
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,101 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 29,
+                "relname": "websites",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "doc"
+                            }
+                          }
+                        ],
+                        "location": 7
+                      }
+                    },
+                    "location": 10,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "-\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 12,
+                        "val": {
+                          "String": {
+                            "str": "site_name"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "doc"
+                      }
+                    }
+                  ],
+                  "location": 46
+                }
+              },
+              "location": 50,
+              "name": [
+                {
+                  "String": {
+                    "str": "@\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 53,
+                  "val": {
+                    "String": {
+                      "str": "{\"tags\":[{\"term\":\"paris\"}, {\"term\":\"food\"}]}"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 99
+    }
+  ],
+  "version": 130003
+}

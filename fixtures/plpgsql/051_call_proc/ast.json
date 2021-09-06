@@ -1,0 +1,98 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "triple"
+              }
+            }
+          ],
+          "is_procedure": true,
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpgsql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 37
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nBEGIN\n    x := x * 3;\nEND;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 54
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 32,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_INOUT",
+                "name": "x"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 89
+    },
+    {
+      "stmt": {
+        "DoStmt": {
+          "args": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "\nDECLARE myvar int := 5;\nBEGIN\n  CALL triple(myvar);\n  RAISE NOTICE 'myvar = %', myvar;  -- prints 15\nEND;\n"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 95
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 116,
+      "stmt_location": 90
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,178 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_INNER",
+                "larg": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 61,
+                    "relname": "weather",
+                    "relpersistence": "p"
+                  }
+                },
+                "quals": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "city"
+                            }
+                          }
+                        ],
+                        "location": 84
+                      }
+                    },
+                    "location": 89,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "name"
+                            }
+                          }
+                        ],
+                        "location": 91
+                      }
+                    }
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 74,
+                    "relname": "cities",
+                    "relpersistence": "p"
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 13,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "temp_lo"
+                        }
+                      }
+                    ],
+                    "location": 13
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 22,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "temp_hi"
+                        }
+                      }
+                    ],
+                    "location": 22
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 31,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "prcp"
+                        }
+                      }
+                    ],
+                    "location": 31
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 37,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "date"
+                        }
+                      }
+                    ],
+                    "location": 37
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 43,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "location"
+                        }
+                      }
+                    ],
+                    "location": 43
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 95
+    }
+  ],
+  "version": 130003
+}

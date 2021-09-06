@@ -1,0 +1,399 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeSubselect": {
+                "alias": {
+                  "aliasname": "shoelace"
+                },
+                "subquery": {
+                  "SelectStmt": {
+                    "fromClause": [
+                      {
+                        "RangeVar": {
+                          "alias": {
+                            "aliasname": "s"
+                          },
+                          "inh": true,
+                          "location": 326,
+                          "relname": "shoelace_data",
+                          "relpersistence": "p"
+                        }
+                      },
+                      {
+                        "RangeVar": {
+                          "alias": {
+                            "aliasname": "u"
+                          },
+                          "inh": true,
+                          "location": 343,
+                          "relname": "unit",
+                          "relpersistence": "p"
+                        }
+                      }
+                    ],
+                    "limitOption": "LIMIT_OPTION_DEFAULT",
+                    "op": "SETOP_NONE",
+                    "targetList": [
+                      {
+                        "ResTarget": {
+                          "location": 146,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "s"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "sl_name"
+                                  }
+                                }
+                              ],
+                              "location": 146
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "ResTarget": {
+                          "location": 172,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "s"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "sl_avail"
+                                  }
+                                }
+                              ],
+                              "location": 172
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "ResTarget": {
+                          "location": 199,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "s"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "sl_color"
+                                  }
+                                }
+                              ],
+                              "location": 199
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "ResTarget": {
+                          "location": 226,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "s"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "sl_len"
+                                  }
+                                }
+                              ],
+                              "location": 226
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "ResTarget": {
+                          "location": 251,
+                          "val": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "s"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "sl_unit"
+                                  }
+                                }
+                              ],
+                              "location": 251
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "ResTarget": {
+                          "location": 277,
+                          "name": "sl_len_cm",
+                          "val": {
+                            "A_Expr": {
+                              "kind": "AEXPR_OP",
+                              "lexpr": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "s"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "sl_len"
+                                      }
+                                    }
+                                  ],
+                                  "location": 277
+                                }
+                              },
+                              "location": 286,
+                              "name": [
+                                {
+                                  "String": {
+                                    "str": "*"
+                                  }
+                                }
+                              ],
+                              "rexpr": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "u"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "un_fact"
+                                      }
+                                    }
+                                  ],
+                                  "location": 288
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "whereClause": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "s"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "sl_unit"
+                                }
+                              }
+                            ],
+                            "location": 365
+                          }
+                        },
+                        "location": 375,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "u"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "un_name"
+                                }
+                              }
+                            ],
+                            "location": 377
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_name"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 25,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_avail"
+                        }
+                      }
+                    ],
+                    "location": 25
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 51,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_color"
+                        }
+                      }
+                    ],
+                    "location": 51
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 70,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_len"
+                        }
+                      }
+                    ],
+                    "location": 70
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 94,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_unit"
+                        }
+                      }
+                    ],
+                    "location": 94
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 112,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_len_cm"
+                        }
+                      }
+                    ],
+                    "location": 112
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 396
+    }
+  ],
+  "version": 130003
+}

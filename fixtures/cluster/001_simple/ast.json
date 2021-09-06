@@ -1,0 +1,18 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ClusterStmt": {
+          "relation": {
+            "inh": true,
+            "location": 8,
+            "relname": "employees",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 17
+    }
+  ],
+  "version": 130003
+}

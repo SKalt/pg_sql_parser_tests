@@ -1,0 +1,46 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "title_idx",
+          "indexIncludingParams": [
+            {
+              "IndexElem": {
+                "name": "director",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            },
+            {
+              "IndexElem": {
+                "name": "rating",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "title",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 33,
+            "relname": "films",
+            "relpersistence": "p"
+          },
+          "unique": true
+        }
+      },
+      "stmt_len": 73
+    }
+  ],
+  "version": 130003
+}

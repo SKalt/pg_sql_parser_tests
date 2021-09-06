@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterOwnerStmt": {
+          "newowner": {
+            "location": 26,
+            "rolename": "joe",
+            "roletype": "ROLESPEC_CSTRING"
+          },
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "email"
+                  }
+                }
+              ]
+            }
+          },
+          "objectType": "OBJECT_TYPE"
+        }
+      },
+      "stmt_len": 29
+    }
+  ],
+  "version": 130003
+}

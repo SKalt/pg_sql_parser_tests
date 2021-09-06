@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Development Database",
+          "object": {
+            "String": {
+              "str": "my_database"
+            }
+          },
+          "objtype": "OBJECT_DATABASE"
+        }
+      },
+      "stmt_len": 57
+    }
+  ],
+  "version": 130003
+}

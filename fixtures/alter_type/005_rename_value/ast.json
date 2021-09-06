@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterEnumStmt": {
+          "newVal": "mauve",
+          "oldVal": "purple",
+          "typeName": [
+            {
+              "String": {
+                "str": "colors"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 50
+    }
+  ],
+  "version": 130003
+}

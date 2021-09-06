@@ -1,0 +1,565 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "t2",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "a",
+                "is_local": true,
+                "location": 22,
+                "typeName": {
+                  "location": 26,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "b",
+                "is_local": true,
+                "location": 35,
+                "typeName": {
+                  "location": 39,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 44
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 59,
+            "relname": "t2",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeFunction": {
+                    "alias": {
+                      "aliasname": "s",
+                      "colnames": [
+                        {
+                          "String": {
+                            "str": "i"
+                          }
+                        }
+                      ]
+                    },
+                    "functions": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "FuncCall": {
+                                "args": [
+                                  {
+                                    "A_Const": {
+                                      "location": 130,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 1
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 132,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 1000000
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "generate_series"
+                                    }
+                                  }
+                                ],
+                                "location": 114
+                              }
+                            },
+                            {}
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 69,
+                    "val": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "i"
+                                  }
+                                }
+                              ],
+                              "location": 73
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 75,
+                              "val": {
+                                "Integer": {
+                                  "ival": 100
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "mod"
+                            }
+                          }
+                        ],
+                        "location": 69
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 81,
+                    "val": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "i"
+                                  }
+                                }
+                              ],
+                              "location": 85
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 87,
+                              "val": {
+                                "Integer": {
+                                  "ival": 100
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "mod"
+                            }
+                          }
+                        ],
+                        "location": 81
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 100,
+      "stmt_location": 45
+    },
+    {
+      "stmt": {
+        "CreateStatsStmt": {
+          "defnames": [
+            {
+              "String": {
+                "str": "s2"
+              }
+            }
+          ],
+          "exprs": [
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "a"
+                    }
+                  }
+                ],
+                "location": 178
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "b"
+                    }
+                  }
+                ],
+                "location": 181
+              }
+            }
+          ],
+          "relations": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 188,
+                "relname": "t2",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "stat_types": [
+            {
+              "String": {
+                "str": "mcv"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 44,
+      "stmt_location": 146
+    },
+    {
+      "stmt": {
+        "VacuumStmt": {
+          "rels": [
+            {
+              "VacuumRelation": {
+                "relation": {
+                  "inh": true,
+                  "location": 201,
+                  "relname": "t2",
+                  "relpersistence": "p"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 12,
+      "stmt_location": 191
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 250
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 272,
+                    "relname": "t2",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 265,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 265
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "BoolExpr": {
+                  "args": [
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            ],
+                            "location": 282
+                          }
+                        },
+                        "location": 284,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 286,
+                            "val": {
+                              "Integer": {
+                                "ival": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "b"
+                                }
+                              }
+                            ],
+                            "location": 294
+                          }
+                        },
+                        "location": 296,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 298,
+                            "val": {
+                              "Integer": {
+                                "ival": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "boolop": "AND_EXPR",
+                  "location": 289
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 96,
+      "stmt_location": 204
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 353
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 375,
+                    "relname": "t2",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 368,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 368
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "BoolExpr": {
+                  "args": [
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "a"
+                                }
+                              }
+                            ],
+                            "location": 385
+                          }
+                        },
+                        "location": 387,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 389,
+                            "val": {
+                              "Integer": {
+                                "ival": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "b"
+                                }
+                              }
+                            ],
+                            "location": 397
+                          }
+                        },
+                        "location": 399,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 401,
+                            "val": {
+                              "Integer": {
+                                "ival": 2
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "boolop": "AND_EXPR",
+                  "location": 392
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 102,
+      "stmt_location": 301
+    }
+  ],
+  "version": 130003
+}

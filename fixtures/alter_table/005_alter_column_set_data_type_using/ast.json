@@ -1,0 +1,149 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "ColumnDef": {
+                    "location": 33,
+                    "raw_default": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "TypeCast": {
+                            "arg": {
+                              "A_Const": {
+                                "location": 129,
+                                "val": {
+                                  "String": {
+                                    "str": "epoch"
+                                  }
+                                }
+                              }
+                            },
+                            "location": -1,
+                            "typeName": {
+                              "location": 104,
+                              "names": [
+                                {
+                                  "String": {
+                                    "str": "pg_catalog"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "timestamptz"
+                                  }
+                                }
+                              ],
+                              "typemod": -1
+                            }
+                          }
+                        },
+                        "location": 137,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "+"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "foo_timestamp"
+                                    }
+                                  }
+                                ],
+                                "location": 139
+                              }
+                            },
+                            "location": 153,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "TypeCast": {
+                                "arg": {
+                                  "A_Const": {
+                                    "location": 164,
+                                    "val": {
+                                      "String": {
+                                        "str": "1 second"
+                                      }
+                                    }
+                                  }
+                                },
+                                "location": -1,
+                                "typeName": {
+                                  "location": 155,
+                                  "names": [
+                                    {
+                                      "String": {
+                                        "str": "pg_catalog"
+                                      }
+                                    },
+                                    {
+                                      "String": {
+                                        "str": "interval"
+                                      }
+                                    }
+                                  ],
+                                  "typemod": -1
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "typeName": {
+                      "location": 61,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "timestamptz"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                },
+                "name": "foo_timestamp",
+                "subtype": "AT_AlterColumnType"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 174
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,32 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "btree"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "float_ops"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_OPFAMILY"
+        }
+      },
+      "stmt_len": 42
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,138 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ListenStmt": {
+          "conditionname": "virtual"
+        }
+      },
+      "stmt_len": 14
+    },
+    {
+      "stmt": {
+        "NotifyStmt": {
+          "conditionname": "virtual"
+        }
+      },
+      "stmt_len": 15,
+      "stmt_location": 15
+    },
+    {
+      "stmt": {
+        "NotifyStmt": {
+          "conditionname": "virtual",
+          "payload": "This is the payload"
+        }
+      },
+      "stmt_len": 121,
+      "stmt_location": 31
+    },
+    {
+      "stmt": {
+        "ListenStmt": {
+          "conditionname": "foo"
+        }
+      },
+      "stmt_len": 130,
+      "stmt_location": 153
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 292,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "A_Const": {
+                              "location": 302,
+                              "val": {
+                                "String": {
+                                  "str": "fo"
+                                }
+                              }
+                            }
+                          },
+                          "location": 307,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "||"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_Const": {
+                              "location": 310,
+                              "val": {
+                                "String": {
+                                  "str": "o"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "A_Const": {
+                              "location": 315,
+                              "val": {
+                                "String": {
+                                  "str": "pay"
+                                }
+                              }
+                            }
+                          },
+                          "location": 321,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "||"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_Const": {
+                              "location": 324,
+                              "val": {
+                                "String": {
+                                  "str": "load"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_notify"
+                        }
+                      }
+                    ],
+                    "location": 292
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 47,
+      "stmt_location": 284
+    }
+  ],
+  "version": 130003
+}

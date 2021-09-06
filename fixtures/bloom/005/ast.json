@@ -1,0 +1,282 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "btreeidx1",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "i1",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 26,
+            "relname": "tbloom",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 37
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "btreeidx2",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "i2",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 81,
+            "relname": "tbloom",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 38
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "btreeidx3",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "i3",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 136,
+            "relname": "tbloom",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 93
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "btreeidx4",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "i4",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 191,
+            "relname": "tbloom",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 148
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "btreeidx5",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "i5",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 246,
+            "relname": "tbloom",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 203
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "btreeidx6",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "i6",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 301,
+            "relname": "tbloom",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 54,
+      "stmt_location": 258
+    },
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 338
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 360,
+                    "relname": "tbloom",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 353,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 353
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "BoolExpr": {
+                  "args": [
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "i2"
+                                }
+                              }
+                            ],
+                            "location": 373
+                          }
+                        },
+                        "location": 376,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 378,
+                            "val": {
+                              "Integer": {
+                                "ival": 898732
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "i5"
+                                }
+                              }
+                            ],
+                            "location": 389
+                          }
+                        },
+                        "location": 392,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 394,
+                            "val": {
+                              "Integer": {
+                                "ival": 123451
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "boolop": "AND_EXPR",
+                  "location": 385
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 87,
+      "stmt_location": 313
+    }
+  ],
+  "version": 130003
+}

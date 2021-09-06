@@ -1,0 +1,131 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "machines",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "SubLink": {
+              "location": 40,
+              "subLinkType": "ANY_SUBLINK",
+              "subselect": {
+                "SelectStmt": {
+                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                  "op": "SETOP_NONE",
+                  "valuesLists": [
+                    {
+                      "List": {
+                        "items": [
+                          {
+                            "TypeCast": {
+                              "arg": {
+                                "A_Const": {
+                                  "location": 51,
+                                  "val": {
+                                    "String": {
+                                      "str": "192.168.0.1"
+                                    }
+                                  }
+                                }
+                              },
+                              "location": 64,
+                              "typeName": {
+                                "location": 66,
+                                "names": [
+                                  {
+                                    "String": {
+                                      "str": "inet"
+                                    }
+                                  }
+                                ],
+                                "typemod": -1
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "List": {
+                        "items": [
+                          {
+                            "A_Const": {
+                              "location": 74,
+                              "val": {
+                                "String": {
+                                  "str": "192.168.0.10"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "List": {
+                        "items": [
+                          {
+                            "A_Const": {
+                              "location": 92,
+                              "val": {
+                                "String": {
+                                  "str": "192.168.1.43"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "testexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "ip_address"
+                      }
+                    }
+                  ],
+                  "location": 29
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 108
+    }
+  ],
+  "version": 130003
+}

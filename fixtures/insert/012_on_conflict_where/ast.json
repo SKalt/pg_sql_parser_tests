@@ -1,0 +1,95 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 197,
+                "name": "did"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 202,
+                "name": "dname"
+              }
+            }
+          ],
+          "onConflictClause": {
+            "action": "ONCONFLICT_NOTHING",
+            "infer": {
+              "indexElems": [
+                {
+                  "IndexElem": {
+                    "name": "did",
+                    "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                    "ordering": "SORTBY_DEFAULT"
+                  }
+                }
+              ],
+              "location": 261,
+              "whereClause": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "is_active"
+                      }
+                    }
+                  ],
+                  "location": 273
+                }
+              }
+            },
+            "location": 249
+          },
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 183,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 217,
+                          "val": {
+                            "Integer": {
+                              "ival": 10
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 221,
+                          "val": {
+                            "String": {
+                              "str": "Conrad International"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 293
+    }
+  ],
+  "version": 130003
+}

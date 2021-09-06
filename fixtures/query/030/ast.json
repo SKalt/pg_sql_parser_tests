@@ -1,0 +1,53 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "weather",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "city"
+                      }
+                    }
+                  ],
+                  "location": 26
+                }
+              },
+              "location": 31,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 33,
+                  "val": {
+                    "String": {
+                      "str": "Hayward"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 42
+    }
+  ],
+  "version": 130003
+}

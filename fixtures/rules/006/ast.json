@@ -1,0 +1,272 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "old"
+                },
+                "inh": true,
+                "location": 118,
+                "relname": "shoelace",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "new"
+                },
+                "inh": true,
+                "location": 132,
+                "relname": "shoelace",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "s"
+                },
+                "inh": true,
+                "location": 153,
+                "relname": "shoelace_data",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "u"
+                },
+                "inh": true,
+                "location": 170,
+                "relname": "unit",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "s"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_name"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 18,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "s"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_avail"
+                        }
+                      }
+                    ],
+                    "location": 18
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 37,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "s"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_color"
+                        }
+                      }
+                    ],
+                    "location": 37
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 49,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "s"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_len"
+                        }
+                      }
+                    ],
+                    "location": 49
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 59,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "s"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_unit"
+                        }
+                      }
+                    ],
+                    "location": 59
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 77,
+                "name": "sl_len_cm",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "s"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "sl_len"
+                            }
+                          }
+                        ],
+                        "location": 77
+                      }
+                    },
+                    "location": 86,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "*"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "u"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "un_fact"
+                            }
+                          }
+                        ],
+                        "location": 88
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "s"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "sl_unit"
+                      }
+                    }
+                  ],
+                  "location": 184
+                }
+              },
+              "location": 194,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "u"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "un_name"
+                      }
+                    }
+                  ],
+                  "location": 196
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 205
+    }
+  ],
+  "version": 130003
+}

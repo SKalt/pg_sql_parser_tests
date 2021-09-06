@@ -1,0 +1,53 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "products",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "price"
+                      }
+                    }
+                  ],
+                  "location": 27
+                }
+              },
+              "location": 33,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 35,
+                  "val": {
+                    "Integer": {
+                      "ival": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 37
+    }
+  ],
+  "version": 130003
+}

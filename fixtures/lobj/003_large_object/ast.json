@@ -1,0 +1,447 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "image",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 25,
+                "typeName": {
+                  "location": 41,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "raster",
+                "is_local": true,
+                "location": 51,
+                "typeName": {
+                  "location": 67,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "oid"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 72
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 82,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 91,
+                          "val": {
+                            "Integer": {
+                              "ival": -1
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "lo_creat"
+                        }
+                      }
+                    ],
+                    "location": 82
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 21,
+      "stmt_location": 73
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 152,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 162,
+                          "val": {
+                            "Integer": {
+                              "ival": 43213
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "lo_create"
+                        }
+                      }
+                    ],
+                    "location": 152
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 73,
+      "stmt_location": 95
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 230,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 240,
+                          "val": {
+                            "Integer": {
+                              "ival": 173454
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "lo_unlink"
+                        }
+                      }
+                    ],
+                    "location": 230
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 78,
+      "stmt_location": 169
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 310,
+                "name": "name"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 316,
+                "name": "raster"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 303,
+            "relname": "image",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 336,
+                          "val": {
+                            "String": {
+                              "str": "beautiful image"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 365,
+                                "val": {
+                                  "String": {
+                                    "str": "/etc/motd"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "lo_import"
+                              }
+                            }
+                          ],
+                          "location": 355
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 130,
+      "stmt_location": 248
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 400,
+                "name": "name"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 406,
+                "name": "raster"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 393,
+            "relname": "image",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 468,
+                          "val": {
+                            "String": {
+                              "str": "beautiful image"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 497,
+                                "val": {
+                                  "String": {
+                                    "str": "/etc/motd"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 510,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 68583
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "lo_import"
+                              }
+                            }
+                          ],
+                          "location": 487
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 138,
+      "stmt_location": 379
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 569,
+                "relname": "image",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 527,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "image"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "raster"
+                              }
+                            }
+                          ],
+                          "location": 537
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 551,
+                          "val": {
+                            "String": {
+                              "str": "/tmp/motd"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "lo_export"
+                        }
+                      }
+                    ],
+                    "location": 527
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "name"
+                      }
+                    }
+                  ],
+                  "location": 585
+                }
+              },
+              "location": 590,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 592,
+                  "val": {
+                    "String": {
+                      "str": "beautiful image"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 91,
+      "stmt_location": 518
+    }
+  ],
+  "version": 130003
+}

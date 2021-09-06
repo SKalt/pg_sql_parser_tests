@@ -1,0 +1,510 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateOpClassStmt": {
+          "amname": "gist",
+          "datatype": {
+            "location": 57,
+            "names": [
+              {
+                "String": {
+                  "str": "_int4"
+                }
+              }
+            ],
+            "typemod": -1
+          },
+          "isDefault": true,
+          "items": [
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u0026\u0026"
+                      }
+                    }
+                  ]
+                },
+                "number": 3
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 148,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "anyarray"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 158,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "anyarray"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ]
+                },
+                "number": 6
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "@\u003e"
+                      }
+                    }
+                  ]
+                },
+                "number": 7
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003c@"
+                      }
+                    }
+                  ]
+                },
+                "number": 8
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 277,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "_int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 284,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "query_int"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "@@"
+                      }
+                    }
+                  ]
+                },
+                "number": 20
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 346,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 356,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "_int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 363,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int2"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 373,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "oid"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 378,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "g_int_consistent"
+                      }
+                    }
+                  ]
+                },
+                "number": 1
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 434,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 444,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "g_int_union"
+                      }
+                    }
+                  ]
+                },
+                "number": 2
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 503,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "g_int_compress"
+                      }
+                    }
+                  ]
+                },
+                "number": 3
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 564,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "g_int_decompress"
+                      }
+                    }
+                  ]
+                },
+                "number": 4
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 622,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 632,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 642,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "g_int_penalty"
+                      }
+                    }
+                  ]
+                },
+                "number": 5
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 702,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 712,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "g_int_picksplit"
+                      }
+                    }
+                  ]
+                },
+                "number": 6
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 2,
+                "name": {
+                  "objargs": [
+                    {
+                      "TypeName": {
+                        "location": 767,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "_int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 774,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "_int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    },
+                    {
+                      "TypeName": {
+                        "location": 781,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "internal"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  ],
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "g_int_same"
+                      }
+                    }
+                  ]
+                },
+                "number": 7
+              }
+            }
+          ],
+          "opclassname": [
+            {
+              "String": {
+                "str": "gist__int_ops"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 790
+    }
+  ],
+  "version": 130003
+}

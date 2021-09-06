@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "postgres_fdw"
+        }
+      },
+      "stmt_len": 29
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,45 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTSConfigurationStmt": {
+          "cfgname": [
+            {
+              "String": {
+                "str": "my_config"
+              }
+            }
+          ],
+          "dicts": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "english"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "swedish"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "ALTER_TSCONFIG_REPLACE_DICT",
+          "replace": true
+        }
+      },
+      "stmt_len": 86
+    }
+  ],
+  "version": 130003
+}

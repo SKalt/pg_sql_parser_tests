@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterDatabaseSetStmt": {
+          "dbname": "test",
+          "setstmt": {
+            "args": [
+              {
+                "A_Const": {
+                  "location": 44,
+                  "val": {
+                    "String": {
+                      "str": "off"
+                    }
+                  }
+                }
+              }
+            ],
+            "kind": "VAR_SET_VALUE",
+            "name": "enable_indexscan"
+          }
+        }
+      },
+      "stmt_len": 47
+    }
+  ],
+  "version": 130003
+}

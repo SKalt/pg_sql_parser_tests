@@ -1,0 +1,36 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTrigStmt": {
+          "events": 4,
+          "funcname": [
+            {
+              "String": {
+                "str": "check_transfer_balances_to_zero"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 51,
+            "relname": "transfer",
+            "relpersistence": "p"
+          },
+          "transitionRels": [
+            {
+              "TriggerTransition": {
+                "isNew": true,
+                "isTable": true,
+                "name": "inserted"
+              }
+            }
+          ],
+          "trigname": "transfer_insert"
+        }
+      },
+      "stmt_len": 175
+    }
+  ],
+  "version": 130003
+}

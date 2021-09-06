@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableShowStmt": {
+          "name": "all"
+        }
+      },
+      "stmt_len": 8
+    }
+  ],
+  "version": 130003
+}

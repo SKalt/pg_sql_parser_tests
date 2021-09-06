@@ -1,0 +1,36 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 19,
+                "val": {
+                  "String": {
+                    "str": "my_schema"
+                  }
+                }
+              }
+            },
+            {
+              "A_Const": {
+                "location": 30,
+                "val": {
+                  "String": {
+                    "str": "public"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "search_path"
+        }
+      },
+      "stmt_len": 36
+    }
+  ],
+  "version": 130003
+}

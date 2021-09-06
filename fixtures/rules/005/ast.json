@@ -1,0 +1,161 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "shoelace"
+                },
+                "inh": true,
+                "location": 138,
+                "relname": "shoelace",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_name"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 25,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_avail"
+                        }
+                      }
+                    ],
+                    "location": 25
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 51,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_color"
+                        }
+                      }
+                    ],
+                    "location": 51
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 70,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_len"
+                        }
+                      }
+                    ],
+                    "location": 70
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 94,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_unit"
+                        }
+                      }
+                    ],
+                    "location": 94
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 112,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoelace"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_len_cm"
+                        }
+                      }
+                    ],
+                    "location": 112
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 155
+    }
+  ],
+  "version": 130003
+}

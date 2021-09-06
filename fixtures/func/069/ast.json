@@ -1,0 +1,130 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 40,
+                "relname": "pg_description",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitCount": {
+            "A_Const": {
+              "location": 61,
+              "val": {
+                "Integer": {
+                  "ival": 1
+                }
+              }
+            }
+          },
+          "limitOption": "LIMIT_OPTION_COUNT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "description"
+                              }
+                            }
+                          ],
+                          "location": 22
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "pg_collation_for"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 62
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 129,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "CollateClause": {
+                          "arg": {
+                            "A_Const": {
+                              "location": 144,
+                              "val": {
+                                "String": {
+                                  "str": "foo"
+                                }
+                              }
+                            }
+                          },
+                          "collname": [
+                            {
+                              "String": {
+                                "str": "de_DE"
+                              }
+                            }
+                          ],
+                          "location": 150
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "pg_collation_for"
+                        }
+                      }
+                    ],
+                    "location": 129
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 103,
+      "stmt_location": 63
+    }
+  ],
+  "version": 130003
+}

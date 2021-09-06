@@ -1,0 +1,118 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "films",
+            "relpersistence": "p"
+          },
+          "usingClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 24,
+                "relname": "producers",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "producer_id"
+                            }
+                          }
+                        ],
+                        "location": 42
+                      }
+                    },
+                    "location": 54,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "producers"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 56
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "producers"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "name"
+                            }
+                          }
+                        ],
+                        "location": 73
+                      }
+                    },
+                    "location": 88,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 90,
+                        "val": {
+                          "String": {
+                            "str": "foo"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 69
+            }
+          }
+        }
+      },
+      "stmt_len": 95
+    }
+  ],
+  "version": 130003
+}

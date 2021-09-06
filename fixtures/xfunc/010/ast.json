@@ -1,0 +1,52 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CallStmt": {
+          "funccall": {
+            "args": [
+              {
+                "A_Const": {
+                  "location": 9,
+                  "val": {
+                    "Integer": {
+                      "ival": 17
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 13,
+                  "val": {
+                    "Float": {
+                      "str": "100.0"
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 20,
+                  "val": {
+                    "Null": {}
+                  }
+                }
+              }
+            ],
+            "funcname": [
+              {
+                "String": {
+                  "str": "tp1"
+                }
+              }
+            ],
+            "location": 5
+          }
+        }
+      },
+      "stmt_len": 25
+    }
+  ],
+  "version": 130003
+}

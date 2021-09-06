@@ -1,0 +1,31 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreatePublicationStmt": {
+          "pubname": "mypub",
+          "tables": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 35,
+                "relname": "users",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 42,
+                "relname": "departments",
+                "relpersistence": "p"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 53
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,32 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterRoleStmt": {
+          "action": 1,
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "hu8jmn3"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "password",
+                "location": 23
+              }
+            }
+          ],
+          "role": {
+            "location": 11,
+            "rolename": "davide",
+            "roletype": "ROLESPEC_CSTRING"
+          }
+        }
+      },
+      "stmt_len": 41
+    }
+  ],
+  "version": 130003
+}

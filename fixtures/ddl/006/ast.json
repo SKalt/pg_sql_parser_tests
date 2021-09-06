@@ -1,0 +1,111 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "people",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "height_cm",
+                "is_local": true,
+                "location": 38,
+                "typeName": {
+                  "location": 48,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "height_in",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_GENERATED",
+                      "generated_when": "a",
+                      "location": 79,
+                      "raw_expr": {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "height_cm"
+                                  }
+                                }
+                              ],
+                              "location": 100
+                            }
+                          },
+                          "location": 110,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "/"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_Const": {
+                              "location": 112,
+                              "val": {
+                                "Float": {
+                                  "str": "2.54"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 61,
+                "typeName": {
+                  "location": 71,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "numeric"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 126
+    }
+  ],
+  "version": 130003
+}

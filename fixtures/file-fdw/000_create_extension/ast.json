@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateExtensionStmt": {
+          "extname": "file_fdw"
+        }
+      },
+      "stmt_len": 25
+    }
+  ],
+  "version": 130003
+}

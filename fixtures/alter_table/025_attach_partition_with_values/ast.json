@@ -1,0 +1,43 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "PartitionCmd": {
+                    "bound": {
+                      "location": 61,
+                      "modulus": 4,
+                      "remainder": 3,
+                      "strategy": "h"
+                    },
+                    "name": {
+                      "inh": true,
+                      "location": 40,
+                      "relname": "orders_p4",
+                      "relpersistence": "p"
+                    }
+                  }
+                },
+                "subtype": "AT_AttachPartition"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "orders",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 90
+    }
+  ],
+  "version": 130003
+}

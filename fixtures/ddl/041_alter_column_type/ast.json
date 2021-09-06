@@ -1,0 +1,71 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "ColumnDef": {
+                    "location": 34,
+                    "typeName": {
+                      "location": 45,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "numeric"
+                          }
+                        }
+                      ],
+                      "typemod": -1,
+                      "typmods": [
+                        {
+                          "A_Const": {
+                            "location": 53,
+                            "val": {
+                              "Integer": {
+                                "ival": 10
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "A_Const": {
+                            "location": 56,
+                            "val": {
+                              "Integer": {
+                                "ival": 2
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "name": "price",
+                "subtype": "AT_AlterColumnType"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "products",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 58
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,142 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 64,
+            "relname": "table_name",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 91,
+                          "val": {
+                            "String": {
+                              "str": "a"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 96,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 99,
+                          "val": {
+                            "String": {
+                              "str": "b"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 79,
+                "name": "jsonb_field",
+                "val": {
+                  "A_Const": {
+                    "location": 106,
+                    "val": {
+                      "String": {
+                        "str": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 109
+    },
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 175,
+            "relname": "table_name",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 202,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "A_Indices": {
+                      "uidx": {
+                        "A_Const": {
+                          "location": 205,
+                          "val": {
+                            "String": {
+                              "str": "a"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 190,
+                "name": "jsonb_field",
+                "val": {
+                  "A_Const": {
+                    "location": 212,
+                    "val": {
+                      "String": {
+                        "str": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 105,
+      "stmt_location": 110
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,115 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 19,
+                "name": "code"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 25,
+                "name": "title"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 32,
+                "name": "did"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 37,
+                "name": "date_prod"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 48,
+                "name": "kind"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "films",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 66,
+                          "val": {
+                            "String": {
+                              "str": "T_601"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 75,
+                          "val": {
+                            "String": {
+                              "str": "Yojimbo"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 86,
+                          "val": {
+                            "Integer": {
+                              "ival": 106
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 91,
+                          "val": {
+                            "String": {
+                              "str": "1961-06-16"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 105,
+                          "val": {
+                            "String": {
+                              "str": "Drama"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 113
+    }
+  ],
+  "version": 130003
+}

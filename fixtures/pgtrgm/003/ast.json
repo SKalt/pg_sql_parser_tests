@@ -1,0 +1,36 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "gin",
+          "idxname": "trgm_idx",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "t",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "opclass": [
+                  {
+                    "String": {
+                      "str": "gin_trgm_ops"
+                    }
+                  }
+                ],
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 25,
+            "relname": "test_trgm",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 61
+    }
+  ],
+  "version": 130003
+}

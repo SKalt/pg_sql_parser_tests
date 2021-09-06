@@ -1,0 +1,207 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "objargs": [
+                  {
+                    "TypeName": {
+                      "location": 50,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "text"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                ],
+                "objname": [
+                  {
+                    "String": {
+                      "str": "do_db_maintenance"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 73
+    },
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "objargs": [
+                  {
+                    "TypeName": {
+                      "location": 111,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "text"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                ],
+                "objname": [
+                  {
+                    "String": {
+                      "str": "do_db_maintenance"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 74
+    },
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "objargs": [
+                  {
+                    "TypeName": {
+                      "location": 164,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "text"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                ],
+                "objname": [
+                  {
+                    "String": {
+                      "str": "do_db_maintenance"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 42,
+      "stmt_location": 127
+    },
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "objargs": [
+                  {
+                    "TypeName": {
+                      "location": 204,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "text"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                ],
+                "objname": [
+                  {
+                    "String": {
+                      "str": "do_db_maintenance"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 39,
+      "stmt_location": 170
+    },
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "ObjectWithArgs": {
+                "objargs": [
+                  {
+                    "TypeName": {
+                      "location": 244,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "text"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  },
+                  {
+                    "TypeName": {
+                      "location": 250,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "text"
+                          }
+                        }
+                      ],
+                      "typemod": -1
+                    }
+                  }
+                ],
+                "objname": [
+                  {
+                    "String": {
+                      "str": "do_db_maintenance"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "removeType": "OBJECT_PROCEDURE"
+        }
+      },
+      "stmt_len": 45,
+      "stmt_location": 210
+    }
+  ],
+  "version": 130003
+}

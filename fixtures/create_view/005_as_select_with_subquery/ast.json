@@ -1,0 +1,253 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "f"
+                    },
+                    "inh": true,
+                    "location": 224,
+                    "relname": "films",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 35,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "f"
+                            }
+                          },
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 35
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 51,
+                    "name": "country",
+                    "val": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "f"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "country_code"
+                                  }
+                                }
+                              ],
+                              "location": 72
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "country_code_to_name"
+                            }
+                          }
+                        ],
+                        "location": 51
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 111,
+                    "name": "avg_rating",
+                    "val": {
+                      "SubLink": {
+                        "location": 111,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "alias": {
+                                    "aliasname": "r"
+                                  },
+                                  "inh": true,
+                                  "location": 150,
+                                  "relname": "user_ratings",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 119,
+                                  "val": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "r"
+                                                }
+                                              },
+                                              {
+                                                "String": {
+                                                  "str": "rating"
+                                                }
+                                              }
+                                            ],
+                                            "location": 123
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "avg"
+                                          }
+                                        }
+                                      ],
+                                      "location": 119
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "r"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "film_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 183
+                                  }
+                                },
+                                "location": 193,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "f"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 195
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "f"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "kind"
+                          }
+                        }
+                      ],
+                      "location": 242
+                    }
+                  },
+                  "location": 249,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "A_Const": {
+                      "location": 251,
+                      "val": {
+                        "String": {
+                          "str": "Comedy"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 12,
+            "relname": "comedies",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "NO_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 259
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,26 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableSetStmt": {
+          "args": [
+            {
+              "A_Const": {
+                "location": 23,
+                "val": {
+                  "String": {
+                    "str": "value"
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "VAR_SET_VALUE",
+          "name": "client_encoding"
+        }
+      },
+      "stmt_len": 30
+    }
+  ],
+  "version": 130003
+}

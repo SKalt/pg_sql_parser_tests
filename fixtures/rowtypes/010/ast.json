@@ -1,0 +1,100 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 24,
+                "relname": "on_hand",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "item"
+                            }
+                          }
+                        ],
+                        "location": 8
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "String": {
+                          "str": "name"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "A_Indirection": {
+                  "arg": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "item"
+                          }
+                        }
+                      ],
+                      "location": 39
+                    }
+                  },
+                  "indirection": [
+                    {
+                      "String": {
+                        "str": "price"
+                      }
+                    }
+                  ]
+                }
+              },
+              "location": 51,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 53,
+                  "val": {
+                    "Float": {
+                      "str": "9.99"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 57
+    }
+  ],
+  "version": 130003
+}

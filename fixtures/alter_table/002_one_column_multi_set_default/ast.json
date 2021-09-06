@@ -1,0 +1,97 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "ColumnDef": {
+                    "colname": "status",
+                    "constraints": [
+                      {
+                        "Constraint": {
+                          "contype": "CONSTR_DEFAULT",
+                          "location": 57,
+                          "raw_expr": {
+                            "A_Const": {
+                              "location": 65,
+                              "val": {
+                                "String": {
+                                  "str": "old"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "is_local": true,
+                    "location": 38,
+                    "typeName": {
+                      "location": 45,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "varchar"
+                          }
+                        }
+                      ],
+                      "typemod": -1,
+                      "typmods": [
+                        {
+                          "A_Const": {
+                            "location": 53,
+                            "val": {
+                              "Integer": {
+                                "ival": 30
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "subtype": "AT_AddColumn"
+              }
+            },
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "A_Const": {
+                    "location": 106,
+                    "val": {
+                      "String": {
+                        "str": "current"
+                      }
+                    }
+                  }
+                },
+                "name": "status",
+                "subtype": "AT_ColumnDefault"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "transactions",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 115
+    }
+  ],
+  "version": 130003
+}

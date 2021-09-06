@@ -1,0 +1,526 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "fooid",
+                "is_local": true,
+                "location": 18,
+                "typeName": {
+                  "location": 24,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "foosubid",
+                "is_local": true,
+                "location": 29,
+                "typeName": {
+                  "location": 38,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "fooname",
+                "is_local": true,
+                "location": 43,
+                "typeName": {
+                  "location": 51,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 56
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "getfoo"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n    SELECT * FROM foo WHERE fooid = $1;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 105
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 154
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 82,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "returnType": {
+            "location": 101,
+            "names": [
+              {
+                "String": {
+                  "str": "foo"
+                }
+              }
+            ],
+            "setof": true,
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 109,
+      "stmt_location": 57
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "t1"
+                },
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 190,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 1
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "getfoo"
+                                }
+                              }
+                            ],
+                            "location": 183
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 176,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 176
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 31,
+      "stmt_location": 167
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 215,
+                "relname": "foo",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 208,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 208
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "SubLink": {
+              "location": 238,
+              "subLinkType": "ANY_SUBLINK",
+              "subselect": {
+                "SelectStmt": {
+                  "fromClause": [
+                    {
+                      "RangeFunction": {
+                        "alias": {
+                          "aliasname": "z"
+                        },
+                        "functions": [
+                          {
+                            "List": {
+                              "items": [
+                                {
+                                  "FuncCall": {
+                                    "args": [
+                                      {
+                                        "ColumnRef": {
+                                          "fields": [
+                                            {
+                                              "String": {
+                                                "str": "foo"
+                                              }
+                                            },
+                                            {
+                                              "String": {
+                                                "str": "fooid"
+                                              }
+                                            }
+                                          ],
+                                          "location": 319
+                                        }
+                                      }
+                                    ],
+                                    "funcname": [
+                                      {
+                                        "String": {
+                                          "str": "getfoo"
+                                        }
+                                      }
+                                    ],
+                                    "location": 312
+                                  }
+                                },
+                                {}
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "limitOption": "LIMIT_OPTION_DEFAULT",
+                  "op": "SETOP_NONE",
+                  "targetList": [
+                    {
+                      "ResTarget": {
+                        "location": 274,
+                        "val": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "foosubid"
+                                }
+                              }
+                            ],
+                            "location": 274
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "whereClause": {
+                    "A_Expr": {
+                      "kind": "AEXPR_OP",
+                      "lexpr": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "z"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "fooid"
+                              }
+                            }
+                          ],
+                          "location": 362
+                        }
+                      },
+                      "location": 370,
+                      "name": [
+                        {
+                          "String": {
+                            "str": "="
+                          }
+                        }
+                      ],
+                      "rexpr": {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "foo"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "fooid"
+                              }
+                            }
+                          ],
+                          "location": 372
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "testexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "foosubid"
+                      }
+                    }
+                  ],
+                  "location": 229
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 206,
+      "stmt_location": 199
+    },
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeFunction": {
+                    "functions": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "FuncCall": {
+                                "args": [
+                                  {
+                                    "A_Const": {
+                                      "location": 454,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 1
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "getfoo"
+                                    }
+                                  }
+                                ],
+                                "location": 447
+                              }
+                            },
+                            {}
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 440,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 440
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 420,
+            "relname": "vw_getfoo",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "NO_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 406
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 473,
+                "relname": "vw_getfoo",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 466,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 466
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 25,
+      "stmt_location": 457
+    }
+  ],
+  "version": 130003
+}

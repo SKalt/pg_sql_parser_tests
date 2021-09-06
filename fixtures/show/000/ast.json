@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "VariableShowStmt": {
+          "name": "datestyle"
+        }
+      },
+      "stmt_len": 14
+    }
+  ],
+  "version": 130003
+}

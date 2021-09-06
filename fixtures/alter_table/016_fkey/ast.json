@@ -1,0 +1,58 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "Constraint": {
+                    "conname": "distfk",
+                    "contype": "CONSTR_FOREIGN",
+                    "fk_attrs": [
+                      {
+                        "String": {
+                          "str": "address"
+                        }
+                      }
+                    ],
+                    "fk_del_action": "a",
+                    "fk_matchtype": "s",
+                    "fk_upd_action": "a",
+                    "initially_valid": true,
+                    "location": 29,
+                    "pk_attrs": [
+                      {
+                        "String": {
+                          "str": "address"
+                        }
+                      }
+                    ],
+                    "pktable": {
+                      "inh": true,
+                      "location": 80,
+                      "relname": "addresses",
+                      "relpersistence": "p"
+                    }
+                  }
+                },
+                "subtype": "AT_AddConstraint"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 99
+    }
+  ],
+  "version": 130003
+}

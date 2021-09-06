@@ -1,0 +1,254 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "accounts",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 21,
+                "name": "contact_first_name",
+                "val": {
+                  "MultiAssignRef": {
+                    "colno": 1,
+                    "ncolumns": 2,
+                    "source": {
+                      "SubLink": {
+                        "location": 66,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "inh": true,
+                                  "location": 101,
+                                  "relname": "salesmen",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 74,
+                                  "val": {
+                                    "ColumnRef": {
+                                      "fields": [
+                                        {
+                                          "String": {
+                                            "str": "first_name"
+                                          }
+                                        }
+                                      ],
+                                      "location": 74
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 86,
+                                  "val": {
+                                    "ColumnRef": {
+                                      "fields": [
+                                        {
+                                          "String": {
+                                            "str": "last_name"
+                                          }
+                                        }
+                                      ],
+                                      "location": 86
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "salesmen"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 121
+                                  }
+                                },
+                                "location": 133,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "accounts"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "sales_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 135
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 41,
+                "name": "contact_last_name",
+                "val": {
+                  "MultiAssignRef": {
+                    "colno": 2,
+                    "ncolumns": 2,
+                    "source": {
+                      "SubLink": {
+                        "location": 66,
+                        "subLinkType": "EXPR_SUBLINK",
+                        "subselect": {
+                          "SelectStmt": {
+                            "fromClause": [
+                              {
+                                "RangeVar": {
+                                  "inh": true,
+                                  "location": 101,
+                                  "relname": "salesmen",
+                                  "relpersistence": "p"
+                                }
+                              }
+                            ],
+                            "limitOption": "LIMIT_OPTION_DEFAULT",
+                            "op": "SETOP_NONE",
+                            "targetList": [
+                              {
+                                "ResTarget": {
+                                  "location": 74,
+                                  "val": {
+                                    "ColumnRef": {
+                                      "fields": [
+                                        {
+                                          "String": {
+                                            "str": "first_name"
+                                          }
+                                        }
+                                      ],
+                                      "location": 74
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "ResTarget": {
+                                  "location": 86,
+                                  "val": {
+                                    "ColumnRef": {
+                                      "fields": [
+                                        {
+                                          "String": {
+                                            "str": "last_name"
+                                          }
+                                        }
+                                      ],
+                                      "location": 86
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "whereClause": {
+                              "A_Expr": {
+                                "kind": "AEXPR_OP",
+                                "lexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "salesmen"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 121
+                                  }
+                                },
+                                "location": 133,
+                                "name": [
+                                  {
+                                    "String": {
+                                      "str": "="
+                                    }
+                                  }
+                                ],
+                                "rexpr": {
+                                  "ColumnRef": {
+                                    "fields": [
+                                      {
+                                        "String": {
+                                          "str": "accounts"
+                                        }
+                                      },
+                                      {
+                                        "String": {
+                                          "str": "sales_id"
+                                        }
+                                      }
+                                    ],
+                                    "location": 135
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 153
+    }
+  ],
+  "version": 130003
+}

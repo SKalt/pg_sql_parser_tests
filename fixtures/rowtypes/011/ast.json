@@ -1,0 +1,110 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 32,
+                "relname": "on_hand",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "on_hand"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "item"
+                            }
+                          }
+                        ],
+                        "location": 8
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "String": {
+                          "str": "name"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "A_Indirection": {
+                  "arg": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "on_hand"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "item"
+                          }
+                        }
+                      ],
+                      "location": 47
+                    }
+                  },
+                  "indirection": [
+                    {
+                      "String": {
+                        "str": "price"
+                      }
+                    }
+                  ]
+                }
+              },
+              "location": 67,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 69,
+                  "val": {
+                    "Float": {
+                      "str": "9.99"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 73
+    }
+  ],
+  "version": 130003
+}

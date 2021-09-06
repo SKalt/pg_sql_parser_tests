@@ -1,0 +1,87 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 56,
+                    "relname": "comedies",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 45,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 45
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "classification"
+                          }
+                        }
+                      ],
+                      "location": 75
+                    }
+                  },
+                  "location": 90,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "="
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "A_Const": {
+                      "location": 92,
+                      "val": {
+                        "String": {
+                          "str": "U"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 12,
+            "relname": "universal_comedies",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "LOCAL_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 123
+    }
+  ],
+  "version": 130003
+}

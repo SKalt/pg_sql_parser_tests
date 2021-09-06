@@ -1,0 +1,138 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "python_triple"
+              }
+            }
+          ],
+          "is_procedure": true,
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nreturn (a * 3, b * 3)\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 65
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpythonu"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 96
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 39,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_INOUT",
+                "name": "a"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 56,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_INOUT",
+                "name": "b"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 114
+    },
+    {
+      "stmt": {
+        "CallStmt": {
+          "funccall": {
+            "args": [
+              {
+                "A_Const": {
+                  "location": 136,
+                  "val": {
+                    "Integer": {
+                      "ival": 5
+                    }
+                  }
+                }
+              },
+              {
+                "A_Const": {
+                  "location": 139,
+                  "val": {
+                    "Integer": {
+                      "ival": 10
+                    }
+                  }
+                }
+              }
+            ],
+            "funcname": [
+              {
+                "String": {
+                  "str": "python_triple"
+                }
+              }
+            ],
+            "location": 122
+          }
+        }
+      },
+      "stmt_len": 27,
+      "stmt_location": 115
+    }
+  ],
+  "version": 130003
+}

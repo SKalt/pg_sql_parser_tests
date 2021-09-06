@@ -1,0 +1,94 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 16
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "internallength",
+                "location": 22
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 55,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "my_box_in_function"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "input",
+                "location": 47
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 88,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "my_box_out_function"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "output",
+                "location": 79
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 123,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "float4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "element",
+                "location": 113
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "box"
+              }
+            }
+          ],
+          "kind": "OBJECT_TYPE"
+        }
+      },
+      "stmt_len": 131
+    }
+  ],
+  "version": 130003
+}

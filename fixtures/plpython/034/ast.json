@@ -1,0 +1,70 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "transaction_test1"
+              }
+            }
+          ],
+          "is_procedure": true,
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpythonu"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 37
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nfor i in range(0, 10):\n    plpy.execute(\"INSERT INTO test1 (a) VALUES (%d)\" % i)\n    if i % 2 == 0:\n        plpy.commit()\n    else:\n        plpy.rollback()\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 56
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 220
+    },
+    {
+      "stmt": {
+        "CallStmt": {
+          "funccall": {
+            "funcname": [
+              {
+                "String": {
+                  "str": "transaction_test1"
+                }
+              }
+            ],
+            "location": 228
+          }
+        }
+      },
+      "stmt_len": 26,
+      "stmt_location": 221
+    }
+  ],
+  "version": 130003
+}

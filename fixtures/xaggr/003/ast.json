@@ -1,0 +1,175 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "args": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "FunctionParameter": {
+                      "argType": {
+                        "location": 22,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "complex"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      },
+                      "mode": "FUNC_PARAM_IN"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "Integer": {
+                "ival": -1
+              }
+            }
+          ],
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 45,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_add"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "sfunc",
+                "location": 37
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 70,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "stype",
+                "location": 62
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "(0,0)"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "initcond",
+                "location": 83
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 116,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_add"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "msfunc",
+                "location": 107
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 144,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex_sub"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "minvfunc",
+                "location": 133
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 170,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "complex"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "mstype",
+                "location": 161
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "(0,0)"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "minitcond",
+                "location": 183
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "sum"
+              }
+            }
+          ],
+          "kind": "OBJECT_AGGREGATE"
+        }
+      },
+      "stmt_len": 204
+    }
+  ],
+  "version": 130003
+}

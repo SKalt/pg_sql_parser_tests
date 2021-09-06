@@ -1,0 +1,1411 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "keyid",
+                "is_local": true,
+                "location": 28,
+                "typeName": {
+                  "location": 34,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "parent_keyid",
+                "is_local": true,
+                "location": 40,
+                "typeName": {
+                  "location": 53,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "pos",
+                "is_local": true,
+                "location": 59,
+                "typeName": {
+                  "location": 63,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 67
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 82,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 104,
+                          "val": {
+                            "String": {
+                              "str": "row1"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 111,
+                          "val": {
+                            "Null": {}
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 117,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 51,
+      "stmt_location": 68
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 133,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 155,
+                          "val": {
+                            "String": {
+                              "str": "row2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 162,
+                          "val": {
+                            "String": {
+                              "str": "row1"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 170,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 120
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 186,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 208,
+                          "val": {
+                            "String": {
+                              "str": "row3"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 215,
+                          "val": {
+                            "String": {
+                              "str": "row1"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 223,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 173
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 239,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 261,
+                          "val": {
+                            "String": {
+                              "str": "row4"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 268,
+                          "val": {
+                            "String": {
+                              "str": "row2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 276,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 226
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 292,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 314,
+                          "val": {
+                            "String": {
+                              "str": "row5"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 321,
+                          "val": {
+                            "String": {
+                              "str": "row2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 329,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 279
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 345,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 367,
+                          "val": {
+                            "String": {
+                              "str": "row6"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 374,
+                          "val": {
+                            "String": {
+                              "str": "row4"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 382,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 332
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 398,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 420,
+                          "val": {
+                            "String": {
+                              "str": "row7"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 427,
+                          "val": {
+                            "String": {
+                              "str": "row3"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 435,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 385
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 451,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 473,
+                          "val": {
+                            "String": {
+                              "str": "row8"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 480,
+                          "val": {
+                            "String": {
+                              "str": "row6"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 488,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 438
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 504,
+            "relname": "connectby_tree",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 526,
+                          "val": {
+                            "String": {
+                              "str": "row9"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 533,
+                          "val": {
+                            "String": {
+                              "str": "row5"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 541,
+                          "val": {
+                            "Integer": {
+                              "ival": 0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 52,
+      "stmt_location": 491
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "t"
+                },
+                "coldeflist": [
+                  {
+                    "ColumnDef": {
+                      "colname": "keyid",
+                      "is_local": true,
+                      "location": 708,
+                      "typeName": {
+                        "location": 714,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "parent_keyid",
+                      "is_local": true,
+                      "location": 720,
+                      "typeName": {
+                        "location": 733,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "level",
+                      "is_local": true,
+                      "location": 739,
+                      "typeName": {
+                        "location": 745,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "branch",
+                      "is_local": true,
+                      "location": 750,
+                      "typeName": {
+                        "location": 757,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                ],
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 643,
+                                  "val": {
+                                    "String": {
+                                      "str": "connectby_tree"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 661,
+                                  "val": {
+                                    "String": {
+                                      "str": "keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 670,
+                                  "val": {
+                                    "String": {
+                                      "str": "parent_keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 686,
+                                  "val": {
+                                    "String": {
+                                      "str": "row2"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 694,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 0
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 697,
+                                  "val": {
+                                    "String": {
+                                      "str": "~"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "connectby"
+                                }
+                              }
+                            ],
+                            "location": 633
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 626,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 626
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 218,
+      "stmt_location": 544
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "t"
+                },
+                "coldeflist": [
+                  {
+                    "ColumnDef": {
+                      "colname": "keyid",
+                      "is_local": true,
+                      "location": 1326,
+                      "typeName": {
+                        "location": 1332,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "parent_keyid",
+                      "is_local": true,
+                      "location": 1338,
+                      "typeName": {
+                        "location": 1351,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "level",
+                      "is_local": true,
+                      "location": 1357,
+                      "typeName": {
+                        "location": 1363,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                ],
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 1266,
+                                  "val": {
+                                    "String": {
+                                      "str": "connectby_tree"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1284,
+                                  "val": {
+                                    "String": {
+                                      "str": "keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1293,
+                                  "val": {
+                                    "String": {
+                                      "str": "parent_keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1309,
+                                  "val": {
+                                    "String": {
+                                      "str": "row2"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1317,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 0
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "connectby"
+                                }
+                              }
+                            ],
+                            "location": 1256
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1249,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 1249
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 604,
+      "stmt_location": 763
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "t"
+                },
+                "coldeflist": [
+                  {
+                    "ColumnDef": {
+                      "colname": "keyid",
+                      "is_local": true,
+                      "location": 1813,
+                      "typeName": {
+                        "location": 1819,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "parent_keyid",
+                      "is_local": true,
+                      "location": 1825,
+                      "typeName": {
+                        "location": 1838,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "level",
+                      "is_local": true,
+                      "location": 1844,
+                      "typeName": {
+                        "location": 1850,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "branch",
+                      "is_local": true,
+                      "location": 1855,
+                      "typeName": {
+                        "location": 1862,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "pos",
+                      "is_local": true,
+                      "location": 1868,
+                      "typeName": {
+                        "location": 1872,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                ],
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 1741,
+                                  "val": {
+                                    "String": {
+                                      "str": "connectby_tree"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1759,
+                                  "val": {
+                                    "String": {
+                                      "str": "keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1768,
+                                  "val": {
+                                    "String": {
+                                      "str": "parent_keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1784,
+                                  "val": {
+                                    "String": {
+                                      "str": "pos"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1791,
+                                  "val": {
+                                    "String": {
+                                      "str": "row2"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1799,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 0
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1802,
+                                  "val": {
+                                    "String": {
+                                      "str": "~"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "connectby"
+                                }
+                              }
+                            ],
+                            "location": 1731
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1724,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 1724
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 508,
+      "stmt_location": 1368
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "t"
+                },
+                "coldeflist": [
+                  {
+                    "ColumnDef": {
+                      "colname": "keyid",
+                      "is_local": true,
+                      "location": 2544,
+                      "typeName": {
+                        "location": 2550,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "parent_keyid",
+                      "is_local": true,
+                      "location": 2556,
+                      "typeName": {
+                        "location": 2569,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "level",
+                      "is_local": true,
+                      "location": 2575,
+                      "typeName": {
+                        "location": 2581,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "pos",
+                      "is_local": true,
+                      "location": 2586,
+                      "typeName": {
+                        "location": 2590,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                ],
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 2477,
+                                  "val": {
+                                    "String": {
+                                      "str": "connectby_tree"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 2495,
+                                  "val": {
+                                    "String": {
+                                      "str": "keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 2504,
+                                  "val": {
+                                    "String": {
+                                      "str": "parent_keyid"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 2520,
+                                  "val": {
+                                    "String": {
+                                      "str": "pos"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 2527,
+                                  "val": {
+                                    "String": {
+                                      "str": "row2"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 2535,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 0
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "connectby"
+                                }
+                              }
+                            ],
+                            "location": 2467
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 2460,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 2460
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 717,
+      "stmt_location": 1877
+    }
+  ],
+  "version": 130003
+}

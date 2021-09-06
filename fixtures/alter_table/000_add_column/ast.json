@@ -1,0 +1,62 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "ColumnDef": {
+                    "colname": "address",
+                    "is_local": true,
+                    "location": 36,
+                    "typeName": {
+                      "location": 44,
+                      "names": [
+                        {
+                          "String": {
+                            "str": "pg_catalog"
+                          }
+                        },
+                        {
+                          "String": {
+                            "str": "varchar"
+                          }
+                        }
+                      ],
+                      "typemod": -1,
+                      "typmods": [
+                        {
+                          "A_Const": {
+                            "location": 52,
+                            "val": {
+                              "Integer": {
+                                "ival": 30
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "subtype": "AT_AddColumn"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

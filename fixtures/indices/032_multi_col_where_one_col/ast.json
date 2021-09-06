@@ -1,0 +1,49 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "tests_success_constraint",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "subject",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            },
+            {
+              "IndexElem": {
+                "name": "target",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 48,
+            "relname": "tests",
+            "relpersistence": "p"
+          },
+          "unique": true,
+          "whereClause": {
+            "ColumnRef": {
+              "fields": [
+                {
+                  "String": {
+                    "str": "success"
+                  }
+                }
+              ],
+              "location": 82
+            }
+          }
+        }
+      },
+      "stmt_len": 89
+    }
+  ],
+  "version": 130003
+}

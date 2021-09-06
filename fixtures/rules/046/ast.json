@@ -1,0 +1,55 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "RuleStmt": {
+          "event": "CMD_INSERT",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 45,
+            "relname": "shoe",
+            "relpersistence": "p"
+          },
+          "rulename": "shoe_ins_protect"
+        }
+      },
+      "stmt_len": 72
+    },
+    {
+      "stmt": {
+        "RuleStmt": {
+          "event": "CMD_UPDATE",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 119,
+            "relname": "shoe",
+            "relpersistence": "p"
+          },
+          "rulename": "shoe_upd_protect"
+        }
+      },
+      "stmt_len": 73,
+      "stmt_location": 73
+    },
+    {
+      "stmt": {
+        "RuleStmt": {
+          "event": "CMD_DELETE",
+          "instead": true,
+          "relation": {
+            "inh": true,
+            "location": 193,
+            "relname": "shoe",
+            "relpersistence": "p"
+          },
+          "rulename": "shoe_del_protect"
+        }
+      },
+      "stmt_len": 73,
+      "stmt_location": 147
+    }
+  ],
+  "version": 130003
+}

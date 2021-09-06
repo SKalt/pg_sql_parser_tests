@@ -1,0 +1,38 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Transform between hstore and Python dict",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "TypeName": {
+                    "location": 25,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "hstore"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                {
+                  "String": {
+                    "str": "plpythonu"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TRANSFORM"
+        }
+      },
+      "stmt_len": 96
+    }
+  ],
+  "version": 130003
+}

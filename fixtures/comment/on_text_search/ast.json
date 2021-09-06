@@ -1,0 +1,88 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Special word filtering",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_config"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSCONFIGURATION"
+        }
+      },
+      "stmt_len": 74
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Snowball stemmer for Swedish language",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "swedish"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSDICTIONARY"
+        }
+      },
+      "stmt_len": 85,
+      "stmt_location": 75
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Splits text into words",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_parser"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSPARSER"
+        }
+      },
+      "stmt_len": 68,
+      "stmt_location": 161
+    },
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Snowball stemmer",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "snowball"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TSTEMPLATE"
+        }
+      },
+      "stmt_len": 63,
+      "stmt_location": 230
+    }
+  ],
+  "version": 130003
+}

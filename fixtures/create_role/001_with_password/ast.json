@@ -1,0 +1,28 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateRoleStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "jw8s0F4"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "password",
+                "location": 24
+              }
+            }
+          ],
+          "role": "davide",
+          "stmt_type": "ROLESTMT_USER"
+        }
+      },
+      "stmt_len": 42
+    }
+  ],
+  "version": 130003
+}

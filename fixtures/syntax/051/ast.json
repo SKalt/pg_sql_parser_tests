@@ -1,0 +1,143 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 99,
+                "relname": "departments",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "CaseExpr": {
+                    "args": [
+                      {
+                        "CaseWhen": {
+                          "expr": {
+                            "A_Expr": {
+                              "kind": "AEXPR_OP",
+                              "lexpr": {
+                                "FuncCall": {
+                                  "args": [
+                                    {
+                                      "ColumnRef": {
+                                        "fields": [
+                                          {
+                                            "String": {
+                                              "str": "employees"
+                                            }
+                                          }
+                                        ],
+                                        "location": 21
+                                      }
+                                    }
+                                  ],
+                                  "funcname": [
+                                    {
+                                      "String": {
+                                        "str": "min"
+                                      }
+                                    }
+                                  ],
+                                  "location": 17
+                                }
+                              },
+                              "location": 32,
+                              "name": [
+                                {
+                                  "String": {
+                                    "str": "\u003e"
+                                  }
+                                }
+                              ],
+                              "rexpr": {
+                                "A_Const": {
+                                  "location": 34,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 0
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "location": 12,
+                          "result": {
+                            "FuncCall": {
+                              "args": [
+                                {
+                                  "A_Expr": {
+                                    "kind": "AEXPR_OP",
+                                    "lexpr": {
+                                      "ColumnRef": {
+                                        "fields": [
+                                          {
+                                            "String": {
+                                              "str": "expenses"
+                                            }
+                                          }
+                                        ],
+                                        "location": 57
+                                      }
+                                    },
+                                    "location": 66,
+                                    "name": [
+                                      {
+                                        "String": {
+                                          "str": "/"
+                                        }
+                                      }
+                                    ],
+                                    "rexpr": {
+                                      "ColumnRef": {
+                                        "fields": [
+                                          {
+                                            "String": {
+                                              "str": "employees"
+                                            }
+                                          }
+                                        ],
+                                        "location": 68
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "funcname": [
+                                {
+                                  "String": {
+                                    "str": "avg"
+                                  }
+                                }
+                              ],
+                              "location": 53
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 110
+    }
+  ],
+  "version": 130003
+}

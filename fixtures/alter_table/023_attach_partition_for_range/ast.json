@@ -1,0 +1,65 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "PartitionCmd": {
+                    "bound": {
+                      "location": 77,
+                      "lowerdatums": [
+                        {
+                          "A_Const": {
+                            "location": 83,
+                            "val": {
+                              "String": {
+                                "str": "2016-07-01"
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "strategy": "r",
+                      "upperdatums": [
+                        {
+                          "A_Const": {
+                            "location": 101,
+                            "val": {
+                              "String": {
+                                "str": "2016-08-01"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "name": {
+                      "inh": true,
+                      "location": 45,
+                      "relname": "measurement_y2016m07",
+                      "relpersistence": "p"
+                    }
+                  }
+                },
+                "subtype": "AT_AttachPartition"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "measurement",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 114
+    }
+  ],
+  "version": 130003
+}

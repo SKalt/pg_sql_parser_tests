@@ -1,0 +1,86 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "measurement_usls_idx",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "unitsales",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "location": 42,
+            "relname": "measurement",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 65
+    },
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "measurement_usls_200602_idx",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "unitsales",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 116,
+            "relname": "measurement_y2006m02",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 82,
+      "stmt_location": 66
+    },
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "PartitionCmd": {
+                    "name": {
+                      "inh": true,
+                      "location": 204,
+                      "relname": "measurement_usls_200602_idx",
+                      "relpersistence": "p"
+                    }
+                  }
+                },
+                "subtype": "AT_AttachPartition"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 162,
+            "relname": "measurement_usls_idx",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_INDEX"
+        }
+      },
+      "stmt_len": 82,
+      "stmt_location": 149
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterForeignServerStmt": {
+          "has_version": true,
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "baz"
+                  }
+                },
+                "defaction": "DEFELEM_SET",
+                "defname": "host",
+                "location": 44
+              }
+            }
+          ],
+          "servername": "foo",
+          "version": "8.4"
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

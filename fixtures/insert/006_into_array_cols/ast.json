@@ -1,0 +1,182 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 80,
+                "name": "game"
+              }
+            },
+            {
+              "ResTarget": {
+                "indirection": [
+                  {
+                    "A_Indices": {
+                      "is_slice": true,
+                      "lidx": {
+                        "A_Const": {
+                          "location": 92,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      "uidx": {
+                        "A_Const": {
+                          "location": 94,
+                          "val": {
+                            "Integer": {
+                              "ival": 3
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "A_Indices": {
+                      "is_slice": true,
+                      "lidx": {
+                        "A_Const": {
+                          "location": 97,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      "uidx": {
+                        "A_Const": {
+                          "location": 99,
+                          "val": {
+                            "Integer": {
+                              "ival": 3
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "location": 86,
+                "name": "board"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 69,
+            "relname": "tictactoe",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 115,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 118,
+                          "val": {
+                            "String": {
+                              "str": "{{\" \",\" \",\" \"},{\" \",\" \",\" \"},{\" \",\" \",\" \"}}"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 164
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 249,
+                "name": "game"
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 255,
+                "name": "board"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 238,
+            "relname": "tictactoe",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 274,
+                          "val": {
+                            "Integer": {
+                              "ival": 2
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 277,
+                          "val": {
+                            "String": {
+                              "str": "{{X,\" \",\" \"},{\" \",O,\" \"},{\" \",X,\" \"}}"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 152,
+      "stmt_location": 165
+    }
+  ],
+  "version": 130003
+}

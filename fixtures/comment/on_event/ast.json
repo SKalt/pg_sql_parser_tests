@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Aborts all DDL commands",
+          "object": {
+            "String": {
+              "str": "abort_ddl"
+            }
+          },
+          "objtype": "OBJECT_EVENT_TRIGGER"
+        }
+      },
+      "stmt_len": 63
+    }
+  ],
+  "version": 130003
+}

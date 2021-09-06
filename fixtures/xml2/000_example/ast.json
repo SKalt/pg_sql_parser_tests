@@ -1,0 +1,197 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "alias": {
+                  "aliasname": "t"
+                },
+                "coldeflist": [
+                  {
+                    "ColumnDef": {
+                      "colname": "article_id",
+                      "is_local": true,
+                      "location": 203,
+                      "typeName": {
+                        "location": 214,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "author",
+                      "is_local": true,
+                      "location": 223,
+                      "typeName": {
+                        "location": 230,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "page_count",
+                      "is_local": true,
+                      "location": 236,
+                      "typeName": {
+                        "location": 247,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "int4"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  },
+                  {
+                    "ColumnDef": {
+                      "colname": "title",
+                      "is_local": true,
+                      "location": 256,
+                      "typeName": {
+                        "location": 262,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "text"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                ],
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 26,
+                                  "val": {
+                                    "String": {
+                                      "str": "article_id"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 52,
+                                  "val": {
+                                    "String": {
+                                      "str": "article_xml"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 79,
+                                  "val": {
+                                    "String": {
+                                      "str": "articles"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 103,
+                                  "val": {
+                                    "String": {
+                                      "str": "/article/author|/article/pages|/article/title"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 164,
+                                  "val": {
+                                    "String": {
+                                      "str": "date_entered \u003e '2003-01-01' "
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "xpath_table"
+                                }
+                              }
+                            ],
+                            "location": 14
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 267
+    }
+  ],
+  "version": 130003
+}

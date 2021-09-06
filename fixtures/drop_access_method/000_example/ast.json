@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropStmt": {
+          "behavior": "DROP_RESTRICT",
+          "objects": [
+            {
+              "String": {
+                "str": "heptree"
+              }
+            }
+          ],
+          "removeType": "OBJECT_ACCESS_METHOD"
+        }
+      },
+      "stmt_len": 26
+    }
+  ],
+  "version": 130003
+}

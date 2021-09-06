@@ -1,0 +1,21 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterObjectSchemaStmt": {
+          "newschema": "yourschema",
+          "objectType": "OBJECT_TABLE",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "distributors",
+            "relpersistence": "p",
+            "schemaname": "myschema"
+          }
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

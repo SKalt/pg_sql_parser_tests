@@ -1,0 +1,45 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterObjectSchemaStmt": {
+          "newschema": "maths",
+          "object": {
+            "ObjectWithArgs": {
+              "objargs": [
+                {
+                  "TypeName": {
+                    "location": 20,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "pg_catalog"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "int4"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                }
+              ],
+              "objname": [
+                {
+                  "String": {
+                    "str": "sqrt"
+                  }
+                }
+              ]
+            }
+          },
+          "objectType": "OBJECT_FUNCTION"
+        }
+      },
+      "stmt_len": 45
+    }
+  ],
+  "version": 130003
+}

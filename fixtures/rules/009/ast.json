@@ -1,0 +1,179 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "alias": {
+                  "aliasname": "shoe_ready"
+                },
+                "inh": true,
+                "location": 134,
+                "relname": "shoe_ready",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoe_ready"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "shoename"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 28,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoe_ready"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sh_avail"
+                        }
+                      }
+                    ],
+                    "location": 28
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 56,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoe_ready"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_name"
+                        }
+                      }
+                    ],
+                    "location": 56
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 76,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoe_ready"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "sl_avail"
+                        }
+                      }
+                    ],
+                    "location": 76
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 104,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "shoe_ready"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "total_avail"
+                        }
+                      }
+                    ],
+                    "location": 104
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "shoe_ready"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "total_avail"
+                      }
+                    }
+                  ],
+                  "location": 163
+                }
+              },
+              "location": 186,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 189,
+                  "val": {
+                    "Integer": {
+                      "ival": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 190
+    }
+  ],
+  "version": 130003
+}

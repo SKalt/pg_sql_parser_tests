@@ -1,0 +1,83 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ExplainStmt": {
+          "options": [
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "analyze",
+                "location": 9
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "off"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "timing",
+                "location": 18
+              }
+            }
+          ],
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 51,
+                    "relname": "t",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "groupClause": [
+                {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "a"
+                        }
+                      }
+                    ],
+                    "location": 62
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 37,
+                    "val": {
+                      "FuncCall": {
+                        "agg_star": true,
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "count"
+                            }
+                          }
+                        ],
+                        "location": 37
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 63
+    }
+  ],
+  "version": 130003
+}

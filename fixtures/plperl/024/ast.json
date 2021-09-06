@@ -1,0 +1,451 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTableAsStmt": {
+          "into": {
+            "onCommit": "ONCOMMIT_NOOP",
+            "rel": {
+              "inh": true,
+              "location": 13,
+              "relname": "hosts",
+              "relpersistence": "p"
+            }
+          },
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeFunction": {
+                    "alias": {
+                      "aliasname": "id"
+                    },
+                    "functions": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "FuncCall": {
+                                "args": [
+                                  {
+                                    "A_Const": {
+                                      "location": 112,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 1
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 114,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 3
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "generate_series"
+                                    }
+                                  }
+                                ],
+                                "location": 96
+                              }
+                            },
+                            {}
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 29,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 29
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 33,
+                    "name": "address",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "A_Const": {
+                                "location": 34,
+                                "val": {
+                                  "String": {
+                                    "str": "192.168.1."
+                                  }
+                                }
+                              }
+                            },
+                            "location": 46,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "||"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "ColumnRef": {
+                                "fields": [
+                                  {
+                                    "String": {
+                                      "str": "id"
+                                    }
+                                  }
+                                ],
+                                "location": 48
+                              }
+                            }
+                          }
+                        },
+                        "location": 51,
+                        "typeName": {
+                          "location": 53,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "inet"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 122
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "init_hosts_query"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n        $_SHARED{plan} = spi_prepare('SELECT * FROM hosts\n                                      WHERE address \u003c\u003c $1', 'inet');\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 184
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plperl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 320
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 179,
+            "names": [
+              {
+                "String": {
+                  "str": "void"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 212,
+      "stmt_location": 123
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "query_hosts"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n        return spi_exec_prepared(\n                $_SHARED{plan},\n                {limit =\u003e 2},\n                $_[0]\n        )-\u003e{rows};\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 403
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plperl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 549
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 377,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "inet"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 397,
+            "names": [
+              {
+                "String": {
+                  "str": "hosts"
+                }
+              }
+            ],
+            "setof": true,
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 228,
+      "stmt_location": 336
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "release_hosts_query"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n        spi_freeplan($_SHARED{plan});\n        undef $_SHARED{plan};\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 629
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plperl"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 706
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 624,
+            "names": [
+              {
+                "String": {
+                  "str": "void"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 156,
+      "stmt_location": 565
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 731,
+                "val": {
+                  "FuncCall": {
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "init_hosts_query"
+                        }
+                      }
+                    ],
+                    "location": 731
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 27,
+      "stmt_location": 722
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 758,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 770,
+                          "val": {
+                            "String": {
+                              "str": "192.168.1.0/30"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "query_hosts"
+                        }
+                      }
+                    ],
+                    "location": 758
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 37,
+      "stmt_location": 750
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 796,
+                "val": {
+                  "FuncCall": {
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "release_hosts_query"
+                        }
+                      }
+                    ],
+                    "location": 796
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 29,
+      "stmt_location": 788
+    }
+  ],
+  "version": 130003
+}

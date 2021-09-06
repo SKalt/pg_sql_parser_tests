@@ -1,0 +1,13 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DropTableSpaceStmt": {
+          "tablespacename": "mystuff"
+        }
+      },
+      "stmt_len": 23
+    }
+  ],
+  "version": 130003
+}

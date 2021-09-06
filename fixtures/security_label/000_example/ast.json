@@ -1,0 +1,26 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SecLabelStmt": {
+          "label": "system_u:object_r:sepgsql_table_t:s0",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "mytable"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_TABLE",
+          "provider": "selinux"
+        }
+      },
+      "stmt_len": 85
+    }
+  ],
+  "version": 130003
+}

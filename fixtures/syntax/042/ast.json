@@ -1,0 +1,59 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "RowExpr": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 11,
+                          "val": {
+                            "Integer": {
+                              "ival": 1
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 13,
+                          "val": {
+                            "Float": {
+                              "str": "2.5"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 17,
+                          "val": {
+                            "String": {
+                              "str": "this is a test"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "location": 7,
+                    "row_format": "COERCE_EXPLICIT_CALL"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 34
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,137 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 35,
+                "relname": "weather",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "groupClause": [
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "city"
+                    }
+                  }
+                ],
+                "location": 56
+              }
+            }
+          ],
+          "havingClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "temp_lo"
+                            }
+                          }
+                        ],
+                        "location": 76
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "max"
+                      }
+                    }
+                  ],
+                  "location": 72
+                }
+              },
+              "location": 85,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003c"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 87,
+                  "val": {
+                    "Integer": {
+                      "ival": 40
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 13,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "temp_lo"
+                              }
+                            }
+                          ],
+                          "location": 17
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "max"
+                        }
+                      }
+                    ],
+                    "location": 13
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 89
+    }
+  ],
+  "version": 130003
+}

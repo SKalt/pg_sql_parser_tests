@@ -1,0 +1,49 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DeleteStmt": {
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "software",
+            "relpersistence": "p"
+          },
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "hostname"
+                      }
+                    }
+                  ],
+                  "location": 27
+                }
+              },
+              "location": 36,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "ParamRef": {
+                  "location": 38,
+                  "number": 1
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 40
+    }
+  ],
+  "version": 130003
+}

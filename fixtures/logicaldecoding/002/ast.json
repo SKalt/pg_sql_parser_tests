@@ -1,0 +1,402 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "kind": "TRANS_STMT_BEGIN"
+        }
+      },
+      "stmt_len": 5
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 24,
+                "name": "data"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 19,
+            "relname": "data",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 37,
+                          "val": {
+                            "String": {
+                              "str": "5"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 35,
+      "stmt_location": 6
+    },
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "gid": "test_prepared1",
+          "kind": "TRANS_STMT_PREPARE"
+        }
+      },
+      "stmt_len": 37,
+      "stmt_location": 42
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 124,
+                                  "val": {
+                                    "String": {
+                                      "str": "regression_slot"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 143,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 149,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pg_logical_slot_get_changes"
+                                }
+                              }
+                            ],
+                            "location": 96
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 89,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 89
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 74,
+      "stmt_location": 80
+    },
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "gid": "test_prepared1",
+          "kind": "TRANS_STMT_COMMIT_PREPARED"
+        }
+      },
+      "stmt_len": 383,
+      "stmt_location": 155
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 582,
+                                  "val": {
+                                    "String": {
+                                      "str": "regression_slot"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 601,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 607,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pg_logical_slot_get_changes"
+                                }
+                              }
+                            ],
+                            "location": 554
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 547,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 547
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 73,
+      "stmt_location": 539
+    },
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "kind": "TRANS_STMT_BEGIN"
+        }
+      },
+      "stmt_len": 263,
+      "stmt_location": 613
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "cols": [
+            {
+              "ResTarget": {
+                "location": 895,
+                "name": "data"
+              }
+            }
+          ],
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 890,
+            "relname": "data",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 908,
+                          "val": {
+                            "String": {
+                              "str": "6"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 35,
+      "stmt_location": 877
+    },
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "gid": "test_prepared2",
+          "kind": "TRANS_STMT_PREPARE"
+        }
+      },
+      "stmt_len": 37,
+      "stmt_location": 913
+    },
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "gid": "test_prepared2",
+          "kind": "TRANS_STMT_ROLLBACK_PREPARED"
+        }
+      },
+      "stmt_len": 462,
+      "stmt_location": 951
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 1457,
+                                  "val": {
+                                    "String": {
+                                      "str": "regression_slot"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1476,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 1482,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pg_logical_slot_get_changes"
+                                }
+                              }
+                            ],
+                            "location": 1429
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 1422,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 1422
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 73,
+      "stmt_location": 1414
+    }
+  ],
+  "version": 130003
+}

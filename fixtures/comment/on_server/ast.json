@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "my foreign server",
+          "object": {
+            "String": {
+              "str": "myserver"
+            }
+          },
+          "objtype": "OBJECT_FOREIGN_SERVER"
+        }
+      },
+      "stmt_len": 49
+    }
+  ],
+  "version": 130003
+}

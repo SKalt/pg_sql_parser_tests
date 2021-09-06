@@ -1,0 +1,418 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_LEFT",
+                "larg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "p"
+                    },
+                    "inh": true,
+                    "location": 82,
+                    "relname": "products",
+                    "relpersistence": "p"
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "alias": {
+                      "aliasname": "s"
+                    },
+                    "inh": true,
+                    "location": 103,
+                    "relname": "sales",
+                    "relpersistence": "p"
+                  }
+                },
+                "usingClause": [
+                  {
+                    "String": {
+                      "str": "product_id"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "groupClause": [
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "product_id"
+                    }
+                  }
+                ],
+                "location": 196
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "p"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "name"
+                    }
+                  }
+                ],
+                "location": 208
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "p"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "price"
+                    }
+                  }
+                ],
+                "location": 216
+              }
+            },
+            {
+              "ColumnRef": {
+                "fields": [
+                  {
+                    "String": {
+                      "str": "p"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "cost"
+                    }
+                  }
+                ],
+                "location": 225
+              }
+            }
+          ],
+          "havingClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "p"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "price"
+                                }
+                              }
+                            ],
+                            "location": 247
+                          }
+                        },
+                        "location": 255,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "*"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "s"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "units"
+                                }
+                              }
+                            ],
+                            "location": 257
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "sum"
+                      }
+                    }
+                  ],
+                  "location": 243
+                }
+              },
+              "location": 266,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 268,
+                  "val": {
+                    "Integer": {
+                      "ival": 5000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "product_id"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 19,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "p"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "name"
+                        }
+                      }
+                    ],
+                    "location": 19
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 27,
+                "name": "profit",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "s"
+                                  }
+                                },
+                                {
+                                  "String": {
+                                    "str": "units"
+                                  }
+                                }
+                              ],
+                              "location": 32
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "sum"
+                            }
+                          }
+                        ],
+                        "location": 28
+                      }
+                    },
+                    "location": 41,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "*"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "p"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "price"
+                                }
+                              }
+                            ],
+                            "location": 44
+                          }
+                        },
+                        "location": 52,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "-"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "p"
+                                }
+                              },
+                              {
+                                "String": {
+                                  "str": "cost"
+                                }
+                              }
+                            ],
+                            "location": 54
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "s"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "date"
+                      }
+                    }
+                  ],
+                  "location": 140
+                }
+              },
+              "location": 147,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "SQLValueFunction": {
+                      "location": 149,
+                      "op": "SVFOP_CURRENT_DATE",
+                      "typmod": -1
+                    }
+                  },
+                  "location": 162,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "-"
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "TypeCast": {
+                      "arg": {
+                        "A_Const": {
+                          "location": 173,
+                          "val": {
+                            "String": {
+                              "str": "4 weeks"
+                            }
+                          }
+                        }
+                      },
+                      "location": -1,
+                      "typeName": {
+                        "location": 164,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "pg_catalog"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "interval"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 272
+    }
+  ],
+  "version": 130003
+}

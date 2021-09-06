@@ -1,0 +1,29 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTrigStmt": {
+          "events": 4,
+          "funcname": [
+            {
+              "String": {
+                "str": "measurement_insert_trigger"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 63,
+            "relname": "measurement",
+            "relpersistence": "p"
+          },
+          "row": true,
+          "timing": 2,
+          "trigname": "insert_measurement_trigger"
+        }
+      },
+      "stmt_len": 137
+    }
+  ],
+  "version": 130003
+}

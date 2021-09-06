@@ -1,0 +1,218 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "JoinExpr": {
+                "jointype": "JOIN_INNER",
+                "larg": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 115,
+                    "relname": "weather",
+                    "relpersistence": "p"
+                  }
+                },
+                "quals": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "weather"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "city"
+                            }
+                          }
+                        ],
+                        "location": 138
+                      }
+                    },
+                    "location": 151,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "cities"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "name"
+                            }
+                          }
+                        ],
+                        "location": 153
+                      }
+                    }
+                  }
+                },
+                "rarg": {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 128,
+                    "relname": "cities",
+                    "relpersistence": "p"
+                  }
+                }
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "weather"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "city"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 21,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "weather"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "temp_lo"
+                        }
+                      }
+                    ],
+                    "location": 21
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 38,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "weather"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "temp_hi"
+                        }
+                      }
+                    ],
+                    "location": 38
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 62,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "weather"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "prcp"
+                        }
+                      }
+                    ],
+                    "location": 62
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 76,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "weather"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "date"
+                        }
+                      }
+                    ],
+                    "location": 76
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 90,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "cities"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "location"
+                        }
+                      }
+                    ],
+                    "location": 90
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 164
+    }
+  ],
+  "version": 130003
+}

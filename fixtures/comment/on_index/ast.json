@@ -1,0 +1,25 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "Enforces uniqueness on employee ID",
+          "object": {
+            "List": {
+              "items": [
+                {
+                  "String": {
+                    "str": "my_index"
+                  }
+                }
+              ]
+            }
+          },
+          "objtype": "OBJECT_INDEX"
+        }
+      },
+      "stmt_len": 65
+    }
+  ],
+  "version": 130003
+}

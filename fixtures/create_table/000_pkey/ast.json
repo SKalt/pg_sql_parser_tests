@@ -1,0 +1,367 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "films",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "code",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "conname": "firstkey",
+                      "contype": "CONSTR_PRIMARY",
+                      "location": 45
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 25,
+                "typeName": {
+                  "location": 37,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "bpchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 42,
+                        "val": {
+                          "Integer": {
+                            "ival": 5
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "title",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 106
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 82,
+                "typeName": {
+                  "location": 94,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "varchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 102,
+                        "val": {
+                          "Integer": {
+                            "ival": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "did",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 140
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 120,
+                "typeName": {
+                  "location": 132,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "date_prod",
+                "is_local": true,
+                "location": 154,
+                "typeName": {
+                  "location": 166,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "date"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "kind",
+                "is_local": true,
+                "location": 176,
+                "typeName": {
+                  "location": 188,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "varchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 196,
+                        "val": {
+                          "Integer": {
+                            "ival": 10
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "len",
+                "is_local": true,
+                "location": 205,
+                "typeName": {
+                  "location": 217,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "interval"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 226,
+                        "val": {
+                          "Integer": {
+                            "ival": 3072
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 242
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 258,
+            "relname": "distributors",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "did",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_PRIMARY",
+                      "location": 293
+                    }
+                  },
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_IDENTITY",
+                      "generated_when": "d",
+                      "location": 305
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 278,
+                "typeName": {
+                  "location": 285,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "constraints": [
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_NOTNULL",
+                      "location": 363
+                    }
+                  },
+                  {
+                    "Constraint": {
+                      "contype": "CONSTR_CHECK",
+                      "initially_valid": true,
+                      "location": 372,
+                      "raw_expr": {
+                        "A_Expr": {
+                          "kind": "AEXPR_OP",
+                          "lexpr": {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "name"
+                                  }
+                                }
+                              ],
+                              "location": 379
+                            }
+                          },
+                          "location": 384,
+                          "name": [
+                            {
+                              "String": {
+                                "str": "\u003c\u003e"
+                              }
+                            }
+                          ],
+                          "rexpr": {
+                            "A_Const": {
+                              "location": 387,
+                              "val": {
+                                "String": {
+                                  "str": ""
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "is_local": true,
+                "location": 344,
+                "typeName": {
+                  "location": 351,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "varchar"
+                      }
+                    }
+                  ],
+                  "typemod": -1,
+                  "typmods": [
+                    {
+                      "A_Const": {
+                        "location": 359,
+                        "val": {
+                          "Integer": {
+                            "ival": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 149,
+      "stmt_location": 243
+    }
+  ],
+  "version": 130003
+}

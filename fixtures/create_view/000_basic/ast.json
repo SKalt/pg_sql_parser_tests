@@ -1,0 +1,42 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "ViewStmt": {
+          "query": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 28,
+                    "val": {
+                      "A_Const": {
+                        "location": 28,
+                        "val": {
+                          "String": {
+                            "str": "Hello World"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "view": {
+            "inh": true,
+            "location": 12,
+            "relname": "vista",
+            "relpersistence": "p"
+          },
+          "withCheckOption": "NO_CHECK_OPTION"
+        }
+      },
+      "stmt_len": 41
+    }
+  ],
+  "version": 130003
+}

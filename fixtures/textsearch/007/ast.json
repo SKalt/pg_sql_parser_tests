@@ -1,0 +1,126 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 18,
+                "relname": "pgweb",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "title"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "A_Const": {
+                        "location": 42,
+                        "val": {
+                          "String": {
+                            "str": "english"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "body"
+                            }
+                          }
+                        ],
+                        "location": 53
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "to_tsvector"
+                      }
+                    }
+                  ],
+                  "location": 30
+                }
+              },
+              "location": 59,
+              "name": [
+                {
+                  "String": {
+                    "str": "@@"
+                  }
+                }
+              ],
+              "rexpr": {
+                "FuncCall": {
+                  "args": [
+                    {
+                      "A_Const": {
+                        "location": 73,
+                        "val": {
+                          "String": {
+                            "str": "english"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "A_Const": {
+                        "location": 84,
+                        "val": {
+                          "String": {
+                            "str": "friend"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "funcname": [
+                    {
+                      "String": {
+                        "str": "to_tsquery"
+                      }
+                    }
+                  ],
+                  "location": 62
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 93
+    }
+  ],
+  "version": 130003
+}

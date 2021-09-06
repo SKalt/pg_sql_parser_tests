@@ -1,0 +1,14 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "TransactionStmt": {
+          "kind": "TRANS_STMT_ROLLBACK_TO",
+          "savepoint_name": "my_savepoint"
+        }
+      },
+      "stmt_len": 34
+    }
+  ],
+  "version": 130003
+}

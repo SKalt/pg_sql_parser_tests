@@ -1,0 +1,210 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateEnumStmt": {
+          "typeName": [
+            {
+              "String": {
+                "str": "mood"
+              }
+            }
+          ],
+          "vals": [
+            {
+              "String": {
+                "str": "sad"
+              }
+            },
+            {
+              "String": {
+                "str": "ok"
+              }
+            },
+            {
+              "String": {
+                "str": "happy"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 47
+    },
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 62,
+            "relname": "person",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "name",
+                "is_local": true,
+                "location": 75,
+                "typeName": {
+                  "location": 80,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "current_mood",
+                "is_local": true,
+                "location": 90,
+                "typeName": {
+                  "location": 103,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "mood"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 61,
+      "stmt_location": 48
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 123,
+            "relname": "person",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 138,
+                          "val": {
+                            "String": {
+                              "str": "Moe"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 145,
+                          "val": {
+                            "String": {
+                              "str": "happy"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 43,
+      "stmt_location": 110
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 169,
+                "relname": "person",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 162,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 162
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "current_mood"
+                      }
+                    }
+                  ],
+                  "location": 182
+                }
+              },
+              "location": 195,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 197,
+                  "val": {
+                    "String": {
+                      "str": "happy"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 154
+    }
+  ],
+  "version": 130003
+}

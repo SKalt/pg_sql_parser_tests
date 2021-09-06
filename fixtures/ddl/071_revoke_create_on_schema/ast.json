@@ -1,0 +1,37 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "GrantStmt": {
+          "behavior": "DROP_RESTRICT",
+          "grantees": [
+            {
+              "RoleSpec": {
+                "location": 36,
+                "roletype": "ROLESPEC_PUBLIC"
+              }
+            }
+          ],
+          "objects": [
+            {
+              "String": {
+                "str": "public"
+              }
+            }
+          ],
+          "objtype": "OBJECT_SCHEMA",
+          "privileges": [
+            {
+              "AccessPriv": {
+                "priv_name": "create"
+              }
+            }
+          ],
+          "targtype": "ACL_TARGET_OBJECT"
+        }
+      },
+      "stmt_len": 42
+    }
+  ],
+  "version": 130003
+}

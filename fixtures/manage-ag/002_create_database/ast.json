@@ -1,0 +1,27 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreatedbStmt": {
+          "dbname": "dbname",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "template0"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "template",
+                "location": 23
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 41
+    }
+  ],
+  "version": 130003
+}

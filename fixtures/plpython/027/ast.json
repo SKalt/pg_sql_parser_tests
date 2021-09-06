@@ -1,0 +1,62 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "usesavedplan"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n    if \"plan\" in SD:\n        plan = SD[\"plan\"]\n    else:\n        plan = plpy.prepare(\"SELECT 1\")\n        SD[\"plan\"] = plan\n    # rest of function\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 47
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpythonu"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 202
+              }
+            }
+          ],
+          "returnType": {
+            "location": 39,
+            "names": [
+              {
+                "String": {
+                  "str": "trigger"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 220
+    }
+  ],
+  "version": 130003
+}

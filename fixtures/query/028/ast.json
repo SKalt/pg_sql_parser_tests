@@ -1,0 +1,137 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "UpdateStmt": {
+          "relation": {
+            "inh": true,
+            "location": 7,
+            "relname": "weather",
+            "relpersistence": "p"
+          },
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 23,
+                "name": "temp_hi",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "temp_hi"
+                            }
+                          }
+                        ],
+                        "location": 33
+                      }
+                    },
+                    "location": 41,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "-"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 43,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 47,
+                "name": "temp_lo",
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "temp_lo"
+                            }
+                          }
+                        ],
+                        "location": 57
+                      }
+                    },
+                    "location": 65,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "-"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 67,
+                        "val": {
+                          "Integer": {
+                            "ival": 2
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "date"
+                      }
+                    }
+                  ],
+                  "location": 79
+                }
+              },
+              "location": 84,
+              "name": [
+                {
+                  "String": {
+                    "str": "\u003e"
+                  }
+                }
+              ],
+              "rexpr": {
+                "A_Const": {
+                  "location": 86,
+                  "val": {
+                    "String": {
+                      "str": "1994-11-28"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 98
+    }
+  ],
+  "version": 130003
+}

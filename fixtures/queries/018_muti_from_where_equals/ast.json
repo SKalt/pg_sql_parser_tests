@@ -1,0 +1,96 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "foo",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 19,
+                "relname": "bar",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "A_Expr": {
+              "kind": "AEXPR_OP",
+              "lexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "bar"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "id"
+                      }
+                    }
+                  ],
+                  "location": 29
+                }
+              },
+              "location": 36,
+              "name": [
+                {
+                  "String": {
+                    "str": "="
+                  }
+                }
+              ],
+              "rexpr": {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "foo"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "bar_id"
+                      }
+                    }
+                  ],
+                  "location": 38
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 48
+    }
+  ],
+  "version": 130003
+}

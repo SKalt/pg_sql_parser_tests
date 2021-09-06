@@ -1,0 +1,39 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreatedbStmt": {
+          "dbname": "music",
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sv_SE.utf8"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "locale",
+                "location": 26
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "template0"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "template",
+                "location": 50
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 68
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,36 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "IndexStmt": {
+          "accessMethod": "btree",
+          "idxname": "mytable_cat_data",
+          "indexParams": [
+            {
+              "IndexElem": {
+                "name": "category",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            },
+            {
+              "IndexElem": {
+                "name": "data",
+                "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                "ordering": "SORTBY_DEFAULT"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 33,
+            "relname": "mytable",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 57
+    }
+  ],
+  "version": 130003
+}

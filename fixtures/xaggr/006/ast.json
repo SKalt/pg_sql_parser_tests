@@ -1,0 +1,103 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "args": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "FunctionParameter": {
+                      "argType": {
+                        "location": 30,
+                        "names": [
+                          {
+                            "String": {
+                              "str": "anycompatible"
+                            }
+                          }
+                        ],
+                        "typemod": -1
+                      },
+                      "mode": "FUNC_PARAM_IN"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "Integer": {
+                "ival": -1
+              }
+            }
+          ],
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 59,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "array_append"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "sfunc",
+                "location": 51
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 85,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "anycompatiblearray"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "stype",
+                "location": 77
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "{}"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "initcond",
+                "location": 109
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "array_accum"
+              }
+            }
+          ],
+          "kind": "OBJECT_AGGREGATE"
+        }
+      },
+      "stmt_len": 126
+    }
+  ],
+  "version": 130003
+}

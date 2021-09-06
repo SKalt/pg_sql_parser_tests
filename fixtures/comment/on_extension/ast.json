@@ -1,0 +1,19 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CommentStmt": {
+          "comment": "implements the hstore data type",
+          "object": {
+            "String": {
+              "str": "hstore"
+            }
+          },
+          "objtype": "OBJECT_EXTENSION"
+        }
+      },
+      "stmt_len": 64
+    }
+  ],
+  "version": 130003
+}

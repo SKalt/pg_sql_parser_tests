@@ -1,0 +1,127 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "PrepareStmt": {
+          "argtypes": [
+            {
+              "TypeName": {
+                "location": 20,
+                "names": [
+                  {
+                    "String": {
+                      "str": "date"
+                    }
+                  }
+                ],
+                "typemod": -1
+              }
+            }
+          ],
+          "name": "recentfilms",
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeVar": {
+                    "inh": true,
+                    "location": 45,
+                    "relname": "films",
+                    "relpersistence": "p"
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 38,
+                    "val": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "A_Star": {}
+                          }
+                        ],
+                        "location": 38
+                      }
+                    }
+                  }
+                }
+              ],
+              "whereClause": {
+                "A_Expr": {
+                  "kind": "AEXPR_OP",
+                  "lexpr": {
+                    "ColumnRef": {
+                      "fields": [
+                        {
+                          "String": {
+                            "str": "date_prod"
+                          }
+                        }
+                      ],
+                      "location": 57
+                    }
+                  },
+                  "location": 67,
+                  "name": [
+                    {
+                      "String": {
+                        "str": "\u003e"
+                      }
+                    }
+                  ],
+                  "rexpr": {
+                    "ParamRef": {
+                      "location": 69,
+                      "number": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 71
+    },
+    {
+      "stmt": {
+        "CreateTableAsStmt": {
+          "into": {
+            "onCommit": "ONCOMMIT_DROP",
+            "rel": {
+              "inh": true,
+              "location": 91,
+              "relname": "films_recent",
+              "relpersistence": "t"
+            }
+          },
+          "query": {
+            "ExecuteStmt": {
+              "name": "recentfilms",
+              "params": [
+                {
+                  "A_Const": {
+                    "location": 144,
+                    "val": {
+                      "String": {
+                        "str": "2002-01-01"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 85,
+      "stmt_location": 72
+    }
+  ],
+  "version": 130003
+}

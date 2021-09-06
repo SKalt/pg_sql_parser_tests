@@ -1,0 +1,209 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CompositeTypeStmt": {
+          "coldeflist": [
+            {
+              "ColumnDef": {
+                "colname": "the_num",
+                "is_local": true,
+                "location": 25,
+                "typeName": {
+                  "location": 33,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "the_text",
+                "is_local": true,
+                "location": 42,
+                "typeName": {
+                  "location": 51,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ],
+          "typevar": {
+            "location": 12,
+            "relname": "foo_type",
+            "relpersistence": "p"
+          }
+        }
+      },
+      "stmt_len": 56
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "lotsa_md5"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\n    use Digest::MD5 qw(md5_hex);\n    my $file = '/usr/share/dict/words';\n    my $t = localtime;\n    elog(NOTICE, \"opening file $file at $t\" );\n    open my $fh, '\u003c', $file # ooh, it's a file access!\n        or elog(ERROR, \"cannot open $file for reading: $!\");\n    my @words = \u003c$fh\u003e;\n    close $fh;\n    $t = localtime;\n    elog(NOTICE, \"closed file $file at $t\");\n    chomp(@words);\n    my $row;\n    my $sth = spi_query(\"SELECT * FROM generate_series(1,$_[0]) AS b(a)\");\n    while (defined ($row = spi_fetchrow($sth))) {\n        return_next({\n            the_num =\u003e $row-\u003e{a},\n            the_text =\u003e md5_hex($words[rand @words])\n        });\n    }\n    return;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 129
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plperlu"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 796
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 97,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ],
+          "replace": true,
+          "returnType": {
+            "location": 120,
+            "names": [
+              {
+                "String": {
+                  "str": "foo_type"
+                }
+              }
+            ],
+            "setof": true,
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 755,
+      "stmt_location": 57
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 839,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 500
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "lotsa_md5"
+                                }
+                              }
+                            ],
+                            "location": 829
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 822,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 822
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 30,
+      "stmt_location": 813
+    }
+  ],
+  "version": 130003
+}
