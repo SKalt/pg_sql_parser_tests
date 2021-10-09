@@ -6,6 +6,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 SELECT * FROM sum_n_product(2, 4);
- sum | prod
------+------
-   6 |    8
+--  sum | prod
+-- -----+------
+--    6 |    8

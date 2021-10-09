@@ -1,0 +1,86 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "TypeCast": {
+                                  "arg": {
+                                    "A_Const": {
+                                      "location": 33,
+                                      "val": {
+                                        "String": {
+                                          "str": "pg_catalog.pg_proc"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "location": 53,
+                                  "typeName": {
+                                    "location": 55,
+                                    "names": [
+                                      {
+                                        "String": {
+                                          "str": "regclass"
+                                        }
+                                      }
+                                    ],
+                                    "typemod": -1
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pgstattuple_approx"
+                                }
+                              }
+                            ],
+                            "location": 14
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 64
+    }
+  ],
+  "version": 130003
+}

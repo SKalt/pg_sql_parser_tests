@@ -1,4 +1,4 @@
-$function$
+CREATE FUNCTION foo(text) AS $function$
 BEGIN
     RETURN ($1 ~ $q$[\t\r\n\v\\]$q$);
 END;

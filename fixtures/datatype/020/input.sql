@@ -5,7 +5,7 @@ CREATE TABLE person (
 );
 INSERT INTO person VALUES ('Moe', 'happy');
 SELECT * FROM person WHERE current_mood = 'happy';
- name | current_mood 
-------+--------------
- Moe  | happy
-(1 row)
+--  name | current_mood 
+-- ------+--------------
+--  Moe  | happy
+-- (1 row)

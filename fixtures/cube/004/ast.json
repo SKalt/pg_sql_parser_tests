@@ -1,0 +1,55 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 18,
+                          "val": {
+                            "String": {
+                              "str": "(0,-1),(1,1)"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 34,
+                          "val": {
+                            "String": {
+                              "str": "(-2),(2)"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "cube_inter"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 45
+    }
+  ],
+  "version": 130003
+}

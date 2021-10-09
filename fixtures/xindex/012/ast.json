@@ -1,0 +1,65 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateOpClassStmt": {
+          "amname": "gist",
+          "datatype": {
+            "location": 55,
+            "names": [
+              {
+                "String": {
+                  "str": "polygon"
+                }
+              }
+            ],
+            "typemod": -1
+          },
+          "isDefault": true,
+          "items": [
+            {
+              "CreateOpClassItem": {
+                "itemtype": 1,
+                "name": {
+                  "objname": [
+                    {
+                      "String": {
+                        "str": "\u003c"
+                      }
+                    }
+                  ]
+                },
+                "number": 1
+              }
+            },
+            {
+              "CreateOpClassItem": {
+                "itemtype": 3,
+                "storedtype": {
+                  "location": 115,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "box"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            }
+          ],
+          "opclassname": [
+            {
+              "String": {
+                "str": "polygon_ops"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 118
+    }
+  ],
+  "version": 130003
+}

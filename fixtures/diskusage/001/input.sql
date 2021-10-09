@@ -9,7 +9,7 @@ WHERE oid = ss.reltoastrelid OR
              WHERE indrelid = ss.reltoastrelid)
 ORDER BY relname;
 
-       relname        | relpages
-----------------------+----------
- pg_toast_16806       |        0
- pg_toast_16806_index |        1
+--        relname        | relpages
+-- ----------------------+----------
+--  pg_toast_16806       |        0
+--  pg_toast_16806_index |        1

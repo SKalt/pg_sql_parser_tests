@@ -1,0 +1,61 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "TypeCast": {
+                          "arg": {
+                            "A_Const": {
+                              "location": 15,
+                              "val": {
+                                "String": {
+                                  "str": "foo"
+                                }
+                              }
+                            }
+                          },
+                          "location": 20,
+                          "typeName": {
+                            "location": 22,
+                            "names": [
+                              {
+                                "String": {
+                                  "str": "text"
+                                }
+                              }
+                            ],
+                            "typemod": -1
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "nextval"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 27
+    }
+  ],
+  "version": 130003
+}

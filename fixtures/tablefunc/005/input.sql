@@ -16,8 +16,8 @@ FROM crosstab(
    order by 1,2')
 AS ct(row_name text, category_1 text, category_2 text, category_3 text);
 
- row_name | category_1 | category_2 | category_3
-----------+------------+------------+------------
- test1    | val2       | val3       |
- test2    | val6       | val7       |
-(2 rows)
+--  row_name | category_1 | category_2 | category_3
+-- ----------+------------+------------+------------
+--  test1    | val2       | val3       |
+--  test2    | val6       | val7       |
+-- (2 rows)

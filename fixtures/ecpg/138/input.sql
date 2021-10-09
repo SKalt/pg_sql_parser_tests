@@ -1,6 +1,0 @@
-char *stmt = "SELECT * FROM test1 WHERE a = ? AND b = ?";
-
-EXEC SQL ALLOCATE DESCRIPTOR outdesc;
-EXEC SQL PREPARE foo FROM :stmt;
-
-EXEC SQL EXECUTE foo USING SQL DESCRIPTOR indesc INTO SQL DESCRIPTOR outdesc;

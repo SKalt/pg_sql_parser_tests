@@ -1,1 +1,1 @@
-testdb=> \set foo bar
+\set foo bar

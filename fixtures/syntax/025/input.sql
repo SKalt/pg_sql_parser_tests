@@ -1,1 +1,1 @@
-sqrt(2)
+select sqrt(2);

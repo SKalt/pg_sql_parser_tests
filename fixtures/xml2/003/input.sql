@@ -8,8 +8,8 @@ SELECT t.*,i.doc_num FROM
 WHERE i.id=t.id AND i.id=1
 ORDER BY doc_num, line_num;
 
- id | line_num | val1 | val2 | val3 | doc_num
-----+----------+------+------+------+---------
-  1 | L1       |    1 |    2 |    3 | C1
-  1 | L2       |   11 |   22 |   33 | C1
-(2 rows)
+--  id | line_num | val1 | val2 | val3 | doc_num
+-- ----+----------+------+------+------+---------
+--   1 | L1       |    1 |    2 |    3 | C1
+--   1 | L2       |   11 |   22 |   33 | C1
+-- (2 rows)

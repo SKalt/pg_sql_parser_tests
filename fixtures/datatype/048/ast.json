@@ -1,0 +1,215 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 160,
+                "relname": "tables",
+                "relpersistence": "p",
+                "schemaname": "information_schema"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "table_schema"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 21,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "table_name"
+                        }
+                      }
+                    ],
+                    "location": 21
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 40,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "TypeCast": {
+                          "arg": {
+                            "A_Expr": {
+                              "kind": "AEXPR_OP",
+                              "lexpr": {
+                                "A_Expr": {
+                                  "kind": "AEXPR_OP",
+                                  "lexpr": {
+                                    "FuncCall": {
+                                      "args": [
+                                        {
+                                          "ColumnRef": {
+                                            "fields": [
+                                              {
+                                                "String": {
+                                                  "str": "table_schema"
+                                                }
+                                              }
+                                            ],
+                                            "location": 70
+                                          }
+                                        }
+                                      ],
+                                      "funcname": [
+                                        {
+                                          "String": {
+                                            "str": "quote_ident"
+                                          }
+                                        }
+                                      ],
+                                      "location": 58
+                                    }
+                                  },
+                                  "location": 84,
+                                  "name": [
+                                    {
+                                      "String": {
+                                        "str": "||"
+                                      }
+                                    }
+                                  ],
+                                  "rexpr": {
+                                    "A_Const": {
+                                      "location": 87,
+                                      "val": {
+                                        "String": {
+                                          "str": "."
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "location": 91,
+                              "name": [
+                                {
+                                  "String": {
+                                    "str": "||"
+                                  }
+                                }
+                              ],
+                              "rexpr": {
+                                "FuncCall": {
+                                  "args": [
+                                    {
+                                      "ColumnRef": {
+                                        "fields": [
+                                          {
+                                            "String": {
+                                              "str": "table_name"
+                                            }
+                                          }
+                                        ],
+                                        "location": 131
+                                      }
+                                    }
+                                  ],
+                                  "funcname": [
+                                    {
+                                      "String": {
+                                        "str": "quote_ident"
+                                      }
+                                    }
+                                  ],
+                                  "location": 119
+                                }
+                              }
+                            }
+                          },
+                          "location": 143,
+                          "typeName": {
+                            "location": 145,
+                            "names": [
+                              {
+                                "String": {
+                                  "str": "regclass"
+                                }
+                              }
+                            ],
+                            "typemod": -1
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_relation_size"
+                        }
+                      }
+                    ],
+                    "location": 40
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "TypeCast": {
+              "arg": {
+                "A_Const": {
+                  "location": 192,
+                  "val": {
+                    "String": {
+                      "str": "t"
+                    }
+                  }
+                }
+              },
+              "location": -1,
+              "typeName": {
+                "location": -1,
+                "names": [
+                  {
+                    "String": {
+                      "str": "pg_catalog"
+                    }
+                  },
+                  {
+                    "String": {
+                      "str": "bool"
+                    }
+                  }
+                ],
+                "typemod": -1
+              }
+            }
+          }
+        }
+      },
+      "stmt_len": 204
+    }
+  ],
+  "version": 130003
+}

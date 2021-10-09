@@ -1,0 +1,45 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 12,
+                          "val": {
+                            "Integer": {
+                              "ival": 2
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "sqrt"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 14
+    }
+  ],
+  "version": 130003
+}

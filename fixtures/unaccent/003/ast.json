@@ -1,0 +1,334 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 45,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "french"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "copy",
+                "location": 38
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "fr"
+              }
+            }
+          ],
+          "kind": "OBJECT_TSCONFIGURATION"
+        }
+      },
+      "stmt_len": 53
+    },
+    {
+      "stmt": {
+        "AlterTSConfigurationStmt": {
+          "cfgname": [
+            {
+              "String": {
+                "str": "fr"
+              }
+            }
+          ],
+          "dicts": [
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "unaccent"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "List": {
+                "items": [
+                  {
+                    "String": {
+                      "str": "french_stem"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "ALTER_TSCONFIG_ALTER_MAPPING_FOR_TOKEN",
+          "override": true,
+          "tokentype": [
+            {
+              "String": {
+                "str": "hword"
+              }
+            },
+            {
+              "String": {
+                "str": "hword_part"
+              }
+            },
+            {
+              "String": {
+                "str": "word"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 120,
+      "stmt_location": 54
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 183,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 195,
+                          "val": {
+                            "String": {
+                              "str": "fr"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 200,
+                          "val": {
+                            "String": {
+                              "str": "H\u0026ocirc;tels de la Mer"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "to_tsvector"
+                        }
+                      }
+                    ],
+                    "location": 183
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 175
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 310,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 322,
+                              "val": {
+                                "String": {
+                                  "str": "fr"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 327,
+                              "val": {
+                                "String": {
+                                  "str": "H\u0026ocirc;tel de la Mer"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "to_tsvector"
+                            }
+                          }
+                        ],
+                        "location": 310
+                      }
+                    },
+                    "location": 352,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "@@"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 366,
+                              "val": {
+                                "String": {
+                                  "str": "fr"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 371,
+                              "val": {
+                                "String": {
+                                  "str": "Hotels"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "to_tsquery"
+                            }
+                          }
+                        ],
+                        "location": 355
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 154,
+      "stmt_location": 226
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 434,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 446,
+                          "val": {
+                            "String": {
+                              "str": "fr"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 451,
+                          "val": {
+                            "String": {
+                              "str": "H\u0026ocirc;tel de la Mer"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "FuncCall": {
+                          "args": [
+                            {
+                              "A_Const": {
+                                "location": 486,
+                                "val": {
+                                  "String": {
+                                    "str": "fr"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "A_Const": {
+                                "location": 491,
+                                "val": {
+                                  "String": {
+                                    "str": "Hotels"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "to_tsquery"
+                              }
+                            }
+                          ],
+                          "location": 475
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "ts_headline"
+                        }
+                      }
+                    ],
+                    "location": 434
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 120,
+      "stmt_location": 381
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,166 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "Constraint": {
+                    "contype": "CONSTR_CHECK",
+                    "initially_valid": true,
+                    "location": 20,
+                    "raw_expr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_BETWEEN",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "outletid"
+                                }
+                              }
+                            ],
+                            "location": 28
+                          }
+                        },
+                        "location": 37,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "BETWEEN"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "List": {
+                            "items": [
+                              {
+                                "A_Const": {
+                                  "location": 45,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 100
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 53,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 200
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "subtype": "AT_AddConstraint"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 58
+    },
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "Constraint": {
+                    "contype": "CONSTR_CHECK",
+                    "initially_valid": true,
+                    "location": 80,
+                    "raw_expr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_BETWEEN",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "outletid"
+                                }
+                              }
+                            ],
+                            "location": 88
+                          }
+                        },
+                        "location": 97,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "BETWEEN"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "List": {
+                            "items": [
+                              {
+                                "A_Const": {
+                                  "location": 105,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 200
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 113,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 300
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "subtype": "AT_AddConstraint"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 72,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 59,
+      "stmt_location": 59
+    }
+  ],
+  "version": 130003
+}

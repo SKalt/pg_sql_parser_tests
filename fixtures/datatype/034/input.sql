@@ -1,4 +1,4 @@
 SELECT 'fat:ab & cat'::tsquery;
-    tsquery
-------------------
- 'fat':AB & 'cat'
+--     tsquery
+-- ------------------
+--  'fat':AB & 'cat'

@@ -1,1 +1,0 @@
-void (*MarkPosCustomScan) (CustomScanState *node);

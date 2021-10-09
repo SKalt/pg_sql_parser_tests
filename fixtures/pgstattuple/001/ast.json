@@ -1,0 +1,70 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 26,
+                                  "val": {
+                                    "String": {
+                                      "str": "pg_cast_oid_index"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pgstatindex"
+                                }
+                              }
+                            ],
+                            "location": 14
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 46
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,56 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "foo"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nBEGIN\n    RETURN ($1 ~ $q$[\\t\\r\\n\\v\\\\]$q$);\nEND;\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 26
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 20,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "version": 130003
+}

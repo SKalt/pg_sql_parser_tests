@@ -1,0 +1,72 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "FuncCall": {
+                                  "funcname": [
+                                    {
+                                      "String": {
+                                        "str": "pg_stop_backup"
+                                      }
+                                    }
+                                  ],
+                                  "location": 37
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pg_walfile_name_offset"
+                                }
+                              }
+                            ],
+                            "location": 14
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 54
+    }
+  ],
+  "version": 130003
+}

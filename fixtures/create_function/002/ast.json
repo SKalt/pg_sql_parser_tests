@@ -1,0 +1,160 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "foo"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "..."
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 25
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 34
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 20,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 46
+    },
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "foo"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "..."
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 83
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "sql"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 92
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 68,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_IN"
+              }
+            },
+            {
+              "FunctionParameter": {
+                "argType": {
+                  "location": 77,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                },
+                "mode": "FUNC_PARAM_OUT"
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 57,
+      "stmt_location": 47
+    }
+  ],
+  "version": 130003
+}

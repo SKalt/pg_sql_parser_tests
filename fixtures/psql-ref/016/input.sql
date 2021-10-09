@@ -1,2 +1,2 @@
-testdb=> \echo :foo
-bar
+\echo :foo
+-- bar

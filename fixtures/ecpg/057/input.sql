@@ -1,7 +1,0 @@
-EXEC SQL BEGIN DECLARE SECTION;
-const char *stmt = "INSERT INTO test1 VALUES(?, ?);";
-EXEC SQL END DECLARE SECTION;
-
-EXEC SQL PREPARE mystmt FROM :stmt;
- ...
-EXEC SQL EXECUTE mystmt USING 42, 'foobar';

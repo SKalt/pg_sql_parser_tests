@@ -11,10 +11,10 @@ END;
 BEGIN;
 SELECT reffunc2();
 
-      reffunc2
---------------------
- <unnamed cursor 1>
-(1 row)
+--       reffunc2
+-- --------------------
+--  <unnamed cursor 1>
+-- (1 row)
 
 FETCH ALL IN "<unnamed cursor 1>";
 COMMIT;

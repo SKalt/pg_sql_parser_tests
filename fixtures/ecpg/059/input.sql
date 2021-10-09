@@ -1,9 +1,0 @@
-EXEC SQL BEGIN DECLARE SECTION;
-const char *stmt = "SELECT a, b, c FROM test1 WHERE a > ?";
-int v1, v2;
-VARCHAR v3[50];
-EXEC SQL END DECLARE SECTION;
-
-EXEC SQL PREPARE mystmt FROM :stmt;
- ...
-EXEC SQL EXECUTE mystmt INTO :v1, :v2, :v3 USING 37;

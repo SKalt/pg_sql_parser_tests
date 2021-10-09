@@ -1,0 +1,143 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "a",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 17,
+                "relname": "b",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "a"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 25
+                      }
+                    },
+                    "location": 30,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "b"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "id"
+                            }
+                          }
+                        ],
+                        "location": 32
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "b"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "val"
+                            }
+                          }
+                        ],
+                        "location": 41
+                      }
+                    },
+                    "location": 47,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 49,
+                        "val": {
+                          "Integer": {
+                            "ival": 5
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 37
+            }
+          }
+        }
+      }
+    }
+  ],
+  "version": 130003
+}

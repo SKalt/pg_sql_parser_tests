@@ -1,5 +1,5 @@
 SELECT ARRAY[]::integer[];
- array
--------
- {}
-(1 row)
+--  array
+-- -------
+--  {}
+-- (1 row)

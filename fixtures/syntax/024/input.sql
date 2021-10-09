@@ -1,1 +1,1 @@
-(compositecol).*
+select (compositecol).*;

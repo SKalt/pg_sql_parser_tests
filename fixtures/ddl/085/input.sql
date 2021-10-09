@@ -4,7 +4,7 @@ CREATE TABLE measurement_y2006m02 PARTITION OF measurement
 CREATE TABLE measurement_y2006m03 PARTITION OF measurement
     FOR VALUES FROM ('2006-03-01') TO ('2006-04-01');
 
-...
+-- ...
 CREATE TABLE measurement_y2007m11 PARTITION OF measurement
     FOR VALUES FROM ('2007-11-01') TO ('2007-12-01');
 

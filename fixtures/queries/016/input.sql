@@ -7,8 +7,8 @@ FROM ROWS FROM
     ) AS x (p, q, s)
 ORDER BY p;
 
-  p  |  q  | s
------+-----+---
-  40 | foo | 1
- 100 | bar | 2
-     |     | 3
+--   p  |  q  | s
+-- -----+-----+---
+--   40 | foo | 1
+--  100 | bar | 2
+--      |     | 3

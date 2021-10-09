@@ -7,10 +7,10 @@ MOVE 5
 
 -- Fetch the 6th row from the cursor liahona:
 FETCH 1 FROM liahona;
- code  | title  | did | date_prod  |  kind  |  len
--------+--------+-----+------------+--------+-------
- P_303 | 48 Hrs | 103 | 1982-10-22 | Action | 01:37
-(1 row)
+--  code  | title  | did | date_prod  |  kind  |  len
+-- -------+--------+-----+------------+--------+-------
+--  P_303 | 48 Hrs | 103 | 1982-10-22 | Action | 01:37
+-- (1 row)
 
 -- Close the cursor liahona and end the transaction:
 CLOSE liahona;

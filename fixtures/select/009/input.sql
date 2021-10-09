@@ -3,7 +3,7 @@ SELECT kind, sum(len) AS total
     GROUP BY kind
     HAVING sum(len) < interval '5 hours';
 
-   kind   | total
-----------+-------
- Comedy   | 02:58
- Romantic | 04:38
+--    kind   | total
+-- ----------+-------
+--  Comedy   | 02:58
+--  Romantic | 04:38

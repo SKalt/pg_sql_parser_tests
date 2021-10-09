@@ -6,8 +6,8 @@ CREATE TABLE products (
 
 CREATE TABLE orders (
     order_id integer PRIMARY KEY,
-    shipping_address text,
-    ...
+    shipping_address text
+    -- ,...
 );
 
 CREATE TABLE order_items (

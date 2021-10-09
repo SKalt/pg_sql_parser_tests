@@ -16,11 +16,11 @@ $$ LANGUAGE plpgsql;
 
 SELECT outer_func();
 
-NOTICE:  --- Call Stack ---
-PL/pgSQL function inner_func() line 5 at GET DIAGNOSTICS
-PL/pgSQL function outer_func() line 3 at RETURN
-CONTEXT:  PL/pgSQL function outer_func() line 3 at RETURN
- outer_func
- ------------
-           1
-(1 row)
+-- NOTICE:  --- Call Stack ---
+-- PL/pgSQL function inner_func() line 5 at GET DIAGNOSTICS
+-- PL/pgSQL function outer_func() line 3 at RETURN
+-- CONTEXT:  PL/pgSQL function outer_func() line 3 at RETURN
+--  outer_func
+--  ------------
+--            1
+-- (1 row)

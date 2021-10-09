@@ -1,5 +1,5 @@
 -- a message can be in one or more sections
-CREATE TABLE message (mid INT PRIMARY KEY, sections INT[], ...);
+CREATE TABLE message (mid INT PRIMARY KEY, sections INT[]/*, ...*/);
 
 -- create specialized index with signature length of 32 bytes
 CREATE INDEX message_rdtree_idx ON message USING GIST (sections gist__intbig_ops (siglen = 32));

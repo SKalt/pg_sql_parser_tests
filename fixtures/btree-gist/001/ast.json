@@ -1,0 +1,315 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateStmt": {
+          "oncommit": "ONCOMMIT_NOOP",
+          "relation": {
+            "inh": true,
+            "location": 13,
+            "relname": "zoo",
+            "relpersistence": "p"
+          },
+          "tableElts": [
+            {
+              "ColumnDef": {
+                "colname": "cage",
+                "is_local": true,
+                "location": 21,
+                "typeName": {
+                  "location": 28,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "pg_catalog"
+                      }
+                    },
+                    {
+                      "String": {
+                        "str": "int4"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "ColumnDef": {
+                "colname": "animal",
+                "is_local": true,
+                "location": 39,
+                "typeName": {
+                  "location": 46,
+                  "names": [
+                    {
+                      "String": {
+                        "str": "text"
+                      }
+                    }
+                  ],
+                  "typemod": -1
+                }
+              }
+            },
+            {
+              "Constraint": {
+                "access_method": "gist",
+                "contype": "CONSTR_EXCLUSION",
+                "exclusions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "IndexElem": {
+                            "name": "cage",
+                            "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                            "ordering": "SORTBY_DEFAULT"
+                          }
+                        },
+                        {
+                          "List": {
+                            "items": [
+                              {
+                                "String": {
+                                  "str": "="
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "IndexElem": {
+                            "name": "animal",
+                            "nulls_ordering": "SORTBY_NULLS_DEFAULT",
+                            "ordering": "SORTBY_DEFAULT"
+                          }
+                        },
+                        {
+                          "List": {
+                            "items": [
+                              {
+                                "String": {
+                                  "str": "\u003c\u003e"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "location": 54
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 104
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 119,
+            "relname": "zoo",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 130,
+                          "val": {
+                            "Integer": {
+                              "ival": 123
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 135,
+                          "val": {
+                            "String": {
+                              "str": "zebra"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 38,
+      "stmt_location": 105
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 171,
+            "relname": "zoo",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 182,
+                          "val": {
+                            "Integer": {
+                              "ival": 123
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 187,
+                          "val": {
+                            "String": {
+                              "str": "zebra"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 51,
+      "stmt_location": 144
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 223,
+            "relname": "zoo",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 234,
+                          "val": {
+                            "Integer": {
+                              "ival": 123
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 239,
+                          "val": {
+                            "String": {
+                              "str": "lion"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 50,
+      "stmt_location": 196
+    },
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 446,
+            "relname": "zoo",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 457,
+                          "val": {
+                            "Integer": {
+                              "ival": 124
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 462,
+                          "val": {
+                            "String": {
+                              "str": "lion"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 222,
+      "stmt_location": 247
+    }
+  ],
+  "version": 130003
+}

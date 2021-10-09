@@ -1,1 +1,2 @@
-SELECT 'foo'      'bar';
+SELECT 'foo' 
+     'bar';

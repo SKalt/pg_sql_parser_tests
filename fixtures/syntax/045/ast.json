@@ -1,0 +1,166 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "RowExpr": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 11,
+                              "val": {
+                                "Integer": {
+                                  "ival": 1
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 13,
+                              "val": {
+                                "Float": {
+                                  "str": "2.5"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 17,
+                              "val": {
+                                "String": {
+                                  "str": "this is a test"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "location": 7,
+                        "row_format": "COERCE_EXPLICIT_CALL"
+                      }
+                    },
+                    "location": 35,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "="
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "RowExpr": {
+                        "args": [
+                          {
+                            "A_Const": {
+                              "location": 41,
+                              "val": {
+                                "Integer": {
+                                  "ival": 1
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 44,
+                              "val": {
+                                "Integer": {
+                                  "ival": 3
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Const": {
+                              "location": 47,
+                              "val": {
+                                "String": {
+                                  "str": "not the same"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "location": 37,
+                        "row_format": "COERCE_EXPLICIT_CALL"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 62
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 97,
+                "relname": "tble",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 72,
+                "val": {
+                  "NullTest": {
+                    "arg": {
+                      "RowExpr": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "tble"
+                                  }
+                                },
+                                {
+                                  "A_Star": {}
+                                }
+                              ],
+                              "location": 76
+                            }
+                          }
+                        ],
+                        "location": 72,
+                        "row_format": "COERCE_EXPLICIT_CALL"
+                      }
+                    },
+                    "location": 84,
+                    "nulltesttype": "IS_NULL"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 38,
+      "stmt_location": 63
+    }
+  ],
+  "version": 130003
+}

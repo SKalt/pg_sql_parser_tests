@@ -1,0 +1,1 @@
+syntax error at or near "'SELECT count(*) FROM mytable WHERE inserted_by = $1 AND inserted <= $2'"

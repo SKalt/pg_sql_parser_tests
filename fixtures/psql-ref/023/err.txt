@@ -1,0 +1,1 @@
+syntax error at or near "PSQL_EDITOR_LINENUMBER_ARG"

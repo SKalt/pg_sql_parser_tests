@@ -1,0 +1,1 @@
+syntax error at or near "archive_cleanup_command"

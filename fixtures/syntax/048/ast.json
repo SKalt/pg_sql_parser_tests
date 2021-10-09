@@ -1,0 +1,144 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 14,
+                "relname": "foo",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ],
+          "whereClause": {
+            "BoolExpr": {
+              "args": [
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "x"
+                            }
+                          }
+                        ],
+                        "location": 24
+                      }
+                    },
+                    "location": 26,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 28,
+                        "val": {
+                          "Integer": {
+                            "ival": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "A_Expr": {
+                    "kind": "AEXPR_OP",
+                    "lexpr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "y"
+                                }
+                              }
+                            ],
+                            "location": 34
+                          }
+                        },
+                        "location": 35,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "/"
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "x"
+                                }
+                              }
+                            ],
+                            "location": 36
+                          }
+                        }
+                      }
+                    },
+                    "location": 38,
+                    "name": [
+                      {
+                        "String": {
+                          "str": "\u003e"
+                        }
+                      }
+                    ],
+                    "rexpr": {
+                      "A_Const": {
+                        "location": 40,
+                        "val": {
+                          "Float": {
+                            "str": "1.5"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "boolop": "AND_EXPR",
+              "location": 30
+            }
+          }
+        }
+      },
+      "stmt_len": 43
+    }
+  ],
+  "version": 130003
+}

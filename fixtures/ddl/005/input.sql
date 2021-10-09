@@ -1,4 +1,4 @@
 CREATE TABLE products (
-    product_no SERIAL,
-    ...
+    product_no SERIAL
+    -- , ...
 );

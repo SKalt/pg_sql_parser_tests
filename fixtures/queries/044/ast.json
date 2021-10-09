@@ -1,0 +1,100 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 35,
+                "relname": "tbl1",
+                "relpersistence": "p"
+              }
+            },
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 41,
+                "relname": "tbl2",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "tbl1"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "a"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 15,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "tbl2"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "a"
+                        }
+                      }
+                    ],
+                    "location": 15
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 23,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "tbl1"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "b"
+                        }
+                      }
+                    ],
+                    "location": 23
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 45
+    }
+  ],
+  "version": 130003
+}

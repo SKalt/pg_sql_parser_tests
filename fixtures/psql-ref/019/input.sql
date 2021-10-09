@@ -1,2 +1,2 @@
-testdb=> \set foo 'my_table'
-testdb=> SELECT * FROM :"foo";
+\set foo 'my_table'
+SELECT * FROM :"foo";

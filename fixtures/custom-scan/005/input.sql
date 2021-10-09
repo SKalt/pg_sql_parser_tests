@@ -1,1 +1,0 @@
-Node *(*CreateCustomScanState) (CustomScan *cscan);

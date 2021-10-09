@@ -1,0 +1,106 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 42,
+                                  "val": {
+                                    "String": {
+                                      "str": "test_slot"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 55,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 61,
+                                  "val": {
+                                    "Null": {}
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 67,
+                                  "val": {
+                                    "String": {
+                                      "str": "include-xids"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 83,
+                                  "val": {
+                                    "String": {
+                                      "str": "0"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pg_logical_slot_get_changes"
+                                }
+                              }
+                            ],
+                            "location": 14
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 87
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,255 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 9,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "mytable"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "arraycolumn"
+                            }
+                          }
+                        ],
+                        "location": 9
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Indices": {
+                          "uidx": {
+                            "A_Const": {
+                              "location": 29,
+                              "val": {
+                                "Integer": {
+                                  "ival": 4
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 31,
+      "stmt_location": 1
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 41,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "mytable"
+                            }
+                          },
+                          {
+                            "String": {
+                              "str": "two_d_column"
+                            }
+                          }
+                        ],
+                        "location": 41
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Indices": {
+                          "uidx": {
+                            "A_Const": {
+                              "location": 62,
+                              "val": {
+                                "Integer": {
+                                  "ival": 17
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Indices": {
+                          "uidx": {
+                            "A_Const": {
+                              "location": 66,
+                              "val": {
+                                "Integer": {
+                                  "ival": 34
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 37,
+      "stmt_location": 33
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 79,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ParamRef": {
+                        "location": 79,
+                        "number": 1
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Indices": {
+                          "is_slice": true,
+                          "lidx": {
+                            "A_Const": {
+                              "location": 82,
+                              "val": {
+                                "Integer": {
+                                  "ival": 10
+                                }
+                              }
+                            }
+                          },
+                          "uidx": {
+                            "A_Const": {
+                              "location": 85,
+                              "val": {
+                                "Integer": {
+                                  "ival": 42
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 18,
+      "stmt_location": 71
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 98,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "a"
+                                  }
+                                }
+                              ],
+                              "location": 113
+                            }
+                          },
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "b"
+                                  }
+                                }
+                              ],
+                              "location": 115
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "arrayfunction"
+                            }
+                          }
+                        ],
+                        "location": 99
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Indices": {
+                          "uidx": {
+                            "A_Const": {
+                              "location": 119,
+                              "val": {
+                                "Integer": {
+                                  "ival": 42
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_location": 90
+    }
+  ],
+  "version": 130003
+}

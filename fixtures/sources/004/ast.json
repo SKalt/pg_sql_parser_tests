@@ -1,0 +1,96 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CallStmt": {
+          "funccall": {
+            "args": [
+              {
+                "ColumnRef": {
+                  "fields": [
+                    {
+                      "String": {
+                        "str": "error"
+                      }
+                    }
+                  ],
+                  "location": 13
+                }
+              },
+              {
+                "RowExpr": {
+                  "args": [
+                    {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "errcode_division_by_zero"
+                                  }
+                                }
+                              ],
+                              "location": 37
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "errcode"
+                            }
+                          }
+                        ],
+                        "location": 29
+                      }
+                    },
+                    {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "division by zero"
+                                  }
+                                }
+                              ],
+                              "location": 80
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "errmsg"
+                            }
+                          }
+                        ],
+                        "location": 73
+                      }
+                    }
+                  ],
+                  "location": 28,
+                  "row_format": "COERCE_IMPLICIT_CAST"
+                }
+              }
+            ],
+            "funcname": [
+              {
+                "String": {
+                  "str": "ereport"
+                }
+              }
+            ],
+            "location": 5
+          }
+        }
+      },
+      "stmt_len": 101
+    }
+  ],
+  "version": 130003
+}

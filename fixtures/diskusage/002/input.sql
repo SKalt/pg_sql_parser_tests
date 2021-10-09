@@ -5,6 +5,6 @@ WHERE c.relname = 'customer' AND
       c2.oid = i.indexrelid
 ORDER BY c2.relname;
 
-      relname      | relpages
--------------------+----------
- customer_id_index |       26
+--       relname      | relpages
+-- -------------------+----------
+--  customer_id_index |       26

@@ -1,2 +1,2 @@
-testdb=> \setenv PAGER less
-testdb=> \setenv LESS -imx4F
+\setenv PAGER less
+\setenv LESS -imx4F

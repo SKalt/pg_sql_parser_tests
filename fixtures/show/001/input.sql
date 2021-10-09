@@ -1,5 +1,5 @@
 SHOW geqo;
- geqo
-------
- on
-(1 row)
+--  geqo
+-- ------
+--  on
+-- (1 row)

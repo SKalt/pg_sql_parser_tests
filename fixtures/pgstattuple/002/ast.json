@@ -1,0 +1,70 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 29,
+                                  "val": {
+                                    "String": {
+                                      "str": "test_gin_index"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pgstatginindex"
+                                }
+                              }
+                            ],
+                            "location": 14
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 46
+    }
+  ],
+  "version": 130003
+}

@@ -1,1 +1,1 @@
-SELECT * FROM table WHERE integer_column < 4;
+SELECT * FROM tble WHERE integer_column < 4;

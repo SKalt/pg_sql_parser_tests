@@ -1,5 +1,5 @@
 SELECT nextval('serial');
 
- nextval
----------
-     102
+--  nextval
+-- ---------
+--      102

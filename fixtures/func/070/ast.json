@@ -1,0 +1,47 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "FuncCall": {
+                          "funcname": [
+                            {
+                              "String": {
+                                "str": "pg_backend_pid"
+                              }
+                            }
+                          ],
+                          "location": 38
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_log_backend_memory_contexts"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 55
+    }
+  ],
+  "version": 130003
+}

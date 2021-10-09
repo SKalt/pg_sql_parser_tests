@@ -1,0 +1,45 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTSDictionaryStmt": {
+          "dictname": [
+            {
+              "String": {
+                "str": "xsyn"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "my_rules"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "rules",
+                "location": 35
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "false"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "keeporig",
+                "location": 53
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 68
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,1 @@
+syntax error at or near "CALLED_AS_TRIGGER"

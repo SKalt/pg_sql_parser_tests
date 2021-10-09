@@ -1,0 +1,33 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTSDictionaryStmt": {
+          "dictname": [
+            {
+              "String": {
+                "str": "unaccent"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "my_rules"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "rules",
+                "location": 39
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 56
+    }
+  ],
+  "version": 130003
+}

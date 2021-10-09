@@ -1,4 +1,4 @@
 SELECT 'The Fat Rats'::tsvector;
-      tsvector      
---------------------
- 'Fat' 'Rats' 'The'
+--       tsvector      
+-- --------------------
+--  'Fat' 'Rats' 'The'

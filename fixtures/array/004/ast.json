@@ -1,0 +1,31 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Const": {
+                    "location": 7,
+                    "val": {
+                      "String": {
+                        "str": "{{1,2,3},{4,5,6},{7,8,9}}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 34
+    }
+  ],
+  "version": 130003
+}

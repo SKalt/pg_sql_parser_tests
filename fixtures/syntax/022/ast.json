@@ -1,0 +1,138 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "mytable"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "mycolumn"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 23
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 32,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ParamRef": {
+                        "location": 32,
+                        "number": 1
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "String": {
+                          "str": "somecolumn"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 21,
+      "stmt_location": 24
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 54,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "FuncCall": {
+                        "args": [
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "a"
+                                  }
+                                }
+                              ],
+                              "location": 67
+                            }
+                          },
+                          {
+                            "ColumnRef": {
+                              "fields": [
+                                {
+                                  "String": {
+                                    "str": "b"
+                                  }
+                                }
+                              ],
+                              "location": 69
+                            }
+                          }
+                        ],
+                        "funcname": [
+                          {
+                            "String": {
+                              "str": "rowfunction"
+                            }
+                          }
+                        ],
+                        "location": 55
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "String": {
+                          "str": "col3"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 31,
+      "stmt_location": 46
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,143 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeFunction": {
+                "functions": [
+                  {
+                    "List": {
+                      "items": [
+                        {
+                          "FuncCall": {
+                            "args": [
+                              {
+                                "A_Const": {
+                                  "location": 50,
+                                  "val": {
+                                    "String": {
+                                      "str": "node_a_slot"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "funcname": [
+                              {
+                                "String": {
+                                  "str": "pg_create_physical_replication_slot"
+                                }
+                              }
+                            ],
+                            "location": 14
+                          }
+                        },
+                        {}
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "A_Star": {}
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 64
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 171,
+                "relname": "pg_replication_slots",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 137,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "slot_name"
+                        }
+                      }
+                    ],
+                    "location": 137
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 148,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "slot_type"
+                        }
+                      }
+                    ],
+                    "location": 148
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 159,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "active"
+                        }
+                      }
+                    ],
+                    "location": 159
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 126,
+      "stmt_location": 65
+    }
+  ],
+  "version": 130003
+}

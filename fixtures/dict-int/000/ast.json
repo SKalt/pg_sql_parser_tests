@@ -1,0 +1,45 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTSDictionaryStmt": {
+          "dictname": [
+            {
+              "String": {
+                "str": "intdict"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "Integer": {
+                    "ival": 4
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "maxlen",
+                "location": 38
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "true"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "rejectlong",
+                "location": 50
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 68
+    }
+  ],
+  "version": 130003
+}

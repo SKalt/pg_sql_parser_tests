@@ -1,1 +1,1 @@
-SELECT string_agg(a, ',' ORDER BY a) FROM table;
+SELECT string_agg(a, ',' ORDER BY a) FROM tble;

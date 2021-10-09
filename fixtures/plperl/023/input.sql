@@ -19,6 +19,6 @@ SELECT init();
 SELECT add_time('1 day'), add_time('2 days'), add_time('3 days');
 SELECT done();
 
-  add_time  |  add_time  |  add_time
-------------+------------+------------
- 2005-12-10 | 2005-12-11 | 2005-12-12
+--   add_time  |  add_time  |  add_time
+-- ------------+------------+------------
+--  2005-12-10 | 2005-12-11 | 2005-12-12

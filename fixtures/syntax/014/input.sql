@@ -1,2 +1,2 @@
-$$Dianne's horse$$
-$SomeTag$Dianne's horse$SomeTag$
+select $$Dianne's horse$$;
+select $SomeTag$Dianne's horse$SomeTag$;

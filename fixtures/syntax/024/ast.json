@@ -1,0 +1,42 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "A_Indirection": {
+                    "arg": {
+                      "ColumnRef": {
+                        "fields": [
+                          {
+                            "String": {
+                              "str": "compositecol"
+                            }
+                          }
+                        ],
+                        "location": 8
+                      }
+                    },
+                    "indirection": [
+                      {
+                        "A_Star": {}
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 23
+    }
+  ],
+  "version": 130003
+}

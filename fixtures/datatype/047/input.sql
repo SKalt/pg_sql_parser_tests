@@ -1,1 +1,1 @@
-nextval('foo'::text)      foo is looked up at runtime
+select nextval('foo'::text); --      foo is looked up at runtime

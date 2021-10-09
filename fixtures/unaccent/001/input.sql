@@ -1,1 +1,1 @@
-mydb=# ALTER TEXT SEARCH DICTIONARY unaccent (RULES='my_rules');
+ALTER TEXT SEARCH DICTIONARY unaccent (RULES='my_rules');

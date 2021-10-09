@@ -1,7 +1,7 @@
 CREATE TYPE box;
 
-CREATE FUNCTION my_box_in_function(cstring) RETURNS box AS ... ;
-CREATE FUNCTION my_box_out_function(box) RETURNS cstring AS ... ;
+CREATE FUNCTION my_box_in_function(cstring) RETURNS box AS '...' LANGUAGE SQL ;
+CREATE FUNCTION my_box_out_function(box) RETURNS cstring AS '...' LANGUAGE SQL ;
 
 CREATE TYPE box (
     INTERNALLENGTH = 16,

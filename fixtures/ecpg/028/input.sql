@@ -1,1 +1,0 @@
-VARCHAR var[180];

@@ -1,0 +1,451 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateTableAsStmt": {
+          "into": {
+            "onCommit": "ONCOMMIT_NOOP",
+            "rel": {
+              "inh": true,
+              "location": 13,
+              "relname": "tbloom",
+              "relpersistence": "p"
+            }
+          },
+          "query": {
+            "SelectStmt": {
+              "fromClause": [
+                {
+                  "RangeFunction": {
+                    "functions": [
+                      {
+                        "List": {
+                          "items": [
+                            {
+                              "FuncCall": {
+                                "args": [
+                                  {
+                                    "A_Const": {
+                                      "location": 286,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 1
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "A_Const": {
+                                      "location": 288,
+                                      "val": {
+                                        "Integer": {
+                                          "ival": 10000000
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "generate_series"
+                                    }
+                                  }
+                                ],
+                                "location": 270
+                              }
+                            },
+                            {}
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "targetList": [
+                {
+                  "ResTarget": {
+                    "location": 38,
+                    "name": "i1",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "FuncCall": {
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "random"
+                                    }
+                                  }
+                                ],
+                                "location": 39
+                              }
+                            },
+                            "location": 48,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 50,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1000000
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "location": 58,
+                        "typeName": {
+                          "location": 60,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "pg_catalog"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "int4"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 76,
+                    "name": "i2",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "FuncCall": {
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "random"
+                                    }
+                                  }
+                                ],
+                                "location": 77
+                              }
+                            },
+                            "location": 86,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 88,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1000000
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "location": 96,
+                        "typeName": {
+                          "location": 98,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "pg_catalog"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "int4"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 114,
+                    "name": "i3",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "FuncCall": {
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "random"
+                                    }
+                                  }
+                                ],
+                                "location": 115
+                              }
+                            },
+                            "location": 124,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 126,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1000000
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "location": 134,
+                        "typeName": {
+                          "location": 136,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "pg_catalog"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "int4"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 152,
+                    "name": "i4",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "FuncCall": {
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "random"
+                                    }
+                                  }
+                                ],
+                                "location": 153
+                              }
+                            },
+                            "location": 162,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 164,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1000000
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "location": 172,
+                        "typeName": {
+                          "location": 174,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "pg_catalog"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "int4"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 190,
+                    "name": "i5",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "FuncCall": {
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "random"
+                                    }
+                                  }
+                                ],
+                                "location": 191
+                              }
+                            },
+                            "location": 200,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 202,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1000000
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "location": 210,
+                        "typeName": {
+                          "location": 212,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "pg_catalog"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "int4"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "ResTarget": {
+                    "location": 228,
+                    "name": "i6",
+                    "val": {
+                      "TypeCast": {
+                        "arg": {
+                          "A_Expr": {
+                            "kind": "AEXPR_OP",
+                            "lexpr": {
+                              "FuncCall": {
+                                "funcname": [
+                                  {
+                                    "String": {
+                                      "str": "random"
+                                    }
+                                  }
+                                ],
+                                "location": 229
+                              }
+                            },
+                            "location": 238,
+                            "name": [
+                              {
+                                "String": {
+                                  "str": "*"
+                                }
+                              }
+                            ],
+                            "rexpr": {
+                              "A_Const": {
+                                "location": 240,
+                                "val": {
+                                  "Integer": {
+                                    "ival": 1000000
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "location": 248,
+                        "typeName": {
+                          "location": 250,
+                          "names": [
+                            {
+                              "String": {
+                                "str": "pg_catalog"
+                              }
+                            },
+                            {
+                              "String": {
+                                "str": "int4"
+                              }
+                            }
+                          ],
+                          "typemod": -1
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 297
+    }
+  ],
+  "version": 130003
+}

@@ -1,1 +1,0 @@
-paramInfo->paramFetch(paramInfo, paramId);

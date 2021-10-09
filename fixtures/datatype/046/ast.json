@@ -1,0 +1,250 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 15,
+                          "val": {
+                            "String": {
+                              "str": "foo"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "nextval"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 21
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 70,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 78,
+                          "val": {
+                            "String": {
+                              "str": "FOO"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "nextval"
+                        }
+                      }
+                    ],
+                    "location": 70
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 62,
+      "stmt_location": 22
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 122,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 130,
+                          "val": {
+                            "String": {
+                              "str": "\"Foo\""
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "nextval"
+                        }
+                      }
+                    ],
+                    "location": 122
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 53,
+      "stmt_location": 85
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 185,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 193,
+                          "val": {
+                            "String": {
+                              "str": "myschema.foo"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "nextval"
+                        }
+                      }
+                    ],
+                    "location": 185
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 69,
+      "stmt_location": 139
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 248,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 256,
+                          "val": {
+                            "String": {
+                              "str": "\"myschema\".foo"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "nextval"
+                        }
+                      }
+                    ],
+                    "location": 248
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 64,
+      "stmt_location": 209
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 300,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "A_Const": {
+                          "location": 308,
+                          "val": {
+                            "String": {
+                              "str": "foo"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "nextval"
+                        }
+                      }
+                    ],
+                    "location": 300
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 40,
+      "stmt_location": 274
+    }
+  ],
+  "version": 130003
+}

@@ -1,0 +1,268 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "Constraint": {
+                    "contype": "CONSTR_CHECK",
+                    "initially_valid": true,
+                    "location": 20,
+                    "raw_expr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_OP",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "x"
+                                }
+                              }
+                            ],
+                            "location": 28
+                          }
+                        },
+                        "location": 30,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "A_Const": {
+                            "location": 32,
+                            "val": {
+                              "Integer": {
+                                "ival": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "subtype": "AT_AddConstraint"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 36
+    },
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "Constraint": {
+                    "contype": "CONSTR_CHECK",
+                    "initially_valid": true,
+                    "location": 57,
+                    "raw_expr": {
+                      "A_Expr": {
+                        "kind": "AEXPR_IN",
+                        "lexpr": {
+                          "ColumnRef": {
+                            "fields": [
+                              {
+                                "String": {
+                                  "str": "county"
+                                }
+                              }
+                            ],
+                            "location": 65
+                          }
+                        },
+                        "location": 72,
+                        "name": [
+                          {
+                            "String": {
+                              "str": "="
+                            }
+                          }
+                        ],
+                        "rexpr": {
+                          "List": {
+                            "items": [
+                              {
+                                "A_Const": {
+                                  "location": 77,
+                                  "val": {
+                                    "String": {
+                                      "str": "Oxfordshire"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 92,
+                                  "val": {
+                                    "String": {
+                                      "str": "Buckinghamshire"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "A_Const": {
+                                  "location": 111,
+                                  "val": {
+                                    "String": {
+                                      "str": "Warwickshire"
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "subtype": "AT_AddConstraint"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 49,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 92,
+      "stmt_location": 37
+    },
+    {
+      "stmt": {
+        "AlterTableStmt": {
+          "cmds": [
+            {
+              "AlterTableCmd": {
+                "behavior": "DROP_RESTRICT",
+                "def": {
+                  "Constraint": {
+                    "contype": "CONSTR_CHECK",
+                    "initially_valid": true,
+                    "location": 150,
+                    "raw_expr": {
+                      "BoolExpr": {
+                        "args": [
+                          {
+                            "A_Expr": {
+                              "kind": "AEXPR_OP",
+                              "lexpr": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "outletid"
+                                      }
+                                    }
+                                  ],
+                                  "location": 158
+                                }
+                              },
+                              "location": 167,
+                              "name": [
+                                {
+                                  "String": {
+                                    "str": "\u003e="
+                                  }
+                                }
+                              ],
+                              "rexpr": {
+                                "A_Const": {
+                                  "location": 170,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 100
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "A_Expr": {
+                              "kind": "AEXPR_OP",
+                              "lexpr": {
+                                "ColumnRef": {
+                                  "fields": [
+                                    {
+                                      "String": {
+                                        "str": "outletid"
+                                      }
+                                    }
+                                  ],
+                                  "location": 178
+                                }
+                              },
+                              "location": 187,
+                              "name": [
+                                {
+                                  "String": {
+                                    "str": "\u003c"
+                                  }
+                                }
+                              ],
+                              "rexpr": {
+                                "A_Const": {
+                                  "location": 189,
+                                  "val": {
+                                    "Integer": {
+                                      "ival": 200
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "boolop": "AND_EXPR",
+                        "location": 174
+                      }
+                    }
+                  }
+                },
+                "subtype": "AT_AddConstraint"
+              }
+            }
+          ],
+          "relation": {
+            "inh": true,
+            "location": 142,
+            "relname": "foo",
+            "relpersistence": "p"
+          },
+          "relkind": "OBJECT_TABLE"
+        }
+      },
+      "stmt_len": 65,
+      "stmt_location": 130
+    }
+  ],
+  "version": 130003
+}

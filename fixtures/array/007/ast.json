@@ -1,0 +1,63 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "InsertStmt": {
+          "override": "OVERRIDING_NOT_SET",
+          "relation": {
+            "inh": true,
+            "location": 12,
+            "relname": "sal_emp",
+            "relpersistence": "p"
+          },
+          "selectStmt": {
+            "SelectStmt": {
+              "limitOption": "LIMIT_OPTION_DEFAULT",
+              "op": "SETOP_NONE",
+              "valuesLists": [
+                {
+                  "List": {
+                    "items": [
+                      {
+                        "A_Const": {
+                          "location": 32,
+                          "val": {
+                            "String": {
+                              "str": "Bill"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 44,
+                          "val": {
+                            "String": {
+                              "str": "{10000, 10000, 10000, 10000}"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "A_Const": {
+                          "location": 80,
+                          "val": {
+                            "String": {
+                              "str": "{{\"meeting\", \"lunch\"}, {\"meeting\"}}"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "stmt_len": 118
+    }
+  ],
+  "version": 130003
+}

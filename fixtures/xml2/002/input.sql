@@ -20,7 +20,7 @@ SELECT * FROM
   AS t(id int, doc_num varchar(10), line_num varchar(10), val1 int, val2 int, val3 int)
 WHERE id = 1 ORDER BY doc_num, line_num
 
- id | doc_num | line_num | val1 | val2 | val3
-----+---------+----------+------+------+------
-  1 | C1      | L1       |    1 |    2 |    3
-  1 |         | L2       |   11 |   22 |   33
+--  id | doc_num | line_num | val1 | val2 | val3
+-- ----+---------+----------+------+------+------
+--   1 | C1      | L1       |    1 |    2 |    3
+--   1 |         | L2       |   11 |   22 |   33

@@ -1,0 +1,81 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 30,
+                "relname": "pg_class",
+                "relpersistence": "p"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "sortClause": [
+            {
+              "SortBy": {
+                "location": -1,
+                "node": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "relpages"
+                        }
+                      }
+                    ],
+                    "location": 48
+                  }
+                },
+                "sortby_dir": "SORTBY_DESC",
+                "sortby_nulls": "SORTBY_NULLS_DEFAULT"
+              }
+            }
+          ],
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "relname"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            },
+            {
+              "ResTarget": {
+                "location": 16,
+                "val": {
+                  "ColumnRef": {
+                    "fields": [
+                      {
+                        "String": {
+                          "str": "relpages"
+                        }
+                      }
+                    ],
+                    "location": 16
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 61
+    }
+  ],
+  "version": 130003
+}

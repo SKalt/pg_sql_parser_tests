@@ -1,1 +1,1 @@
-NUMERIC(precision)
+CREATE TABLE foo(bar NUMERIC(12));

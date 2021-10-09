@@ -1,14 +1,14 @@
 SELECT 'fat & rat'::tsquery;
-    tsquery    
----------------
- 'fat' & 'rat'
+--     tsquery    
+-- ---------------
+--  'fat' & 'rat'
 
 SELECT 'fat & (rat | cat)'::tsquery;
-          tsquery          
----------------------------
- 'fat' & ( 'rat' | 'cat' )
+--           tsquery          
+-- ---------------------------
+--  'fat' & ( 'rat' | 'cat' )
 
 SELECT 'fat & rat & ! cat'::tsquery;
-        tsquery         
-------------------------
- 'fat' & 'rat' & !'cat'
+--         tsquery         
+-- ------------------------
+--  'fat' & 'rat' & !'cat'

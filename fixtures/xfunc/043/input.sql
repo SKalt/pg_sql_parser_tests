@@ -1,1 +1,0 @@
-AttInMetadata *TupleDescGetAttInMetadata(TupleDesc tupdesc)

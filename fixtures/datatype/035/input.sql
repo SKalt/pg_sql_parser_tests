@@ -1,4 +1,4 @@
 SELECT 'super:*'::tsquery;
-  tsquery  
------------
- 'super':*
+--   tsquery  
+-- -----------
+--  'super':*

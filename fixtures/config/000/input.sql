@@ -1,5 +1,0 @@
-# This is a comment
-log_connections = yes
-log_destination = 'syslog'
-search_path = '"$user", public'
-shared_buffers = 128MB

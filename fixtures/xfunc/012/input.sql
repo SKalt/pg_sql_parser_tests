@@ -8,10 +8,10 @@ AS $$
 $$ LANGUAGE SQL;
 
 SELECT * FROM sum_n_product_with_tab(10);
- sum | product
------+---------
-  11 |      10
-  13 |      30
-  15 |      50
-  17 |      70
-(4 rows)
+--  sum | product
+-- -----+---------
+--   11 |      10
+--   13 |      30
+--   15 |      50
+--   17 |      70
+-- (4 rows)

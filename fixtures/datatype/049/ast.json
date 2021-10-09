@@ -1,0 +1,58 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "SelectStmt": {
+          "fromClause": [
+            {
+              "RangeVar": {
+                "inh": true,
+                "location": 41,
+                "relname": "tables",
+                "relpersistence": "p",
+                "schemaname": "information_schema"
+              }
+            }
+          ],
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 7,
+                "val": {
+                  "FuncCall": {
+                    "args": [
+                      {
+                        "ColumnRef": {
+                          "fields": [
+                            {
+                              "String": {
+                                "str": "table_name"
+                              }
+                            }
+                          ],
+                          "location": 24
+                        }
+                      }
+                    ],
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "pg_relation_size"
+                        }
+                      }
+                    ],
+                    "location": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 67
+    }
+  ],
+  "version": 130003
+}

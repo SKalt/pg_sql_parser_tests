@@ -1,0 +1,91 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "CreateFunctionStmt": {
+          "funcname": [
+            {
+              "String": {
+                "str": "raise_custom_exception"
+              }
+            }
+          ],
+          "options": [
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "\nplpy.error(\"custom exception message\",\n           detail=\"some info about exception\",\n           hint=\"hint for users\")\n"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "as",
+                "location": 54
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "String": {
+                    "str": "plpythonu"
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "language",
+                "location": 183
+              }
+            }
+          ],
+          "returnType": {
+            "location": 49,
+            "names": [
+              {
+                "String": {
+                  "str": "void"
+                }
+              }
+            ],
+            "typemod": -1
+          }
+        }
+      },
+      "stmt_len": 201
+    },
+    {
+      "stmt": {
+        "SelectStmt": {
+          "limitOption": "LIMIT_OPTION_DEFAULT",
+          "op": "SETOP_NONE",
+          "targetList": [
+            {
+              "ResTarget": {
+                "location": 211,
+                "val": {
+                  "FuncCall": {
+                    "funcname": [
+                      {
+                        "String": {
+                          "str": "raise_custom_exception"
+                        }
+                      }
+                    ],
+                    "location": 211
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stmt_len": 33,
+      "stmt_location": 202
+    }
+  ],
+  "version": 130003
+}

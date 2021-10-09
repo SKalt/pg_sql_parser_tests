@@ -1,2 +1,2 @@
-(compositecol).somefield
-(mytable.compositecol).somefield
+select (compositecol).somefield;
+select (mytable.compositecol).somefield;

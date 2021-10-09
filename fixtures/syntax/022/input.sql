@@ -1,3 +1,3 @@
-mytable.mycolumn
-$1.somecolumn
-(rowfunction(a,b)).col3
+select mytable.mycolumn;
+select $1.somecolumn;
+select (rowfunction(a,b)).col3;

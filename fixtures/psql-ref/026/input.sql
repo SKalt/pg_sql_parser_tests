@@ -1,2 +1,2 @@
-testdb=> \set PROMPT1 '%n@%m %~%R%# '
-peter@localhost testdb=>
+\set PROMPT1 '%n@%m %~%R%# '
+-- peter@localhost testdb=>

@@ -1,0 +1,177 @@
+{
+  "stmts": [
+    {
+      "stmt": {
+        "DefineStmt": {
+          "definition": [
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 36,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "box"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "leftarg",
+                "location": 26
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 56,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "box"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "rightarg",
+                "location": 45
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 76,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "area_equal_function"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "function",
+                "location": 65
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "myschema"
+                        }
+                      },
+                      {
+                        "String": {
+                          "str": "==="
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "commutator",
+                "location": 101
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "List": {
+                    "items": [
+                      {
+                        "String": {
+                          "str": "!=="
+                        }
+                      }
+                    ]
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "negator",
+                "location": 143
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 173,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "area_restriction_function"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "restrict",
+                "location": 162
+              }
+            },
+            {
+              "DefElem": {
+                "arg": {
+                  "TypeName": {
+                    "location": 211,
+                    "names": [
+                      {
+                        "String": {
+                          "str": "area_join_function"
+                        }
+                      }
+                    ],
+                    "typemod": -1
+                  }
+                },
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "join",
+                "location": 204
+              }
+            },
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "hashes",
+                "location": 235
+              }
+            },
+            {
+              "DefElem": {
+                "defaction": "DEFELEM_UNSPEC",
+                "defname": "merges",
+                "location": 243
+              }
+            }
+          ],
+          "defnames": [
+            {
+              "String": {
+                "str": "==="
+              }
+            }
+          ],
+          "kind": "OBJECT_OPERATOR"
+        }
+      },
+      "stmt_len": 251
+    }
+  ],
+  "version": 130003
+}

@@ -15,14 +15,14 @@ END;
 $$;
 
 SELECT foo();
-WARNING:  number of source and target fields in assignment does not match
-DETAIL:  strict_multi_assignment check of extra_warnings is active.
-HINT:  Make sure the query returns the exact list of columns.
-WARNING:  number of source and target fields in assignment does not match
-DETAIL:  strict_multi_assignment check of extra_warnings is active.
-HINT:  Make sure the query returns the exact list of columns.
+-- WARNING:  number of source and target fields in assignment does not match
+-- DETAIL:  strict_multi_assignment check of extra_warnings is active.
+-- HINT:  Make sure the query returns the exact list of columns.
+-- WARNING:  number of source and target fields in assignment does not match
+-- DETAIL:  strict_multi_assignment check of extra_warnings is active.
+-- HINT:  Make sure the query returns the exact list of columns.
 
- foo 
------
+--  foo 
+-- -----
  
-(1 row)
+-- (1 row)

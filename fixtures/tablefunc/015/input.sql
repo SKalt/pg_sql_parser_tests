@@ -21,8 +21,8 @@ AS
        test_startdate timestamp,
        volts float8
 );
- rowid |          rowdt           | temperature | test_result |      test_startdate      | volts
--------+--------------------------+-------------+-------------+--------------------------+--------
- test1 | Sat Mar 01 00:00:00 2003 |          42 | PASS        |                          | 2.6987
- test2 | Sun Mar 02 00:00:00 2003 |          53 | FAIL        | Sat Mar 01 00:00:00 2003 | 3.1234
-(2 rows)
+--  rowid |          rowdt           | temperature | test_result |      test_startdate      | volts
+-- -------+--------------------------+-------------+-------------+--------------------------+--------
+--  test1 | Sat Mar 01 00:00:00 2003 |          42 | PASS        |                          | 2.6987
+--  test2 | Sun Mar 02 00:00:00 2003 |          53 | FAIL        | Sat Mar 01 00:00:00 2003 | 3.1234
+-- (2 rows)

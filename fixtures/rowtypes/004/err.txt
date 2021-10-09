@@ -1,0 +1,1 @@
+syntax error at or near "'("fuzzy dice",42,1.99)'"
