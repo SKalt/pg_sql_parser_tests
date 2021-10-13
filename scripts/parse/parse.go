@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 
@@ -40,9 +41,11 @@ type token struct {
 }
 
 // path: e.g. ./fixtures/my_test_suite/my_specific_test
-func tokens(path string, inputData string) {
+func tokens(path string, inputData string) error {
 	result, err := pg_query.Scan(inputData)
-	panicIfNotOk(err)
+	if err != nil {
+		return err
+	}
 	tokens := make([]*token, len(result.Tokens))
 	for i, protoToken := range result.Tokens {
 		tok := token{
@@ -54,21 +57,42 @@ func tokens(path string, inputData string) {
 		tokens[i] = &tok
 	}
 	prettyPrintTo(filepath.Join(path, "tokens.json"), tokens)
+	return nil
 }
 
 // path: e.g. ./fixtures/my_test_suite/my_specific_test
-func ast(path string, inputData string) {
+func ast(path string, inputData string) error {
 	jsonData, err := pg_query.ParseToJSON(inputData)
-	panicIfNotOk(err)
+	if err != nil {
+		os.WriteFile(path+"/err.txt", []byte(fmt.Sprintf("%v", err)), rw)
+		return err
+	}
 	intermediateJson := map[string]interface{}{}
 	err = json.Unmarshal([]byte(jsonData), &intermediateJson)
-	panicIfNotOk(err)
+	if err != nil {
+		return err
+	}
 	prettyPrintTo(filepath.Join(path, "ast.json"), intermediateJson)
+	return nil
 }
 
 func main() {
 	path := os.Args[1]
+	_, err := os.Stat(filepath.Join(path, "ast.json"))
+	if !os.IsNotExist(err) {
+		return
+	}
 	inputSql := getInput(path)
-	tokens(path, inputSql)
-	ast(path, inputSql)
+	err = tokens(path, inputSql)
+	if err != nil {
+		fmt.Printf("[FAIL:tokens] %s\n", path)
+		os.Exit(1)
+	}
+	err = ast(path, inputSql)
+	if err != nil {
+		fmt.Printf("[FAIL:ast] %s/input.sql\n", path)
+		os.Exit(1)
+	} else {
+		fmt.Printf("[OK] %s/input.sql\n", path)
+	}
 }
