@@ -1,0 +1,11 @@
+[package]
+name = "splitter"
+version = "0.1.0"
+authors = ["Steven Kalt <kalt.steven@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+pg_query_wrapper = { git = "https://github.com/SKalt/pg_query_wrapper.git" }
+clap = "2.33.3"
