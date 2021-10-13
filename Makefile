@@ -1,2 +1,2 @@
-bin/parse: main.go
-	go build -o bin/parse
+bin/parse: scripts/parse/parse.go
+	go build -o bin/parse scripts/parse/parse.go
