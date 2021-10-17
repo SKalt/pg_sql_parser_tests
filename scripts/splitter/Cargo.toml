@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 pg_query_wrapper = { git = "https://github.com/SKalt/pg_query_wrapper.git" }
 clap = "2.33.3"
+md5 = "0.7.0"

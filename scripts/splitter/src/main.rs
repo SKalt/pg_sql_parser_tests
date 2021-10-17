@@ -1,5 +1,9 @@
+use md5;
 use pg_query_wrapper;
-use std::io::{self, Read, Write};
+use std::{
+    fs,
+    io::{self, Read, Write},
+};
 
 #[derive(Debug)]
 enum Failure {
@@ -35,19 +39,32 @@ fn main() -> Result<(), Failure> {
                 .conflicts_with("live"),
         )
         .arg(
+            // the directory to link
             clap::Arg::with_name("outdir")
                 .long("--out-dir")
                 .short("-o")
                 .default_value("."),
         )
+        .arg(
+            clap::Arg::with_name("input")
+                .long("--input")
+                .short("-i")
+                .default_value("-")
+                .help("the file or device from which to read SQL (`-` means stdin)"),
+        )
         .get_matches();
 
     // read from stdin
     let mut buffer = String::new();
-    let mut stdin = io::stdin(); // We get `Stdin` here.
-    stdin.read_to_string(&mut buffer)?;
+    match matches.value_of("input") {
+        None | Some("-") => {
+            io::stdin().read_to_string(&mut buffer)?;
+        }
+        Some(filename) => {
+            buffer = fs::read_to_string(filename)?;
+        }
+    }
 
-    // split the statements from stdin
     let stmts = pg_query_wrapper::split_statements_with_scanner(buffer.as_str())?;
 
     if matches.is_present("dry_run") {

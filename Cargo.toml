@@ -11,3 +11,7 @@ edition = "2018"
 members = [
   "scripts/splitter",
 ]
+
+[[bin]]
+name = "splitter"
+path = "scripts/splitter"
