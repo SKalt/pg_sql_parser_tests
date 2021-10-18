@@ -230,9 +230,9 @@ checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 
 [[package]]
 name = "libc"
-version = "0.2.103"
+version = "0.2.104"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dd8f7255a17a627354f321ef0055d63b898c6fb27eff628af4d1b66b7331edf6"
+checksum = "7b2f96d100e1cf1929e7719b7edb3b90ab5298072638fccd77be9ce942ecdfce"
 
 [[package]]
 name = "libloading"
@@ -252,12 +252,6 @@ checksum = "51b9bbe6c47d51fc3e1a9b945965946b4c44142ab8792c50835a980d362c2710"
 dependencies = [
  "cfg-if",
 ]
-
-[[package]]
-name = "md5"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "490cc448043f947bae3cbee9c203358d62dbee0db12107a74be5c30ccfd09771"
 
 [[package]]
 name = "memchr"
@@ -300,7 +294,7 @@ dependencies = [
 [[package]]
 name = "pg_query_wrapper"
 version = "0.1.0"
-source = "git+https://github.com/SKalt/pg_query_wrapper.git#6dcac48683e591e1aef7d412c4e90f31587a27a3"
+source = "git+https://github.com/SKalt/pg_query_wrapper.git#2b8c8a2f9eacd7a7b589ba1ce0abb05e4927deb3"
 dependencies = [
  "bindgen",
  "cc",
@@ -310,14 +304,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "pg_sql_parser_tests"
-version = "0.1.0"
-
-[[package]]
 name = "ppv-lite86"
-version = "0.2.10"
+version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ac74c624d6b2d21f425f752262f42188365d7b8ff1aff74c82e45136510a4857"
+checksum = "c3ca011bd0129ff4ae15cd04c4eef202cadf6c51c21e47aba319b4e0501db741"
 
 [[package]]
 name = "proc-macro2"
@@ -480,8 +470,9 @@ name = "splitter"
 version = "0.1.0"
 dependencies = [
  "clap",
- "md5",
  "pg_query_wrapper",
+ "regex",
+ "xxhash-rust",
 ]
 
 [[package]]
@@ -619,3 +610,9 @@ name = "winapi-x86_64-pc-windows-gnu"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
+
+[[package]]
+name = "xxhash-rust"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e575e15bedf6e57b5c2d763ffc6c3c760143466cbd09d762d539680ab5992ded"

@@ -6,17 +6,13 @@ Derived from the postgres docs and postgres regression tests.
 ```
 fixtures
 ├── data
-|   └── ${md5}
-|        ├── input.sql    # may be patched, in the case of doctests
-|        ├── docs.md      # optional
-|        ├── urls.tsv     # urls at which to find the md5'd input.sql
-|        ├── versions.tsv # includes client/language references
-|        ├── tokens.json  # included to give an idea of what the sql means
-|        └── ast.json     # ^
+|   └── ${xxhash}.sql
 ├── versions
 |   └── ${version} # 0-padded for asciibetical sorting
-|        ├── doctests/${test_group}/${test_name} -> ../../../data/${md5}/
-|        └── regress/${test_group}/${test_name}  -> ../../../data/${md5}/
+|        ├── doctests/${test_group}/${test_name}/
+|        |   └── input.sql -> ../../../data/${xxhash}/input.sql
+|        └── regress/${test_group}/${test_name}/
+|            └── input.sql -> ../../../data/${xxhash}/input.sql
 └── suites
     ├── supported.yaml
     └── *.yaml # other common queries
