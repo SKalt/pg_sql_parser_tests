@@ -11,4 +11,9 @@ pg_query_wrapper = { git = "https://github.com/SKalt/pg_query_wrapper.git" }
 clap = "2.33.3"
 regex = "1.5.4"
 xxhash-rust = { version = "0.8.2", features = ["xxh3"] }
-# todo: some sort of tsv utility
+rusqlite = "0.26.1"
+indicatif = "0.16.2"
+tar = "0.4.37"
+url = "2.2.2"
+lazy_static = "1.4.0"
+nom = "7.1.0"
