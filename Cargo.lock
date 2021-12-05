@@ -528,6 +528,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "psql_splitter"
+version = "0.1.0"
+source = "git+https://github.com/SKalt/psql_splitter.git#31d706216d5bcca753c360dc56f7ce2534815387"
+dependencies = [
+ "nom 7.1.0",
+]
+
+[[package]]
 name = "quote"
 version = "1.0.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -653,6 +661,7 @@ dependencies = [
  "lazy_static",
  "nom 7.1.0",
  "pg_query_wrapper",
+ "psql_splitter",
  "regex",
  "rusqlite",
  "tar",

@@ -1,13 +1,7 @@
-use nom::branch::alt;
-use nom::bytes::complete::tag;
-use nom::character::complete::anychar;
-use nom::combinator::recognize;
-use nom::multi::many0;
-use nom::sequence::delimited;
-use nom::Slice;
-
+use lazy_static::lazy_static;
 use pg_query_wrapper as pg_query;
-use regex;
+use psql_splitter;
+use regex::Regex;
 use std::convert::TryFrom;
 use std::io::Read;
 use std::{
@@ -94,30 +88,18 @@ fn parse_do_stmt(d: &pg_query::pbuf::DoStmt) -> (String, String) {
 fn parse_fn_stmt(f: &pg_query::pbuf::CreateFunctionStmt) -> (String, String) {
     return parse_pl(f.options.as_ref());
 }
-fn extract_pl(input: &str) -> Result<String, Failure> {
+
+fn extract_pl(input: &str) -> Result<(String, String), Failure> {
     use pg_query::pbuf::node::Node;
-    let stmts = pg_query_wrapper::parse_to_protobuf(input)?.stmts;
+    let stmts = pg_query::parse_to_protobuf(input)?.stmts;
+
     assert_eq!(stmts.len(), 1);
-
-    let mut content: String = "".into();
-    let mut lang: String = "".into();
-
     if let Some(node) = &stmts[0].stmt {
         if let Some(node) = &node.node {
             match node {
-                Node::DoStmt(stmt) => {
-                    let (content_, lang_) = parse_do_stmt(stmt);
-                    content = content_;
-                    lang = lang_;
-                    Ok(content)
-                }
-                Node::CreateFunctionStmt(stmt) => {
-                    let (content_, lang_) = parse_fn_stmt(stmt);
-                    content = content_;
-                    lang = lang_;
-                    return Ok(content);
-                }
-                _ => panic!("unexpected node type {:?}", node),
+                Node::DoStmt(stmt) => return Ok(parse_do_stmt(stmt)),
+                Node::CreateFunctionStmt(stmt) => return Ok(parse_fn_stmt(stmt)),
+                _ => return Err(Failure::Other(format!("unexpected node type {:?}", node))),
             }
         } else {
             return Err(Failure::Other("missing statement-node".to_string()));
@@ -126,6 +108,7 @@ fn extract_pl(input: &str) -> Result<String, Failure> {
         return Err(Failure::Other("empty stmt".to_string()));
     }
 }
+
 impl Statement {
     fn new(text: String, language: Language, url: Option<Url>) -> Self {
         Statement {
@@ -154,28 +137,6 @@ impl Statement {
 }
 
 // psql stuff ---------------------------------------------------
-use lazy_static::lazy_static;
-use regex::Regex;
-
-fn nested_psql(input: &str) -> nom::IResult<&str, &str> {
-    Ok(recognize(delimited(
-        tag(r"\if"),
-        many0(alt((nested_psql, recognize(anychar)))),
-        tag(r"\endif"),
-    ))(input)?)
-}
-
-lazy_static! {
-    static ref PSQL_START: Regex = Regex::new(r"(?m)^\s*\\[a-z]+ .*$").unwrap();
-    static ref PSQL_END: Regex = Regex::new(r"(?m)\\[a-z]+.*$").unwrap();
-    static ref PSQL_IF: Regex = Regex::new(r"\\if ").unwrap();
-    static ref PSQL_COPY: Regex = Regex::new(r"(?m)^\\\.$").unwrap();
-    static ref PSQL_VARIABLE_HEURISTIC: Regex = Regex::new("^[^-:']*:['\"]?[a-z]").unwrap();
-    // static ref LEADING_WHITESPACE: Regex = Regex::new(r"^\s*(--.+)?$").unwrap();
-    static ref LEADING_LINE_COMMENT: Regex = Regex::new(r"^\s*--").unwrap();
-    // r#^[^-:']*:['"]?[a-z]# seems to match all the psql variables in the postgres
-    // regression tests
-}
 
 #[derive(Debug, Clone, Copy)]
 pub enum Language {
@@ -183,129 +144,81 @@ pub enum Language {
     PlPgSql = 1,
     Psql = 2,
     PlPerl = 3,
-    PlPython = 4,
+    PlTcl = 4,
+    PlPython2 = 5,
+    PlPython3 = 6,
+    Other = -1,
+}
+
+lazy_static! {
+    static ref PLPGSQL_NAME: Regex = Regex::new("(?i)^plpgsql$").unwrap();
+    static ref PLPERL_NAME: Regex = Regex::new("(?i)^plperl$").unwrap();
+    static ref PLTCL_NAME: Regex = Regex::new("(?i)^pltcl$").unwrap();
+    static ref PLPYTHON2_NAME: Regex = Regex::new("(?i)^plpython2?u$").unwrap();
+    static ref PLPYTHON3_NAME: Regex = Regex::new("(?i)^plpython3u$").unwrap();
+}
+
+fn idenify_language(lang: &str) -> Language {
+    use Language::*;
+    if let Some(_) = PLPGSQL_NAME.find(lang) {
+        return PlPgSql;
+    } else if let Some(_) = PLPERL_NAME.find(lang) {
+        return PlPerl;
+    } else if let Some(_) = PLTCL_NAME.find(lang) {
+        return PlTcl;
+    } else if let Some(_) = PLPYTHON2_NAME.find(lang) {
+        return PlPython2;
+    } else if let Some(_) = PLPYTHON3_NAME.find(lang) {
+        return PlPython3;
+    } else {
+        return Other;
+    }
 }
 
 fn split_psql(input: String, url: Option<Url>) -> Result<Vec<Statement>, Failure> {
     // TODO: trim leading space & comments? assign to prev?
-    let sql_statements = pg_query::split_statements_with_scanner(input.as_str())?;
+    let mut statements = vec![];
+    let mut rest = input.as_str();
+    while let Ok((r, statement)) = psql_splitter::statement(rest) {
+        statements.push(statement);
+        rest = r;
+    }
+    assert_eq!(
+        rest,
+        "",
+        "did not consume >>>{}<<<",
+        &input[input.len() - rest.len()..]
+    );
+    assert_eq!(input, statements.join("").as_str());
+
     // pre-allocate a Vec close to the right size
-    let mut result = Vec::<Statement>::with_capacity(sql_statements.len());
+    let mut result = Vec::<Statement>::with_capacity(statements.len());
 
-    for mut text in sql_statements {
-        if text.len() == 0 {
-            let statement = Statement::new(";".to_string(), Language::PgSql, None);
-            result.push(statement);
-        }
-        if result.len() > 0 {
-            // prev-append leading comments
-            if text.chars().nth(0).unwrap() != '\n' {
-                let mut line_number: usize = 0;
-                let lines: Vec<&str> = text.split("\n").collect();
-                loop {
-                    // println!("stripping leading comments");
-                    if line_number >= lines.len() {
-                        break;
-                    }
-                    if let Some(_) = LEADING_LINE_COMMENT.find(lines[line_number]) {
-                        line_number += 1;
-                    } else {
-                        break;
-                    }
-                }
-                if line_number > 0 {
-                    // tack it onto the prev statement
-                    let prev = result.last_mut().unwrap();
-                    prev.update(lines[0..line_number].join("\n"), prev.language);
-                    // and shorten the current text
-                    let rest = lines.join("\n");
-                    text = &text[rest.as_str().len()..]
-                }
-            } else {
-                let prev = result.last_mut().unwrap();
-                prev.update("\n".to_string(), prev.language);
-                text = text.trim_start();
-            }
-
-            // check for copy-in terminators
-            loop {
-                if let Some(terminator) = PSQL_COPY.find(text) {
-                    let copied = &text[terminator.end() + 1..];
-                    let prev = result.last_mut().unwrap();
-                    prev.update(copied.to_string(), Language::Psql);
-                    text = &text[terminator.end() + 1..];
-                } else {
-                    break;
-                }
+    for text in statements {
+        if psql_splitter::is_psql(text) {
+            result.push(Statement::new(
+                text.to_string(),
+                Language::Psql,
+                url.to_owned(),
+            ))
+        } else {
+            result.push(Statement::new(
+                text.trim().to_string(),
+                Language::PgSql,
+                url.to_owned(),
+            ));
+            if let Ok((inner, lang)) = extract_pl(text) {
+                result.push(Statement::new(
+                    inner,
+                    idenify_language(lang.as_str()),
+                    url.to_owned(),
+                ))
             }
         }
-
-        // handle psql meta-commands
-        loop {
-            // println!("stripping leading psql meta commands");
-
-            if let Some(m) = PSQL_START.find(text) {
-                // check for \if \elif \else \endif
-                let recognized = &text[m.start()..m.end()];
-                if recognized.contains(r"\if") {
-                    break;
-                } else if recognized.contains(r"\elif") {
-                    break;
-                } else if recognized.contains(r"\else") {
-                    break;
-                } else if recognized.contains(r"\endif") {
-                    break;
-                } else {
-                    // ayyy, it's a normal psql meta command. Snap it off as a
-                    // separate statement.
-                    text = &text[m.end()..];
-                    result.push(Statement::new(recognized.to_string(), Language::Psql, None));
-                }
-                // if recognized
-            } else {
-                break;
-            }
-        }
-
-        loop {
-            if let Some(m) = PSQL_END.find(text) {
-                // TODO: chop off up through the tail into a new statement
-                let recognized = &text[m.start()..m.end()];
-                if recognized.contains(r"\if") {
-                    break;
-                } else if recognized.contains(r"\elif") {
-                    break;
-                } else if recognized.contains(r"\else") {
-                    break;
-                } else if recognized.contains(r"\endif") {
-                    break;
-                } else {
-                    let tail = &text[..m.end()];
-                    text = &text[m.end()..];
-                    result.push(Statement::new(tail.to_string(), Language::Psql, None));
-                }
-            } else {
-                break;
-            }
-        }
-        // TODO: check for inline \if, \elsif, empty
-        let mut txt = text.to_string();
-        txt.push_str(";");
-        let statement = Statement::new(txt, Language::PgSql, url.to_owned());
-        result.push(statement);
     }
     Ok(result)
 }
-// #[test]
-// fn test_split_psql() {
-//     let input = include_str!("../../../pg/psql.sql");
-//     // let input = "select 1; select 2;".to_string();
-//     let result = split_psql(input.to_string());
-//     println!("{:?}", result);
-//     assert!(result.is_ok());
-//     // let expected: Vec<String> = vec!["select 1".to_string(), "select 2".to_string()];
-//     // assert_eq!(result.unwrap(), expected);
-// }
+
 // output stuff ------------------------------------------------
 trait Writable {
     fn write(self: &mut Self, statement: Statement) -> Result<u64, Failure>;
