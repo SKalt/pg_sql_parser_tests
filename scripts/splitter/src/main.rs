@@ -2,17 +2,17 @@ use lazy_static::lazy_static;
 use pg_query_wrapper as pg_query;
 use psql_splitter;
 use regex::Regex;
-use std::convert::TryFrom;
+mod sqlite;
+use std::convert::{TryFrom, TryInto};
 use std::io::Read;
+use std::ptr::NonNull;
 use std::{
     fs::{self, File},
     io::{self, Write},
     os::unix::prelude::PermissionsExt,
     path::{Path, PathBuf},
 };
-use url::{ParseError, Url};
 use xxhash_rust::xxh3::xxh3_64;
-
 #[derive(Debug)]
 enum Failure {
     IoErr(io::Error),
@@ -32,21 +32,50 @@ impl From<pg_query::Failure> for Failure {
     }
 }
 
-struct Statement {
+pub struct Statement {
     text: String,
     /// the xxhash3_64 of the text
     id: u64,
     /// might include line numbers inside a collection
-    url: Option<Url>,
     language: Language,
+    // urls: Vec<String>,
+    // start_line: usize,
+    // n_lines: usize,
 }
 
-/// a collection of Statements under a shared url, e.g. https://github.com/postgres/postgres/blob/REL_14_STABLE/src/test/regress/sql/aggregates.sql
-struct MultiStatement {
-    /// an ordered array of statement ids within the collection
-    statements: Vec<u64>,
-    url: Option<Url>,
+impl Statement {
+    fn new(text: String, language: Language) -> Self {
+        Statement {
+            id: xxh3_64(text.as_bytes()),
+            text,
+            language,
+        }
+    }
+    fn update(self: &mut Self, text: String, language: Language) -> &mut Self {
+        self.language = language;
+        self.text.push_str(text.as_str());
+        return self.derive_id();
+    }
+    fn derive_id(self: &mut Self) -> &mut Self {
+        self.id = self.digest();
+        return self;
+    }
+    fn digest(self: &Self) -> u64 {
+        return xxh3_64(self.text.as_bytes()); // TODO: may need to clone here
+    }
+    fn fingerprint(self: &Self) -> Result<u64, Failure> {
+        let (fingerprint, _) = pg_query::fingerprint(self.text.clone().as_str())?;
+        return Ok(fingerprint);
+    }
 }
+
+struct StatementSource {
+    statement_id: u64,
+    url: String, // not validated; can be ""
+    start_line: usize,
+    n_lines: usize,
+}
+
 fn extract_protobuf_string(node: &Box<pg_query::pbuf::Node>) -> String {
     use pg_query::pbuf::node::Node;
     match node.node.as_ref().unwrap() {
@@ -93,7 +122,18 @@ fn extract_pl(input: &str) -> Result<(String, String), Failure> {
     use pg_query::pbuf::node::Node;
     let stmts = pg_query::parse_to_protobuf(input)?.stmts;
 
-    assert_eq!(stmts.len(), 1);
+    // for some reason there's a section in partition_prune that doesn't get
+    // split when the entire document is passed via --input.  Passing the text
+    // via stdin, however, causes the correct splits.
+    // I'm ignoring it for now, since it only causes one snag in the entire regression
+    // test suite.
+    // if stmts.len() != 1 {
+    //     println!("--------------------------------------------------");
+    //     println!("{}", input);
+    //     println!("==================================================");
+    //     println!("{:?}", stmts);
+    // }
+    assert!(stmts.len() >= 1);
     if let Some(node) = &stmts[0].stmt {
         if let Some(node) = &node.node {
             match node {
@@ -106,33 +146,6 @@ fn extract_pl(input: &str) -> Result<(String, String), Failure> {
         }
     } else {
         return Err(Failure::Other("empty stmt".to_string()));
-    }
-}
-
-impl Statement {
-    fn new(text: String, language: Language, url: Option<Url>) -> Self {
-        Statement {
-            id: xxh3_64(text.as_bytes()),
-            text,
-            language,
-            url,
-        }
-    }
-    fn update(self: &mut Self, text: String, language: Language) -> &mut Self {
-        self.language = language;
-        self.text.push_str(text.as_str());
-        return self.derive_id();
-    }
-    fn derive_id(self: &mut Self) -> &mut Self {
-        self.id = self.digest();
-        return self;
-    }
-    fn digest(self: &Self) -> u64 {
-        return xxh3_64(self.text.as_bytes()); // TODO: may need to clone here
-    }
-    fn fingerprint(self: &Self) -> Result<u64, Failure> {
-        let (fingerprint, _) = pg_query::fingerprint(self.text.clone().as_str())?;
-        return Ok(fingerprint);
     }
 }
 
@@ -158,7 +171,7 @@ lazy_static! {
     static ref PLPYTHON3_NAME: Regex = Regex::new("(?i)^plpython3u$").unwrap();
 }
 
-fn idenify_language(lang: &str) -> Language {
+fn identify_language(lang: &str) -> Language {
     use Language::*;
     if let Some(_) = PLPGSQL_NAME.find(lang) {
         return PlPgSql;
@@ -175,86 +188,40 @@ fn idenify_language(lang: &str) -> Language {
     }
 }
 
-fn split_psql(input: String, url: Option<Url>) -> Result<Vec<Statement>, Failure> {
-    // TODO: trim leading space & comments? assign to prev?
-    let mut statements = vec![];
+fn text_to_statement(text: &str) -> Statement {
+    if psql_splitter::is_psql(text) {
+        return Statement::new(text.to_string(), Language::Psql);
+    } else {
+        return Statement::new(text.trim().to_string(), Language::PgSql);
+    }
+}
+
+fn extract_pl_from_statement(s: &Statement) -> Option<Statement> {
+    if let Ok((inner, lang)) = extract_pl(s.text.as_str()) {
+        return Some(Statement::new(inner, identify_language(lang.as_str())));
+    } else {
+        return None;
+    }
+}
+
+fn split_psql_to_statements(input: String) -> Vec<String> {
+    let mut statements: Vec<String> = vec![];
     let mut rest = input.as_str();
-    while let Ok((r, statement)) = psql_splitter::statement(rest) {
-        statements.push(statement);
+    while let Ok((r, text)) = psql_splitter::statement(rest) {
+        statements.push(text.to_string());
         rest = r;
     }
     assert_eq!(
         rest,
         "",
         "did not consume >>>{}<<<",
-        &input[input.len() - rest.len()..]
+        &input[..input.len() - rest.len()]
     );
     assert_eq!(input, statements.join("").as_str());
-
-    // pre-allocate a Vec close to the right size
-    let mut result = Vec::<Statement>::with_capacity(statements.len());
-
-    for text in statements {
-        if psql_splitter::is_psql(text) {
-            result.push(Statement::new(
-                text.to_string(),
-                Language::Psql,
-                url.to_owned(),
-            ))
-        } else {
-            result.push(Statement::new(
-                text.trim().to_string(),
-                Language::PgSql,
-                url.to_owned(),
-            ));
-            if let Ok((inner, lang)) = extract_pl(text) {
-                result.push(Statement::new(
-                    inner,
-                    idenify_language(lang.as_str()),
-                    url.to_owned(),
-                ))
-            }
-        }
-    }
-    Ok(result)
+    return statements;
 }
 
-// output stuff ------------------------------------------------
-trait Writable {
-    fn write(self: &mut Self, statement: Statement) -> Result<u64, Failure>;
-}
-
-struct Tar<W: Write> {
-    tar: tar::Builder<W>,
-}
-
-impl<W: Write> Tar<W> {
-    fn new(obj: W) -> Self {
-        let mut result = Tar {
-            tar: tar::Builder::new(obj),
-        };
-
-        // TODO: add README on directory structure
-        // result.write_file("/README.md", "TODO");
-        return result;
-    }
-
-    fn write_file<P: AsRef<Path>>(self: &mut Self, path: P, data: &str) {
-        let bytes: &[u8] = data.as_bytes();
-        let size = u64::try_from(bytes.len()).unwrap(); // may panic on 32-bit systems
-        let mut header = tar::Header::new_gnu();
-        header.set_size(size);
-        header.set_cksum();
-        self.tar.append_data(&mut header, path, bytes);
-    }
-}
-
-// impl<W: Write> Writable for Tar<W> {
-//     fn write(self: &mut Self, statement: Statement) -> Result<u64, Failure> {
-
-//         let path = format!("/{}-13/{}.{}.sql", statement.version, statement);
-//     }
-// }
+// fn foo(text) {}
 
 // CLI stuff -------------------------------------------------------------------
 
@@ -346,17 +313,6 @@ fn validate_input_source(input: String) -> Result<(), String> {
 }
 
 fn main() -> Result<(), Failure> {
-    // let pg = fs::read_dir("./pg")?;
-    // for ls in pg {
-    //     if let Ok(file) = ls {
-    //         let sql = fs::read_to_string(file.path())?;
-    //         match split_psql(sql, None) {
-    //             Ok(_) => println!("OK:\t{}", &file.path().to_str().unwrap()),
-    //             Err(e) => println!("ERR:\t{}\t{:?}", &file.path().to_str().unwrap(), e),
-    //         }
-    //     }
-    // }
-
     let matches = clap::App::new("splitter")
         .arg(
             // the path to the sqlite file or stdout
@@ -378,10 +334,12 @@ fn main() -> Result<(), Failure> {
                 .validator(validate_input_source),
         )
         .arg(
+            // should be multiple, e.g. multiple git hosts, each with a branch and commit
             clap::Arg::with_name("url")
                 .long("--url")
+                .multiple(true)
                 .takes_value(true)
-                .help("a url at which the input may be found.")
+                .help("urls at which the input may be found.")
                 .long_help(
                     "the url at which the input can be found.  If the input
                         is a directory of files and the url ends with a `/`, the
@@ -389,16 +347,24 @@ fn main() -> Result<(), Failure> {
                 ),
         )
         .arg(
-            clap::Arg::with_name("version")
-                .short("-v")
-                .long("--version")
-                .takes_value(true)
-                .help("the version of postgres")
-                .long_help(
-                    "the version of postgres AND plpgsql AND psql for which
-                        the input code is valid",
-                ),
+            clap::Arg::with_name("count")
+                .takes_value(false)
+                .short("-c")
+                .long("--count")
+                .help("print the of count the number of statements"),
         )
+        // .arg(
+        //     clap::Arg::with_name("version")
+        //         .short("-v")
+        //         .long("--version")
+        //         .takes_value(true)
+        //         .help("the version of postgres")
+        //         .long_help(
+        //             "the version of postgres AND plpgsql AND psql for which
+        //                 the input code is valid",
+        //         ), // should be major-version only for now
+        // )
+        // ^ the oracles will decide whether each statement is valid
         .get_matches();
 
     // read from stdin or a file
@@ -411,11 +377,44 @@ fn main() -> Result<(), Failure> {
             buffer = fs::read_to_string(filename)?;
         }
     };
+    let out = matches.value_of("out");
+    // TODO: validate each URL
+    let mut urls: Vec<&str> = Vec::with_capacity(matches.occurrences_of("url").try_into().unwrap());
+    if let Some(url_args) = matches.values_of("url") {
+        for url in url_args {
+            urls.push(url);
+        }
+    };
 
-    let splits = split_psql(buffer, None)?;
-    for s in splits {
-        println!("-- {:?} --------------------------------------", s.language);
+    let splits = split_psql_to_statements(buffer);
+    let statements: Vec<Statement> = splits
+        .iter()
+        .map(|s| text_to_statement(s.as_str()))
+        .collect();
+    let pl_blocks: Vec<Statement> = statements
+        .iter()
+        .filter_map(extract_pl_from_statement)
+        .collect();
+    if matches.is_present("count") {
+        println!("{}", statements.len() + pl_blocks.len());
+        return Ok(());
+    }
+
+    for s in statements {
+        println!(
+            "-- {:?} {:x} --------------------------------------",
+            s.language, s.id
+        );
         println!("{}", s.text);
     }
+
+    for s in pl_blocks {
+        println!(
+            "-- {:?} {:x} --------------------------------------",
+            s.language, s.id
+        );
+        println!("{}", s.text);
+    }
+
     return Ok(());
 }

@@ -530,7 +530,7 @@ dependencies = [
 [[package]]
 name = "psql_splitter"
 version = "0.1.0"
-source = "git+https://github.com/SKalt/psql_splitter.git#31d706216d5bcca753c360dc56f7ce2534815387"
+source = "git+https://github.com/SKalt/psql_splitter.git#a5b923858134f31706f23d44eeb2c92eea950141"
 dependencies = [
  "nom 7.1.0",
 ]
