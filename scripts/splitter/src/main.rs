@@ -40,15 +40,17 @@ pub struct Statement {
     language: Language,
     // urls: Vec<String>,
     // start_line: usize,
-    // n_lines: usize,
+    n_lines: usize,
 }
 
 impl Statement {
     fn new(text: String, language: Language) -> Self {
+        let n_lines = text.matches("\n").count();
         Statement {
             id: xxh3_64(text.as_bytes()),
             text,
             language,
+            n_lines,
         }
     }
     fn update(self: &mut Self, text: String, language: Language) -> &mut Self {
@@ -66,6 +68,14 @@ impl Statement {
     fn fingerprint(self: &Self) -> Result<u64, Failure> {
         let (fingerprint, _) = pg_query::fingerprint(self.text.clone().as_str())?;
         return Ok(fingerprint);
+    }
+    fn with_source(self: &Self, url: &str, start_line: usize) -> StatementSource {
+        StatementSource {
+            statement_id: self.id,
+            url: url.to_owned(),
+            start_line,
+            n_lines: self.n_lines,
+        }
     }
 }
 
@@ -192,13 +202,15 @@ fn text_to_statement(text: &str) -> Statement {
     if psql_splitter::is_psql(text) {
         return Statement::new(text.to_string(), Language::Psql);
     } else {
-        return Statement::new(text.trim().to_string(), Language::PgSql);
+        return Statement::new(text.to_string(), Language::PgSql);
     }
 }
 
 fn extract_pl_from_statement(s: &Statement) -> Option<Statement> {
-    if let Ok((inner, lang)) = extract_pl(s.text.as_str()) {
-        return Some(Statement::new(inner, identify_language(lang.as_str())));
+    if let Ok((text, lang)) = extract_pl(s.text.as_str()) {
+        let stmt = Statement::new(text, identify_language(lang.as_str()));
+        // stmt.start_line = s.start_line;
+        return Some(stmt);
     } else {
         return None;
     }
@@ -218,10 +230,14 @@ fn split_psql_to_statements(input: String) -> Vec<String> {
         &input[..input.len() - rest.len()]
     );
     assert_eq!(input, statements.join("").as_str());
+    let act_len = statements
+        .iter()
+        .map(|s| s.len())
+        .reduce(|total, len| total + len)
+        .unwrap();
+    assert_eq!(input.len(), act_len);
     return statements;
 }
-
-// fn foo(text) {}
 
 // CLI stuff -------------------------------------------------------------------
 
@@ -387,10 +403,18 @@ fn main() -> Result<(), Failure> {
     };
 
     let splits = split_psql_to_statements(buffer);
-    let statements: Vec<Statement> = splits
-        .iter()
-        .map(|s| text_to_statement(s.as_str()))
-        .collect();
+
+    let mut statements = Vec::<Statement>::with_capacity(splits.capacity());
+    let mut sources = Vec::<StatementSource>::with_capacity(urls.capacity() * splits.capacity());
+    let mut line_number = 1usize;
+    for split in splits {
+        let stmt = text_to_statement(split.as_str());
+        for url in urls.clone() {
+            sources.push(stmt.with_source(url, line_number))
+        }
+        line_number += stmt.n_lines;
+        statements.push(stmt);
+    }
     let pl_blocks: Vec<Statement> = statements
         .iter()
         .filter_map(extract_pl_from_statement)
@@ -401,10 +425,20 @@ fn main() -> Result<(), Failure> {
     }
 
     for s in statements {
+        let id = s.id;
         println!(
             "-- {:?} {:x} --------------------------------------",
             s.language, s.id
         );
+        for src in sources.iter().filter(|src| src.statement_id == id) {
+            println!(
+                "-- {}#L{}-L{}",
+                src.url,
+                src.start_line,
+                src.start_line + src.n_lines - 1
+            );
+        }
+        println!("---------------------------------------------");
         println!("{}", s.text);
     }
 
@@ -415,6 +449,5 @@ fn main() -> Result<(), Failure> {
         );
         println!("{}", s.text);
     }
-
     return Ok(());
 }

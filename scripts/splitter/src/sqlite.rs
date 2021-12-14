@@ -15,7 +15,7 @@ pub fn connect(path: &str) -> Connection {
 
 pub fn init(conn: &mut Connection) -> Result<&mut Connection, rusqlite::Error> {
     const SCHEMA: &str = include_str!("../../../schema.sql");
-    conn.execute(SCHEMA, [])?;
+    conn.execute_batch(SCHEMA)?;
     return Ok(conn);
 }
 
