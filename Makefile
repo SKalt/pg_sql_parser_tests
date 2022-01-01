@@ -1,5 +1,5 @@
 bin/parse: scripts/parse/parse.go
 	go build -o bin/parse scripts/parse/parse.go
 
-bin/splitter: scripts/splitter/Cargo.toml ./Cargo.lock scripts/splitter/src/main.rs
+bin/splitter: scripts/splitter/Cargo.toml ./Cargo.lock scripts/splitter/src/main.rs ./scripts/splitter/src/sqlite.rs ./schema.sql
 	cd scripts/splitter && cargo build && cd - && cp ./target/debug/splitter ./bin/

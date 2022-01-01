@@ -3,22 +3,23 @@ use pg_query_wrapper as pg_query;
 use psql_splitter;
 use regex::Regex;
 mod sqlite;
+use std::collections::HashSet;
 use std::convert::{TryFrom, TryInto};
 use std::io::Read;
-use std::ptr::NonNull;
 use std::{
     fs::{self, File},
-    io::{self, Write},
+    io::{self},
     os::unix::prelude::PermissionsExt,
     path::{Path, PathBuf},
 };
 use xxhash_rust::xxh3::xxh3_64;
 #[derive(Debug)]
-enum Failure {
+pub enum Failure {
     IoErr(io::Error),
     PgQueryError(pg_query::Failure),
     DirDne,
     NotDir,
+    Sqlite(rusqlite::Error),
     Other(String),
 }
 impl From<io::Error> for Failure {
@@ -31,7 +32,12 @@ impl From<pg_query::Failure> for Failure {
         Self::PgQueryError(e)
     }
 }
-
+impl From<rusqlite::Error> for Failure {
+    fn from(e: rusqlite::Error) -> Self {
+        Failure::Sqlite(e)
+    }
+}
+#[derive(Clone, Debug)]
 pub struct Statement {
     text: String,
     /// the xxhash3_64 of the text
@@ -79,11 +85,17 @@ impl Statement {
     }
 }
 
-struct StatementSource {
+#[derive(Clone)]
+pub struct StatementSource {
     statement_id: u64,
-    url: String, // not validated; can be ""
+    url: String, // TODO: validate; can currently be "" or "file://"
     start_line: usize,
     n_lines: usize,
+}
+impl StatementSource {
+    fn url_id(&self) -> u64 {
+        xxh3_64(self.url.as_bytes())
+    }
 }
 
 fn extract_protobuf_string(node: &Box<pg_query::pbuf::Node>) -> String {
@@ -143,7 +155,11 @@ fn extract_pl(input: &str) -> Result<(String, String), Failure> {
     //     println!("==================================================");
     //     println!("{:?}", stmts);
     // }
-    assert!(stmts.len() >= 1);
+
+    // sometimes there'll be empty 0-length statements, e.g. `/* empty query *' ;`
+    if stmts.len() == 0 {
+        return Err(Failure::Other("empty stmt (comment-only?)".to_string()));
+    }
     if let Some(node) = &stmts[0].stmt {
         if let Some(node) = &node.node {
             match node {
@@ -248,7 +264,7 @@ fn validate_output_target(output: String) -> Result<(), String> {
     }
     let output_path = PathBuf::from(output.clone());
     if !output_path.exists() {
-        return Err(format!("output path {} does not exist", output).to_string());
+        return Ok(()); // Err(format!("output path {} does not exist", output).to_string());
     }
     if !output_path.is_file() {
         return Err(format!("{} is not a file", output));
@@ -258,6 +274,25 @@ fn validate_output_target(output: String) -> Result<(), String> {
         return Err(format!("read-only file {}", output).to_string());
     }
     return Ok(());
+}
+
+fn validate_license_file(license: String) -> Result<(), String> {
+    let path = PathBuf::from(license.clone());
+    if !path.exists() {
+        return Err(format!("{} does not exist", license));
+    }
+    if path.is_dir() {
+        return Err(format!("{} is a directory", license));
+    }
+    if let Ok(readable) = file_is_readable(path) {
+        if readable {
+            return Ok(());
+        } else {
+            return Err(format!("{} cannot be read", license));
+        }
+    } else {
+        return Err(format!("{} cannot be read", license));
+    }
 }
 
 fn is_flat_dir_of_readable_files(path: PathBuf) -> bool {
@@ -287,7 +322,13 @@ fn file_is_readable<File>(file: File) -> Result<bool, Failure>
 where
     File: AsRef<Path>,
 {
-    return Ok(fs::metadata(file)?.permissions().mode() & READ_BITS > 0);
+    if let Ok(meta) = fs::metadata(file) {
+        let mode = meta.permissions().mode();
+        let ok = (mode & READ_BITS) > 0;
+        return Ok(ok);
+    } else {
+        return Err(Failure::Other("unable to read file metadata".to_string()));
+    }
 }
 
 fn file_is_writeable<File>(file: File) -> Result<bool, Failure>
@@ -350,17 +391,31 @@ fn main() -> Result<(), Failure> {
                 .validator(validate_input_source),
         )
         .arg(
+            clap::Arg::with_name("debug")
+                .long("--debug")
+                .takes_value(false)
+                .help("whether to print debug info to stdout"),
+        )
+        .arg(
             // should be multiple, e.g. multiple git hosts, each with a branch and commit
             clap::Arg::with_name("url")
                 .long("--url")
-                .multiple(true)
                 .takes_value(true)
-                .help("urls at which the input may be found.")
-                .long_help(
-                    "the url at which the input can be found.  If the input
-                        is a directory of files and the url ends with a `/`, the
-                        url will be considered the base path each file",
-                ),
+                .help("url at which the input may be found."),
+        )
+        .arg(
+            clap::Arg::with_name("license")
+                .long("--license")
+                .short("-l")
+                .takes_value(true)
+                .help("path to the license governing the url")
+                .validator(validate_license_file),
+        )
+        .arg(
+            clap::Arg::with_name("spdx")
+                .long("--spdx")
+                .takes_value(true)
+                .help("spdx identifier of the license"),
         )
         .arg(
             clap::Arg::with_name("count")
@@ -369,20 +424,14 @@ fn main() -> Result<(), Failure> {
                 .long("--count")
                 .help("print the of count the number of statements"),
         )
-        // .arg(
-        //     clap::Arg::with_name("version")
-        //         .short("-v")
-        //         .long("--version")
-        //         .takes_value(true)
-        //         .help("the version of postgres")
-        //         .long_help(
-        //             "the version of postgres AND plpgsql AND psql for which
-        //                 the input code is valid",
-        //         ), // should be major-version only for now
-        // )
-        // ^ the oracles will decide whether each statement is valid
         .get_matches();
 
+    if matches.is_present("license") && !matches.is_present("spdx") {
+        return Err(Failure::Other(format!(
+            "missing the spdx identifier for {}",
+            matches.value_of("license").unwrap()
+        )));
+    }
     // read from stdin or a file
     let mut buffer = String::new();
     match matches.value_of("input") {
@@ -420,34 +469,60 @@ fn main() -> Result<(), Failure> {
         .filter_map(extract_pl_from_statement)
         .collect();
     if matches.is_present("count") {
-        println!("{}", statements.len() + pl_blocks.len());
+        println!("{} total statements", statements.len() + pl_blocks.len());
+        let mut ids = HashSet::new();
+        for s in statements.clone() {
+            ids.insert(s.id);
+        }
+        for s in pl_blocks.clone() {
+            ids.insert(s.id);
+        }
+        println!("{} unique statements", ids.len());
         return Ok(());
     }
+    let debug = matches.is_present("debug");
 
-    for s in statements {
-        let id = s.id;
-        println!(
-            "-- {:?} {:x} --------------------------------------",
-            s.language, s.id
-        );
-        for src in sources.iter().filter(|src| src.statement_id == id) {
+    if debug {
+        for s in statements.clone() {
+            let id = s.id;
             println!(
-                "-- {}#L{}-L{}",
-                src.url,
-                src.start_line,
-                src.start_line + src.n_lines - 1
+                "-- {:?} {:x} --------------------------------------",
+                s.language, s.id
             );
+            for src in sources.iter().filter(|src| src.statement_id == id) {
+                println!(
+                    "-- {}#L{}-L{}",
+                    src.url,
+                    src.start_line,
+                    src.start_line + src.n_lines - 1
+                );
+            }
+            println!("---------------------------------------------------------------");
+            println!("{}", s.text);
         }
-        println!("---------------------------------------------");
-        println!("{}", s.text);
+        for s in pl_blocks.clone() {
+            println!(
+                "-- {:?} {:x} --------------------------------------",
+                s.language, s.id
+            );
+            println!("---------------------------------------------------------------");
+            println!("{}", s.text);
+        }
+    }
+    if let Some(output_path) = out {
+        let mut conn = sqlite::connect(output_path)?;
+
+        let spdx = matches.value_of("spdx");
+        if let Some(license_path) = matches.value_of("license") {
+            let license = fs::read_to_string(license_path)?;
+            sqlite::insert_license_id(&mut conn, spdx.unwrap(), license).unwrap();
+        }
+
+        sqlite::bulk_insert_urls(&mut conn, urls.as_slice(), spdx).unwrap();
+        sqlite::bulk_insert_statements(&mut conn, statements).unwrap();
+        sqlite::bulk_insert_statements(&mut conn, pl_blocks).unwrap();
+        sqlite::bulk_insert_statement_sources(&mut conn, sources).unwrap();
     }
 
-    for s in pl_blocks {
-        println!(
-            "-- {:?} {:x} --------------------------------------",
-            s.language, s.id
-        );
-        println!("{}", s.text);
-    }
     return Ok(());
 }
