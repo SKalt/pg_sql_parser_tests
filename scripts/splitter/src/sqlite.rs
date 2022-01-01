@@ -11,11 +11,10 @@ pub fn connect(path: &str) -> Result<Connection, Failure> {
     // else: chuck stuff in :memory:
     let output_path = PathBuf::from(path);
     if !output_path.exists() {
+        println!("initializing {}", path);
         let mut conn = Connection::open(path)?;
-        init(&mut conn)?;
-        return Ok(conn);
-        // try to initialize the db
-        // return Err(format!("output path {} does not exist", path).to_string());
+        init(&mut conn)?; // try to initialize the schema
+        return Ok(conn); // return Err(format!("output path {} does not exist", path).to_string());
     } else if output_path.is_file() {
         let conn = Connection::open(path)?;
         // check the schema version
@@ -50,16 +49,19 @@ pub fn bulk_insert_statements(
     {
         // block required for lifetime of borrow of txn
         let insert = &mut txn.prepare(
-            "INSERT INTO statements (id, text, language_id) VALUES (?, ?, ?) ON CONFLICT DO NOTHING"
+            "INSERT INTO statements (id, text, language_id) VALUES (?, ?, ?) ON CONFLICT(id) DO NOTHING"
         )?;
+        // let mut inserted = 0usize;
         for s in statements {
+            // inserted +=
             insert.execute(rusqlite::params![s.id as i64, s.text, s.language as i32])?;
         }
+        // println!("{} statements inserted", inserted);
     }
     return txn.commit();
 }
 
-pub fn insert_license_id(
+pub fn insert_license(
     conn: &mut Connection,
     id: &str,
     license: String,

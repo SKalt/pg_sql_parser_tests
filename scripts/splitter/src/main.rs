@@ -117,7 +117,7 @@ fn parse_pl(nodes: &Vec<pg_query::pbuf::Node>) -> (String, String) {
                 "as" => match inner.arg.as_ref().unwrap().node.as_ref().unwrap() {
                     Node::String(s) => content = s.str.clone(),
                     Node::List(l) => {
-                        assert_eq!(l.items.len(), 1);
+                        assert!(l.items.len() >= 1); // for example, `LANGUAGE C STRICT` comes across as 2 items
                         let item = &l.items[0];
                         match item.node.as_ref().unwrap() {
                             Node::String(s) => content = s.str.clone(),
@@ -376,6 +376,7 @@ fn main() -> Result<(), Failure> {
             clap::Arg::with_name("out")
                 .long("--out")
                 .short("-o")
+                .takes_value(true)
                 .default_value("stdout")
                 .help("where to write output")
                 .long_help("the file or device to which to write output (default stdout)")
@@ -401,6 +402,7 @@ fn main() -> Result<(), Failure> {
             clap::Arg::with_name("url")
                 .long("--url")
                 .takes_value(true)
+                .multiple(true)
                 .help("url at which the input may be found."),
         )
         .arg(
@@ -478,7 +480,6 @@ fn main() -> Result<(), Failure> {
             ids.insert(s.id);
         }
         println!("{} unique statements", ids.len());
-        return Ok(());
     }
     let debug = matches.is_present("debug");
 
@@ -515,14 +516,16 @@ fn main() -> Result<(), Failure> {
         let spdx = matches.value_of("spdx");
         if let Some(license_path) = matches.value_of("license") {
             let license = fs::read_to_string(license_path)?;
-            sqlite::insert_license_id(&mut conn, spdx.unwrap(), license).unwrap();
+            sqlite::insert_license(&mut conn, spdx.unwrap(), license).unwrap();
         }
 
         sqlite::bulk_insert_urls(&mut conn, urls.as_slice(), spdx).unwrap();
         sqlite::bulk_insert_statements(&mut conn, statements).unwrap();
         sqlite::bulk_insert_statements(&mut conn, pl_blocks).unwrap();
         sqlite::bulk_insert_statement_sources(&mut conn, sources).unwrap();
+        conn.close().unwrap();
+    } else {
+        println!("no output target")
     }
-
     return Ok(());
 }

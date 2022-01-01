@@ -76,7 +76,7 @@ CREATE TABLE statement_sources (
   , locator TEXT -- which helps locate the statement within the page defined by the url
   , CONSTRAINT statement_source_pkey PRIMARY KEY (url_id, statement_id, locator)
 );
-CREATE INDEX statements_for_source ON statement_sources(url_id, statement_id);
+CREATE INDEX statements_for_source ON statement_sources(statement_id, url_id);
 
 CREATE TABLE licenses (
     id TEXT PRIMARY KEY -- The short-form identifier for the license. Where
