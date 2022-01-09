@@ -2,8 +2,9 @@
 
 ## required software
 
-- `go >= 1.17`; see [https://go.dev/dl/](https://go.dev/dl/) for installation instructions. I'd recommend setting up [`gvm`](https://github.com/moovweb/gvm#installing) to manage your go versions
-- `rust >= 1.51`; see [rustup.rs](https://rustup.rs/) for installation instructions.
+- `go >= 1.17`; see [https://go.dev/dl/](https://go.dev/dl/) for installation instructions. I'd recommend setting up [`gvm`](https://github.com/moovweb/gvm#installing) to manage your go versions.
+- [`golangci-lint`](https://golangci-lint.run/usage/install/)
+- `cargo+rust >= 1.51`; see [rustup.rs](https://rustup.rs/) for toolchain installation instructions.
 - an IDE that respects `.editorconfig` settings.
 - [`earthly`](https://earthly.dev/get-earthly), a container-based build tool
 - [`docker-compose`](https://docs.docker.com/compose/install/). You may need the [`compose switch`](https://docs.docker.com/compose/cli-command/#compose-switch) to reference `docker compose` v2 as `docker-compose`.

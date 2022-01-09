@@ -13,7 +13,7 @@ func DeriveOracleId(name string) uint64 {
 	return xxhash.Sum64([]byte(name))
 }
 
-func RegisterOracle(db sql.DB, oracleName string) (id uint64, err error) {
+func RegisterOracle(db *sql.DB, oracleName string) (id uint64, err error) {
 	id = DeriveOracleId(oracleName)
 	_, err = db.Exec(
 		"INSERT INTO oracles (id, name) VALUES (?, ?);",

@@ -63,19 +63,20 @@ var availableOracles = map[string][]string{
 	"pg_query": {"13"},
 }
 
-func listOracles() {
-	if isatty.IsTerminal(os.Stdout.Fd()) {
-		for oracle, versions := range availableOracles {
-			fmt.Printf("%s: %v\n", oracle, versions)
-		}
-	} else {
-		for oracle, versions := range availableOracles {
-			for _, version := range versions {
-				fmt.Printf("%s\t%s\n", oracle, version)
-			}
-		}
-	}
-}
+// TODO: expose as a subcommand
+// func listOracles() {
+// 	if isatty.IsTerminal(os.Stdout.Fd()) {
+// 		for oracle, versions := range availableOracles {
+// 			fmt.Printf("%s: %v\n", oracle, versions)
+// 		}
+// 	} else {
+// 		for oracle, versions := range availableOracles {
+// 			for _, version := range versions {
+// 				fmt.Printf("%s\t%s\n", oracle, version)
+// 			}
+// 		}
+// 	}
+// }
 
 func bulkPredict(
 	oracle oracles.Oracle,
@@ -251,12 +252,6 @@ func initConfig(cmd *cobra.Command) *configuration {
 		language:   language,
 	}
 	return &config
-}
-
-func run(config *configuration) {
-	if err := runPgQueryOracle(config.corpusPath, config.language); err != nil {
-		log.Panic(err)
-	}
 }
 
 func main() {

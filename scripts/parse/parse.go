@@ -64,7 +64,10 @@ func tokens(path string, inputData string) error {
 func ast(path string, inputData string) error {
 	jsonData, err := pg_query.ParseToJSON(inputData)
 	if err != nil {
-		os.WriteFile(path+"/err.txt", []byte(fmt.Sprintf("%v", err)), rw)
+		err2 := os.WriteFile(path+"/err.txt", []byte(fmt.Sprintf("%v", err)), rw)
+		if err2 != nil {
+			panic(err2)
+		}
 		return err
 	}
 	intermediateJson := map[string]interface{}{}

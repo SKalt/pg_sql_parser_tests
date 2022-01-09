@@ -4,8 +4,12 @@ These tools collect a corpus of SQL-like statements in a variety of languages, t
 
 Currently postgres-specific.
 
+Note that this is alpha-quality software: oracle output may fail to be correctly interpreted, and APIs may change rapidly (i.e CLIs + ./schema.sql).
+Even when this is stable, not that oracle predictions may be ambiguous.
+
 ## Oracle testing
 
+<!--
 ```
  (=======)
   :||||:
@@ -17,11 +21,11 @@ Currently postgres-specific.
   |||||||
    |||: |
  (= = = =)
-```
+``` -->
 
 In this repo, "oracle" refers to a black box which issues truthful predictions about a program's behavior, _not_ Oracle the lawsuit-issuing corporation.
 
-Oracle-testing is a black-box testing method which gives limited insight into whether any given statement is valid. Using oracles to predict syntax validity is easier than deriving parsing tests from the numerous specifications of SQL dialects.
+Oracle-testing is a black-box testing method which gives limited insight into whether any given statement is valid. Using oracles to predict syntax validity is easier than deriving parsing tests from the numerous specifications of SQL dialects and sql-like languages.
 
 ## Usage: Consuming a test suite
 

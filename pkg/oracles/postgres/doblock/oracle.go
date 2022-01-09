@@ -76,7 +76,10 @@ func (oracle *Oracle) Predict(statement string, language string) (*oracles.Predi
 	default:
 		return nil, fmt.Errorf("unsupported language %s", language)
 	}
-	oracle.conn.Exec("SET check_function_bodies = ON;")
+	_, err := oracle.conn.Exec("SET check_function_bodies = ON;")
+	if err != nil {
+		return nil, err
+	}
 	testimony := testify(oracle.conn, statement, language)
 	return &testimony, nil
 }
