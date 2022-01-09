@@ -105,7 +105,7 @@ fn extract_protobuf_string(node: &Box<pg_query::pbuf::Node>) -> String {
         _ => panic!("node not string"),
     }
 }
-fn parse_pl(nodes: &Vec<pg_query::pbuf::Node>) -> (String, String) {
+fn parse_pl(nodes: &Vec<pg_query::pbuf::Node>) -> String {
     use pg_query::pbuf::node::Node;
 
     let mut content: String = "".into();
@@ -114,33 +114,35 @@ fn parse_pl(nodes: &Vec<pg_query::pbuf::Node>) -> (String, String) {
         // unwrapping aggressively to catch unexpected structures via panics
         if let Node::DefElem(inner) = node.node.as_ref().unwrap() {
             match inner.defname.as_str() {
-                "as" => match inner.arg.as_ref().unwrap().node.as_ref().unwrap() {
-                    Node::String(s) => content = s.str.clone(),
-                    Node::List(l) => {
-                        assert!(l.items.len() >= 1); // for example, `LANGUAGE C STRICT` comes across as 2 items
-                        let item = &l.items[0];
-                        match item.node.as_ref().unwrap() {
-                            Node::String(s) => content = s.str.clone(),
-                            _ => panic!("unexpected list-item type {:?}", item),
-                        }
-                    }
-                    _ => panic!("unexpected pl option {:?}", inner.as_ref()),
-                },
+                // "as" => match inner.arg.as_ref().unwrap().node.as_ref().unwrap() {
+                //     Node::String(s) => content = s.str.clone(),
+                //     Node::List(l) => {
+                //         assert!(l.items.len() >= 1); // for example, `LANGUAGE C STRICT` comes across as 2 items
+                //         let item = &l.items[0];
+                //         match item.node.as_ref().unwrap() {
+                //             Node::String(s) => content = s.str.clone(),
+                //             _ => panic!("unexpected list-item type {:?}", item),
+                //         }
+                //     }
+                //     _ => panic!("unexpected pl option {:?}", inner.as_ref()),
+                // },
                 "language" => lang = extract_protobuf_string(inner.arg.as_ref().unwrap()),
                 _ => {} // ignore
             }
         }
     }
-    return (content, lang);
+    return lang;
 }
-fn parse_do_stmt(d: &pg_query::pbuf::DoStmt) -> (String, String) {
+fn parse_do_stmt(d: &pg_query::pbuf::DoStmt) -> String {
     return parse_pl(d.args.as_ref());
 }
-fn parse_fn_stmt(f: &pg_query::pbuf::CreateFunctionStmt) -> (String, String) {
+fn parse_fn_stmt(f: &pg_query::pbuf::CreateFunctionStmt) -> String {
     return parse_pl(f.options.as_ref());
 }
 
-fn extract_pl(input: &str) -> Result<(String, String), Failure> {
+// TODO: recognize pl blocks, don't extract them. They often need their context to parse
+// successfully. For example `DO $$ BEGIN RETURN QUERY ... $$` isn't valid
+fn extract_pl(input: &str) -> Result<String, Failure> {
     use pg_query::pbuf::node::Node;
     let stmts = pg_query::parse_to_protobuf(input)?.stmts;
 
@@ -222,10 +224,10 @@ fn text_to_statement(text: &str) -> Statement {
     }
 }
 
-fn extract_pl_from_statement(s: &Statement) -> Option<Statement> {
-    if let Ok((text, lang)) = extract_pl(s.text.as_str()) {
-        let stmt = Statement::new(text, identify_language(lang.as_str()));
-        // stmt.start_line = s.start_line;
+fn recognize_pl_statement(s: &Statement) -> Option<Statement> {
+    if let Ok(lang) = extract_pl(s.text.as_str()) {
+        let mut stmt = s.clone();
+        stmt.language = identify_language(lang.as_str());
         return Some(stmt);
     } else {
         return None;
@@ -348,6 +350,7 @@ fn validate_input_source(input: String) -> Result<(), String> {
         return Err(format!("input path {} does not exist", input).into());
     }
     if input_path.is_dir() {
+        // TODO: reject; only 1 file at a time
         if is_flat_dir_of_readable_files(input_path) {
             return Ok(());
         } else {
@@ -404,6 +407,12 @@ fn main() -> Result<(), Failure> {
                 .takes_value(true)
                 .multiple(true)
                 .help("url at which the input may be found."),
+        )
+        .arg(
+            clap::Arg::with_name("pg_version")
+                .long("--pg-version")
+                .takes_value(true)
+                .help("postgres major version"),
         )
         .arg(
             clap::Arg::with_name("license")
@@ -468,7 +477,7 @@ fn main() -> Result<(), Failure> {
     }
     let pl_blocks: Vec<Statement> = statements
         .iter()
-        .filter_map(extract_pl_from_statement)
+        .filter_map(recognize_pl_statement)
         .collect();
     if matches.is_present("count") {
         println!("{} total statements", statements.len() + pl_blocks.len());

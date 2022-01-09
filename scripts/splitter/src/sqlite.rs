@@ -1,5 +1,5 @@
 use pg_query_wrapper::pbuf::ResTarget;
-use rusqlite::{version, Connection, ToSql, Transaction};
+use rusqlite::{Connection, ToSql, Transaction};
 use std::convert::TryFrom;
 use std::path::PathBuf;
 
@@ -48,15 +48,17 @@ pub fn bulk_insert_statements(
     let txn = conn.transaction()?;
     {
         // block required for lifetime of borrow of txn
-        let insert = &mut txn.prepare(
-            "INSERT INTO statements (id, text, language_id) VALUES (?, ?, ?) ON CONFLICT(id) DO NOTHING"
+        let insert_stmt = &mut txn.prepare(
+            "INSERT INTO statements (id, text) VALUES (?, ?) ON CONFLICT(id) DO NOTHING",
         )?;
-        // let mut inserted = 0usize;
+        let insert_lang = &mut txn
+            .prepare("INSERT INTO statement_languages(statement_id, language_id) VALUES (?, ?) ON CONFLICT DO NOTHING")?;
+        // let insert_version = &mut txn
+        //     .prepare("INSERT INTO statement_versions(statement_id, version_id) values (?, ?);")?;
         for s in statements {
-            // inserted +=
-            insert.execute(rusqlite::params![s.id as i64, s.text, s.language as i32])?;
+            insert_stmt.execute(rusqlite::params![s.id as i64, s.text])?;
+            insert_lang.execute(rusqlite::params![s.id as i64, s.language as i32])?;
         }
-        // println!("{} statements inserted", inserted);
     }
     return txn.commit();
 }

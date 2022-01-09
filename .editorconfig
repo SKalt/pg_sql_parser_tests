@@ -1,4 +1,6 @@
-[Makefile,*.go]
+[Makefile]
+indent_style = tab
+[*.go]
 indent_style = tab
 
 [*]
