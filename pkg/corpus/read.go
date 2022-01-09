@@ -6,10 +6,7 @@ import (
 	"log"
 
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/skalt/pg_sql_tests/pkg/languages"
 )
-
-// TODO: use a sqlite connector
 
 //go:embed sql/get_statements_by_language.sql
 var getStatementsByLanguage string
@@ -19,7 +16,7 @@ type Statement struct {
 	Text string
 }
 
-func GetStatementsByLanguage(db *sql.DB, language string) (results []*Statement) {
+func GetAllStatementsByLanguage(db *sql.DB, language string) (results []*Statement) {
 	rows, err := db.Query(getStatementsByLanguage, language)
 	if err != nil {
 		log.Panic(err)
@@ -32,13 +29,4 @@ func GetStatementsByLanguage(db *sql.DB, language string) (results []*Statement)
 		}
 	}
 	return results
-}
-
-func LookupLanguageId(language string) int {
-	if id, ok := languages.Languages[language]; ok {
-		return id
-	} else {
-		// other
-		return -1
-	}
 }

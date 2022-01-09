@@ -4,11 +4,11 @@ use psql_splitter;
 use regex::Regex;
 mod sqlite;
 use std::collections::HashSet;
-use std::convert::{TryFrom, TryInto};
+use std::convert::TryInto;
 use std::io::Read;
 use std::{
     fs::{self, File},
-    io::{self},
+    io,
     os::unix::prelude::PermissionsExt,
     path::{Path, PathBuf},
 };
@@ -108,7 +108,7 @@ fn extract_protobuf_string(node: &Box<pg_query::pbuf::Node>) -> String {
 fn parse_pl(nodes: &Vec<pg_query::pbuf::Node>) -> String {
     use pg_query::pbuf::node::Node;
 
-    let mut content: String = "".into();
+    // let mut content: String = "".into();
     let mut lang: String = "plpgsql".into();
     for node in nodes {
         // unwrapping aggressively to catch unexpected structures via panics
@@ -158,7 +158,7 @@ fn extract_pl(input: &str) -> Result<String, Failure> {
     //     println!("{:?}", stmts);
     // }
 
-    // sometimes there'll be empty 0-length statements, e.g. `/* empty query *' ;`
+    // sometimes there'll be empty 0-length statements, e.g. `/* empty query */;`
     if stmts.len() == 0 {
         return Err(Failure::Other("empty stmt (comment-only?)".to_string()));
     }
@@ -318,7 +318,7 @@ fn is_flat_dir_of_readable_files(path: PathBuf) -> bool {
     }
 }
 const READ_BITS: u32 = 0o444;
-const WRITE_BITS: u32 = 0o222;
+// const WRITE_BITS: u32 = 0o222;
 
 fn file_is_readable<File>(file: File) -> Result<bool, Failure>
 where
@@ -333,12 +333,12 @@ where
     }
 }
 
-fn file_is_writeable<File>(file: File) -> Result<bool, Failure>
-where
-    File: AsRef<Path>,
-{
-    return Ok(fs::metadata(file)?.permissions().mode() & WRITE_BITS > 0);
-}
+// fn file_is_writeable<File>(file: File) -> Result<bool, Failure>
+// where
+//     File: AsRef<Path>,
+// {
+//     return Ok(fs::metadata(file)?.permissions().mode() & WRITE_BITS > 0);
+// }
 
 fn validate_input_source(input: String) -> Result<(), String> {
     if input == "stdin" {
@@ -375,7 +375,6 @@ fn validate_input_source(input: String) -> Result<(), String> {
 fn main() -> Result<(), Failure> {
     let matches = clap::App::new("splitter")
         .arg(
-            // the path to the sqlite file or stdout
             clap::Arg::with_name("out")
                 .long("--out")
                 .short("-o")
@@ -401,12 +400,12 @@ fn main() -> Result<(), Failure> {
                 .help("whether to print debug info to stdout"),
         )
         .arg(
-            // should be multiple, e.g. multiple git hosts, each with a branch and commit
             clap::Arg::with_name("url")
-                .long("--url")
-                .takes_value(true)
-                .multiple(true)
-                .help("url at which the input may be found."),
+            .long("--url")
+            .takes_value(true)
+            .multiple(true)
+            .help("urls at which the input may be found.")
+            .long_help("urls at which the input may be found, e.g. multiple git hosts each with a branch and commit"),
         )
         .arg(
             clap::Arg::with_name("pg_version")

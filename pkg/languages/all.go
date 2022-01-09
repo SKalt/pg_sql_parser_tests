@@ -1,6 +1,6 @@
 package languages
 
-// enums describing the allowed languages would go here
+// an enumeration of all the allowed languages
 var Languages = map[string]int{
 	"other":     -1,
 	"pgsql":     0,

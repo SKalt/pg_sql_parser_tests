@@ -1,3 +1,6 @@
+// not a oracle in-and-of-itself, but a component of other oracles.
+// The functions here rely on the service-definitions in the top-level
+// docker-compose.yaml.
 package container
 
 import (
@@ -56,6 +59,7 @@ func DeriveServiceName(version string) (string, error) {
 	return fmt.Sprintf("pg-%s", version), nil
 }
 
+// NOTE: this creates a service-struct, it doesn't actually start the service.
 func InitService(version string) *Service {
 	service := Service{version: version, name: nil, dsn: nil}
 	return &service

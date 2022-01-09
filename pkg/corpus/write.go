@@ -9,12 +9,6 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// func asBytes(xxh3 uint64) []byte {
-// 	b := make([]byte, 8)
-// 	binary.LittleEndian.PutUint64(b, xxh3)
-// 	return b
-// }
-
 func DeriveOracleId(name string) uint64 {
 	return xxhash.Sum64([]byte(name))
 }

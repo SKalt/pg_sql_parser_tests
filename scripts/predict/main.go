@@ -81,12 +81,15 @@ func bulkPredict(
 	oracle oracles.Oracle,
 	language string, version string,
 	db *sql.DB,
+	// TODO: add side-effect handler func(db *sql.DB, statement *corpus.Statement, prediction *oracles.Prediction) error
 ) error {
 	languageId := languages.LookupId(language)
 	oracleId := corpus.DeriveOracleId(oracle.Name())
 	// versionId := xxhash.Sum64(append([]byte("postgres"), []byte(version)...))
 	// TODO: consider _not_ loading most of the db into memory.
-	statements := corpus.GetStatementsByLanguage(db, language)
+	// for example, passing an in-channel and an out-channel, then handline each
+	// statement one-at-a time
+	statements := corpus.GetAllStatementsByLanguage(db, language)
 	if len(statements) == 0 {
 		return fmt.Errorf("no statements found for language %s", language)
 	}
@@ -109,6 +112,7 @@ func bulkPredict(
 		if err != nil {
 			return err
 		}
+		// handle side-effect here
 		return nil
 	}
 

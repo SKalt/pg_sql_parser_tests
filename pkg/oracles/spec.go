@@ -13,7 +13,7 @@ type Prediction struct {
 // the statement is valid for a given sql-like dialect version.
 type Oracle interface {
 	Name() string
+	// TODO: maybe Register(db *sql.DB) error
+	// TODO: maybe Id() uint64 // derive its own id
 	Predict(statement string, language string) (*Prediction, error)
 }
-
-// TODO: ability to read statements from db?

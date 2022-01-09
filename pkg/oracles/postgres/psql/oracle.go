@@ -37,19 +37,22 @@ func (psql *Oracle) Name() string {
 	return fmt.Sprintf("psql %s", psql.version)
 }
 
+// crude parsers for error messages
+
+func startsWith(str string, prefix string) bool {
+	return len(str) >= len(prefix) && str[:len(prefix)] == prefix
+}
+
 const invalidCommand = "invalid command"
-const unrecognizedValue = "unrecognized value"
 
 func isInvalidCommand(stderr string) bool {
 	return startsWith(stderr, invalidCommand)
 }
 
+const unrecognizedValue = "unrecognized value"
+
 func hasUnrecognizedValue(stderr string) bool {
 	return startsWith(stderr, unrecognizedValue)
-}
-
-func startsWith(str string, prefix string) bool {
-	return len(str) >= len(prefix) && str[:len(prefix)] == prefix
 }
 
 func hasSqlishSyntaxError(stderr string) bool {
@@ -76,12 +79,13 @@ func (psql *Oracle) Predict(statement string, language string) (*oracles.Predict
 	cmd := exec.Command("docker-compose", "exec", "-T", "psql", "--set=ON_ERROR_STOP=on")
 	// -T: don't allocate a pseudo-TTY            ^^^^
 	cmd.Stdin = strings.NewReader(statement)
-	// handle `COPY FROM STDIN`
+	// ^ required for handling `COPY FROM STDIN`
 	// also see https://www.postgresql.org/docs/current/app-psql.html#R1-APP-PSQL-3
-	// the -c option for why we can't pass the statement as a command-line arg at
+	// for reasons why passing the statement as via the `--command` flag won't work
 
 	message, err := cmd.Output() // TODO: add timeout in case of long-running psql commands
-	if err == nil {              // the command miraculously worked
+	if err == nil {
+		// the command miraculously worked
 		prediction.Error = ""
 		// I'm not confident enough to mark not-erroring syntax as valid; no error
 		// is at least factual.
@@ -96,7 +100,9 @@ func (psql *Oracle) Predict(statement string, language string) (*oracles.Predict
 		// `select * from foo \g` would fail with a "relation does not exist"
 		prediction.Message = string(message)
 	} else {
-		// this is where the fun begins. Any psql command might fail
+		// this is where the fun begins. Most of our psql commands will exit
+		// nonzero since (1) we set ON_ERROR_STOP=on and (2) most queries will
+		// use nonexistent database objects
 		stderr := err.Error()
 		prediction.Error = stderr
 		// definitelyInvalid meta-commands are reached before non-existent database objects
