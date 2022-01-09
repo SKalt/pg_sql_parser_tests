@@ -52,10 +52,13 @@ type Oracle struct {
 
 func Init(version string) *Oracle {
 	service := container.InitService(version)
+	if err := service.Start(); err != nil {
+		log.Panic(err)
+	}
 	conn, err := sql.Open("postgres", service.Dsn())
 	// TODO: timeout/retry loop for opening connection
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	oracle := Oracle{version, service, conn}
 	return &oracle
@@ -73,16 +76,16 @@ func (oracle *Oracle) Predict(statement string, language string) (*oracles.Predi
 	default:
 		return nil, fmt.Errorf("unsupported language %s", language)
 	}
-	oracle.conn.Query("SET check_function_bodies = ON;")
+	oracle.conn.Exec("SET check_function_bodies = ON;")
 	testimony := testify(oracle.conn, statement, language)
 	return &testimony, nil
 }
 
 func (d *Oracle) Close() {
 	if err := d.conn.Close(); err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	if err := d.service.Close(); err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 }

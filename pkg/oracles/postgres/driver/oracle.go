@@ -60,7 +60,7 @@ func SyntaxIsOk(err pq.Error) (validSyntax bool, testimony string) {
 // Invalid SQL Statement Name
 func Predict(conn *sql.DB, statement string, language string) oracles.Prediction {
 	testimony := oracles.Prediction{Language: language}
-	_, err := conn.Query(statement)
+	_, err := conn.Exec(statement)
 	if err != nil {
 		if e, ok := err.(pq.Error); ok {
 			switch e.Code {
@@ -99,6 +99,7 @@ func Predict(conn *sql.DB, statement string, language string) oracles.Prediction
 			panic(err)
 		}
 	} else {
+		// TODO: use the result here
 		valid := true
 		testimony.Valid = &valid
 	}
@@ -107,7 +108,7 @@ func Predict(conn *sql.DB, statement string, language string) oracles.Prediction
 
 type Oracle struct {
 	service *container.Service
-	conn    *sql.DB
+	db      *sql.DB
 	version string
 }
 
@@ -130,29 +131,30 @@ func (d *Oracle) Name() string {
 func (d *Oracle) Predict(statement string, language string) (*oracles.Prediction, error) {
 	switch language {
 	case "pgsql":
-		_, err := d.conn.Exec("SET check_function_bodies = off;")
+		_, err := d.db.Exec("SET check_function_bodies = off;")
 		if err != nil {
 			return nil, err
 		}
+
 		// avoid checking plpgsql syntax
 	case "plpgsql":
-		_, err := d.conn.Exec("SET check_function_bodies = on;")
+		_, err := d.db.Exec("SET check_function_bodies = on;")
 		if err != nil {
 			return nil, err
 		}
 	default:
 		return nil, fmt.Errorf("unsupported language %s", language)
 	}
-	testimony := Predict(d.conn, statement, language)
+	testimony := Predict(d.db, statement, language)
 	return &testimony, nil
 }
 
 func (oracle *Oracle) Close() {
-	if err := oracle.conn.Close(); err != nil {
-		log.Fatal(err)
+	if err := oracle.db.Close(); err != nil {
+		log.Panic(err)
 	}
 
 	if err := oracle.service.Close(); err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 }

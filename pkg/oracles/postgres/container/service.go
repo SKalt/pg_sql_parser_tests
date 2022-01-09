@@ -17,7 +17,7 @@ func (service *Service) Name() string {
 	if service.name == nil {
 		name, err := DeriveServiceName(service.version)
 		if err != nil {
-			log.Fatal(err)
+			log.Panic(err)
 		}
 		service.name = &name
 	}
@@ -27,7 +27,7 @@ func (service *Service) Name() string {
 func (service *Service) Dsn() string {
 	if service.dsn == nil {
 		dsn := fmt.Sprintf(
-			"host=0.0.0.0 user=postgres password=password port=500%s",
+			"host=0.0.0.0 user=postgres password=password port=500%s sslmode=disable",
 			service.version)
 		service.dsn = &dsn
 	}
@@ -63,11 +63,14 @@ func InitService(version string) *Service {
 
 func StartService(serviceName string) error {
 	isReady := func() bool {
-		cmd := exec.Command("docker-compose", "exec", serviceName, "pg_isready")
-		err := cmd.Wait()
+		cmd := exec.Command("docker-compose", "exec", "-T", serviceName, "pg_isready")
+		err := cmd.Run()
 		return err == nil
 	}
 	cmd := exec.Command("docker-compose", "up", "-d", serviceName)
+	if err := cmd.Start(); err != nil {
+		log.Panic(err)
+	}
 	err := cmd.Wait()
 	if err != nil {
 		return err
@@ -75,7 +78,7 @@ func StartService(serviceName string) error {
 
 	// wait for the database server
 	ticker := time.NewTicker(time.Second)
-	for i := 0; i <= 10; i++ {
+	for i := 0; i <= 15; i++ {
 		<-ticker.C // wait for a tick
 
 		if isReady() {
@@ -90,5 +93,5 @@ func StartService(serviceName string) error {
 func CloseService(service string) error {
 	return exec.
 		Command("docker-compose", "down", service).
-		Wait()
+		Run()
 }

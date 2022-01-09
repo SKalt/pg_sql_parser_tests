@@ -6,10 +6,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/cespare/xxhash/v2"
 	"github.com/cheggaaa/pb/v3"
 	"github.com/mattn/go-isatty"
 	"github.com/skalt/pg_sql_tests/pkg/corpus"
+	"github.com/skalt/pg_sql_tests/pkg/languages"
 	"github.com/skalt/pg_sql_tests/pkg/oracles"
 	"github.com/skalt/pg_sql_tests/pkg/oracles/postgres/doblock"
 	raw "github.com/skalt/pg_sql_tests/pkg/oracles/postgres/driver"
@@ -22,7 +22,36 @@ var cmd = &cobra.Command{
 	Short: "Have a series of oracles opine on whether statements are valid",
 	Long:  `TODO`,
 	Run: func(cmd *cobra.Command, args []string) {
-
+		config := initConfig(cmd)
+		if config.dryRun {
+			fmt.Printf("%+v\n", config)
+			return
+		}
+		for _, oracleName := range config.oracles {
+			fmt.Printf("running oracle: %s\n", oracleName)
+			switch oracleName {
+			case "pg_query":
+				err := runPgQueryOracle(config.corpusPath, config.language)
+				if err != nil {
+					log.Fatal(err)
+				}
+			case "do-block":
+				err := runDoBlockOracle(config.corpusPath, config.version, config.language)
+				if err != nil {
+					log.Fatal(err)
+				}
+			case "psql":
+				err := runPsqlOracle(config.corpusPath, config.version, config.language)
+				if err != nil {
+					log.Fatal(err)
+				}
+			case "raw":
+				err := runPgRawOracle(config.corpusPath, config.version, config.language)
+				if err != nil {
+					log.Fatal(err)
+				}
+			}
+		}
 	},
 }
 
@@ -53,12 +82,14 @@ func bulkPredict(
 	language string, version string,
 	db *sql.DB,
 ) error {
-	languageId := corpus.LookupLanguageId(language)
+	languageId := languages.LookupId(language)
 	oracleId := corpus.DeriveOracleId(oracle.Name())
-	versionId := xxhash.Sum64(append([]byte("postgres"), []byte(version)...))
+	// versionId := xxhash.Sum64(append([]byte("postgres"), []byte(version)...))
 	// TODO: consider _not_ loading most of the db into memory.
 	statements := corpus.GetStatementsByLanguage(db, language)
-
+	if len(statements) == 0 {
+		return fmt.Errorf("no statements found for language %s", language)
+	}
 	predict := func(statement *corpus.Statement) error {
 		prediction, err := oracle.Predict(statement.Text, language)
 		if err != nil {
@@ -70,7 +101,6 @@ func bulkPredict(
 			statement.Id,
 			oracleId,
 			languageId,
-			versionId,
 
 			prediction.Message,
 			prediction.Error,
@@ -85,10 +115,10 @@ func bulkPredict(
 	if isatty.IsTerminal(os.Stdout.Fd()) {
 		bar := pb.StartNew(len(statements))
 		for _, statement := range statements {
-			bar.Increment()
 			if err := predict(statement); err != nil {
 				return err
 			}
+			bar.Increment()
 		}
 		bar.Finish()
 	} else {
@@ -129,7 +159,6 @@ func runPgQueryOracle(dsn string, language string) error {
 }
 
 // TODO: list available oracles
-// TODO: run each oracle
 
 type configuration struct {
 	corpusPath string
@@ -140,57 +169,76 @@ type configuration struct {
 }
 
 func init() {
-	cmd.Flags().Bool("dry-run", false, "TODO")
+	cmd.Flags().String("corpus", "./corpus.db", "path to the sqlite corpus database")
 	cmd.Flags().StringSlice("oracles", []string{"pg_query"}, "list which oracles to run")
 	cmd.Flags().String("language", "pgsql", "which language to try")
 	cmd.Flags().String("version", "14", "which postgres version to try")
+	cmd.Flags().Bool("dry-run", false, "TODO")
 }
 
 func initConfig(cmd *cobra.Command) *configuration {
-	errors := []error{}
-
+	fail := false
 	dryRun, err := cmd.Flags().GetBool("dry-run")
 	if err != nil {
-		errors = append(errors, err)
+		fmt.Printf("--dry-run: %s\n", err)
+		fail = true
 	}
 
 	corpus, err := cmd.Flags().GetString("corpus")
 	if err != nil {
-		errors = append(errors, err)
+		fmt.Printf("--corpus: %s\n", err)
 	} else {
 		if _, err = os.Stat(corpus); err != nil {
-			errors = append(errors, err) // primitive does-file-exist
+			fmt.Printf("--corpus: %s\n", err)
+			// primitive does-file-exist
+			fail = true
 		}
 	}
 
 	oracles, err := cmd.Flags().GetStringSlice("oracles")
 	if err != nil {
-		errors = append(errors, err)
+		fmt.Printf("--oracle: %s\n", err)
+		fail = true
 	} else {
 		for _, oracle := range oracles {
 			if _, ok := availableOracles[oracle]; !ok {
-				errors = append(errors, fmt.Errorf("unknown oracle %s", oracle))
+				fmt.Printf("--oracle: unknown oracle %s\n", oracle)
+				fail = true
 			}
 		}
 	}
 
 	version, err := cmd.Flags().GetString("version")
 	if err != nil {
-		errors = append(errors, err)
+		fail = true
+		fmt.Printf("--version: %s\n", err)
 	} else {
+		recognized := false
 		for _, v := range []string{"10", "11", "12", "13", "14"} {
 			if version == v {
+				recognized = true
 				break
 			}
 		}
-		errors = append(errors, fmt.Errorf("unknown version %s", version))
+		if !recognized {
+			fail = true
+			fmt.Printf("--version: unknown postgres version %s\n", version)
+		}
 	}
 
 	language, err := cmd.Flags().GetString("language")
 	if err != nil {
-		errors = append(errors, err)
+		fail = true
+		fmt.Printf("--language: %s", err)
+	} else {
+		if languages.LookupId(language) == -1 {
+			fail = true
+			fmt.Printf("--language: unknown language %s\n", language)
+		}
 	}
-
+	if fail {
+		os.Exit(1)
+	}
 	config := configuration{
 		dryRun:     dryRun,
 		corpusPath: corpus,
@@ -203,6 +251,13 @@ func initConfig(cmd *cobra.Command) *configuration {
 
 func run(config *configuration) {
 	if err := runPgQueryOracle(config.corpusPath, config.language); err != nil {
-		log.Fatal(err)
+		log.Panic(err)
+	}
+}
+
+func main() {
+	if err := cmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
 	}
 }

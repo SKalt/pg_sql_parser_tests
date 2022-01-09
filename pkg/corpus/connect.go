@@ -10,7 +10,7 @@ import (
 func Connect(datasource string) *sql.DB {
 	db, err := sql.Open("sqlite3", datasource)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	return db
 }

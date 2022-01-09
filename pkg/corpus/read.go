@@ -2,6 +2,7 @@ package corpus
 
 import (
 	"database/sql"
+	_ "embed"
 	"log"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -10,7 +11,7 @@ import (
 
 // TODO: use a sqlite connector
 
-//go:embed ./sql/get_statements_by_language.sql
+//go:embed sql/get_statements_by_language.sql
 var getStatementsByLanguage string
 
 type Statement struct {
@@ -21,7 +22,7 @@ type Statement struct {
 func GetStatementsByLanguage(db *sql.DB, language string) (results []*Statement) {
 	rows, err := db.Query(getStatementsByLanguage, language)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	defer rows.Close()
 	for rows.Next() {

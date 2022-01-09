@@ -11,3 +11,12 @@ var Languages = map[string]int{
 	"plpython2": 5,
 	"plpython3": 6,
 }
+
+func LookupId(language string) int {
+	if id, ok := Languages[language]; ok {
+		return id
+	} else {
+		// definitely other
+		return -1
+	}
+}

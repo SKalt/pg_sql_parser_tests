@@ -21,7 +21,7 @@ type Oracle struct {
 func Init(version string) *Oracle {
 	service := container.InitService(version)
 	if err := service.Start(); err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	oracle := Oracle{version, service}
 	return &oracle
@@ -29,7 +29,7 @@ func Init(version string) *Oracle {
 
 func (psql *Oracle) Close() {
 	if err := psql.service.Close(); err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 }
 

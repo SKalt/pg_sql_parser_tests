@@ -1,6 +1,8 @@
 SELECT
     stmt.id
   , stmt.text
-FROM languages
-JOIN statement_languages stmt_lang ON lang.id = ? AND lang.id = stmt_lang.language_id
-JOIN statements stmt ON stmt.id = stmt_lang.stmt_id;
+FROM languages AS lang
+JOIN statement_languages AS stmt_lang
+  ON lang.name = ?
+  AND stmt_lang.language_id = lang.id
+JOIN statements AS stmt ON stmt_lang.statement_id = stmt.id;
