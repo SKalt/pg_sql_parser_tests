@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "golang.go",
+    "timonwong.shellcheck",
+    "mads-hartmann.bash-ide-vscode",
+    "earthly.earthfile-syntax-highlighting",
+    "matklad.rust-analyzer",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig"
+  ]
+}

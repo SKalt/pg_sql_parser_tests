@@ -1,0 +1,6 @@
+{
+  "cSpell.words": ["defname", "isatty", "pbuf", "rusqlite"],
+  "files.watcherExclude": {
+    "**/target/**": true
+  }
+}
