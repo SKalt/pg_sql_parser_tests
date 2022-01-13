@@ -10,11 +10,8 @@ import (
 	"github.com/skalt/pg_sql_tests/pkg/oracles/postgres/container"
 )
 
-// TODO: get a subshell into the docker container
-
 type Oracle struct {
 	version string
-	// TODO: hold reference to docker container
 	service *container.Service
 }
 

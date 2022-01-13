@@ -1,25 +1,3 @@
-// ```
-//   / _ \===/ _ \    .__===\ __        Driver
-//  ( (.\ oOo /.) )   /.\   : /./       Oracle
-//   \__/=====\__/   `__/=====\/
-//      ||||||:         :||||:
-//      |||||\          |||||||         .||\
-//      |||||||         :|:||||         ||||||:
-//      :||||||         |||||:          `||||||
-//      |||||||          ||||||           :|||
-//      |||||||         |:|||||         |||||||
-//      |||||||         |||||||         |:|||:|
-//      |||||||         ||||:||         |||:|||
-//      (oOoOo)         (o oOo:         / Oo o)
-//      J%%%%%L         J:%%%%L         J%%:% L
-//     ZZZZZ ZZZ       ZZZZ:ZZ:Z       /:ZZ ZZ Z
-//    ======================-=====-==--= ==== -=====
-//  __|_____________ ________ ____________ ____ ____|__
-//  _|_______________________________________________|_
-//  |_________________ ____ _________ ___ ____ _______|
-//  _________________________________ __________.______
-//  ```
-
 package driver
 
 import (
@@ -114,9 +92,12 @@ type Oracle struct {
 
 func Init(version string) *Oracle {
 	service := container.InitService(version)
-
+	if err := service.Start(); err != nil {
+		log.Fatal(err)
+	}
 	conn, err := sql.Open("postgres", service.Dsn())
-	// TODO: timeout/retry loop for opening connection
+	// service.Start() guarantees that connecting to the service will
+	// work on the first try
 	if err != nil {
 		panic(err)
 	}

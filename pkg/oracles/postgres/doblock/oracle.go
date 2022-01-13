@@ -55,8 +55,9 @@ func Init(version string) *Oracle {
 	if err := service.Start(); err != nil {
 		log.Panic(err)
 	}
+	// service.Start() guarantees that service.Dsn() will connect on the first
+	// try
 	conn, err := sql.Open("postgres", service.Dsn())
-	// TODO: timeout/retry loop for opening connection
 	if err != nil {
 		log.Panic(err)
 	}
