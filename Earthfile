@@ -163,3 +163,15 @@ pg-corpus-10:
       ; \
     done;
   SAVE ARTIFACT /db
+
+pg-corpus-all:
+  RUN apk add sqlite
+  COPY ./schema.sql ./
+  COPY ./scripts/merge.sh ./scripts/
+  COPY +pg-corpus-10/db ./10.db
+  COPY +pg-corpus-11/db ./11.db
+  COPY +pg-corpus-12/db ./12.db
+  COPY +pg-corpus-13/db ./13.db
+  COPY +pg-corpus-14/db ./14.db
+  RUN ./scripts/merge.sh --out=/db ./10.db ./11.db ./12.db ./13.db ./14.db
+  SAVE ARTIFACT /db

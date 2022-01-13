@@ -20,7 +20,7 @@ import (
 
 var cmd = &cobra.Command{
 	Short: "Have a series of oracles opine on whether statements are valid",
-	Long:  `TODO`,
+	// Long:  `TODO`,
 	Run: func(cmd *cobra.Command, args []string) {
 		config := initConfig(cmd)
 		if config.dryRun {
@@ -63,6 +63,7 @@ var availableOracles = map[string][]string{
 	"pg_query": {"13"},
 }
 
+// TODO: list available oracles
 // TODO: expose as a subcommand
 // func listOracles() {
 // 	if isatty.IsTerminal(os.Stdout.Fd()) {
@@ -137,33 +138,43 @@ func bulkPredict(
 }
 
 func runPsqlOracle(dsn string, version string, language string) error {
-	db := corpus.Connect(dsn)
+	db, err := corpus.ConnectToExisting(dsn)
+	if err != nil {
+		return err
+	}
 	oracle := psql.Init(version)
 	defer oracle.Close()
 	return bulkPredict(oracle, language, version, db)
 }
 
 func runDoBlockOracle(dsn string, version string, language string) error {
-	db := corpus.Connect(dsn)
+	db, err := corpus.ConnectToExisting(dsn)
+	if err != nil {
+		return nil
+	}
 	oracle := doblock.Init(version)
 	defer oracle.Close()
 	return bulkPredict(oracle, language, version, db)
 }
 
 func runPgRawOracle(dsn string, version string, language string) error {
-	db := corpus.Connect(dsn)
+	db, err := corpus.ConnectToExisting(dsn)
+	if err != nil {
+		return err
+	}
 	oracle := raw.Init(version)
 	defer oracle.Close()
 	return bulkPredict(oracle, language, version, db)
 }
 
 func runPgQueryOracle(dsn string, language string) error {
-	db := corpus.Connect(dsn)
+	db, err := corpus.ConnectToExisting(dsn)
+	if err != nil {
+		return err
+	}
 	oracle := &pgquery.Oracle{}
 	return bulkPredict(oracle, language, "13", db)
 }
-
-// TODO: list available oracles
 
 type configuration struct {
 	corpusPath string
@@ -178,7 +189,7 @@ func init() {
 	cmd.Flags().StringSlice("oracles", []string{"pg_query"}, "list which oracles to run")
 	cmd.Flags().String("language", "pgsql", "which language to try")
 	cmd.Flags().String("version", "14", "which postgres version to try")
-	cmd.Flags().Bool("dry-run", false, "TODO")
+	cmd.Flags().Bool("dry-run", false, "print the configuration rather than running the oracles")
 }
 
 func initConfig(cmd *cobra.Command) *configuration {
