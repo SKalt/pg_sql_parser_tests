@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/cheggaaa/pb/v3"
 	"github.com/mattn/go-isatty"
@@ -23,32 +24,35 @@ var cmd = &cobra.Command{
 	// Long:  `TODO`,
 	Run: func(cmd *cobra.Command, args []string) {
 		config := initConfig(cmd)
-		if config.dryRun {
-			fmt.Printf("%+v\n", config)
-			return
-		}
 		for _, oracleName := range config.oracles {
-			fmt.Printf("running oracle: %s\n", oracleName)
-			switch oracleName {
-			case "pg_query":
-				err := runPgQueryOracle(config.corpusPath, config.language)
-				if err != nil {
-					log.Fatal(err)
-				}
-			case "do-block":
-				err := runDoBlockOracle(config.corpusPath, config.version, config.language)
-				if err != nil {
-					log.Fatal(err)
-				}
-			case "psql":
-				err := runPsqlOracle(config.corpusPath, config.version, config.language)
-				if err != nil {
-					log.Fatal(err)
-				}
-			case "raw":
-				err := runPgRawOracle(config.corpusPath, config.version, config.language)
-				if err != nil {
-					log.Fatal(err)
+			for _, version := range config.versions {
+				if config.dryRun {
+					// TODO: have each runOracle fn take a dryRun arg and print this instead
+					fmt.Printf("would run oracle: %s @ %s\n", oracleName, version)
+				} else {
+					fmt.Printf("running oracle: %s\n", oracleName)
+					switch oracleName {
+					case "pg_query":
+						err := runPgQueryOracle(config.corpusPath, version, config.language)
+						if err != nil {
+							log.Fatal(err)
+						}
+					case "do-block":
+						err := runDoBlockOracle(config.corpusPath, version, config.language)
+						if err != nil {
+							log.Fatal(err)
+						}
+					case "psql":
+						err := runPsqlOracle(config.corpusPath, version, config.language)
+						if err != nil {
+							log.Fatal(err)
+						}
+					case "raw":
+						err := runPgRawOracle(config.corpusPath, version, config.language)
+						if err != nil {
+							log.Fatal(err)
+						}
+					}
 				}
 			}
 		}
@@ -63,21 +67,29 @@ var availableOracles = map[string][]string{
 	"pg_query": {"13"},
 }
 
-// TODO: list available oracles
-// TODO: expose as a subcommand
-// func listOracles() {
-// 	if isatty.IsTerminal(os.Stdout.Fd()) {
-// 		for oracle, versions := range availableOracles {
-// 			fmt.Printf("%s: %v\n", oracle, versions)
-// 		}
-// 	} else {
-// 		for oracle, versions := range availableOracles {
-// 			for _, version := range versions {
-// 				fmt.Printf("%s\t%s\n", oracle, version)
-// 			}
-// 		}
-// 	}
-// }
+func listOracles() {
+	if isatty.IsTerminal(os.Stdout.Fd()) {
+		// only print the header if the output isn't piped somewhere
+		fmt.Printf("%10s %-20s\n", "oracle", "versions")
+	}
+	// else {
+	// 	for oracle, versions := range availableOracles {
+	// 		for _, version := range versions {
+	// 			fmt.Printf("%s\t%s\n", oracle, version)
+	// 		}
+	// 	}
+	// }
+	for oracle, versions := range availableOracles {
+		fmt.Printf("%10s %-20s\n", oracle, strings.Join(versions, ", "))
+	}
+}
+
+var listOraclesCmd = &cobra.Command{
+	Use: "list-oracles",
+	Run: func(cmd *cobra.Command, args []string) {
+		listOracles()
+	},
+}
 
 func bulkPredict(
 	oracle oracles.Oracle,
@@ -167,7 +179,10 @@ func runPgRawOracle(dsn string, version string, language string) error {
 	return bulkPredict(oracle, language, version, db)
 }
 
-func runPgQueryOracle(dsn string, language string) error {
+func runPgQueryOracle(dsn string, version string, language string) error {
+	if version != "13" { // silently skip
+		return nil
+	}
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
 		return err
@@ -180,7 +195,7 @@ type configuration struct {
 	corpusPath string
 	oracles    []string
 	language   string
-	version    string
+	versions   []string
 	dryRun     bool
 }
 
@@ -188,8 +203,9 @@ func init() {
 	cmd.Flags().String("corpus", "./corpus.db", "path to the sqlite corpus database")
 	cmd.Flags().StringSlice("oracles", []string{"pg_query"}, "list which oracles to run")
 	cmd.Flags().String("language", "pgsql", "which language to try")
-	cmd.Flags().String("version", "14", "which postgres version to try")
+	cmd.Flags().StringSlice("versions", []string{"14"}, "which postgres versions to try")
 	cmd.Flags().Bool("dry-run", false, "print the configuration rather than running the oracles")
+	cmd.AddCommand(listOraclesCmd)
 }
 
 func initConfig(cmd *cobra.Command) *configuration {
@@ -224,21 +240,23 @@ func initConfig(cmd *cobra.Command) *configuration {
 		}
 	}
 
-	version, err := cmd.Flags().GetString("version")
+	versions, err := cmd.Flags().GetStringSlice("versions")
 	if err != nil {
 		fail = true
 		fmt.Printf("--version: %s\n", err)
 	} else {
-		recognized := false
-		for _, v := range []string{"10", "11", "12", "13", "14"} {
-			if version == v {
-				recognized = true
-				break
+		for _, version := range versions {
+			recognized := false
+			for _, v := range []string{"10", "11", "12", "13", "14"} {
+				if version == v {
+					recognized = true
+					break
+				}
 			}
-		}
-		if !recognized {
-			fail = true
-			fmt.Printf("--version: unknown postgres version %s\n", version)
+			if !recognized {
+				fail = true
+				fmt.Printf("--version: unknown postgres version %s\n", version)
+			}
 		}
 	}
 
@@ -258,7 +276,7 @@ func initConfig(cmd *cobra.Command) *configuration {
 	config := configuration{
 		dryRun:     dryRun,
 		corpusPath: corpus,
-		version:    version,
+		versions:   versions,
 		oracles:    oracles,
 		language:   language,
 	}

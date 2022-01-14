@@ -1,12 +1,12 @@
 CREATE TABLE schema_version (
     major INT4 -- a table or column name is no longer valid
   , minor INT4 -- there's a new table or column
-  , CONSTRAINT schema_version_pkey
+  , CONSTRAINT schema_version_pkey PRIMARY KEY (major, minor)
 );
 INSERT INTO schema_version VALUES (0, 0);
 
 CREATE TABLE languages (
-    id INT4 PRIMARY KEY -- TODO: make xxhash(name)
+    id INTEGER PRIMARY KEY -- TODO: make xxhash(name)
   , "name" TEXT UNIQUE
   -- , CONSTRAINT version_url_id_fkey FOREIGN KEY (url_id) REFERENCES urls.id
 );
@@ -23,7 +23,7 @@ INSERT INTO languages VALUES
 
 -- for coordinating compatibility:
 CREATE TABLE versions(
-  id INT4 PRIMARY KEY -- xxhash64(family, version)
+  id INTEGER PRIMARY KEY -- xxhash64(family, version)
   , family TEXT -- I've got aspirations to expand this suite to cover other SQLs
   , "version" TEXT
   , CONSTRAINT unique_version UNIQUE (family, version)
@@ -38,7 +38,7 @@ CREATE TABLE language_versions (
 );
 
 CREATE TABLE statements (
-  id INT8 PRIMARY KEY      -- the xxhash of the text
+  id INTEGER PRIMARY KEY      -- the xxhash of the text
   , "text" TEXT NOT NULL
 );
 
@@ -51,8 +51,8 @@ CREATE TABLE statement_languages (
 );
 
 CREATE TABLE statement_fingerprints(
-    fingerprint INT8
-  , statement_id INT8 REFERENCES statements(id)
+    fingerprint INTEGER
+  , statement_id INTEGER REFERENCES statements(id)
   , CONSTRAINT statement_fingerprints_pkey PRIMARY KEY (statement_id, fingerprint)
 );
 
@@ -64,18 +64,18 @@ CREATE TABLE statement_versions(
 CREATE UNIQUE INDEX version_statements_idx ON statement_versions(version_id, statement_id);
 
 CREATE TABLE urls (
-    id int8 PRIMARY KEY -- xxhash of the url itself
+    id INTEGER PRIMARY KEY -- xxhash of the url itself
   , "url" TEXT UNIQUE
   , license_id INT8 REFERENCES licenses(id)
 );
 
 CREATE TABLE statement_sources (
-    statement_id INT8 REFERENCES statements(id)
+    statement_id INTEGER REFERENCES statements(id)
   , url_id INT8 REFERENCES urls
-  , start_line INT
-  , start_offset INT
-  , end_line INT
-  , end_offset INT
+  , start_line INTEGER
+  , start_offset INTEGER
+  , end_line INTEGER
+  , end_offset INTEGER
   , locator TEXT -- which helps locate the statement within the page defined by the url
   , CONSTRAINT statement_source_pkey PRIMARY KEY (url_id, statement_id, start_offset)
 );
@@ -88,14 +88,14 @@ CREATE TABLE licenses (
 );
 
 CREATE TABLE oracles(
-   id INT8 -- xxhash3_64 of the oracle name
+   id INTEGER PRIMARY KEY -- xxhash3_64 of the oracle name
   , "name" TEXT -- e.g. "postgres 13 no-op do-block".
 );
 
 CREATE TABLE predictions(
-    statement_id INT8 REFERENCES statements(id)
-  , oracle_id INT8 REFERENCES oracles(id) -- encodes version
-  , language_id INT8 REFERENCES languages(id)
+    statement_id INTEGER REFERENCES statements(id)
+  , oracle_id INTEGER REFERENCES oracles(id) -- encodes version
+  , language_id INTEGER REFERENCES languages(id)
   , error TEXT -- bonus debugging text if there was an error; doesn't mean the
                -- statement isn't valid
   , "message" TEXT -- any extra output from the oracle, hopefully something like

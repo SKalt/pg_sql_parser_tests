@@ -4,10 +4,14 @@
 package container
 
 import (
+	"database/sql"
+	_ "database/sql"
 	"fmt"
 	"log"
 	"os/exec"
 	"time"
+
+	_ "github.com/lib/pq"
 )
 
 type Service struct {
@@ -37,8 +41,33 @@ func (service *Service) Dsn() string {
 	return *service.dsn
 }
 
+func (service *Service) isReady() bool {
+	db, err := sql.Open("postgres", service.Dsn())
+	if err != nil {
+		return false
+	}
+	_, err = db.Exec("SELECT 1;")
+	return err == nil
+}
+
 func (service *Service) Start() error {
-	return StartService(service.Name())
+	cmd := exec.Command("docker-compose", "up", "-d", service.Name())
+	if err := cmd.Run(); err != nil {
+		fmt.Println(err) // TODO: send to stderr
+	}
+
+	// wait for the database server
+	ticker := time.NewTicker(time.Second)
+	for i := 0; i <= 15; i++ {
+		<-ticker.C // wait for a tick
+
+		if service.isReady() {
+			return nil
+		} else {
+			fmt.Printf(".")
+		}
+	}
+	return fmt.Errorf("%s service startup timed out", service.Name())
 }
 
 func (service *Service) Close() error {
@@ -65,37 +94,13 @@ func InitService(version string) *Service {
 	return &service
 }
 
-func StartService(serviceName string) error {
-	isReady := func() bool {
-		cmd := exec.Command("docker-compose", "exec", "-T", serviceName, "pg_isready")
-		err := cmd.Run()
-		return err == nil
-	}
-	cmd := exec.Command("docker-compose", "up", "-d", serviceName)
-	if err := cmd.Start(); err != nil {
-		log.Panic(err)
-	}
-	err := cmd.Wait()
-	if err != nil {
-		return err
-	}
-
-	// wait for the database server
-	ticker := time.NewTicker(time.Second)
-	for i := 0; i <= 15; i++ {
-		<-ticker.C // wait for a tick
-
-		if isReady() {
-			return nil
-		} else {
-			fmt.Printf(".")
-		}
-	}
-	return fmt.Errorf("%s service startup timed out", serviceName)
-}
-
 func CloseService(service string) error {
-	return exec.
-		Command("docker-compose", "down", service).
+	fmt.Printf("closing %s\n", service)
+	err := exec.
+		Command("docker-compose", "rm", "-vs", service).
 		Run()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return err
 }

@@ -90,6 +90,6 @@ func (d *Oracle) Close() {
 		log.Panic(err)
 	}
 	if err := d.service.Close(); err != nil {
-		log.Panic(err)
+		fmt.Println(err) // in case docker-compose not on path
 	}
 }

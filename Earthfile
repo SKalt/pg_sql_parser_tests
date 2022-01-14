@@ -4,19 +4,18 @@ FROM alpine:3
 RUN mkdir -p /workspace
 WORKDIR /workspace
 
-chef:
-  FROM rust:buster
-  RUN mkdir /workspace
-  WORKDIR /workspace
-  RUN cargo install cargo-chef
+# chef:
+#   FROM rust:buster
+#   RUN mkdir /workspace
+#   WORKDIR /workspace
+#   RUN cargo install cargo-chef
 
-
-planner:
-  FROM +chef
-  COPY ./Cargo.lock ./Cargo.toml ./
-  COPY ./scripts/splitter/Cargo.toml ./scripts/splitter/
-  RUN cargo chef prepare --recipe-path recipe.json
-  SAVE ARTIFACT recipe.json
+# planner:
+#   FROM +chef
+#   COPY ./Cargo.lock ./Cargo.toml ./
+#   COPY ./scripts/splitter/Cargo.toml ./scripts/splitter/
+#   RUN cargo chef prepare --recipe-path recipe.json
+#   SAVE ARTIFACT recipe.json
 
 splitter:
   FROM rust:buster
@@ -175,3 +174,33 @@ pg-corpus-all:
   COPY +pg-corpus-14/db ./14.db
   RUN ./scripts/merge.sh --out=/db ./10.db ./11.db ./12.db ./13.db ./14.db
   SAVE ARTIFACT /db
+
+predict:
+  FROM docker.io/library/golang:1.17
+  RUN mkdir -p /workspace/bin
+  WORKDIR /workspace
+  COPY ./Makefile ./
+  COPY ./go.mod ./go.sum ./
+  COPY ./pkg/ ./pkg/
+  COPY ./scripts/predict/ ./scripts/predict/
+  RUN make bin/predict
+  SAVE ARTIFACT ./bin/predict /predict
+
+# note that you'll need to run `earthly --allow-privileged` to run this target
+pg-predictions:
+  FROM +predict
+  COPY ./docker-compose.yaml ./
+  COPY +pg-corpus-all/db ./db
+  WITH DOCKER \
+    --compose ./docker-compose.yaml \
+    --service pg-10 \
+    --service pg-11 \
+    --service pg-12 \
+    --service pg-13 \
+    --service pg-14 \
+    --allow-privileged
+    RUN ./predict --corpus ./db \
+      --oracles pg_query,raw,do-block \
+      --versions 10,11,12,13,14
+  END
+  SAVE ARTIFACT ./db /db
