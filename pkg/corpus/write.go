@@ -17,7 +17,7 @@ func RegisterOracle(db *sql.DB, oracleName string) (id uint64, err error) {
 	id = DeriveOracleId(oracleName)
 	_, err = db.Exec(
 		"INSERT INTO oracles (id, name) VALUES (?, ?);",
-		id, oracleName)
+		int64(id), oracleName)
 	return id, err
 }
 

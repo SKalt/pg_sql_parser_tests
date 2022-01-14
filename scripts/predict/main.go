@@ -24,38 +24,42 @@ var cmd = &cobra.Command{
 	// Long:  `TODO`,
 	Run: func(cmd *cobra.Command, args []string) {
 		config := initConfig(cmd)
-		for _, oracleName := range config.oracles {
-			for _, version := range config.versions {
-				if config.dryRun {
-					// TODO: have each runOracle fn take a dryRun arg and print this instead
-					fmt.Printf("would run oracle: %s @ %s\n", oracleName, version)
-				} else {
-					fmt.Printf("running oracle: %s\n", oracleName)
-					switch oracleName {
-					case "pg_query":
-						err := runPgQueryOracle(config.corpusPath, version, config.language)
-						if err != nil {
-							log.Fatal(err)
-						}
-					case "do-block":
-						err := runDoBlockOracle(config.corpusPath, version, config.language)
-						if err != nil {
-							log.Fatal(err)
-						}
-					case "psql":
-						err := runPsqlOracle(config.corpusPath, version, config.language)
-						if err != nil {
-							log.Fatal(err)
-						}
-					case "raw":
-						err := runPgRawOracle(config.corpusPath, version, config.language)
-						if err != nil {
-							log.Fatal(err)
-						}
+		for _, version := range config.versions {
+			for _, oracleName := range config.oracles {
+				switch oracleName {
+				case "pg_query":
+					err := runPgQueryOracle(config.corpusPath, version, config.language, config.dryRun)
+					if err != nil {
+						log.Fatal(err)
+					}
+				case "do-block":
+					oracle, err := runDoBlockOracle(config.corpusPath, version, config.language, config.dryRun)
+					if oracle != nil {
+						defer oracle.Close()
+					}
+					if err != nil {
+						log.Fatal(err)
+					}
+				case "psql":
+					oracle, err := runPsqlOracle(config.corpusPath, version, config.language, config.dryRun)
+					if oracle != nil {
+						defer oracle.Close()
+					}
+					if err != nil {
+						log.Fatal(err)
+					}
+				case "raw":
+					oracle, err := runPgRawOracle(config.corpusPath, version, config.language, config.dryRun)
+					if oracle != nil {
+						defer oracle.Close()
+					}
+					if err != nil {
+						log.Fatal(err)
 					}
 				}
 			}
 		}
+
 	},
 }
 
@@ -149,40 +153,64 @@ func bulkPredict(
 	return nil
 }
 
-func runPsqlOracle(dsn string, version string, language string) error {
+func runPsqlOracle(dsn string, version string, language string, dryRun bool) (*psql.Oracle, error) {
+	if dryRun {
+		fmt.Printf("would run ")
+	} else {
+		fmt.Printf("running ")
+	}
+	fmt.Printf("oracle <psql> with language %s @ version %s\n", language, version)
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	oracle := psql.Init(version)
-	defer oracle.Close()
-	return bulkPredict(oracle, language, version, db)
+	// defer oracle.Close()
+	return oracle, bulkPredict(oracle, language, version, db)
 }
 
-func runDoBlockOracle(dsn string, version string, language string) error {
+func runDoBlockOracle(dsn string, version string, language string, dryRun bool) (*doblock.Oracle, error) {
+	if dryRun {
+		fmt.Printf("would run ")
+	} else {
+		fmt.Printf("running ")
+	}
+	fmt.Printf("oracle <do-block> with language %s @ version %s\n", language, version)
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
-		return nil
+		return nil, err
 	}
 	oracle := doblock.Init(version)
-	defer oracle.Close()
-	return bulkPredict(oracle, language, version, db)
+	// defer oracle.Close()
+	return oracle, bulkPredict(oracle, language, version, db)
 }
 
-func runPgRawOracle(dsn string, version string, language string) error {
+func runPgRawOracle(dsn string, version string, language string, dryRun bool) (*raw.Oracle, error) {
+	if dryRun {
+		fmt.Printf("would run ")
+	} else {
+		fmt.Printf("running ")
+	}
+	fmt.Printf("oracle <raw> with language %s @ version %s\n", language, version)
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	oracle := raw.Init(version)
-	defer oracle.Close()
-	return bulkPredict(oracle, language, version, db)
+	// defer oracle.Close()
+	return oracle, bulkPredict(oracle, language, version, db)
 }
 
-func runPgQueryOracle(dsn string, version string, language string) error {
+func runPgQueryOracle(dsn string, version string, language string, dryRun bool) error {
 	if version != "13" { // silently skip
 		return nil
 	}
+	if dryRun {
+		fmt.Printf("would run ")
+	} else {
+		fmt.Printf("running ")
+	}
+	fmt.Printf("oracle <pg_query> with language %s @ version %s\n", language, version)
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
 		return err
