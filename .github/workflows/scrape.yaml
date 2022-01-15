@@ -80,27 +80,44 @@ jobs:
     services:
       pg-14:
         image: docker.io/library/postgres:14-alpine
-        env: &pg_password
+        env:
           POSTGRES_PASSWORD: password
           POSTGRES_USER: postgres
           PGUSER: postgres
-        ports: [50014:5432] # use ports in the ephemeral range
+        ports:
+          - 50014:5432 # use ports in the ephemeral range
       pg-13:
         image: docker.io/library/postgres:13-alpine
-        ports: [50013:5432]
-        env: *pg_password
+        ports:
+          - 50013:5432
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+          PGUSER: postgres
       pg-12:
         image: docker.io/library/postgres:12-alpine
-        ports: [ 50012:5432 ]
-        env: *pg_password
+        ports:
+          - 50012:5432
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+          PGUSER: postgres
       pg-11:
         image: docker.io/library/postgres:11-alpine
-        ports: [ 50011:5432 ]
-        env: *pg_password
+        ports:
+          - 50011:5432
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+          PGUSER: postgres
       pg-10:
         image: docker.io/library/postgres:11-alpine
-        ports: [ 50010:5432 ]
-        env: *pg_password
+        ports:
+          - 50010:5432
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+          PGUSER: postgres
     steps:
       - uses: actions/checkout@v2
       - name: nab `predict` binary
