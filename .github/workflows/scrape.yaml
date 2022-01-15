@@ -8,37 +8,54 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_scrape:
+  build_splitter:
     env: { CARGO_TERM_COLOR: always }
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: setup stable rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        components: rustfmt, clippy
-    - name: cache cargo
-      uses: Swatinem/rust-cache@v1
-    # - uses: actions/cache@v2
-    #   with:
-    #     path: |
-    #       ~/.cargo/bin/
-    #       ~/.cargo/registry/index/
-    #       ~/.cargo/registry/cache/
-    #       ~/.cargo/git/db/
-    #       target/
-    #     key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-    - name: cargo check
-      uses: actions-rs/cargo@v1
-      with:
-        command: check
-    - uses: actions-rs/cargo@v1
-      with:
-        command: build
-        args: --release
-    - name: save binary
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-corpus database
-        path: ./target/release/splitter
+      - uses: actions/checkout@v2
+      - name: setup stable rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+      - name: cache cargo
+        uses: Swatinem/rust-cache@v1
+      - name: cargo check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release
+      - name: save binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: bin
+          path: ./target/release/splitter
+  build_predict:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: cache cargo
+        uses: Swatinem/rust-cache@v1
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-1.17
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+      - name: build
+        run: make bin/predict
+      - name: save binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: bin
+          path: bin/predict
+  # TODO: run predictor
