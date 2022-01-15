@@ -33,6 +33,6 @@ jobs:
       run: earthly --version
     - name: Run build
       run: |
-        earthly \\
-          --remote-cache=ghcr.io/skalt/pg_sql_parser_tests:cache \\
+        earthly \
+          --remote-cache=ghcr.io/skalt/pg_sql_parser_tests:cache \
           --ci +pg-corpus-all
