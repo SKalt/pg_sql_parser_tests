@@ -8,7 +8,6 @@ import (
 	_ "database/sql"
 	"fmt"
 	"log"
-	"os/exec"
 	"time"
 
 	_ "github.com/lib/pq"
@@ -50,12 +49,7 @@ func (service *Service) isReady() bool {
 	return err == nil
 }
 
-func (service *Service) Start() error {
-	cmd := exec.Command("docker-compose", "up", "-d", service.Name())
-	if err := cmd.Run(); err != nil {
-		fmt.Printf("trouble starting %s: %s\n", service.Name(), err) // TODO: send to stderr
-	}
-
+func (service *Service) Await() error {
 	// wait for the database server
 	ticker := time.NewTicker(time.Second)
 	for i := 0; i <= 15; i++ {
@@ -68,10 +62,6 @@ func (service *Service) Start() error {
 		}
 	}
 	return fmt.Errorf("%s service startup timed out", service.Name())
-}
-
-func (service *Service) Close() error {
-	return CloseService(service.Name())
 }
 
 func DeriveServiceName(version string) (string, error) {
@@ -92,15 +82,4 @@ func DeriveServiceName(version string) (string, error) {
 func InitService(version string) *Service {
 	service := Service{version: version, name: nil, dsn: nil}
 	return &service
-}
-
-func CloseService(service string) error {
-	fmt.Printf("closing %s\n", service)
-	err := exec.
-		Command("docker-compose", "rm", "-vs", service).
-		Run()
-	if err != nil {
-		fmt.Println(err)
-	}
-	return err
 }

@@ -41,10 +41,7 @@ var cmd = &cobra.Command{
 						log.Fatal(err)
 					}
 				case "psql":
-					oracle, err := runPsqlOracle(config.corpusPath, version, config.language, config.dryRun)
-					if oracle != nil {
-						defer oracle.Close()
-					}
+					err := runPsqlOracle(config.corpusPath, version, config.language, config.dryRun)
 					if err != nil {
 						log.Fatal(err)
 					}
@@ -153,7 +150,7 @@ func bulkPredict(
 	return nil
 }
 
-func runPsqlOracle(dsn string, version string, language string, dryRun bool) (*psql.Oracle, error) {
+func runPsqlOracle(dsn string, version string, language string, dryRun bool) error {
 	if dryRun {
 		fmt.Printf("would run ")
 	} else {
@@ -162,11 +159,11 @@ func runPsqlOracle(dsn string, version string, language string, dryRun bool) (*p
 	fmt.Printf("oracle <psql> with language %s @ version %s\n", language, version)
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	oracle := psql.Init(version)
 	// defer oracle.Close()
-	return oracle, bulkPredict(oracle, language, version, db)
+	return bulkPredict(oracle, language, version, db)
 }
 
 func runDoBlockOracle(dsn string, version string, language string, dryRun bool) (*doblock.Oracle, error) {

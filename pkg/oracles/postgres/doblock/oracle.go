@@ -52,7 +52,7 @@ type Oracle struct {
 
 func Init(version string) *Oracle {
 	service := container.InitService(version)
-	if err := service.Start(); err != nil {
+	if err := service.Await(); err != nil {
 		log.Panic(err)
 	}
 	// service.Start() guarantees that service.Dsn() will connect on the first
@@ -88,8 +88,5 @@ func (oracle *Oracle) Predict(statement string, language string) (*oracles.Predi
 func (d *Oracle) Close() {
 	if err := d.conn.Close(); err != nil {
 		log.Panic(err)
-	}
-	if err := d.service.Close(); err != nil {
-		fmt.Println(err) // in case docker-compose not on path
 	}
 }

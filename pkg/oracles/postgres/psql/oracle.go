@@ -17,17 +17,11 @@ type Oracle struct {
 
 func Init(version string) *Oracle {
 	service := container.InitService(version)
-	if err := service.Start(); err != nil {
+	if err := service.Await(); err != nil {
 		log.Panic(err)
 	}
 	oracle := Oracle{version, service}
 	return &oracle
-}
-
-func (psql *Oracle) Close() {
-	if err := psql.service.Close(); err != nil {
-		log.Panic(err)
-	}
 }
 
 func (psql *Oracle) Name() string {

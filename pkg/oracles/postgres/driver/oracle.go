@@ -92,7 +92,7 @@ type Oracle struct {
 
 func Init(version string) *Oracle {
 	service := container.InitService(version)
-	if err := service.Start(); err != nil {
+	if err := service.Await(); err != nil {
 		log.Fatal(err)
 	}
 	conn, err := sql.Open("postgres", service.Dsn())
@@ -133,9 +133,5 @@ func (d *Oracle) Predict(statement string, language string) (*oracles.Prediction
 func (oracle *Oracle) Close() {
 	if err := oracle.db.Close(); err != nil {
 		log.Panic(err)
-	}
-
-	if err := oracle.service.Close(); err != nil {
-		fmt.Println(err) // warn if docker-compose not on path
 	}
 }

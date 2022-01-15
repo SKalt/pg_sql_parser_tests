@@ -49,6 +49,7 @@ all_regression_tests = /tmp/pg/10 /tmp/pg/11 /tmp/pg/12 /tmp/pg/13 /tmp/pg/14
 # finally!
 ./corpus.db: ./bin/predict /tmp/corpus.db ./docker-compose.yaml
 	cp /tmp/corpus.db ./
+	docker-compose up -d pg-10 pg-11 pg-12 pg-13 pg-14
 	bin/predict --oracles raw,do-block,pg_query --versions 10,11,12,13,14
 
 
