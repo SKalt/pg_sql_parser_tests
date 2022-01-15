@@ -81,7 +81,7 @@ jobs:
             /tmp/corpus.db
           key: "corpus-db-${{ hashFiles('/tmp/pg/**/*', './bin/splitter') }}"
       - name: assemble
-        if: steps.cache-corpus.cache-hit != 'true'
+        if: steps.cache-corpus.outputs.cache-hit != 'true'
         run: make /tmp/corpus.db
       - name: save db
         uses: actions/upload-artifact@v2
@@ -152,7 +152,7 @@ jobs:
           path: |
             corpus.db
           key: "oracle-db-${{ hashFiles('/tmp/corpus.db', './bin/predict') }}"
-      - if: steps.cache-oracles.cache-hit != 'true'
+      - if: steps.cache-oracles.outputs.cache-hit != 'true'
         run: bin/predict --oracles raw,do-block,pg_query --versions 10,11,12,13,14
       - uses: actions/upload-artifact@v2
         name: save oracular output
