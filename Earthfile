@@ -27,12 +27,14 @@ splitter:
   COPY ./schema.sql ./ # required to re-overwrite the changes made by cargo chef
   RUN cd scripts/splitter && cargo build --release && cd -
   SAVE ARTIFACT /workspace/target/release/splitter
+  SAVE IMAGE --cache-hint
 
 pg-files-14:
   ENV pg_version=14
   COPY ./scripts/postgres_src_dl.sh ./scripts/
   RUN ./scripts/postgres_src_dl.sh
   SAVE ARTIFACT /tmp/pg/14 /pg
+
 
 pg-files-13:
   ENV pg_version=13
