@@ -31,7 +31,7 @@ jobs:
       - name: save binary
         uses: actions/upload-artifact@v2
         with:
-          name: bin
+          name: splitter
           path: ./target/release/splitter
   build_predict:
     runs-on: ubuntu-latest
@@ -54,6 +54,23 @@ jobs:
       - name: save binary
         uses: actions/upload-artifact@v2
         with:
-          name: bin
+          name: predict
           path: bin/predict
-  # TODO: run predictor
+  assemble_pg_docs:
+    runs-on: ubuntu-latest
+    needs: [build_splitter]
+    steps:
+      - uses: actions/checkout@v2
+      - name: grab splitter binary
+        uses: actions/download-artifact@v2
+        with:
+          name: splitter
+          path: bin
+      - run: ls -al ./ && ls -al ./bin
+      - name: assemble
+        run: make /tmp/corpus.db
+      - name: save db
+        uses: actions/upload-artifact@v2
+        with:
+          name: pg_regression_corpus
+          path: /tmp/corpus.db

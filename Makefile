@@ -25,7 +25,6 @@ predict_go += ./pkg/languages/all.go
 bin/predict: $(predict_go)
 	go build -o bin/predict scripts/predict/main.go
 
-# TODO: download + unpack tars of source code? **Git clone**?
 /tmp/pg/10:
 	pg_version=10 ./scripts/postgres_src_dl.sh
 /tmp/pg/11:
