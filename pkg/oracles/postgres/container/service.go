@@ -53,7 +53,7 @@ func (service *Service) isReady() bool {
 func (service *Service) Start() error {
 	cmd := exec.Command("docker-compose", "up", "-d", service.Name())
 	if err := cmd.Run(); err != nil {
-		fmt.Println(err) // TODO: send to stderr
+		fmt.Printf("trouble starting %s: %s\n", service.Name(), err) // TODO: send to stderr
 	}
 
 	// wait for the database server
