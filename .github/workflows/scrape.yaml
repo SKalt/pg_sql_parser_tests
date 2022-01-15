@@ -35,4 +35,8 @@ jobs:
         earthly \
           --remote-cache=ghcr.io/${repo}:cache \
           --push --artifact +pg-corpus-all/db ./db
-      # TODO: save artifact
+    - name: save corpus artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-corpus database
+        path: db
