@@ -18,3 +18,8 @@ tar = "0.4.37"
 url = "2.2.2"
 lazy_static = "1.4.0"
 nom = "7.1.0"
+
+# required for cargo chef
+[[bin]]
+name = "splitter"
+path = "./src/main.rs"

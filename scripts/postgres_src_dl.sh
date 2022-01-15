@@ -18,8 +18,8 @@ main() {
   curl -Lo "$tgz_file" "$url"
   tar --extract -f "$tgz_file" --directory "/tmp/pg/"
   mv /tmp/pg/postgres-REL_${pg_version}_STABLE "$target_dir"
-  # rely on /tmp/ to do the cleanup
-  # find "$target_dir" -type f ! -name '*.sql' -exec rm '{}' ';'
+  find "$target_dir" -type f ! -name '*.sql' ! -name 'COPYRIGHT' -delete
+  find "$target_dir" -type d -empty -delete
 }
 
 main "$@"

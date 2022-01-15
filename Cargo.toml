@@ -1,13 +1,6 @@
-
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-# [dependencies]
 
 [workspace]
 members = [
   "scripts/splitter",
 ]
-
-# [[bin]]
-# name = "splitter"
-# path = "scripts/splitter"
