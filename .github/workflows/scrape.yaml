@@ -34,7 +34,7 @@ jobs:
         repo="$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')"
         earthly \
           --remote-cache=ghcr.io/${repo}:cache \
-          --push --max-remote-cache --artifact +pg-corpus-all/db ./db
+          --push --artifact +pg-corpus-all/db ./db
     - name: save corpus artifact
       uses: actions/upload-artifact@v2
       with:

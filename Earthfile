@@ -126,6 +126,7 @@ predict:
   COPY ./scripts/predict/ ./scripts/predict/
   RUN make bin/predict
   SAVE ARTIFACT ./bin/predict /predict
+  SAVE IMAGE --cache-hint
 
 # note that you'll need to run `earthly --allow-privileged` to run this target
 pg-predictions:
