@@ -31,7 +31,8 @@ jobs:
       run: earthly --version
     - name: Run build
       run: |
+        repo="$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')"
         earthly \
-          --remote-cache=ghcr.io/${{ github.repository }}:cache \
+          --remote-cache=ghcr.io/${repo}:cache \
           --push --artifact +pg-corpus-all/db ./db
       # TODO: save artifact
