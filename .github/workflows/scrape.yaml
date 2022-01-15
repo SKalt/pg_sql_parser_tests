@@ -143,7 +143,16 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: pg_regression_corpus
-          path: ./
-      - run: chmod +x ./bin/predict
-      - run: ls -al
-      - run: bin/predict --oracles raw,do-block,pg_query --versions 10,11,12,13,14
+          path: /tmp/
+      - run: chmod +x ./bin/predict && cp /tmp/corpus.db ./corpus.db
+      - name: cache output # the expensive step is splitting all the files
+        uses: actions/cache@v2
+        id: cache-oracles
+        with:
+          path: |
+            corpus.db
+          key: "oracle-db-${{ hashFiles('/tmp/corpus.db', './bin/predict') }}"
+      - if: steps.cache-oracles.cache-hit != 'true'
+        run: bin/predict --oracles raw,do-block,pg_query --versions 10,11,12,13,14
+      - uses: actions/upload-artifact@v2
+        name: save oracular output
