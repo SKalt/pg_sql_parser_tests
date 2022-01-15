@@ -1,11 +1,9 @@
 # .github/workflows/ci.yml
 
-name: CI
+name: Scrape
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
   workflow_dispatch:
 
@@ -26,7 +24,7 @@ jobs:
         fi
         git checkout -b "$branch" || true
     - name: Docker Login
-      run: docker login ghcr.io --username "${{ github.actor }}" --password "${{ secrets.GITHUB_TOKEN }}"
+      run: echo  "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
     - name: Download latest earthly
       run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.3/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
     - name: Earthly version
@@ -34,5 +32,6 @@ jobs:
     - name: Run build
       run: |
         earthly \
-          --remote-cache=ghcr.io/skalt/pg_sql_parser_tests:cache \
-          --ci +pg-corpus-all
+          --remote-cache=ghcr.io/${{ github.repository }}:cache \
+          --push --artifact +pg-corpus-all/db ./db
+      # TODO: save artifact
