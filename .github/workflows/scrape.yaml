@@ -156,3 +156,6 @@ jobs:
         run: bin/predict --oracles raw,do-block,pg_query --versions 10,11,12,13,14
       - uses: actions/upload-artifact@v2
         name: save oracular output
+        with:
+          name: oracle_output_db
+          path: ./corpus.db
