@@ -1,6 +1,7 @@
-.PHONY: lint all
+.PHONY: lint all clean
 all: ./corpus.db lint bin/parse
-
+clean:
+	rm -rf /tmp/pg /tmp/corpus.db ./corpus.db
 bin/parse: scripts/parse/parse.go
 	go build -o bin/parse scripts/parse/parse.go
 
@@ -24,21 +25,22 @@ predict_go += ./pkg/languages/all.go
 bin/predict: $(predict_go)
 	go build -o bin/predict scripts/predict/main.go
 
+# TODO: download + unpack tars of source code? **Git clone**?
 /tmp/pg/10:
-	earthly -a '+pg-files-10/pg' /tmp/pg/10
+	pg_version=10 ./scripts/postgres_src_dl.sh
 /tmp/pg/11:
-	earthly -a '+pg-files-11/pg' /tmp/pg/11
+	pg_version=11 ./scripts/postgres_src_dl.sh
 /tmp/pg/12:
-	earthly -a '+pg-files-12/pg' /tmp/pg/12
+	pg_version=12 ./scripts/postgres_src_dl.sh
 /tmp/pg/13:
-	earthly -a '+pg-files-13/pg' /tmp/pg/13
+	pg_version=13 ./scripts/postgres_src_dl.sh
 /tmp/pg/14:
-	earthly -a '+pg-files-14/pg' /tmp/pg/14
+	pg_version=14 ./scripts/postgres_src_dl.sh
 
 all_regression_tests = /tmp/pg/10 /tmp/pg/11 /tmp/pg/12 /tmp/pg/13 /tmp/pg/14
 
 /tmp/corpus.db: ./scripts/gather_corpus_dir.sh bin/splitter $(all_regression_tests)
-	rm /tmp/corpus.db
+	rm -f /tmp/corpus.db
 	./scripts/gather_corpus_dir.sh ./bin/splitter /tmp/pg/10 10 /tmp/corpus.db
 	./scripts/gather_corpus_dir.sh ./bin/splitter /tmp/pg/11 11 /tmp/corpus.db
 	./scripts/gather_corpus_dir.sh ./bin/splitter /tmp/pg/12 12 /tmp/corpus.db

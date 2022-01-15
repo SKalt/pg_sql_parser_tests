@@ -23,7 +23,9 @@ func ConnectToExisting(datasource string) (db *sql.DB, err error) {
 	for rows.Next() {
 		var major int
 		var minor int
-		rows.Scan(&major, &minor)
+		if err := rows.Scan(&major, &minor); err != nil {
+			return db, err
+		}
 		// TODO: accept same major version
 		if major != MAJOR || minor != MINOR { // HACK: expects exact version
 			return db, fmt.Errorf("expected version 0.0, got %d.%d", major, minor)
