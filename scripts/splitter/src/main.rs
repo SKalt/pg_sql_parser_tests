@@ -2,6 +2,7 @@ use lazy_static::lazy_static;
 use pg_query_wrapper as pg_query;
 use psql_splitter;
 use regex::Regex;
+use sqlite::doc_already_processed;
 mod sqlite;
 use std::collections::HashSet;
 use std::convert::TryInto;
@@ -43,9 +44,9 @@ pub struct Statement {
     text: String,
     /// the xxhash3_64 of the overall utf-8 document that this statement is
     /// drawn from
-    document_id: u64,
+    document_id: i64,
     /// the xxhash3_64 of the text
-    id: u64,
+    id: i64,
     /// might include line numbers inside a collection
     language: Language,
     // urls: Vec<String>,
@@ -54,19 +55,19 @@ pub struct Statement {
 }
 
 impl Statement {
-    fn new(text: String, language: Language, document_id: u64) -> Self {
+    fn new(text: String, language: Language, document_id: i64) -> Self {
         let n_lines = text.matches("\n").count();
         Statement {
-            id: xxh3_64(text.as_bytes()),
+            id: xxh3_64(text.as_bytes()) as i64,
             document_id,
             text,
             language,
             n_lines,
         }
     }
-    fn fingerprint(self: &Self) -> Result<u64, Failure> {
+    fn fingerprint(self: &Self) -> Result<i64, Failure> {
         let (fingerprint, _) = pg_query::fingerprint(self.text.clone().as_str())?;
-        return Ok(fingerprint);
+        return Ok(fingerprint as i64);
     }
     fn with_source(
         self: &Self,
@@ -88,17 +89,17 @@ impl Statement {
 
 #[derive(Clone)]
 pub struct StatementSource {
-    statement_id: u64,
+    statement_id: i64,   //
     start_line: usize,   // 1-indexed
     n_lines: usize,      // can be 0
     start_offset: usize, // 0-indexed length in bytes, **not** unicode code points
     end_offset: usize,   // = start_offset + statement.len()
-    document_id: u64,    // xxhash3_64 of the overall document from which this statement is drawn
+    document_id: i64,    // xxhash3_64 of the overall document from which this statement is drawn
     url: String,         // TODO: validate; can currently be "" or "file://"
 }
 impl StatementSource {
-    fn url_id(&self) -> u64 {
-        xxh3_64(self.url.as_bytes())
+    fn url_id(&self) -> i64 {
+        xxh3_64(self.url.as_bytes()) as i64
     }
 }
 
@@ -221,7 +222,7 @@ fn identify_language(lang: &str) -> Language {
     }
 }
 
-fn text_to_statement(text: &str, document_id: u64) -> Statement {
+fn text_to_statement(text: &str, document_id: i64) -> Statement {
     if psql_splitter::is_psql(text) {
         return Statement::new(text.to_string(), Language::Psql, document_id);
     } else {
@@ -229,11 +230,9 @@ fn text_to_statement(text: &str, document_id: u64) -> Statement {
     }
 }
 
-fn recognize_pl_statement(s: &Statement) -> Option<Statement> {
+fn recognize_pl_statement(s: &Statement) -> Option<(i64, Language)> {
     if let Ok(lang) = extract_pl(s.text.as_str()) {
-        let mut stmt = s.clone();
-        stmt.language = identify_language(lang.as_str());
-        return Some(stmt);
+        return Some((s.id as i64, identify_language(lang.as_str())));
     } else {
         return None;
     }
@@ -377,6 +376,96 @@ fn validate_input_source(input: String) -> Result<(), String> {
     }
 }
 
+fn process_doc(
+    doc: &str,
+    document_id: i64,
+    urls: &[&str],
+    do_count: bool,
+    do_debug: bool,
+) -> (
+    Vec<Statement>,
+    Vec<(i64, i64)>,
+    Vec<(i64, Language)>,
+    Vec<StatementSource>,
+) {
+    let splits = split_psql_to_statements(doc.to_owned());
+    let mut statements = Vec::<Statement>::with_capacity(splits.capacity());
+    let mut sources = Vec::<StatementSource>::with_capacity(urls.len() * splits.len());
+    let mut statement_fingerprints = Vec::<(i64, i64)>::with_capacity(splits.len());
+    let mut line_number = 1usize;
+    let mut offset = 0usize;
+    for split in splits {
+        let stmt = text_to_statement(split.as_str(), document_id);
+        for url in urls.clone() {
+            let src = stmt.with_source(url, line_number, offset);
+            sources.push(src)
+        }
+        line_number += stmt.n_lines;
+        offset += stmt.text.len();
+        statements.push(stmt);
+    }
+    for statement in statements.iter().filter(|&s| s.language == Language::PgSql) {
+        if let Ok(fingerprint) = statement.fingerprint() {
+            statement_fingerprints.push((statement.id, fingerprint));
+        }
+    }
+
+    let pl_blocks: Vec<(i64, Language)> = statements
+        .iter()
+        .filter_map(recognize_pl_statement)
+        .collect();
+
+    let mut statement_languages: Vec<(i64, Language)> =
+        Vec::with_capacity(statements.len() + pl_blocks.len());
+
+    for s in statements.as_slice() {
+        statement_languages.push((s.id as i64, s.language));
+    }
+    for row in pl_blocks.as_slice() {
+        statement_languages.push(row.to_owned())
+    }
+
+    if do_count {
+        let mut ids = HashSet::new();
+        for s in statements.clone() {
+            ids.insert(s.id);
+        }
+        for (statement_id, _) in pl_blocks.as_slice() {
+            ids.insert(*statement_id);
+        }
+        println!(
+            "{:6} unique, {:6} total statements",
+            ids.len(),
+            statements.len()
+        );
+    }
+
+    if do_debug {
+        for s in statements.as_slice() {
+            let id = s.id;
+            println!(
+                "-- {:?} {:x} --------------------------------------",
+                s.language, s.id
+            );
+            for src in sources.iter().filter(|src| src.statement_id == id) {
+                println!(
+                    "-- {}#L{}-L{}",
+                    src.url,
+                    src.start_line,
+                    src.start_line + src.n_lines - 1
+                );
+            }
+            println!("---------------------------------------------------------------");
+            println!("{}", s.text);
+        }
+    }
+    return (
+        statements,
+        statement_fingerprints,
+        statement_languages,
+        sources,
+    );
+}
 fn main() -> Result<(), Failure> {
     let matches = clap::App::new("splitter")
         .arg(
@@ -469,85 +558,29 @@ fn main() -> Result<(), Failure> {
             urls.push(url);
         }
     };
-    let document_id = xxh3_64(buffer.as_bytes());
-    let splits = split_psql_to_statements(buffer);
+    let document_id = xxh3_64(buffer.as_bytes()) as i64;
 
-    let mut statements = Vec::<Statement>::with_capacity(splits.capacity());
-    let mut sources = Vec::<StatementSource>::with_capacity(urls.len() * splits.len());
-    let mut statement_fingerprints = Vec::<(u64, u64)>::with_capacity(splits.len());
-    let mut line_number = 1usize;
-    let mut offset = 0usize;
-    for split in splits {
-        let stmt = text_to_statement(split.as_str(), document_id);
-        for url in urls.clone() {
-            let src = stmt.with_source(url, line_number, offset);
-            sources.push(src)
-        }
-        line_number += stmt.n_lines;
-        offset += stmt.text.len();
-        statements.push(stmt);
-    }
-    for statement in statements.iter().filter(|&s| s.language == Language::PgSql) {
-        if let Ok(fingerprint) = statement.fingerprint() {
-            statement_fingerprints.push((statement.id, fingerprint));
-        }
-    }
-    let pl_blocks: Vec<Statement> = statements
-        .iter()
-        .filter_map(recognize_pl_statement)
-        .collect();
-
-    if matches.is_present("count") {
-        let mut ids = HashSet::new();
-        for s in statements.clone() {
-            ids.insert(s.id);
-        }
-        for s in pl_blocks.clone() {
-            ids.insert(s.id);
-        }
-        println!(
-            "{:6} unique, {:6} total statements",
-            ids.len(),
-            statements.len()
-        );
-    }
-    let debug = matches.is_present("debug");
-
-    if debug {
-        for s in statements.clone() {
-            let id = s.id;
-            println!(
-                "-- {:?} {:x} --------------------------------------",
-                s.language, s.id
-            );
-            for src in sources.iter().filter(|src| src.statement_id == id) {
-                println!(
-                    "-- {}#L{}-L{}",
-                    src.url,
-                    src.start_line,
-                    src.start_line + src.n_lines - 1
-                );
-            }
-            println!("---------------------------------------------------------------");
-            println!("{}", s.text);
-        }
-        for s in pl_blocks.clone() {
-            println!(
-                "-- {:?} {:x} --------------------------------------",
-                s.language, s.id
-            );
-            println!("---------------------------------------------------------------");
-            println!("{}", s.text);
-        }
-    }
     if let Some(output_path) = out {
         let mut conn = sqlite::connect(output_path)?;
-
+        let already_processed = doc_already_processed(&mut conn, document_id)?;
         let spdx = matches.value_of("spdx");
         if let Some(license_path) = matches.value_of("license") {
             let license = fs::read_to_string(license_path)?;
             sqlite::insert_license(&mut conn, spdx.unwrap(), license).unwrap();
         }
+        let url_ids = sqlite::bulk_insert_urls(&mut conn, urls.as_slice(), spdx).unwrap();
+        if already_processed {
+            sqlite::bulk_insert_document_urls(&mut conn, document_id, url_ids.as_slice());
+            return Ok(());
+        }
+        let (statements, statement_fingerprints, statement_languages, sources) = process_doc(
+            buffer.as_str(),
+            document_id,
+            urls.as_slice(),
+            matches.is_present("count"),
+            matches.is_present("debug"),
+        );
+
         conn.execute(
             "INSERT INTO documents(id) VALUES (?) ON CONFLICT DO NOTHING",
             rusqlite::params![document_id as i64],
@@ -555,10 +588,8 @@ fn main() -> Result<(), Failure> {
         .unwrap();
         // TODO: separate inserting statements from statement_languages
         sqlite::bulk_insert_statements(&mut conn, statements).unwrap();
-        sqlite::bulk_insert_statements(&mut conn, pl_blocks).unwrap();
         sqlite::bulk_insert_statement_fingerprints(&mut conn, statement_fingerprints).unwrap();
-        sqlite::bulk_insert_urls(&mut conn, urls.as_slice(), spdx).unwrap();
-        sqlite::bulk_insert_statement_documents(&mut conn, sources).unwrap();
+        sqlite::bulk_insert_statement_languages(&mut conn, statement_languages).unwrap();
         conn.close().unwrap();
     } else {
         println!("no output target")
