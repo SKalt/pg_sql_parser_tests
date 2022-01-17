@@ -170,6 +170,7 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 }
 
 func (oracle *Oracle) Close() {
+	fmt.Println("closing")
 	if err := oracle.db.Close(); err != nil {
 		log.Panic(err)
 	}
