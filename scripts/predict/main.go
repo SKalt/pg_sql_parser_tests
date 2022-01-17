@@ -181,18 +181,67 @@ func bulkPredict(
 	save := func(db *sql.DB, outputs <-chan *corpus.Prediction, bar *pb.ProgressBar) {
 		wg.Add(1)
 		defer wg.Done()
+		txn, err := db.Begin()
+		if err != nil {
+			panic(err)
+		}
+		batchSize := 1000
+		if len(statements) < batchSize {
+			batchSize = len(statements)
+		}
+		batch := make([]*corpus.Prediction, 0, batchSize)
+
+		sql := func(n int) string {
+			s := strings.Builder{}
+			s.WriteString("INSERT INTO predictions")
+			s.WriteString("(statement_id, oracle_id, language_id, message, error, valid)")
+			s.WriteString(" VALUES ")
+			for i := 0; i < n-1; i++ {
+				s.WriteString("(?,?,?,?,?,?),")
+			}
+			s.WriteString("(?,?,?,?,?,?)")
+			s.WriteString(" ON CONFLICT DO NOTHING")
+			return s.String()
+		}
+
+		insert, err := txn.Prepare(sql(batchSize))
+		if err != nil {
+			panic(err)
+		}
+		flush := func() {
+			params := make([]interface{}, 0, 6*len(batch))
+			for _, prediction := range batch {
+				params = append(params, prediction.StatementId)
+				params = append(params, prediction.OracleId)
+				params = append(params, prediction.LanguageId)
+				params = append(params, prediction.Message)
+				params = append(params, prediction.Error)
+				params = append(params, prediction.Valid)
+			}
+			if _, err := insert.Exec(params...); err != nil {
+				panic(err)
+			}
+		}
 		for {
-			fmt.Println("waiting for prediction")
 			if prediction, ok := <-outputs; ok {
 				if bar != nil {
 					bar.Increment()
 				}
-				if err := corpus.InsertPrediction(db, prediction); err != nil {
-					panic(err)
+				batch = append(batch, prediction)
+				if len(batch)%batchSize == 0 {
+					flush()
+					batch = batch[0:0]
 				}
 			} else {
 				break
 			}
+		}
+		if len(batch) > 0 {
+			insert, err = txn.Prepare(sql(len(batch)))
+			if err != nil {
+				panic(err)
+			}
+			flush()
 		}
 	}
 	waitForDone := func() {
