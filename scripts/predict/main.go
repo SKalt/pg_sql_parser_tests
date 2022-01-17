@@ -202,9 +202,11 @@ func bulkPredict(
 			if _, ok := <-done; ok {
 				countDown -= 1
 				if countDown <= 0 {
+					fmt.Println("all done")
 					break
 				}
 			} else {
+				fmt.Println("somehow done?")
 				break
 			}
 		}
