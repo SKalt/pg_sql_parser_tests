@@ -175,12 +175,14 @@ func bulkPredict(
 				break
 			}
 		}
+		fmt.Println(id, "done")
 		done <- id
 	}
 	save := func(db *sql.DB, outputs <-chan *corpus.Prediction, bar *pb.ProgressBar) {
 		wg.Add(1)
 		defer wg.Done()
 		for {
+			fmt.Println("waiting for prediction")
 			if prediction, ok := <-outputs; ok {
 				if bar != nil {
 					bar.Increment()
@@ -196,6 +198,7 @@ func bulkPredict(
 	waitForDone := func() {
 		countDown := nRoutines
 		for {
+			fmt.Println("waiting for done")
 			if _, ok := <-done; ok {
 				countDown -= 1
 				if countDown <= 0 {
@@ -207,13 +210,14 @@ func bulkPredict(
 		}
 		close(done)
 		close(outputs)
+		fmt.Printf("done")
 	}
 	go waitForDone()
 	for i := 0; i < nRoutines; i++ {
 		go predict(i, oracle, inputs, outputs)
 	}
 	var bar *pb.ProgressBar = nil
-	if progress {
+	if progress { // HACK: dry this up
 		bar = pb.StartNew(len(statements))
 		defer bar.Finish()
 	}
