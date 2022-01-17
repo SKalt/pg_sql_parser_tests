@@ -1,18 +1,13 @@
 package oracles
 
-type Prediction struct {
-	Language string
-	// may be nil in case of ambiguous oracle output.
-	Valid   *bool
-	Message string
-	Error   string
-}
+import "github.com/skalt/pg_sql_tests/pkg/corpus"
 
 // an oracle is something that takes some text and predicts whether
 // the statement is valid for a given sql-like dialect version.
 type Oracle interface {
-	Name() string
+	GetName() string
 	// TODO: maybe Register(db *sql.DB) error
-	// TODO: maybe Id() uint64 // derive its own id
-	Predict(statement string, language string) (*Prediction, error)
+	// derive its own id
+	GetId() int64
+	Predict(statement *corpus.Statement, languageId int64) (*corpus.Prediction, error)
 }

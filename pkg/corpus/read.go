@@ -37,7 +37,7 @@ func GetAllStatementsByLanguage(db *sql.DB, languageId int) []*Statement {
 //go:embed sql/get_unpredicted_statements.sql
 var getUnpredictedStatementsQuery string
 
-func GetAllUnpredictedStatements(db *sql.DB, languageId int, oracleId int64) []*Statement {
+func GetAllUnpredictedStatements(db *sql.DB, languageId int64, oracleId int64) []*Statement {
 	rows, err := db.Query(getUnpredictedStatementsQuery, languageId, oracleId, oracleId)
 	if err != nil {
 		log.Panic(err)

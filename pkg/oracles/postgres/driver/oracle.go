@@ -9,7 +9,8 @@ import (
 	"time"
 
 	"github.com/lib/pq"
-	"github.com/skalt/pg_sql_tests/pkg/oracles"
+	"github.com/skalt/pg_sql_tests/pkg/corpus"
+	"github.com/skalt/pg_sql_tests/pkg/languages"
 	"github.com/skalt/pg_sql_tests/pkg/oracles/postgres/container"
 )
 
@@ -37,11 +38,12 @@ func SyntaxIsOk(err *pq.Error) (validSyntax bool, testimony string) {
 	return validSyntax, testimony
 }
 
-// Invalid SQL Statement Name
-func Predict(txn *sql.Tx, statement string, language string) oracles.Prediction {
-	testimony := oracles.Prediction{Language: language}
-	//
-	_, err := txn.Exec(statement)
+func Predict(txn *sql.Tx, statement *corpus.Statement, languageId int64) corpus.Prediction {
+	testimony := corpus.Prediction{
+		StatementId: statement.Id,
+		LanguageId:  languageId,
+	}
+	_, err := txn.Exec(statement.Text)
 	if err != nil {
 		if e, ok := err.(*pq.Error); ok {
 			switch e.Code {
@@ -69,7 +71,7 @@ func Predict(txn *sql.Tx, statement string, language string) oracles.Prediction 
 			case "22024": // unterminated_c_string
 				// case "42846": // cannot_coerce
 				// case "42803": // grouping_error
-				fmt.Printf("%s: %+v\n----------\n%s\n", e.Code, statement, e)
+				fmt.Printf("%s: %s\n----------\n%+v\n", e.Code, statement.Text, e)
 				testimony.Valid = nil
 				data, err := json.Marshal(e)
 				if err != nil {
@@ -86,7 +88,7 @@ func Predict(txn *sql.Tx, statement string, language string) oracles.Prediction 
 		} else {
 			testimony.Valid = nil
 			testimony.Error = fmt.Sprintf("%s", err)
-			fmt.Printf("%+v\n-----------\n%s", err, statement)
+			fmt.Printf("%+v\n-----------\n%s", err, statement.Text)
 		}
 	} else {
 		// TODO: use the result here?
@@ -97,41 +99,58 @@ func Predict(txn *sql.Tx, statement string, language string) oracles.Prediction 
 }
 
 type Oracle struct {
+	id      *int64
 	service *container.Service
 	db      *sql.DB
 	version string
 }
 
-func Init(version string) *Oracle {
+func (oracle *Oracle) GetId() int64 {
+	if oracle.id == nil {
+		id := corpus.DeriveOracleId(oracle.GetName())
+		oracle.id = &id
+		return id
+	} else {
+		return *oracle.id
+	}
+}
+
+func Init(language string, version string) (*Oracle, error) {
+	switch language {
+	case "pgsql":
+	case "plpgsql":
+		break
+	default:
+		return nil, fmt.Errorf("unsupported language %s", language)
+	}
 	service := container.InitService(version)
 	if err := service.Await(); err != nil {
 		log.Fatal(err)
 	}
-	conn, err := sql.Open("postgres", service.Dsn())
-	// service.Start() guarantees that connecting to the service will
-	// work on the first try
+	// service.Await() guarantees that connecting to the service must now work
+	db, err := sql.Open("postgres", service.Dsn())
 	if err != nil {
 		panic(err)
 	}
-	oracle := Oracle{service, conn, version}
-	return &oracle
+	oracle := Oracle{service: service, db: db, version: version, id: nil}
+	return &oracle, nil
 }
 
-func (d *Oracle) Name() string {
+func (d *Oracle) GetName() string {
 	return fmt.Sprintf("postgres %s raw driver", d.version)
 }
 
-func (d *Oracle) Predict(statement string, language string) (*oracles.Prediction, error) {
+func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus.Prediction, error) {
 	var options string
 
-	switch language {
-	case "pgsql":
+	switch languageId {
+	case languages.Languages["pgsql"]:
 		options = "SET check_function_bodies = off;"
 		// avoid checking plpgsql syntax
-	case "plpgsql":
+	case languages.Languages["plpgsql"]:
 		options = "SET check_function_bodies = on;"
 	default:
-		return nil, fmt.Errorf("unsupported language %s", language)
+		return nil, fmt.Errorf("unsupported languageId %s", languageId)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -143,7 +162,8 @@ func (d *Oracle) Predict(statement string, language string) (*oracles.Prediction
 	if err != nil {
 		panic(err)
 	}
-	testimony := Predict(txn, statement, language)
+	testimony := Predict(txn, statement, languageId)
+	testimony.OracleId = d.GetId()
 	if err := txn.Rollback(); err != nil {
 		// pass in case of nested transactions
 		fmt.Printf("%s\n>>>>>>>>>>>>>>>>>>>\n%s\n<<<<<<<<<<<<<<<<<<<<<\n", err, statement)

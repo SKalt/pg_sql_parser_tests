@@ -9,6 +9,16 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+type Prediction struct {
+	StatementId int64
+	OracleId    int64
+	LanguageId  int64
+	// may be nil in case of ambiguous oracle output.
+	Valid   *bool
+	Message string
+	Error   string
+}
+
 func DeriveOracleId(name string) int64 {
 	return int64(xxhash.Sum64([]byte(name)))
 }
@@ -27,17 +37,13 @@ var addPrediction string
 func InsertPrediction(
 	db *sql.DB,
 
-	statementId int64,
-	oracleId int64,
-	languageId int,
-
-	message string,
-	errorMessage string,
-	valid *bool,
+	prediction *Prediction,
 ) error {
 	_, err := db.Exec(
 		addPrediction,
-		int64(statementId), int64(oracleId), int64(languageId),
-		message, errorMessage, valid)
+		prediction.StatementId, prediction.OracleId, prediction.LanguageId,
+		prediction.Message, prediction.Error, prediction.Valid)
 	return err
 }
+
+// func BulkInsertPredictions()

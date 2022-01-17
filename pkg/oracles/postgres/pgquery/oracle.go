@@ -21,15 +21,34 @@ import (
 	"fmt"
 
 	pg_query "github.com/pganalyze/pg_query_go/v2"
-	"github.com/skalt/pg_sql_tests/pkg/oracles"
+	"github.com/skalt/pg_sql_tests/pkg/corpus"
+	"github.com/skalt/pg_sql_tests/pkg/languages"
 )
 
 const name = "libpg_query 13.X" // only retain postgres version, not libpg_query api version
+var id int64 = corpus.DeriveOracleId(name)
 
 type Oracle struct{}
 
-func (*Oracle) Name() string {
+func Init(language string) (oracle *Oracle, err error) {
+	switch language {
+
+	case "pgsql":
+	case "plpgsql":
+		oracle, err = &Oracle{}, nil
+		break
+	default:
+		oracle, err = nil, fmt.Errorf("unsupported language %s", language)
+	}
+	return oracle, err
+}
+
+func (*Oracle) GetName() string {
 	return name
+}
+
+func (*Oracle) GetId() int64 {
+	return id
 }
 
 type token struct {
@@ -69,16 +88,20 @@ func getTokens(statement string) scanResult {
 	return scanResult{Tokens: tokens, Error: nil}
 }
 
-func predictSql(statement string) *oracles.Prediction {
-	testimony := oracles.Prediction{Language: "pgsql"}
-	result := getTokens(statement)
+func predictSql(statement *corpus.Statement) *corpus.Prediction {
+	testimony := corpus.Prediction{
+		OracleId:    id,
+		LanguageId:  languages.Languages["pgsql"],
+		StatementId: statement.Id,
+	}
+	result := getTokens(statement.Text)
 	if result.Error != nil {
 		valid := false
 		testimony.Valid = &valid
 		testimony.Message = result.String()
 		return &testimony
 	}
-	ast, err := pg_query.ParseToJSON(statement)
+	ast, err := pg_query.ParseToJSON(statement.Text)
 
 	if err != nil {
 		result.Error = err
@@ -94,9 +117,13 @@ func predictSql(statement string) *oracles.Prediction {
 	return &testimony
 }
 
-func predictPlpgsql(statement string) *oracles.Prediction {
-	testimony := oracles.Prediction{Language: "plpgsql"}
-	result, err := pg_query.ParsePlPgSqlToJSON(statement)
+func predictPlpgsql(statement *corpus.Statement) *corpus.Prediction {
+	testimony := corpus.Prediction{
+		OracleId:    id,
+		LanguageId:  languages.Languages["plpgsql"],
+		StatementId: statement.Id,
+	}
+	result, err := pg_query.ParsePlPgSqlToJSON(statement.Text)
 
 	if err != nil {
 		valid := false
@@ -110,13 +137,13 @@ func predictPlpgsql(statement string) *oracles.Prediction {
 	return &testimony
 }
 
-func (*Oracle) Predict(statement string, language string) (*oracles.Prediction, error) {
-	switch language {
-	case "pgsql":
+func (*Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus.Prediction, error) {
+	switch languageId {
+	case languages.Languages["pgsql"]:
 		return predictSql(statement), nil
-	case "plpgsql":
+	case languages.Languages["plpgsql"]:
 		return predictPlpgsql(statement), nil
 	default:
-		return nil, fmt.Errorf("unsupported language %s", language)
+		return nil, fmt.Errorf("unsupported language ID %d", languageId)
 	}
 }

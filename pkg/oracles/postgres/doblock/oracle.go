@@ -31,18 +31,19 @@ import (
 	"log"
 	"time"
 
-	"github.com/skalt/pg_sql_tests/pkg/oracles"
+	"github.com/skalt/pg_sql_tests/pkg/corpus"
+	"github.com/skalt/pg_sql_tests/pkg/languages"
 	"github.com/skalt/pg_sql_tests/pkg/oracles/postgres/container"
 	d "github.com/skalt/pg_sql_tests/pkg/oracles/postgres/driver"
 )
 
-func testify(conn *sql.Tx, statement string, language string) oracles.Prediction {
+func testify(conn *sql.Tx, statement *corpus.Statement, languageId int64) corpus.Prediction {
 	delim := "SYNTAX_CHECK" // TODO: check string not present in _
-	return d.Predict(
-		conn,
-		fmt.Sprintf("DO $%s$BEGIN RETURN; %s END;$%s$;", delim, statement, delim),
-		language,
-	)
+	extendedStatement := corpus.Statement{
+		Id:   statement.Id,
+		Text: fmt.Sprintf("DO $%s$BEGIN RETURN; %s END;$%s$;", delim, statement, delim),
+	}
+	return d.Predict(conn, &extendedStatement, languageId)
 }
 
 type Oracle struct {
@@ -51,7 +52,14 @@ type Oracle struct {
 	conn    *sql.DB
 }
 
-func Init(version string) *Oracle {
+func Init(language string, version string) (*Oracle, error) {
+	switch language {
+	case "pgsql":
+	case "plpgsql":
+		break
+	default:
+		return nil, fmt.Errorf("unsupported language %s", language)
+	}
 	service := container.InitService(version)
 	if err := service.Await(); err != nil {
 		log.Panic(err)
@@ -63,20 +71,24 @@ func Init(version string) *Oracle {
 		log.Panic(err)
 	}
 	oracle := Oracle{version, service, conn}
-	return &oracle
+	return &oracle, nil
 }
 
-func (d *Oracle) Name() string {
+func (d *Oracle) GetName() string {
 	return fmt.Sprintf("postgres %s do-block", d.version)
 }
 
-func (oracle *Oracle) Predict(statement string, language string) (*oracles.Prediction, error) {
-	switch language {
-	case "pgsql":
-	case "plpgsql":
+func (oracle *Oracle) GetId() int64 {
+	return corpus.DeriveOracleId(oracle.GetName())
+}
+
+func (oracle *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus.Prediction, error) {
+	switch languageId {
+	case languages.Languages["pgsql"]:
+	case languages.Languages["plpgsql"]:
 		break
 	default:
-		return nil, fmt.Errorf("unsupported language %s", language)
+		return nil, fmt.Errorf("unsupported language %s", languageId)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -88,7 +100,7 @@ func (oracle *Oracle) Predict(statement string, language string) (*oracles.Predi
 		panic(err)
 	}
 
-	testimony := testify(txn, statement, language)
+	testimony := testify(txn, statement, languageId)
 	if err := txn.Rollback(); err != nil {
 		panic(err)
 	}

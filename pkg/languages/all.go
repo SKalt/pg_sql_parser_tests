@@ -1,7 +1,7 @@
 package languages
 
 // an enumeration of all the allowed languages
-var Languages = map[string]int{
+var Languages = map[string]int64{
 	"other":     -1,
 	"pgsql":     0,
 	"plpgsql":   1,
@@ -12,7 +12,7 @@ var Languages = map[string]int{
 	"plpython3": 6,
 }
 
-func LookupId(language string) int {
+func LookupId(language string) int64 {
 	if id, ok := Languages[language]; ok {
 		return id
 	} else {

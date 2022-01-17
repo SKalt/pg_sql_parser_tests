@@ -5,9 +5,11 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"runtime"
 	"strings"
+	"sync"
 
-	"github.com/cheggaaa/pb/v3"
+	"github.com/cheggaaa/pb"
 	"github.com/mattn/go-isatty"
 	"github.com/skalt/pg_sql_tests/pkg/corpus"
 	"github.com/skalt/pg_sql_tests/pkg/languages"
@@ -21,16 +23,18 @@ import (
 
 var cmd = &cobra.Command{
 	Short: "Have a series of oracles opine on whether statements are valid",
-	// Long:  `TODO`,
 	Run: func(cmd *cobra.Command, args []string) {
 		config := initConfig(cmd)
+		// TODO: validate that oracles can support the given language
+		// **before** trying to run the oracles
 		for _, version := range config.versions {
 			for _, oracleName := range config.oracles {
 				switch oracleName {
 				case "pg_query":
 					err := runPgQueryOracle(
 						config.corpusPath,
-						version, config.language,
+						version,
+						config.language,
 						config.dryRun,
 						config.progress,
 					)
@@ -40,7 +44,8 @@ var cmd = &cobra.Command{
 				case "do-block":
 					err := runDoBlockOracle(
 						config.corpusPath,
-						version, config.language,
+						version,
+						config.language,
 						config.dryRun,
 						config.progress,
 					)
@@ -50,7 +55,8 @@ var cmd = &cobra.Command{
 				case "psql":
 					err := runPsqlOracle(
 						config.corpusPath,
-						version, config.language,
+						version,
+						config.language,
 						config.dryRun,
 						config.progress,
 					)
@@ -116,11 +122,10 @@ func registerOracle(db *sql.DB, id int64, name string) error {
 
 func bulkPredict(
 	oracle oracles.Oracle,
-	language string, version string,
+	language string,
 	db *sql.DB,
 	progress bool,
 	dryRun bool,
-	// TODO: add side-effect handler func(db *sql.DB, statement *corpus.Statement, prediction *oracles.Prediction) error
 ) error {
 	if dryRun {
 		fmt.Printf("would run ")
@@ -128,12 +133,12 @@ func bulkPredict(
 		fmt.Printf("running ")
 	}
 	languageId := languages.LookupId(language)
-	oracleId := corpus.DeriveOracleId(oracle.Name())
-	fmt.Printf("oracle `%s` for @language=%s\n", oracle.Name(), language)
+	oracleId := corpus.DeriveOracleId(oracle.GetName())
+	fmt.Printf("oracle `%s` for @language=%s\n", oracle.GetName(), language)
 	if dryRun {
 		return nil
 	}
-	if err := registerOracle(db, oracleId, oracle.Name()); err != nil {
+	if err := registerOracle(db, oracleId, oracle.GetName()); err != nil {
 		return err
 	}
 	// TODO: consider _not_ loading most of the db into memory.
@@ -143,45 +148,73 @@ func bulkPredict(
 	if len(statements) == 0 {
 		return fmt.Errorf("no unpredicted statements found for language %s", language)
 	}
-	predict := func(db *sql.DB, statement *corpus.Statement) error {
-		prediction, err := oracle.Predict(statement.Text, language)
-		if err != nil {
-			fmt.Printf("ERR!: %v\n", err)
-			return err
+	var wg sync.WaitGroup
+	nRoutines := runtime.NumCPU()*2 - 1
+	done := make(chan int, nRoutines)
+	outputs := make(chan *corpus.Prediction, len(statements))
+	inputs := make(chan *corpus.Statement, nRoutines)
+
+	predict := func(id int, oracle oracles.Oracle, inputs <-chan *corpus.Statement, outputs chan *corpus.Prediction) {
+		wg.Add(1)
+		defer wg.Done()
+		for {
+			if statement, ok := <-inputs; ok {
+				prediction, err := oracle.Predict(statement, languageId)
+				if err != nil {
+					panic(err)
+				}
+				outputs <- prediction
+			} else {
+				break
+			}
 		}
-		err = corpus.InsertPrediction(
-			db,
-
-			statement.Id,
-			oracleId,
-			languageId,
-
-			prediction.Message,
-			prediction.Error,
-			prediction.Valid,
-		)
-		return err
+		done <- id
 	}
-
+	save := func(db *sql.DB, outputs <-chan *corpus.Prediction, bar *pb.ProgressBar) {
+		wg.Add(1)
+		defer wg.Done()
+		for {
+			prediction, ok := <-outputs
+			if !ok {
+				break
+			}
+			if bar != nil {
+				bar.Increment()
+			}
+			corpus.InsertPrediction(db, prediction)
+		}
+	}
+	waitForDone := func() {
+		countDown := nRoutines
+		for {
+			<-done
+			countDown -= 1
+			if countDown <= 0 {
+				break
+			}
+		}
+		close(done)
+		close(outputs)
+	}
+	go waitForDone()
+	for i := 0; i < runtime.NumCPU()-1; i++ {
+		go predict(i, oracle, inputs, outputs)
+	}
+	var bar *pb.ProgressBar = nil
 	if progress { // HACK: dry this up
-		bar := pb.StartNew(len(statements))
+		bar = pb.StartNew(len(statements))
 		defer bar.Finish()
-		for _, statement := range statements {
-			if err := predict(db, statement); err != nil {
-				return err
-			}
-			bar.Increment()
-		}
-	} else {
-		for _, statement := range statements {
-			if err := predict(db, statement); err != nil {
-				return err
-			}
-		}
 	}
+	go save(db, outputs, bar)
+	go func() {
+		for _, statement := range statements {
+			inputs <- statement
+		}
+		close(inputs)
+	}()
+	wg.Wait()
 	return nil
 }
-
 func runPsqlOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
 	if dryRun {
 		fmt.Printf("would run ")
@@ -193,9 +226,12 @@ func runPsqlOracle(dsn string, version string, language string, dryRun bool, pro
 	if err != nil {
 		return err
 	}
-	oracle := psql.Init(version)
+	oracle, err := psql.Init(language, version)
+	if err != nil {
+		return err
+	}
 	// defer oracle.Close()
-	return bulkPredict(oracle, language, version, db, progress, dryRun)
+	return bulkPredict(oracle, language, db, progress, dryRun)
 }
 
 func runDoBlockOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
@@ -203,9 +239,12 @@ func runDoBlockOracle(dsn string, version string, language string, dryRun bool, 
 	if err != nil {
 		return err
 	}
-	oracle := doblock.Init(version)
+	oracle, err := doblock.Init(language, version)
+	if err != nil {
+		return err
+	}
 	defer oracle.Close()
-	return bulkPredict(oracle, language, version, db, progress, dryRun)
+	return bulkPredict(oracle, language, db, progress, dryRun)
 }
 
 func runPgRawOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
@@ -213,9 +252,12 @@ func runPgRawOracle(dsn string, version string, language string, dryRun bool, pr
 	if err != nil {
 		return err
 	}
-	oracle := raw.Init(version)
+	oracle, err := raw.Init(language, version)
+	if err != nil {
+		return err
+	}
 	defer oracle.Close()
-	return bulkPredict(oracle, language, version, db, progress, dryRun)
+	return bulkPredict(oracle, language, db, progress, dryRun)
 }
 
 func runPgQueryOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
@@ -225,12 +267,15 @@ func runPgQueryOracle(dsn string, version string, language string, dryRun bool, 
 	if dryRun {
 		return nil
 	}
+	oracle, err := pgquery.Init(language)
+	if err != nil {
+		return err
+	}
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
 		return err
 	}
-	oracle := &pgquery.Oracle{}
-	return bulkPredict(oracle, language, "13", db, progress, dryRun)
+	return bulkPredict(oracle, language, db, progress, dryRun)
 }
 
 type configuration struct {

@@ -6,7 +6,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/skalt/pg_sql_tests/pkg/oracles"
+	"github.com/skalt/pg_sql_tests/pkg/corpus"
+	"github.com/skalt/pg_sql_tests/pkg/languages"
 	"github.com/skalt/pg_sql_tests/pkg/oracles/postgres/container"
 )
 
@@ -15,16 +16,19 @@ type Oracle struct {
 	service *container.Service
 }
 
-func Init(version string) *Oracle {
+func Init(language string, version string) (*Oracle, error) {
+	if language != "psql" {
+		return nil, fmt.Errorf("invalid language %s; only `psql` allowed", language)
+	}
 	service := container.InitService(version)
 	if err := service.Await(); err != nil {
 		log.Panic(err)
 	}
 	oracle := Oracle{version, service}
-	return &oracle
+	return &oracle, nil
 }
 
-func (psql *Oracle) Name() string {
+func (psql *Oracle) GetName() string {
 	return fmt.Sprintf("psql %s", psql.version)
 }
 
@@ -54,21 +58,24 @@ func hasSqlishSyntaxError(stderr string) bool {
 	return startsWith(stderr, "syntax error")
 }
 
+func (psql *Oracle) GetId() int64 {
+	return corpus.DeriveOracleId(psql.GetName())
+}
+
 // there are more ways to parse psql's stderr, e.g. "ERROR:  invalid input syntax"
 // but that is better done by consenting adults as queries on the resulting corpus database
 // ERROR:  syntax error
 
-func (psql *Oracle) Predict(statement string, language string) (*oracles.Prediction, error) {
-	if language != "psql" {
-		return nil, fmt.Errorf("only accepts psql, not %s", language)
-	}
-	prediction := oracles.Prediction{
-		Language: "psql",
-		Valid:    nil,
+func (psql *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus.Prediction, error) {
+	prediction := corpus.Prediction{
+		OracleId:    psql.GetId(),
+		StatementId: statement.Id,
+		LanguageId:  languages.Languages["psql"],
+		Valid:       nil,
 	}
 	cmd := exec.Command("docker-compose", "exec", "-T", "psql", "--set=ON_ERROR_STOP=on")
 	// -T: don't allocate a pseudo-TTY            ^^^^
-	cmd.Stdin = strings.NewReader(statement)
+	cmd.Stdin = strings.NewReader(statement.Text)
 	// ^ required for handling `COPY FROM STDIN`
 	// also see https://www.postgresql.org/docs/current/app-psql.html#R1-APP-PSQL-3
 	// for reasons why passing the statement as via the `--command` flag won't work
