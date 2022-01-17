@@ -28,8 +28,9 @@ insert or ignore into main.statements             select * from other.statements
 insert or ignore into main.statement_languages    select * from other.statement_languages;
 insert or ignore into main.statement_fingerprints select * from other.statement_fingerprints;
 insert or ignore into main.statement_versions     select * from other.statement_versions;
+insert or ignore into main.documents              select * from other.documents;
 insert or ignore into main.urls                   select * from other.urls;
-insert or ignore into main.statement_sources      select * from other.statement_sources;
+insert or ignore into main.document_statements    select * from other.document_statements;
 insert or ignore into main.licenses               select * from other.licenses;
 insert or ignore into main.oracles                select * from other.oracles;
 insert or ignore into main.predictions            select * from other.predictions;
