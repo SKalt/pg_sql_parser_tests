@@ -153,7 +153,7 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	txn, err := d.db.BeginTx(ctx, &sql.TxOptions{}) // Isolation: sql.LevelSerializable
+	txn, err := d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable}) // Isolation: sql.LevelSerializable
 	if err != nil {
 		panic(err)
 	}

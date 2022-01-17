@@ -146,7 +146,8 @@ func bulkPredict(
 	// statement one-at-a time
 	statements := corpus.GetAllUnpredictedStatements(db, languageId, oracleId)
 	if len(statements) == 0 {
-		return fmt.Errorf("no unpredicted statements found for language %s", language)
+		fmt.Println("no unpredicted statements found for language", language)
+		return nil
 	}
 	var wg sync.WaitGroup
 	nRoutines := runtime.NumCPU()*2 - 1
@@ -175,7 +176,6 @@ func bulkPredict(
 				break
 			}
 		}
-		fmt.Println(id, "done")
 		done <- id
 	}
 	save := func(db *sql.DB, outputs <-chan *corpus.Prediction, bar *pb.ProgressBar) {
@@ -243,19 +243,19 @@ func bulkPredict(
 			}
 			flush()
 		}
+		if err = txn.Commit(); err != nil {
+			panic(err)
+		}
 	}
 	waitForDone := func() {
 		countDown := nRoutines
 		for {
-			fmt.Println("waiting for done")
 			if _, ok := <-done; ok {
 				countDown -= 1
 				if countDown <= 0 {
-					fmt.Println("all done")
 					break
 				}
 			} else {
-				fmt.Println("somehow done?")
 				break
 			}
 		}

@@ -49,7 +49,7 @@ func testify(conn *sql.Tx, statement *corpus.Statement, languageId int64) corpus
 type Oracle struct {
 	version string
 	service *container.Service
-	conn    *sql.DB
+	db      *sql.DB
 }
 
 func Init(language string, version string) (*Oracle, error) {
@@ -92,10 +92,11 @@ func (oracle *Oracle) Predict(statement *corpus.Statement, languageId int64) (*c
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	if _, err := oracle.conn.Exec("SET check_function_bodies = ON;"); err != nil {
+	if _, err := oracle.db.Exec("SET check_function_bodies = ON;"); err != nil {
+		// the database is closed?
 		panic(err)
 	}
-	txn, err := oracle.conn.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})
+	txn, err := oracle.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})
 	if err != nil {
 		panic(err)
 	}
@@ -108,7 +109,8 @@ func (oracle *Oracle) Predict(statement *corpus.Statement, languageId int64) (*c
 }
 
 func (d *Oracle) Close() {
-	if err := d.conn.Close(); err != nil {
+	fmt.Println("closing do-block oracle")
+	if err := d.db.Close(); err != nil {
 		log.Panic(err)
 	}
 }
