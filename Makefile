@@ -18,8 +18,9 @@ predict_go += ./pkg/oracles/spec.go
 predict_go += ./pkg/corpus/connect.go
 predict_go += ./pkg/corpus/read.go
 predict_go += ./pkg/corpus/write.go
+predict_go += ./pkg/corpus/sql/get_unpredicted_statements.sql
+predict_go += ./pkg/corpus/sql/insert_prediction.sql
 predict_go += ./pkg/languages/all.go
-
 # TODO: use a build tool where I don't have to specify each dependency manually
 
 bin/predict: $(predict_go)

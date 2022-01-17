@@ -1,6 +1,4 @@
-use pg_query_wrapper::pbuf::ResTarget;
 use rusqlite::Connection;
-use std::convert::TryFrom;
 use std::path::PathBuf;
 
 use crate::{Failure, Language, Statement, StatementSource};
@@ -115,7 +113,7 @@ pub fn bulk_insert_urls(
     license_id: Option<&str>,
 ) -> Result<Vec<i64>, rusqlite::Error> {
     use xxhash_rust::xxh3::xxh3_64;
-    let mut ids: Vec<i64> = urls
+    let ids: Vec<i64> = urls
         .iter()
         .map(|url| xxh3_64(url.as_bytes()) as i64)
         .collect();

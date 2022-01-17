@@ -86,9 +86,8 @@ func Predict(txn *sql.Tx, statement *corpus.Statement, languageId int64) corpus.
 				return testimony
 			}
 		} else {
-			testimony.Valid = nil
 			testimony.Error = fmt.Sprintf("%s", err)
-			fmt.Printf("%+v\n-----------\n%s", err, statement.Text)
+			testimony.Valid = nil
 		}
 	} else {
 		// TODO: use the result here?
@@ -150,7 +149,7 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 	case languages.Languages["plpgsql"]:
 		options = "SET check_function_bodies = on;"
 	default:
-		return nil, fmt.Errorf("unsupported languageId %s", languageId)
+		return nil, fmt.Errorf("unsupported languageId %d", languageId)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -165,8 +164,7 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 	testimony := Predict(txn, statement, languageId)
 	testimony.OracleId = d.GetId()
 	if err := txn.Rollback(); err != nil {
-		// pass in case of nested transactions
-		fmt.Printf("%s\n>>>>>>>>>>>>>>>>>>>\n%s\n<<<<<<<<<<<<<<<<<<<<<\n", err, statement)
+		testimony.Valid = nil // pass with uncertain marks in case of nested transactions
 	}
 	return &testimony, nil
 }

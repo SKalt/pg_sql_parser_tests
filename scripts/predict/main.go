@@ -150,6 +150,13 @@ func bulkPredict(
 	}
 	var wg sync.WaitGroup
 	nRoutines := runtime.NumCPU()*2 - 1
+	if len(statements) < nRoutines {
+		nRoutines = len(statements) - 1
+	}
+	if nRoutines <= 0 {
+		nRoutines = 2 // some sort of minimum concurrency
+	}
+	fmt.Println(nRoutines, "goroutines")
 	done := make(chan int, nRoutines)
 	outputs := make(chan *corpus.Prediction, len(statements))
 	inputs := make(chan *corpus.Statement, nRoutines)
@@ -174,22 +181,27 @@ func bulkPredict(
 		wg.Add(1)
 		defer wg.Done()
 		for {
-			prediction, ok := <-outputs
-			if !ok {
+			if prediction, ok := <-outputs; ok {
+				if bar != nil {
+					bar.Increment()
+				}
+				if err := corpus.InsertPrediction(db, prediction); err != nil {
+					panic(err)
+				}
+			} else {
 				break
 			}
-			if bar != nil {
-				bar.Increment()
-			}
-			corpus.InsertPrediction(db, prediction)
 		}
 	}
 	waitForDone := func() {
 		countDown := nRoutines
 		for {
-			<-done
-			countDown -= 1
-			if countDown <= 0 {
+			if _, ok := <-done; ok {
+				countDown -= 1
+				if countDown <= 0 {
+					break
+				}
+			} else {
 				break
 			}
 		}
@@ -197,11 +209,11 @@ func bulkPredict(
 		close(outputs)
 	}
 	go waitForDone()
-	for i := 0; i < runtime.NumCPU()-1; i++ {
+	for i := 0; i < nRoutines; i++ {
 		go predict(i, oracle, inputs, outputs)
 	}
 	var bar *pb.ProgressBar = nil
-	if progress { // HACK: dry this up
+	if progress {
 		bar = pb.StartNew(len(statements))
 		defer bar.Finish()
 	}

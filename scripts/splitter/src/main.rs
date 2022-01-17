@@ -570,7 +570,7 @@ fn main() -> Result<(), Failure> {
         }
         let url_ids = sqlite::bulk_insert_urls(&mut conn, urls.as_slice(), spdx).unwrap();
         if already_processed {
-            sqlite::bulk_insert_document_urls(&mut conn, document_id, url_ids.as_slice());
+            sqlite::bulk_insert_document_urls(&mut conn, document_id, url_ids.as_slice())?;
             return Ok(());
         }
         let (statements, statement_fingerprints, statement_languages, sources) = process_doc(
@@ -588,6 +588,7 @@ fn main() -> Result<(), Failure> {
         .unwrap();
         // TODO: separate inserting statements from statement_languages
         sqlite::bulk_insert_statements(&mut conn, statements).unwrap();
+        sqlite::bulk_insert_statement_documents(&mut conn, sources).unwrap();
         sqlite::bulk_insert_statement_fingerprints(&mut conn, statement_fingerprints).unwrap();
         sqlite::bulk_insert_statement_languages(&mut conn, statement_languages).unwrap();
         conn.close().unwrap();

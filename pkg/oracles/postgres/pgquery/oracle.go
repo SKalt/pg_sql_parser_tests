@@ -36,7 +36,6 @@ func Init(language string) (oracle *Oracle, err error) {
 	case "pgsql":
 	case "plpgsql":
 		oracle, err = &Oracle{}, nil
-		break
 	default:
 		oracle, err = nil, fmt.Errorf("unsupported language %s", language)
 	}

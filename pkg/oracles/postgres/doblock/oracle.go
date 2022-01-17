@@ -41,7 +41,7 @@ func testify(conn *sql.Tx, statement *corpus.Statement, languageId int64) corpus
 	delim := "SYNTAX_CHECK" // TODO: check string not present in _
 	extendedStatement := corpus.Statement{
 		Id:   statement.Id,
-		Text: fmt.Sprintf("DO $%s$BEGIN RETURN; %s END;$%s$;", delim, statement, delim),
+		Text: fmt.Sprintf("DO $%s$BEGIN RETURN; %s END;$%s$;", delim, statement.Text, delim),
 	}
 	return d.Predict(conn, &extendedStatement, languageId)
 }
@@ -88,7 +88,7 @@ func (oracle *Oracle) Predict(statement *corpus.Statement, languageId int64) (*c
 	case languages.Languages["plpgsql"]:
 		break
 	default:
-		return nil, fmt.Errorf("unsupported language %s", languageId)
+		return nil, fmt.Errorf("unsupported language %d", languageId)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
