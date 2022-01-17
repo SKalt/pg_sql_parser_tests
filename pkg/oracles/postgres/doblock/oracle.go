@@ -25,17 +25,18 @@
 package doblock
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/skalt/pg_sql_tests/pkg/oracles"
-	_ "github.com/skalt/pg_sql_tests/pkg/oracles"
 	"github.com/skalt/pg_sql_tests/pkg/oracles/postgres/container"
 	d "github.com/skalt/pg_sql_tests/pkg/oracles/postgres/driver"
 )
 
-func testify(conn *sql.DB, statement string, language string) oracles.Prediction {
+func testify(conn *sql.Tx, statement string, language string) oracles.Prediction {
 	delim := "SYNTAX_CHECK" // TODO: check string not present in _
 	return d.Predict(
 		conn,
@@ -77,11 +78,20 @@ func (oracle *Oracle) Predict(statement string, language string) (*oracles.Predi
 	default:
 		return nil, fmt.Errorf("unsupported language %s", language)
 	}
-	_, err := oracle.conn.Exec("SET check_function_bodies = ON;")
-	if err != nil {
-		return nil, err
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	if _, err := oracle.conn.Exec("SET check_function_bodies = ON;"); err != nil {
+		panic(err)
 	}
-	testimony := testify(oracle.conn, statement, language)
+	txn, err := oracle.conn.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})
+	if err != nil {
+		panic(err)
+	}
+
+	testimony := testify(txn, statement, language)
+	if err := txn.Rollback(); err != nil {
+		panic(err)
+	}
 	return &testimony, nil
 }
 

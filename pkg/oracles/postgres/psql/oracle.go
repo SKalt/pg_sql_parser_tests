@@ -64,7 +64,6 @@ func (psql *Oracle) Predict(statement string, language string) (*oracles.Predict
 	}
 	prediction := oracles.Prediction{
 		Language: "psql",
-		Version:  psql.version,
 		Valid:    nil,
 	}
 	cmd := exec.Command("docker-compose", "exec", "-T", "psql", "--set=ON_ERROR_STOP=on")

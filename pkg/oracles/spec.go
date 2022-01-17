@@ -2,7 +2,6 @@ package oracles
 
 type Prediction struct {
 	Language string
-	Version  string
 	// may be nil in case of ambiguous oracle output.
 	Valid   *bool
 	Message string

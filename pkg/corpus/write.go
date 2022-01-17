@@ -9,15 +9,15 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func DeriveOracleId(name string) uint64 {
-	return xxhash.Sum64([]byte(name))
+func DeriveOracleId(name string) int64 {
+	return int64(xxhash.Sum64([]byte(name)))
 }
 
-func RegisterOracle(db *sql.DB, oracleName string) (id uint64, err error) {
+func RegisterOracle(db *sql.DB, oracleName string) (id int64, err error) {
 	id = DeriveOracleId(oracleName)
 	_, err = db.Exec(
 		"INSERT INTO oracles (id, name) VALUES (?, ?);",
-		int64(id), oracleName)
+		id, oracleName)
 	return id, err
 }
 
@@ -26,9 +26,11 @@ var addPrediction string
 
 func InsertPrediction(
 	db *sql.DB,
-	statementId uint64,
-	oracleId uint64,
+
+	statementId int64,
+	oracleId int64,
 	languageId int,
+
 	message string,
 	errorMessage string,
 	valid *bool,

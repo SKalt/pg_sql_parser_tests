@@ -1,6 +1,4 @@
-use pg_query_wrapper::pbuf::ResTarget;
-use rusqlite::{Connection, ToSql, Transaction};
-use std::convert::TryFrom;
+use rusqlite::Connection;
 use std::path::PathBuf;
 
 use crate::{Failure, Statement, StatementSource};
@@ -55,9 +53,12 @@ pub fn bulk_insert_statements(
             .prepare("INSERT INTO statement_languages(statement_id, language_id) VALUES (?, ?) ON CONFLICT DO NOTHING")?;
         // let insert_version = &mut txn
         //     .prepare("INSERT INTO statement_versions(statement_id, version_id) values (?, ?);")?;
-        for s in statements {
-            insert_stmt.execute(rusqlite::params![s.id as i64, s.text])?;
-            insert_lang.execute(rusqlite::params![s.id as i64, s.language as i32])?;
+        for statement in statements {
+            insert_stmt.execute(rusqlite::params![statement.id as i64, statement.text])?;
+            insert_lang.execute(rusqlite::params![
+                statement.id as i64,
+                statement.language as i64
+            ])?;
         }
     }
     return txn.commit();
@@ -110,21 +111,34 @@ pub fn bulk_insert_urls(
     return txn.commit();
 }
 
-pub fn bulk_insert_statement_sources(
+pub fn bulk_insert_statement_documents(
     conn: &mut Connection,
     statement_sources: Vec<StatementSource>,
 ) -> Result<(), rusqlite::Error> {
     if statement_sources.len() > 0 {
         let txn = conn.transaction()?;
         {
-            let insert = &mut txn.prepare(
-                "INSERT INTO statement_sources (statement_id, url_id, locator) VALUES (?, ?, ?) ON CONFLICT DO NOTHING",
+            let insert_document_statement = &mut txn.prepare(
+                "INSERT INTO document_statements (
+                            document_id, statement_id, start_line, end_line, start_offset, end_offset)
+                    VALUES (?,           ?,            ?,          ?,        ?,            ?         )
+                    ON CONFLICT DO NOTHING",
             )?;
+            let insert_document_url = &mut txn
+                .prepare("INSERT INTO document_urls(document_id, url_id) VALUES (?, ?) ON CONFLICT DO NOTHING")?;
             for src in statement_sources {
-                insert.execute(rusqlite::params![
+                insert_document_statement.execute(rusqlite::params![
+                    src.document_id as i64,
                     src.statement_id as i64,
-                    src.url_id() as i64,
-                    format!("#L{}-L{}", src.start_line, src.start_line + src.n_lines - 1)
+                    src.start_line,
+                    src.start_line + src.n_lines - 1,
+                    src.start_offset,
+                    src.end_offset,
+                    // format!("#L{}-L{}", src.start_line, src.start_line + src.n_lines - 1)
+                ])?;
+                insert_document_url.execute(rusqlite::params![
+                    src.document_id as i64,
+                    src.url_id() as i64
                 ])?;
             }
         }
@@ -132,4 +146,23 @@ pub fn bulk_insert_statement_sources(
     } else {
         Ok(())
     }
+}
+
+pub fn bulk_insert_statement_fingerprints(
+    conn: &mut Connection,
+    statement_fingerprints: Vec<(u64, u64)>,
+) -> Result<(), rusqlite::Error> {
+    if statement_fingerprints.len() <= 0 {
+        return Ok(());
+    }
+    let txn = conn.transaction()?;
+    {
+        let insert = &mut txn.prepare(
+            "INSERT INTO statement_fingerprints(statement_id, fingerprint) VALUES (?, ?) ON CONFLICT DO NOTHING;"
+        )?;
+        for (statement_id, fingerprint) in statement_fingerprints {
+            insert.execute(rusqlite::params![statement_id as i64, fingerprint as i64])?;
+        }
+    }
+    return txn.commit();
 }

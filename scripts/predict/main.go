@@ -28,35 +28,48 @@ var cmd = &cobra.Command{
 			for _, oracleName := range config.oracles {
 				switch oracleName {
 				case "pg_query":
-					err := runPgQueryOracle(config.corpusPath, version, config.language, config.dryRun)
+					err := runPgQueryOracle(
+						config.corpusPath,
+						version, config.language,
+						config.dryRun,
+						config.progress,
+					)
 					if err != nil {
 						log.Fatal(err)
 					}
 				case "do-block":
-					oracle, err := runDoBlockOracle(config.corpusPath, version, config.language, config.dryRun)
-					if oracle != nil {
-						defer oracle.Close()
-					}
+					err := runDoBlockOracle(
+						config.corpusPath,
+						version, config.language,
+						config.dryRun,
+						config.progress,
+					)
 					if err != nil {
 						log.Fatal(err)
 					}
 				case "psql":
-					err := runPsqlOracle(config.corpusPath, version, config.language, config.dryRun)
+					err := runPsqlOracle(
+						config.corpusPath,
+						version, config.language,
+						config.dryRun,
+						config.progress,
+					)
 					if err != nil {
 						log.Fatal(err)
 					}
 				case "raw":
-					oracle, err := runPgRawOracle(config.corpusPath, version, config.language, config.dryRun)
-					if oracle != nil {
-						defer oracle.Close()
-					}
+					err := runPgRawOracle(
+						config.corpusPath,
+						version, config.language,
+						config.dryRun,
+						config.progress,
+					)
 					if err != nil {
 						log.Fatal(err)
 					}
 				}
 			}
 		}
-
 	},
 }
 
@@ -68,8 +81,8 @@ var availableOracles = map[string][]string{
 	"pg_query": {"13"},
 }
 
-func listOracles() {
-	if isatty.IsTerminal(os.Stdout.Fd()) {
+func listOracles(tty bool) {
+	if tty {
 		// only print the header if the output isn't piped somewhere
 		fmt.Printf("%10s %-20s\n", "oracle", "versions")
 	}
@@ -88,29 +101,52 @@ func listOracles() {
 var listOraclesCmd = &cobra.Command{
 	Use: "list-oracles",
 	Run: func(cmd *cobra.Command, args []string) {
-		listOracles()
+		// cmd.Flags().GetBool("")
+		listOracles(isatty.IsTerminal(os.Stdout.Fd()))
 	},
+}
+
+func registerOracle(db *sql.DB, id int64, name string) error {
+	_, err := db.Exec(
+		"INSERT INTO oracles(id, name) VALUES (?, ?) ON CONFLICT DO NOTHING",
+		id, name,
+	)
+	return err
 }
 
 func bulkPredict(
 	oracle oracles.Oracle,
 	language string, version string,
 	db *sql.DB,
+	progress bool,
+	dryRun bool,
 	// TODO: add side-effect handler func(db *sql.DB, statement *corpus.Statement, prediction *oracles.Prediction) error
 ) error {
+	if dryRun {
+		fmt.Printf("would run ")
+	} else {
+		fmt.Printf("running ")
+	}
 	languageId := languages.LookupId(language)
 	oracleId := corpus.DeriveOracleId(oracle.Name())
-	// versionId := xxhash.Sum64(append([]byte("postgres"), []byte(version)...))
+	fmt.Printf("oracle `%s` for @language=%s\n", oracle.Name(), language)
+	if dryRun {
+		return nil
+	}
+	if err := registerOracle(db, oracleId, oracle.Name()); err != nil {
+		return err
+	}
 	// TODO: consider _not_ loading most of the db into memory.
 	// for example, passing an in-channel and an out-channel, then handline each
 	// statement one-at-a time
-	statements := corpus.GetAllStatementsByLanguage(db, language)
+	statements := corpus.GetAllUnpredictedStatements(db, languageId, oracleId)
 	if len(statements) == 0 {
-		return fmt.Errorf("no statements found for language %s", language)
+		return fmt.Errorf("no unpredicted statements found for language %s", language)
 	}
-	predict := func(statement *corpus.Statement) error {
+	predict := func(db *sql.DB, statement *corpus.Statement) error {
 		prediction, err := oracle.Predict(statement.Text, language)
 		if err != nil {
+			fmt.Printf("ERR!: %v\n", err)
 			return err
 		}
 		err = corpus.InsertPrediction(
@@ -124,25 +160,21 @@ func bulkPredict(
 			prediction.Error,
 			prediction.Valid,
 		)
-		if err != nil {
-			return err
-		}
-		// handle side-effect here
-		return nil
+		return err
 	}
 
-	if isatty.IsTerminal(os.Stdout.Fd()) {
+	if progress { // HACK: dry this up
 		bar := pb.StartNew(len(statements))
+		defer bar.Finish()
 		for _, statement := range statements {
-			if err := predict(statement); err != nil {
+			if err := predict(db, statement); err != nil {
 				return err
 			}
 			bar.Increment()
 		}
-		bar.Finish()
 	} else {
 		for _, statement := range statements {
-			if err := predict(statement); err != nil {
+			if err := predict(db, statement); err != nil {
 				return err
 			}
 		}
@@ -150,7 +182,7 @@ func bulkPredict(
 	return nil
 }
 
-func runPsqlOracle(dsn string, version string, language string, dryRun bool) error {
+func runPsqlOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
 	if dryRun {
 		fmt.Printf("would run ")
 	} else {
@@ -163,57 +195,42 @@ func runPsqlOracle(dsn string, version string, language string, dryRun bool) err
 	}
 	oracle := psql.Init(version)
 	// defer oracle.Close()
-	return bulkPredict(oracle, language, version, db)
+	return bulkPredict(oracle, language, version, db, progress, dryRun)
 }
 
-func runDoBlockOracle(dsn string, version string, language string, dryRun bool) (*doblock.Oracle, error) {
-	if dryRun {
-		fmt.Printf("would run ")
-	} else {
-		fmt.Printf("running ")
-	}
-	fmt.Printf("oracle <do-block> with language %s @ version %s\n", language, version)
+func runDoBlockOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	oracle := doblock.Init(version)
-	// defer oracle.Close()
-	return oracle, bulkPredict(oracle, language, version, db)
+	defer oracle.Close()
+	return bulkPredict(oracle, language, version, db, progress, dryRun)
 }
 
-func runPgRawOracle(dsn string, version string, language string, dryRun bool) (*raw.Oracle, error) {
-	if dryRun {
-		fmt.Printf("would run ")
-	} else {
-		fmt.Printf("running ")
-	}
-	fmt.Printf("oracle <raw> with language %s @ version %s\n", language, version)
+func runPgRawOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	oracle := raw.Init(version)
-	// defer oracle.Close()
-	return oracle, bulkPredict(oracle, language, version, db)
+	defer oracle.Close()
+	return bulkPredict(oracle, language, version, db, progress, dryRun)
 }
 
-func runPgQueryOracle(dsn string, version string, language string, dryRun bool) error {
+func runPgQueryOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
 	if version != "13" { // silently skip
 		return nil
 	}
 	if dryRun {
-		fmt.Printf("would run ")
-	} else {
-		fmt.Printf("running ")
+		return nil
 	}
-	fmt.Printf("oracle <pg_query> with language %s @ version %s\n", language, version)
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
 		return err
 	}
 	oracle := &pgquery.Oracle{}
-	return bulkPredict(oracle, language, "13", db)
+	return bulkPredict(oracle, language, "13", db, progress, dryRun)
 }
 
 type configuration struct {
@@ -222,6 +239,7 @@ type configuration struct {
 	language   string
 	versions   []string
 	dryRun     bool
+	progress   bool
 }
 
 func init() {
@@ -230,6 +248,8 @@ func init() {
 	cmd.Flags().String("language", "pgsql", "which language to try")
 	cmd.Flags().StringSlice("versions", []string{"14"}, "which postgres versions to try")
 	cmd.Flags().Bool("dry-run", false, "print the configuration rather than running the oracles")
+	cmd.PersistentFlags().Bool("progress", isatty.IsTerminal(os.Stdout.Fd()), "render a progress bar")
+	cmd.PersistentFlags().Bool("no-progress", false, "don't render a progress bar even when stdout is a tty")
 	cmd.AddCommand(listOraclesCmd)
 }
 
@@ -295,15 +315,28 @@ func initConfig(cmd *cobra.Command) *configuration {
 			fmt.Printf("--language: unknown language %s\n", language)
 		}
 	}
+	progress, err := cmd.Flags().GetBool("progress")
+	if err != nil {
+		fail = true
+		fmt.Printf("--progress: %v", err)
+	}
+	noProgress, err := cmd.Flags().GetBool("no-progress")
+	if err != nil {
+		fail = true
+		fmt.Printf("--no-progress: %v", err)
+	}
+	progress = progress && !noProgress
 	if fail {
 		os.Exit(1)
 	}
+
 	config := configuration{
 		dryRun:     dryRun,
 		corpusPath: corpus,
 		versions:   versions,
 		oracles:    oracles,
 		language:   language,
+		progress:   progress,
 	}
 	return &config
 }

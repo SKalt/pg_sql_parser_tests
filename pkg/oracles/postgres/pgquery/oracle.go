@@ -25,7 +25,6 @@ import (
 )
 
 const name = "libpg_query 13.X" // only retain postgres version, not libpg_query api version
-const version = "13"
 
 type Oracle struct{}
 
@@ -71,7 +70,7 @@ func getTokens(statement string) scanResult {
 }
 
 func predictSql(statement string) *oracles.Prediction {
-	testimony := oracles.Prediction{Language: "pgsql", Version: version}
+	testimony := oracles.Prediction{Language: "pgsql"}
 	result := getTokens(statement)
 	if result.Error != nil {
 		valid := false
@@ -96,7 +95,7 @@ func predictSql(statement string) *oracles.Prediction {
 }
 
 func predictPlpgsql(statement string) *oracles.Prediction {
-	testimony := oracles.Prediction{Language: "plpgsql", Version: version}
+	testimony := oracles.Prediction{Language: "plpgsql"}
 	result, err := pg_query.ParsePlPgSqlToJSON(statement)
 
 	if err != nil {

@@ -1,5 +1,13 @@
 {
-  "cSpell.words": ["defname", "isatty", "pbuf", "rusqlite"],
+  "cSpell.words": [
+    "defname",
+    "isatty",
+    "pbuf",
+    "PLPERL",
+    "PLPYTHON",
+    "PLTCL",
+    "rusqlite"
+  ],
   "files.watcherExclude": {
     "**/target/**": true
   }
