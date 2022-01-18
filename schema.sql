@@ -73,7 +73,7 @@ CREATE TABLE licenses (
 CREATE TABLE urls (
     id INTEGER PRIMARY KEY -- xxhash3_64 of the url itself
   , "url" TEXT UNIQUE
-  , license_id INT8 REFERENCES licenses(id)
+  , license_id TEXT REFERENCES licenses(id)
 );
 
 -- this is dumb; maybe eliminate in favor of indices
@@ -117,6 +117,7 @@ CREATE TABLE predictions(
                    -- for debugging, so don't sweat it and probably don't try to
                    -- parse it unless you're confident of its structure.
   , valid BOOLEAN
-  , CONSTRAINT testimony_pkey PRIMARY KEY (statement_id, oracle_id)
+  , CONSTRAINT predictions_pkey PRIMARY KEY (statement_id, oracle_id, language_id)
 );
-CREATE INDEX predictions_by_oracle ON predictions(oracle_id, statement_id);
+CREATE INDEX predictions_by_oracle ON predictions(oracle_id, statement_id, language_id);
+CREATE INDEX predictions_by_language ON predictions(language_id, statement_id, oracle_id);
