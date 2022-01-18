@@ -6,11 +6,11 @@
 - [`golangci-lint`](https://golangci-lint.run/usage/install/)
 - `cargo+rust >= 1.51`; see [rustup.rs](https://rustup.rs/) for toolchain installation instructions.
 - an IDE that respects `.editorconfig` settings.
-- [`earthly`](https://earthly.dev/get-earthly), a container-based build tool
 - [`docker-compose`](https://docs.docker.com/compose/install/). You may need the [`compose switch`](https://docs.docker.com/compose/cli-command/#compose-switch) to reference `docker compose` v2 as `docker-compose`.
 - `make`
 - POSIX shell
 - a POSIX-compliant OS, e.g. Linux, Windows Subsystem for Linux, or MacOS running an `x86_64` or `ARM64` instruction set.
+- [`earthly`](https://earthly.dev/get-earthly), a container-based build tool, isn't strictly necessary.
 
 VSCode users may note the recommended extensions in [`./.vscode/settings.json`](./.vscode/settings.json)
 
@@ -33,14 +33,11 @@ your novel-length error message here. Note the extra newlines between the detail
 
 All pull requests are appreciated!
 
-### building
+Please reference an issue in your PR title or description and include some sort of test demonstrating your feature or fix.
 
-The makefile is your friend for figuring out local development. For collecting test corpora, try
+### Building
 
-```sh
-VERSION=${VERSION:-14}
-earthly -i -a +pg-corpus-$VERSION/db ./corpus.db
-```
+The makefile is your friend for figuring out local development. For collecting test corpora, try `make`; it takes around 5 minutes start-to-finish on my 16-core machine and ~7 on GitHub Actions.
 
 ### Commit convention
 

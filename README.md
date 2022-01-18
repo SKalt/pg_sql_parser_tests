@@ -29,7 +29,12 @@ Oracle-testing is a black-box testing method which gives limited insight into wh
 
 ## Usage: Consuming a test suite
 
-Download one of the databases from the [GitHub realeases tab](#TODO), then query the statements and oracle output using sqlite. You can [find the sqlite database schema](./schema.sql) in the root of this repo.
+Download one of the databases from the [the last step of a successful ci run](https://github.com/SKalt/pg_sql_parser_tests/actions)
+
+<!-- the [GitHub releases tab](#TODO) -->
+
+, then query the statements and oracle output using sqlite. You can [find the sqlite database schema](./schema.sql) in the root of this repo.
+See also also [`./pkg/corpus/sql/get_predictions.sql`](./pkg/corpus/sql/get_predictions.sql), which demonstrates how you'd join together the table to retrieve predictions.
 
 ### Contributing
 
