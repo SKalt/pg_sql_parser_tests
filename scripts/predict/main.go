@@ -157,14 +157,19 @@ func bulkPredict(
 	if nRoutines <= 0 {
 		nRoutines = 2 // some sort of minimum concurrency
 	}
+	nRoutines = 3 // simulate gh
+
 	fmt.Println(nRoutines, "goroutines")
 	done := make(chan int, nRoutines)
 	outputs := make(chan *corpus.Prediction, len(statements))
 	inputs := make(chan *corpus.Statement, nRoutines)
 
 	predict := func(id int, oracle oracles.Oracle, inputs <-chan *corpus.Statement, outputs chan *corpus.Prediction) {
-		wg.Add(1)
-		defer wg.Done()
+		// wg.Add(1)
+		defer func() {
+			wg.Done()
+			fmt.Printf("done predicting [%d] %+v\n", id, wg)
+		}()
 		for {
 			if statement, ok := <-inputs; ok {
 				prediction, err := oracle.Predict(statement, languageId)
@@ -179,8 +184,10 @@ func bulkPredict(
 		done <- id
 	}
 	save := func(db *sql.DB, outputs <-chan *corpus.Prediction, bar *pb.ProgressBar) {
-		wg.Add(1)
-		defer wg.Done()
+		defer func() {
+			wg.Done()
+			fmt.Printf("done saving %+v\n", wg)
+		}()
 		txn, err := db.Begin()
 		if err != nil {
 			panic(err)
@@ -246,6 +253,8 @@ func bulkPredict(
 		if err = txn.Commit(); err != nil {
 			panic(err)
 		}
+		fmt.Printf("%+v\n", wg)
+		fmt.Println(">> done <<")
 	}
 	waitForDone := func() {
 		countDown := nRoutines
@@ -261,10 +270,11 @@ func bulkPredict(
 		}
 		close(done)
 		close(outputs)
-		fmt.Printf("done")
+		fmt.Println("~~done~~")
 	}
 	go waitForDone()
 	for i := 0; i < nRoutines; i++ {
+		wg.Add(1)
 		go predict(i, oracle, inputs, outputs)
 	}
 	var bar *pb.ProgressBar = nil
@@ -272,6 +282,8 @@ func bulkPredict(
 		bar = pb.StartNew(len(statements))
 		defer bar.Finish()
 	}
+
+	wg.Add(1)
 	go save(db, outputs, bar)
 	go func() {
 		for _, statement := range statements {
@@ -279,7 +291,9 @@ func bulkPredict(
 		}
 		close(inputs)
 	}()
+	fmt.Println("waiting")
 	wg.Wait()
+	fmt.Println("waited")
 	return nil
 }
 func runPsqlOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
@@ -311,7 +325,9 @@ func runDoBlockOracle(dsn string, version string, language string, dryRun bool, 
 		return err
 	}
 	defer oracle.Close()
-	return bulkPredict(oracle, language, db, progress, dryRun)
+	err = bulkPredict(oracle, language, db, progress, dryRun)
+	fmt.Println("yeet")
+	return err
 }
 
 func runPgRawOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
