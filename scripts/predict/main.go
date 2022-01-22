@@ -155,7 +155,7 @@ func bulkPredict(
 	if nRoutines <= 0 {
 		nRoutines = 2 // some sort of minimum concurrency
 	}
-	if parallelism != nil && *parallelism > 0 {
+	if parallelism != nil && *parallelism > 0 && int(*parallelism) < 3*runtime.NumCPU() {
 		nRoutines = int(*parallelism)
 	}
 
@@ -295,6 +295,7 @@ func runPsqlOracle(dsn string, version string, language string, dryRun bool, pro
 	if err != nil {
 		return err
 	}
+	defer db.Close()
 	oracle, err := psql.Init(language, version)
 	if err != nil {
 		return err
@@ -308,6 +309,7 @@ func runDoBlockOracle(dsn string, version string, language string, dryRun bool, 
 	if err != nil {
 		return err
 	}
+	defer db.Close()
 	oracle, err := doblock.Init(language, version)
 	if err != nil {
 		return err
@@ -322,6 +324,7 @@ func runPgRawOracle(dsn string, version string, language string, dryRun bool, pr
 	if err != nil {
 		return err
 	}
+	defer db.Close()
 	oracle, err := raw.Init(language, version)
 	if err != nil {
 		return err
@@ -345,6 +348,7 @@ func runPgQueryOracle(dsn string, version string, language string, dryRun bool, 
 	if err != nil {
 		return err
 	}
+	defer db.Close()
 	return bulkPredict(oracle, language, db, progress, dryRun, parallelism)
 }
 
@@ -443,17 +447,18 @@ func initConfig(cmd *cobra.Command) *configuration {
 		fmt.Printf("--no-progress: %v", err)
 	}
 	progress = progress && !noProgress
-	if fail {
-		os.Exit(1)
-	}
+
 	var nGoRoutines uint
-	nGoRoutines, err = cmd.Flags().GetUint("parallelism")
 	var parallelism *uint = nil
+	nGoRoutines, err = cmd.Flags().GetUint("parallelism")
 	if err != nil {
 		fail = true
 		fmt.Printf("--parallelism: %v", err)
 	} else if nGoRoutines > 0 {
 		parallelism = &nGoRoutines
+	}
+	if fail {
+		os.Exit(1)
 	}
 	config := configuration{
 		dryRun:      dryRun,

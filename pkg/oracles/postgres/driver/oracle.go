@@ -43,8 +43,7 @@ func Predict(txn *sql.Tx, statement *corpus.Statement, languageId int64) corpus.
 		StatementId: statement.Id,
 		LanguageId:  languageId,
 	}
-	_, err := txn.Exec(statement.Text)
-	if err != nil {
+	if _, err := txn.Exec(statement.Text); err != nil {
 		if e, ok := err.(*pq.Error); ok {
 			switch e.Code {
 			case "03000": // sql_statement_not_yet_complete
@@ -152,17 +151,27 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 		return nil, fmt.Errorf("unsupported languageId %d", languageId)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
+	defer func() { cancel() }()
 	txn, err := d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable}) // Isolation: sql.LevelSerializable
 	if err != nil {
-		// TODO: try resetting the db?
-		fmt.Println(statement)
-		panic(err)
+		// the database crashed; see `docker-compose logs --tail=100 pg-${version:-14}`
+		// wait for the service to return to readiness:
+		cancel()
+		if err = d.service.Await(); err != nil {
+			panic(err)
+		}
+		ctx, cancel = context.WithTimeout(context.Background(), time.Second)
+		defer cancel()
+		txn, err = d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable}) // Isolation: sql.LevelSerializable
+		if err != nil {
+			panic(err)
+		}
 	}
 	_, err = txn.Exec(options)
 	if err != nil {
 		panic(err)
 	}
+
 	testimony := Predict(txn, statement, languageId)
 	testimony.OracleId = d.GetId()
 	if err := txn.Rollback(); err != nil {

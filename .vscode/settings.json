@@ -3,6 +3,7 @@
     "defname",
     "isatty",
     "pbuf",
+    "pgsql",
     "PLPERL",
     "PLPYTHON",
     "PLTCL",
