@@ -155,6 +155,8 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 	defer cancel()
 	txn, err := d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable}) // Isolation: sql.LevelSerializable
 	if err != nil {
+		// TODO: try resetting the db?
+		fmt.Println(statement)
 		panic(err)
 	}
 	_, err = txn.Exec(options)

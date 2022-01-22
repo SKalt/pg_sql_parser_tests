@@ -34,7 +34,7 @@ import (
 	"github.com/skalt/pg_sql_tests/pkg/corpus"
 	"github.com/skalt/pg_sql_tests/pkg/languages"
 	"github.com/skalt/pg_sql_tests/pkg/oracles/postgres/container"
-	d "github.com/skalt/pg_sql_tests/pkg/oracles/postgres/driver"
+	raw "github.com/skalt/pg_sql_tests/pkg/oracles/postgres/driver"
 )
 
 func testify(conn *sql.Tx, statement *corpus.Statement, languageId int64) corpus.Prediction {
@@ -43,7 +43,7 @@ func testify(conn *sql.Tx, statement *corpus.Statement, languageId int64) corpus
 		Id:   statement.Id,
 		Text: fmt.Sprintf("DO $%s$BEGIN RETURN; %s END;$%s$;", delim, statement.Text, delim),
 	}
-	return d.Predict(conn, &extendedStatement, languageId)
+	return raw.Predict(conn, &extendedStatement, languageId)
 }
 
 type Oracle struct {
@@ -94,17 +94,18 @@ func (oracle *Oracle) Predict(statement *corpus.Statement, languageId int64) (*c
 	defer cancel()
 	if _, err := oracle.db.Exec("SET check_function_bodies = ON;"); err != nil {
 		// the database is closed?
-		panic(err)
+		return nil, err
 	}
 	txn, err := oracle.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	testimony := testify(txn, statement, languageId)
 	if err := txn.Rollback(); err != nil {
-		panic(err)
+		return nil, err
 	}
+	testimony.OracleId = oracle.GetId()
 	return &testimony, nil
 }
 

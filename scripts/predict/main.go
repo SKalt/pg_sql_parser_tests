@@ -37,6 +37,7 @@ var cmd = &cobra.Command{
 						config.language,
 						config.dryRun,
 						config.progress,
+						config.parallelism,
 					)
 					if err != nil {
 						log.Fatal(err)
@@ -48,6 +49,7 @@ var cmd = &cobra.Command{
 						config.language,
 						config.dryRun,
 						config.progress,
+						config.parallelism,
 					)
 					if err != nil {
 						log.Fatal(err)
@@ -59,6 +61,7 @@ var cmd = &cobra.Command{
 						config.language,
 						config.dryRun,
 						config.progress,
+						config.parallelism,
 					)
 					if err != nil {
 						log.Fatal(err)
@@ -69,6 +72,7 @@ var cmd = &cobra.Command{
 						version, config.language,
 						config.dryRun,
 						config.progress,
+						config.parallelism,
 					)
 					if err != nil {
 						log.Fatal(err)
@@ -112,20 +116,13 @@ var listOraclesCmd = &cobra.Command{
 	},
 }
 
-func registerOracle(db *sql.DB, id int64, name string) error {
-	_, err := db.Exec(
-		"INSERT INTO oracles(id, name) VALUES (?, ?) ON CONFLICT DO NOTHING",
-		id, name,
-	)
-	return err
-}
-
 func bulkPredict(
 	oracle oracles.Oracle,
 	language string,
 	db *sql.DB,
 	progress bool,
 	dryRun bool,
+	parallelism *uint,
 ) error {
 	if dryRun {
 		fmt.Printf("would run ")
@@ -138,7 +135,7 @@ func bulkPredict(
 	if dryRun {
 		return nil
 	}
-	if err := registerOracle(db, oracleId, oracle.GetName()); err != nil {
+	if err := corpus.RegisterOracleId(db, oracleId, oracle.GetName()); err != nil {
 		return err
 	}
 	// TODO: consider _not_ loading most of the db into memory.
@@ -151,13 +148,16 @@ func bulkPredict(
 	}
 	var wg sync.WaitGroup
 	nRoutines := runtime.NumCPU()*2 - 1
+	// ^ try not to gobble too much cpu+memory when docker containers running
 	if len(statements) < nRoutines {
 		nRoutines = len(statements) - 1
 	}
 	if nRoutines <= 0 {
 		nRoutines = 2 // some sort of minimum concurrency
 	}
-	nRoutines = 3 // simulate gh
+	if parallelism != nil && *parallelism > 0 {
+		nRoutines = int(*parallelism)
+	}
 
 	fmt.Println(nRoutines, "goroutines")
 	done := make(chan int, nRoutines)
@@ -284,7 +284,7 @@ func bulkPredict(
 	wg.Wait()
 	return nil
 }
-func runPsqlOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
+func runPsqlOracle(dsn string, version string, language string, dryRun bool, progress bool, parallelism *uint) error {
 	if dryRun {
 		fmt.Printf("would run ")
 	} else {
@@ -300,10 +300,10 @@ func runPsqlOracle(dsn string, version string, language string, dryRun bool, pro
 		return err
 	}
 	// defer oracle.Close()
-	return bulkPredict(oracle, language, db, progress, dryRun)
+	return bulkPredict(oracle, language, db, progress, dryRun, parallelism)
 }
 
-func runDoBlockOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
+func runDoBlockOracle(dsn string, version string, language string, dryRun bool, progress bool, parallelism *uint) error {
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
 		return err
@@ -313,11 +313,11 @@ func runDoBlockOracle(dsn string, version string, language string, dryRun bool, 
 		return err
 	}
 	defer oracle.Close()
-	err = bulkPredict(oracle, language, db, progress, dryRun)
+	err = bulkPredict(oracle, language, db, progress, dryRun, parallelism)
 	return err
 }
 
-func runPgRawOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
+func runPgRawOracle(dsn string, version string, language string, dryRun bool, progress bool, parallelism *uint) error {
 	db, err := corpus.ConnectToExisting(dsn)
 	if err != nil {
 		return err
@@ -327,10 +327,10 @@ func runPgRawOracle(dsn string, version string, language string, dryRun bool, pr
 		return err
 	}
 	defer oracle.Close()
-	return bulkPredict(oracle, language, db, progress, dryRun)
+	return bulkPredict(oracle, language, db, progress, dryRun, parallelism)
 }
 
-func runPgQueryOracle(dsn string, version string, language string, dryRun bool, progress bool) error {
+func runPgQueryOracle(dsn string, version string, language string, dryRun bool, progress bool, parallelism *uint) error {
 	if version != "13" { // silently skip
 		return nil
 	}
@@ -345,16 +345,17 @@ func runPgQueryOracle(dsn string, version string, language string, dryRun bool, 
 	if err != nil {
 		return err
 	}
-	return bulkPredict(oracle, language, db, progress, dryRun)
+	return bulkPredict(oracle, language, db, progress, dryRun, parallelism)
 }
 
 type configuration struct {
-	corpusPath string
-	oracles    []string
-	language   string
-	versions   []string
-	dryRun     bool
-	progress   bool
+	corpusPath  string
+	oracles     []string
+	language    string
+	versions    []string
+	dryRun      bool
+	progress    bool
+	parallelism *uint
 }
 
 func init() {
@@ -365,6 +366,7 @@ func init() {
 	cmd.Flags().Bool("dry-run", false, "print the configuration rather than running the oracles")
 	cmd.PersistentFlags().Bool("progress", isatty.IsTerminal(os.Stdout.Fd()), "render a progress bar")
 	cmd.PersistentFlags().Bool("no-progress", false, "don't render a progress bar even when stdout is a tty")
+	cmd.Flags().Uint("parallelism", 0, "set the number of goroutines")
 	cmd.AddCommand(listOraclesCmd)
 }
 
@@ -444,14 +446,23 @@ func initConfig(cmd *cobra.Command) *configuration {
 	if fail {
 		os.Exit(1)
 	}
-
+	var nGoRoutines uint
+	nGoRoutines, err = cmd.Flags().GetUint("parallelism")
+	var parallelism *uint = nil
+	if err != nil {
+		fail = true
+		fmt.Printf("--parallelism: %v", err)
+	} else if nGoRoutines > 0 {
+		parallelism = &nGoRoutines
+	}
 	config := configuration{
-		dryRun:     dryRun,
-		corpusPath: corpus,
-		versions:   versions,
-		oracles:    oracles,
-		language:   language,
-		progress:   progress,
+		dryRun:      dryRun,
+		corpusPath:  corpus,
+		versions:    versions,
+		oracles:     oracles,
+		language:    language,
+		progress:    progress,
+		parallelism: parallelism,
 	}
 	return &config
 }

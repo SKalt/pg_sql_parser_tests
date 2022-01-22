@@ -23,12 +23,20 @@ func DeriveOracleId(name string) int64 {
 	return int64(xxhash.Sum64([]byte(name)))
 }
 
-func RegisterOracle(db *sql.DB, oracleName string) (id int64, err error) {
+func RegisterOracleName(db *sql.DB, oracleName string) (id int64, err error) {
 	id = DeriveOracleId(oracleName)
 	_, err = db.Exec(
 		"INSERT INTO oracles (id, name) VALUES (?, ?);",
 		id, oracleName)
 	return id, err
+}
+
+func RegisterOracleId(db *sql.DB, id int64, name string) error {
+	_, err := db.Exec(
+		"INSERT INTO oracles(id, name) VALUES (?, ?) ON CONFLICT DO NOTHING",
+		id, name,
+	)
+	return err
 }
 
 //go:embed sql/insert_prediction.sql
