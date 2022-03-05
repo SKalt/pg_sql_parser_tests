@@ -1,6 +1,0 @@
-default:\
-...
-        :datasize-cur=256M:\
-        :maxproc-cur=256:\
-        :openfiles-cur=256:\
-...

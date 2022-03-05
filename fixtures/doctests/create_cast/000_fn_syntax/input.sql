@@ -1,1 +1,0 @@
-SELECT CAST(42 AS float8);

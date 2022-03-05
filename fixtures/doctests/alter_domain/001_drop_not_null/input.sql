@@ -1,1 +1,0 @@
-ALTER DOMAIN zipcode DROP NOT NULL;

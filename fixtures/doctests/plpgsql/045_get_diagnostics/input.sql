@@ -1,1 +1,0 @@
-GET DIAGNOSTICS integer_var = ROW_COUNT;

@@ -1,1 +1,0 @@
-SELECT * FROM (SELECT * FROM mytable FOR UPDATE) ss ORDER BY column1;

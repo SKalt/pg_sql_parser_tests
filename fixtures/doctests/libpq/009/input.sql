@@ -1,1 +1,0 @@
-SELECT 1 AS FOO, 2 AS "BAR";

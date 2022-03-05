@@ -1,1 +1,0 @@
-DROP TEXT SEARCH PARSER my_parser;

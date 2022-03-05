@@ -1,1 +1,0 @@
-CREATE TABLE foo(i int) TABLESPACE space1;

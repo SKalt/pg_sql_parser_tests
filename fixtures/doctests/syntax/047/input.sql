@@ -1,1 +1,0 @@
-SELECT somefunc() OR true;

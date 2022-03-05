@@ -1,1 +1,0 @@
-SELECT a COLLATE "C" < b COLLATE "POSIX" FROM test1;

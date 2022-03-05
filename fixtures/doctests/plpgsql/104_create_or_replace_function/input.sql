@@ -1,3 +1,0 @@
-CREATE OR REPLACE FUNCTION testfunc(integer) RETURNS integer AS $$
-          ....
-$$ LANGUAGE plpgsql;

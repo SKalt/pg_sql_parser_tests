@@ -1,2 +1,0 @@
-ALTER TABLE measurement
-    ATTACH PARTITION measurement_y2016m07 FOR VALUES FROM ('2016-07-01') TO ('2016-08-01');

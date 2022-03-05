@@ -1,1 +1,0 @@
-ALTER TABLE ONLY distributors DROP CONSTRAINT zipchk;

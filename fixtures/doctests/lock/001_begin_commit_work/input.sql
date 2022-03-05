@@ -1,6 +1,0 @@
-BEGIN WORK;
-LOCK TABLE films IN SHARE ROW EXCLUSIVE MODE;
-DELETE FROM films_user_comments WHERE id IN
-    (SELECT id FROM films WHERE rating < 5);
-DELETE FROM films WHERE rating < 5;
-COMMIT WORK;

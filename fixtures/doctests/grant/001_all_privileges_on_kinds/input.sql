@@ -1,1 +1,0 @@
-GRANT ALL PRIVILEGES ON kinds TO manuel;

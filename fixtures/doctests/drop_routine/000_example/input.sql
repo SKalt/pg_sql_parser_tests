@@ -1,1 +1,0 @@
-DROP ROUTINE foo(integer);

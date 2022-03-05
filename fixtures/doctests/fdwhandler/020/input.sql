@@ -1,2 +1,0 @@
-int
-IsForeignRelUpdatable(Relation rel);

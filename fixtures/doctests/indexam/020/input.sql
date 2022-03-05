@@ -1,2 +1,0 @@
-Size
-amestimateparallelscan (void);

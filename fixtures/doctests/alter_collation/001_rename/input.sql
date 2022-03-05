@@ -1,1 +1,0 @@
-ALTER COLLATION "de_DE" RENAME TO german;

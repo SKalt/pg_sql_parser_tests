@@ -1,1 +1,0 @@
-"SELECT '$val' AS ret"

@@ -1,1 +1,0 @@
-free(sqlda2);

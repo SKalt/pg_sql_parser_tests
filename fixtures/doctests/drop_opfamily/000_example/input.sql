@@ -1,1 +1,0 @@
-DROP OPERATOR FAMILY float_ops USING btree;

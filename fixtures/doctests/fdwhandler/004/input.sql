@@ -1,2 +1,0 @@
-TupleTableSlot *
-IterateForeignScan(ForeignScanState *node);

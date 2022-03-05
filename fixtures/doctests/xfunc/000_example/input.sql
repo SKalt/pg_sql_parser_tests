@@ -1,1 +1,0 @@
-INSERT INTO mytable VALUES ($1);

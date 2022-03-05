@@ -1,1 +1,0 @@
-ALTER SERVER foo VERSION '8.4' OPTIONS (SET host 'baz');

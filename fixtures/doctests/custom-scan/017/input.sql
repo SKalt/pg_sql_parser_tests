@@ -1,1 +1,0 @@
-void (*ShutdownCustomScan) (CustomScanState *node);

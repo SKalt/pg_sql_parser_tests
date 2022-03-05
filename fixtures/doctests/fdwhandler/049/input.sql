@@ -1,2 +1,0 @@
-ForeignServer *
-GetForeignServer(Oid serverid);

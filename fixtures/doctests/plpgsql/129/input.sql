@@ -1,3 +1,0 @@
-CREATE FUNCTION foo(...) RETURNS integer AS $$
-...
-$$ LANGUAGE plpgsql STRICT IMMUTABLE;

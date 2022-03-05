@@ -1,1 +1,0 @@
-ALTER TABLE products ALTER COLUMN product_no SET NOT NULL;

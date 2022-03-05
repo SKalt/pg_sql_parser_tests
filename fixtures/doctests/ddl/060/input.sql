@@ -1,3 +1,0 @@
-CREATE TABLE myschema.mytable (
- ...
-);

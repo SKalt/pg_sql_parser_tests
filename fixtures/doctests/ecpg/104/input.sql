@@ -1,2 +1,0 @@
-EXEC SQL DEFINE name;
-EXEC SQL DEFINE name value;

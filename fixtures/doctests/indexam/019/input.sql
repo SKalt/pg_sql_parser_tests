@@ -1,2 +1,0 @@
-void
-amrestrpos (IndexScanDesc scan);

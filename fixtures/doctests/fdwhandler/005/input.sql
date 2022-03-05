@@ -1,2 +1,0 @@
-void
-ReScanForeignScan(ForeignScanState *node);

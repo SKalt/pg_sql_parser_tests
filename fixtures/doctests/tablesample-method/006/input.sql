@@ -1,2 +1,0 @@
-void
-EndSampleScan (SampleScanState *node);

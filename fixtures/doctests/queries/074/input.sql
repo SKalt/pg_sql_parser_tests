@@ -1,4 +1,0 @@
-WITH t AS (
-    DELETE FROM foo
-)
-DELETE FROM bar;

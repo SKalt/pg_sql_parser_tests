@@ -1,1 +1,0 @@
-ALTER TYPE compfoo ADD ATTRIBUTE f3 int;

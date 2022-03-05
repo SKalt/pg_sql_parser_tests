@@ -1,2 +1,0 @@
-ForeignTable *
-GetForeignTable(Oid relid);

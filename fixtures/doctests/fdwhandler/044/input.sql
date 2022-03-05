@@ -1,2 +1,0 @@
-void
-ForeignAsyncNotify(AsyncRequest *areq);

@@ -1,1 +1,0 @@
-createdb -O rolename dbname

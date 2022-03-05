@@ -1,1 +1,0 @@
-elog(level, "format string", ...);

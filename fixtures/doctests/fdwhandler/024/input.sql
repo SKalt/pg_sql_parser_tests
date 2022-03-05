@@ -1,2 +1,0 @@
-void
-EndDirectModify(ForeignScanState *node);

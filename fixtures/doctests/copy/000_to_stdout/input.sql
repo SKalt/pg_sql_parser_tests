@@ -1,1 +1,0 @@
-COPY country TO STDOUT (DELIMITER '|');

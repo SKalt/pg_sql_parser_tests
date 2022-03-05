@@ -1,1 +1,0 @@
-ALTER TRIGGER emp_stamp ON emp DEPENDS ON EXTENSION emplib;

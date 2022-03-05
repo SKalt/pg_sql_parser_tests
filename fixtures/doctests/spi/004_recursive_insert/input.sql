@@ -1,1 +1,0 @@
-INSERT INTO a SELECT * FROM a;

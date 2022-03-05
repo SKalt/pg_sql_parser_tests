@@ -1,1 +1,0 @@
-if (AggCheckCallContext(fcinfo, NULL))

@@ -1,2 +1,0 @@
-void
-amendscan (IndexScanDesc scan);

@@ -1,2 +1,0 @@
-ALTER TABLE measurement DETACH PARTITION measurement_y2006m02;
-ALTER TABLE measurement DETACH PARTITION measurement_y2006m02 CONCURRENTLY;

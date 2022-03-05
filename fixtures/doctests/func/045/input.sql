@@ -1,1 +1,0 @@
-strict $.track.segments[*].location

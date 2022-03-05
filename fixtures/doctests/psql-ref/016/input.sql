@@ -1,2 +1,0 @@
-testdb=> \echo :foo
-bar

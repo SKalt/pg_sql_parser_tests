@@ -1,2 +1,0 @@
-SELECT ROW(t.*, 42) FROM t;
-SELECT ROW(t.f1, t.f2, 42) FROM t;

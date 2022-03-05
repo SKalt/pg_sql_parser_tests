@@ -1,2 +1,0 @@
-ALTER TEXT SEARCH CONFIGURATION english
-    ALTER MAPPING FOR int, uint WITH intdict;

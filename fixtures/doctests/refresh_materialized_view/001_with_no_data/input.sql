@@ -1,1 +1,0 @@
-REFRESH MATERIALIZED VIEW annual_statistics_basis WITH NO DATA;

@@ -1,1 +1,0 @@
-lax $.track.segments.location

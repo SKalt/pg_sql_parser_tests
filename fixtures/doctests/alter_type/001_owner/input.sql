@@ -1,1 +1,0 @@
-ALTER TYPE email OWNER TO joe;

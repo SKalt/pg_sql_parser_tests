@@ -1,2 +1,0 @@
-void
-ambuildempty (Relation indexRelation);

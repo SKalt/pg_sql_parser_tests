@@ -1,6 +1,0 @@
-CREATE RULE shoe_ins_protect AS ON INSERT TO shoe
-    DO INSTEAD NOTHING;
-CREATE RULE shoe_upd_protect AS ON UPDATE TO shoe
-    DO INSTEAD NOTHING;
-CREATE RULE shoe_del_protect AS ON DELETE TO shoe
-    DO INSTEAD NOTHING;

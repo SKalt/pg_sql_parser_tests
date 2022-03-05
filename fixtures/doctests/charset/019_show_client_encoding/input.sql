@@ -1,1 +1,0 @@
-SHOW client_encoding;

@@ -1,2 +1,0 @@
-CREATE COLLATION german FROM "de_DE";
-CREATE COLLATION french FROM "fr-x-icu";

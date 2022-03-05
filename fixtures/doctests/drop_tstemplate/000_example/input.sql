@@ -1,1 +1,0 @@
-DROP TEXT SEARCH TEMPLATE thesaurus;

@@ -1,1 +1,0 @@
-SELECT a, b, c FROM tbl WHERE ... ORDER BY a COLLATE "C";

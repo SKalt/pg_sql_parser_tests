@@ -1,1 +1,0 @@
-DROP MATERIALIZED VIEW order_summary;

@@ -1,1 +1,0 @@
-CREATE SERVER pglog FOREIGN DATA WRAPPER file_fdw;
