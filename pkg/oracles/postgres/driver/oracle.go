@@ -152,7 +152,10 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer func() { cancel() }()
-	txn, err := d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable}) // Isolation: sql.LevelSerializable
+	var txn *sql.Tx
+	var err error
+	txn, err = d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})
+
 	if err != nil {
 		// the database crashed; see `docker-compose logs --tail=100 pg-${version:-14}`
 		// wait for the service to return to readiness:
@@ -162,14 +165,29 @@ func (d *Oracle) Predict(statement *corpus.Statement, languageId int64) (*corpus
 		}
 		ctx, cancel = context.WithTimeout(context.Background(), time.Second)
 		defer cancel()
-		txn, err = d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable}) // Isolation: sql.LevelSerializable
+		txn, err = d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})
 		if err != nil {
 			panic(err)
 		}
 	}
 	_, err = txn.Exec(options)
 	if err != nil {
-		panic(err)
+		// the database probably crashed again; see ``docker-compose logs --tail=100 pg-${version:-14}``
+		// wait for the service to return to readiness:
+		cancel()
+		if err = d.service.Await(); err != nil {
+			panic(err)
+		}
+		ctx, cancel = context.WithTimeout(context.Background(), time.Second)
+		defer cancel()
+		txn, err = d.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})
+		if err != nil {
+			panic(err)
+		}
+		_, err = txn.Exec(options)
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	testimony := Predict(txn, statement, languageId)

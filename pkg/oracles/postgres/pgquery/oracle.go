@@ -110,7 +110,7 @@ func predictSql(statement *corpus.Statement) *corpus.Prediction {
 		return &testimony
 	}
 	jsonResult := result.String()
-	testimony.Message = jsonResult[0:len(jsonResult)-2] + ", ast: " + ast + "}"
+	testimony.Message = jsonResult[0:len(jsonResult)-1] + ", \"ast\": " + ast + "}"
 	valid := true
 	testimony.Valid = &valid
 	return &testimony
