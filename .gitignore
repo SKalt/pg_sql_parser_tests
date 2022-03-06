@@ -2,7 +2,7 @@ bin/*
 !bin/README.md
 .ignore*
 
-
+external/*
 # Added by cargo
 
 /target
