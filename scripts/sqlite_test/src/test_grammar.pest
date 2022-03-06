@@ -1,0 +1,105 @@
+// adapted from https://github.com/codeschool/sqlite-parser/blob/master/test/misc/test-grammar.pegjs
+// see also https://github.com/sqlite/sqlite/blob/master/src/tclsqlite.c (maybe?)
+
+// pest grammar reference at https://pest.rs/book/grammars/syntax.html
+statements = { SOI ~ statement+ ~ EOI }
+statement = {
+      comment
+    | set_sql_stmt
+    | catch_stmt
+    | test_expr_stmt
+    | test_types_stmt
+    | other
+}
+
+// ignored
+comment = {"#" ~ (!"\n"+ ~ ANY)* ~ "\n"? }
+set_sql_stmt = { "set" ~ "sql" ~ (!"\n"+ ~ ANY)* ~ "\n"? }
+do_test_stmt = {"do_" ~ "test" ~ "$" ~ test_name ~ "[" ~ (!"]" ~ ANY)* ~ "]" }
+catch_stmt = { "[" ~ "catch" ~ (!"]" ~ ANY)* ~ "]" }
+other = { !test_types_stmt ~ ANY }
+
+test_expr_stmt = { "test_expr" ~ test_name ~ test_body }
+
+test_types_stmt = { test_type_start ~ test_name? ~ test_body }
+test_type_start = {
+    "do_execsql_test"
+  | "do_eqp_test"
+  | "execsql"
+  | "eqp"
+  | ("-"? ~ ( "eval" | "sql1" | "sql2" | "sql3" | "sqlprep" ))
+    //   /*/ "db complete"*/
+}
+
+test_name = { ('a'..'z' | 'A' .. 'Z' | '0'..'9' | "." | "-" | "_" )+ }
+
+test_body = {
+      ("[" ~ (!x_terminators ~ ANY)* ~"{" ~ body_scan ~ "}" ~ (!x_terminators ~ ANY)* ~ "]")
+    | ("{" ~ body_scan ~ "}" )
+    | ("\"" ~ quoted_scan ~ "\"") // TODO: merge quoted_scan into this rule.
+}
+
+x_terminators = { "{" | test_type_start | "proc" }
+
+body_scan = { body_scan_pat+ }
+body_scan_pat = { !body_scan_forbidden ~ body_scan_char }
+body_scan_char = { "--" | scan_replacements | ANY }
+// Note: order=desc, tbl(from, to) and prefix= as expressions are just crazy and would require
+//       too many parser changes for such unnecessary edge cases.
+body_scan_forbidden = {
+    ("}")
+  | ("{db db}")
+  | ("$" ~ ( "tcl" | "sql" | "query" ))
+  | ("list")
+  | ("{")
+  | ("order" ~ "=")
+  | (( "prefix" | "content" ) ~ "=" ~ (")" | ","))
+  | ("unicode61")
+  | (^"BOGUS")
+  | (('a'..'z' | 'A'..'Z' | '0'..'9')+ ~ "(" ~ (^"to" | ^"from") ~ ( "," | ")" ))
+  | ("e_log")
+}
+
+quoted_scan = { quoted_scan_pat+ }
+quoted_scan_pat = { !quoted_scan_forbidden ~ quoted_scan_char }
+quoted_scan_forbidden = {
+  "$" ~ "::"? ~ quoted_var_forbidden
+  | (".$") // this is a weird one: 0.$i
+  | ("$" ~ alnum ~ "("~ (!")" ~ ANY)* ~ ")")
+  | ("set sql")
+  | ("\\x" ~ (digit | 'A'..'F')+)
+  | ("order" ~ "=")
+  | ("[" ~ ("expr" | "join") ~ (!"]" ~ ANY)+ ~ "]")
+  | ("string repeat")
+  | (^"EXPLAIN" ~ "$q")
+}
+quoted_var_forbidden = {
+    ( "pre" | "delete_" )? ~ "sql"
+  | "subselect"
+  | "enc"
+  | "query"
+  | "from"
+  | "where"
+  | "trig"
+  | "vars"
+  | "expr"
+  | "columns"
+}
+quoted_scan_char = { // ?
+    scan_replacements
+  | "\\"  ~ ( "\""| "$" )
+  | "\\"* ~ scan_next_line
+  | (!("\"" | "\n") ~ ANY)
+}
+scan_next_line = { "\n" }
+
+scan_replacements = { 
+    "$rowidclause"
+    | "$prep"
+    | "%PGSZ%"
+    | (( "+" | "-" )+ ~ ( !digit ~ ANY))
+    | ("~"+ ~ "-"*)+
+}
+alpha = { 'a'..'z' | 'A'..'Z' }
+digit = { '0'..'9' }
+alnum = { alpha | digit }

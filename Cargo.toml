@@ -3,4 +3,5 @@
 [workspace]
 members = [
   "scripts/splitter",
+  "scripts/sqlite_test",
 ]
