@@ -76,14 +76,14 @@ CREATE TABLE urls (
   , license_id TEXT REFERENCES licenses(id)
 );
 
--- this is dumb; maybe eliminate in favor of indices
+-- this is dumb. Maybe eliminate in favor of indices?
 CREATE TABLE documents (
     id INTEGER PRIMARY KEY -- xxhash_64 of the document
 );
 
 CREATE TABLE document_urls(
-    document_id REFERENCES documents(id)
-  , url_id REFERENCES urls(id)
+    document_id INTEGER REFERENCES documents(id)
+  , url_id INTEGER REFERENCES urls(id)
   , CONSTRAINT document_url_pkey PRIMARY KEY (document_id, url_id)
 );
 CREATE UNIQUE INDEX urls_for_document ON document_urls(url_id, document_id);
@@ -110,8 +110,8 @@ CREATE TABLE predictions(
     statement_id INTEGER REFERENCES statements(id)
   , oracle_id INTEGER REFERENCES oracles(id) -- encodes version
   , language_id INTEGER REFERENCES languages(id)
-  , error TEXT -- bonus debugging text if there was an error; doesn't mean the
-               -- statement isn't valid
+  , error TEXT -- bonus debugging text if there was an error. `error` being
+               -- populated doesn't mean the statement isn't valid
   , "message" TEXT -- any extra output from the oracle, hopefully something like
                    -- json {syntax/parse tree, tokens}. This column is just
                    -- for debugging, so don't sweat it and probably don't try to
