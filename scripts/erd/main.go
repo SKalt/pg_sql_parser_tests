@@ -185,8 +185,8 @@ func main() {
 		for _, fk := range tbl.fks {
 			result.WriteString(
 				fmt.Sprintf(
-					"  %s:%s -> %s:%s\n",
-					fk.tableFrom, fk.columnFrom, fk.tableTo, fk.columnTo,
+					"  %s -> %s [label=\"%s\"]\n",
+					fk.tableFrom, fk.tableTo, fk.columnFrom,
 				),
 			)
 		}
