@@ -6,18 +6,28 @@ statements = { SOI ~ statement+ ~ EOI }
 statement = {
       comment
     | set_sql_stmt
+    | do_test_stmt
     | catch_stmt
     | test_expr_stmt
     | test_types_stmt
     | other
 }
+WHITESPACE = _{" "| "\t" }
 
 // ignored
 comment = {"#" ~ (!"\n"+ ~ ANY)* ~ "\n"? }
 set_sql_stmt = { "set" ~ "sql" ~ (!"\n"+ ~ ANY)* ~ "\n"? }
-do_test_stmt = {"do_" ~ "test" ~ "$" ~ test_name ~ "[" ~ (!"]" ~ ANY)* ~ "]" }
+do_test_stmt = {
+  do_test ~ test_name ~ (
+      (
+        "[" ~ (test_body | (!"]" ~ ANY))* ~ "]")
+    | ("{" ~ (test_body | (!"}" ~ ANY))* ~ "}")
+  )
+}
 catch_stmt = { "[" ~ "catch" ~ (!"]" ~ ANY)* ~ "]" }
 other = { !test_types_stmt ~ ANY }
+
+do_test = {"do_" ~ (!"test" ~ (alnum | "_"))* ~ "test" }
 
 test_expr_stmt = { "test_expr" ~ test_name ~ test_body }
 
@@ -31,7 +41,7 @@ test_type_start = {
     //   /*/ "db complete"*/
 }
 
-test_name = { ('a'..'z' | 'A' .. 'Z' | '0'..'9' | "." | "-" | "_" )+ }
+test_name = { ( alnum | "." | "-" | "_" )+ }
 
 test_body = {
       ("[" ~ (!x_terminators ~ ANY)* ~"{" ~ body_scan ~ "}" ~ (!x_terminators ~ ANY)* ~ "]")
@@ -41,9 +51,8 @@ test_body = {
 
 x_terminators = { "{" | test_type_start | "proc" }
 
-body_scan = { body_scan_pat+ }
-body_scan_pat = { !body_scan_forbidden ~ body_scan_char }
-body_scan_char = { "--" | scan_replacements | ANY }
+body_scan = { (!body_scan_forbidden ~ body_scan_char)+ }
+body_scan_char = _{ "--" | scan_replacements | ANY }
 // Note: order=desc, tbl(from, to) and prefix= as expressions are just crazy and would require
 //       too many parser changes for such unnecessary edge cases.
 body_scan_forbidden = {

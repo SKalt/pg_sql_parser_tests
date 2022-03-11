@@ -8,6 +8,12 @@ bin/parse: scripts/parse/parse.go
 bin/splitter: scripts/splitter/Cargo.toml ./Cargo.lock scripts/splitter/src/main.rs ./scripts/splitter/src/sqlite.rs ./schema.sql
 	cd scripts/splitter && cargo build && cd - && cp ./target/debug/splitter ./bin/
 
+bin/sqlite_test: scripts/sqlite_test/Cargo.toml scripts/sqlite_test/src/main.rs scripts/sqlite_test/src/test_grammar.pest ./Cargo.lock
+	cd scripts/sqlite_test && cargo build && cd - && cp ./target/debug/sqlite_test ./bin/
+
+/tmp/test_results: bin/sqlite_test
+	bin/sqlite_test --input ./external/sqlite/test/alter2.test
+
 predict_go =  ./scripts/predict/main.go
 predict_go += ./pkg/oracles/postgres/psql/oracle.go
 predict_go += ./pkg/oracles/postgres/driver/oracle.go
