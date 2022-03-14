@@ -12,7 +12,7 @@ bin/sqlite_test: scripts/sqlite_test/Cargo.toml scripts/sqlite_test/src/main.rs 
 	cd scripts/sqlite_test && cargo build && cd - && cp ./target/debug/sqlite_test ./bin/
 
 /tmp/test_results: bin/sqlite_test
-	bin/sqlite_test --input ./external/sqlite/test/alter2.test
+	bin/sqlite_test --input ./external/sqlite/test/alter4.test | tee /tmp/test_results
 
 predict_go =  ./scripts/predict/main.go
 predict_go += ./pkg/oracles/postgres/psql/oracle.go

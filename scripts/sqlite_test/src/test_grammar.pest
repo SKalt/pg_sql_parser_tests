@@ -1,114 +1,209 @@
 // adapted from https://github.com/codeschool/sqlite-parser/blob/master/test/misc/test-grammar.pegjs
 // see also https://github.com/sqlite/sqlite/blob/master/src/tclsqlite.c (maybe?)
-
 // pest grammar reference at https://pest.rs/book/grammars/syntax.html
-statements = { SOI ~ statement+ ~ EOI }
-statement = {
-      comment
-    | set_sql_stmt
-    | do_test_stmt
-    | catch_stmt
-    | test_expr_stmt
-    | test_types_stmt
-    | other
-}
-WHITESPACE = _{" "| "\t" }
 
-// ignored
-comment = {"#" ~ (!"\n"+ ~ ANY)* ~ "\n"? }
-set_sql_stmt = { "set" ~ "sql" ~ (!"\n"+ ~ ANY)* ~ "\n"? }
-do_test_stmt = {
-  do_test ~ test_name ~ (
+// running lowest-level -> top-level:.....................................................
+
+// https://tcl.tk/about/language.html ----------------------------------------------------
+// Tcl scripts are made up of commands separated by newlines or semicolons.
+CMD_END = ${ "\r"? ~ "\n" | ";" }
+tcl_script = { cmd+ }
+
+// Each Tcl command consists of one or more words separated by spaces.
+WHITESPACE = _{" "}
+
+cmd = {
+  (
+    // special scraped sqlite3 test-suite commands
+    set_sql_cmd
+    | execsql_cmd
+    | do_test_cmd
+    | do_execsql_test_cmd
+    | do_catchsql_test_cmd
+    | do_explain_query_plan_test_cmd
+    | do_select_tests_cmd
+    | eqp_cmd
+    | test_expr_cmd
+    | test_expr2_cmd
+    | db_eval_cmd
+    | single_sql
+
+    // general tcl constructs
+    | comment
+    | set_variable
+    | get_variable
+    | proc_def
+    | for_loop
+    | foreach_loop
+    | while_loop
+    // more special commands go here!
+    | word+
+  ) ~ CMD_END?
+}
+
+// Tcl allows you to store values in variables and use the values later in commands.
+// The set command is used to write and read variables.
+// You can read the value of a variable by invoking set with only a single argument
+identifier = @{(alnum | ":" | "-" | "-" | ".")+ }
+set_variable = {"set" ~ identifier ~ word }
+get_variable = {"set" ~ identifier }
+
+
+// When a $ appears in a command, Tcl treats the letters and digits following it as a
+// variable name, and substitutes the value of the variable in place of the name.
+dollar_sub = ${ "$" ~ identifier }
+
+// When a [ appears in a command, Tcl treats everything between it and the matching ] as a nested Tcl command.
+// Tcl evaluates the nested command and substitutes its result into the enclosing command in place of the bracketed text.
+bracket_sub = {"[" ~ cmd ~ "]"}
+// Double-quotes allow you to specify words that contain spaces.
+dquote_escapable_char = { "n" | "r" | "t" | "\\" | "\"" }
+escape_char = ${"\\"}
+dquote_escaped_char = ${ escape_char ~ dquote_escapable_char }
+dquote_word = {
+  "\"" ~ (
+    bracket_sub
+    | dollar_sub
+    | dquote_escaped_char
+    | (!"\"" ~ ANY)
+  )* ~ "\""
+}
+
+// Curly braces provide another way of grouping information into words.
+// They are different from quotes in that no substitutions are performed on the text between the curly braces
+
+brace_word = {
+  "{"
+  ~ (
+      (escape_char ~ "{")
+      | (!"}" ~ ANY)
+      | brace_word
+    )+
+  ~ "}"
+}
+
+word = {
+  brace_word
+  | dquote_word
+  | bracket_sub
+  | dollar_sub
+  | identifier
+  | ANY+
+}
+
+// special words that should trigger parsing or scraping ///////////////////////
+// should recursively parse as tcl:
+tcl_body = { &brace_word ~ ("{" ~ tcl_script ~ "}") }
+tcl_word = { &word ~ cmd }
+
+// should scrape as candidate sql tests
+sql = {ANY*} // lazy so as not to eat delimiters
+sql_block = { &brace_word ~ ("{" ~ sql ~ "}") }
+sql_dquote = { &dquote_word ~ ("\"" ~ sql ~ "\"") }
+sql_word = {!dollar_sub ~ !bracket_sub ~ &(alpha+) ~ sql}
+sql_candidate = { sql_block | sql_dquote | sql_word }
+
+// recognizable tcl constructs /////////////////////////////////////////////////
+
+// https://tcl.tk/man/tcl8.6/TclCmd/proc.htm
+proc_def = { "proc" ~ identifier ~ arg_list ~ tcl_body }
+arg_list = { &brace_word ~ ("{" ~ (identifier)* ~ "}") }
+
+// https://tcl.tk/man/tcl8.6/TclCmd/if.htm
+if_cond = {
+  ("if" ~ word ~ "then"? ~ tcl_body)
+  ~ ("elseif" ~ word ~ "then"? ~ tcl_body)*
+  ~ ("else" ~ word ~ "then"? ~ tcl_body)?
+}
+while_loop = { "while" ~ word ~ tcl_body }
+
+// https://tcl.tk/man/tcl8.6/TclCmd/for.htm
+for_loop = {
+  "for"
+  ~ tcl_body // start
+  ~ word     // test
+  ~ tcl_body // next
+  ~ tcl_body // body
+}
+
+// https://tcl.tk/man/tcl8.6/TclCmd/foreach.htm
+foreach_loop = {
+  "foreach" ~ (
       (
-        "[" ~ (test_body | (!"]" ~ ANY))* ~ "]")
-    | ("{" ~ (test_body | (!"}" ~ ANY))* ~ "}")
+        identifier // varname
+        ~ word // list
+        ~ tcl_body // loop body
+      )
+    | (
+      word // varlist
+      ~ word // list
+      ~ tcl_body
+    )
   )
 }
-catch_stmt = { "[" ~ "catch" ~ (!"]" ~ ANY)* ~ "]" }
-other = { !test_types_stmt ~ ANY }
 
-do_test = {"do_" ~ (!"test" ~ (alnum | "_"))* ~ "test" }
+comment = { ("#" ~ (!"\n"+ ~ ANY)* ~ "\n"?)+ }
 
-test_expr_stmt = { "test_expr" ~ test_name ~ test_body }
+// special testing procs/blocks ////////////////////////////////////////////////
+set_sql_cmd = { "set" ~ "sql" ~ (sql_candidate | word) }
+// TODO: filter out dquote values w/ substitutions
 
-test_types_stmt = { test_type_start ~ test_name? ~ test_body }
-test_type_start = {
-    "do_execsql_test"
-  | "do_eqp_test"
-  | "execsql"
-  | "eqp"
-  | ("-"? ~ ( "eval" | "sql1" | "sql2" | "sql3" | "sqlprep" ))
-    //   /*/ "db complete"*/
+// see external/sqlite/test/tester.tcl:1420 @ "proc execsql"
+execsql_cmd = { "execsql" ~ (sql_candidate) ~ (word)? }
+// see external/sqlite/test/tester.tcl:762 @ "proc do_test"
+do_test_cmd = { "do_test" ~ test_name ~ tcl_body ~ word }
+
+do_execsql_test_cmd = {
+  // see external/sqlite/test/tester.tcl:953 @ "proc do_execsql_test"
+  ("do_execsql_test"| "do_timed_execsql_test")
+  ~ ("-db" ~ word)?
+  ~ test_name ~ sql_candidate ~ word?
 }
 
-test_name = { ( alnum | "." | "-" | "_" )+ }
-
-test_body = {
-      ("[" ~ (!x_terminators ~ ANY)* ~"{" ~ body_scan ~ "}" ~ (!x_terminators ~ ANY)* ~ "]")
-    | ("{" ~ body_scan ~ "}" )
-    | ("\"" ~ quoted_scan ~ "\"") // TODO: merge quoted_scan into this rule.
+do_catchsql_test_cmd = {
+  // see external/sqlite/test/tester.tcl:988 @ "proc do_catchsql_test"
+  "do_catchsql_test" ~ test_name ~ sql_candidate ~ word?
 }
 
-x_terminators = { "{" | test_type_start | "proc" }
-
-body_scan = { (!body_scan_forbidden ~ body_scan_char)+ }
-body_scan_char = _{ "--" | scan_replacements | ANY }
-// Note: order=desc, tbl(from, to) and prefix= as expressions are just crazy and would require
-//       too many parser changes for such unnecessary edge cases.
-body_scan_forbidden = {
-    ("}")
-  | ("{db db}")
-  | ("$" ~ ( "tcl" | "sql" | "query" ))
-  | ("list")
-  | ("{")
-  | ("order" ~ "=")
-  | (( "prefix" | "content" ) ~ "=" ~ (")" | ","))
-  | ("unicode61")
-  | (^"BOGUS")
-  | (('a'..'z' | 'A'..'Z' | '0'..'9')+ ~ "(" ~ (^"to" | ^"from") ~ ( "," | ")" ))
-  | ("e_log")
+do_explain_query_plan_test_cmd = {
+  // see external/sqlite/test/tester.tcl @ "proc do_eqp_test"
+  "do_eqp_test" ~ test_name ~ sql_candidate ~ word
 }
 
-quoted_scan = { quoted_scan_pat+ }
-quoted_scan_pat = { !quoted_scan_forbidden ~ quoted_scan_char }
-quoted_scan_forbidden = {
-  "$" ~ "::"? ~ quoted_var_forbidden
-  | (".$") // this is a weird one: 0.$i
-  | ("$" ~ alnum ~ "("~ (!")" ~ ANY)* ~ ")")
-  | ("set sql")
-  | ("\\x" ~ (digit | 'A'..'F')+)
-  | ("order" ~ "=")
-  | ("[" ~ ("expr" | "join") ~ (!"]" ~ ANY)+ ~ "]")
-  | ("string repeat")
-  | (^"EXPLAIN" ~ "$q")
+selectish_test = {test_name ~ sql_candidate ~ word }
+do_select_tests_cmd = {
+  // see external/sqlite/test/tester.tcl 
+  "do_select_tests"
+    ~ test_name
+    ~ (&"-" ~ word)*
+    ~ (&brace_word ~ ("{" ~ (selectish_test ~ "\n"?)+ ~ "}"))
 }
-quoted_var_forbidden = {
-    ( "pre" | "delete_" )? ~ "sql"
-  | "subselect"
-  | "enc"
-  | "query"
-  | "from"
-  | "where"
-  | "trig"
-  | "vars"
-  | "expr"
-  | "columns"
-}
-quoted_scan_char = { // ?
-    scan_replacements
-  | "\\"  ~ ( "\""| "$" )
-  | "\\"* ~ scan_next_line
-  | (!("\"" | "\n") ~ ANY)
-}
-scan_next_line = { "\n" }
 
-scan_replacements = { 
-    "$rowidclause"
-    | "$prep"
-    | "%PGSZ%"
-    | (( "+" | "-" )+ ~ ( !digit ~ ANY))
-    | ("~"+ ~ "-"*)+
+eqp_cmd = {^"eqp" ~ sql_candidate ~ (word)? }
+
+
+test_expr_cmd = {
+  // see external/sqlite/test/expr.test
+  "test_expr" ~ test_name
+  ~ word // settings
+  ~ word // expr
+  ~ word // result
+  // TODO scrape the foramatted expr, result
 }
+
+test_expr2_cmd = {
+  // see external/sqlite/test/expr.test
+  "test_expr2" ~ test_name ~ word ~ word // expr, result
+}
+
+db_eval_cmd = {word ~ "eval" ~ sql_candidate ~ tcl_body?}
+single_sql = { ("sql1" | "sql2" | "sql3"| "evalsql" ) ~ sql_candidate}
+// /////////////////////////////////////////////////////////////////////////////
+
+main = { SOI ~ tcl_script ~ EOI }
+test_name = { word }
+
+// ranges: ---------------------------------------------------------------------
 alpha = { 'a'..'z' | 'A'..'Z' }
 digit = { '0'..'9' }
 alnum = { alpha | digit }
