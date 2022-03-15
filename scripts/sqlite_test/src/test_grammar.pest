@@ -6,45 +6,47 @@
 
 // https://tcl.tk/about/language.html ----------------------------------------------------
 // Tcl scripts are made up of commands separated by newlines or semicolons.
-CMD_END = ${ "\r"? ~ "\n" | ";" }
+newline = @{"\r"? ~ "\n"}
+CMD_END = _{ newline | ";" }
 tcl_script = { cmd+ }
 
 // Each Tcl command consists of one or more words separated by spaces.
 WHITESPACE = _{" "}
 
-cmd = {
-  (
-    // special scraped sqlite3 test-suite commands
+inner_cmd = _{
+  // special scraped sqlite3 test-suite commands
     set_sql_cmd
-    | execsql_cmd
-    | do_test_cmd
-    | do_execsql_test_cmd
-    | do_catchsql_test_cmd
-    | do_explain_query_plan_test_cmd
-    | do_select_tests_cmd
-    | eqp_cmd
-    | test_expr_cmd
-    | test_expr2_cmd
-    | db_eval_cmd
-    | single_sql
-
-    // general tcl constructs
-    | comment
-    | set_variable
-    | get_variable
-    | proc_def
-    | for_loop
-    | foreach_loop
-    | while_loop
-    // more special commands go here!
-    | word+
-  ) ~ CMD_END?
+  | execsql_cmd
+  | catchsql_cmd
+  | do_test_cmd
+  | do_execsql_test_cmd
+  | do_catchsql_test_cmd
+  | do_explain_query_plan_test_cmd
+  | do_select_tests_cmd
+  | eqp_cmd
+  | test_expr_cmd
+  | test_expr2_cmd
+  | db_eval_cmd
+  | single_sql
+  | ifcapable_cond
+  // general tcl constructs
+  | comment
+  | set_variable
+  | get_variable
+  | proc_def
+  | for_loop
+  | foreach_loop
+  | while_loop
+  // more special commands go here!
+  | word+
 }
+
+cmd = { inner_cmd ~ CMD_END* }
 
 // Tcl allows you to store values in variables and use the values later in commands.
 // The set command is used to write and read variables.
 // You can read the value of a variable by invoking set with only a single argument
-identifier = @{(alnum | ":" | "-" | "-" | ".")+ }
+identifier = @{(alnum | ":" | "-" | "_" | ".")+ }
 set_variable = {"set" ~ identifier ~ word }
 get_variable = {"set" ~ identifier }
 
@@ -55,52 +57,55 @@ dollar_sub = ${ "$" ~ identifier }
 
 // When a [ appears in a command, Tcl treats everything between it and the matching ] as a nested Tcl command.
 // Tcl evaluates the nested command and substitutes its result into the enclosing command in place of the bracketed text.
-bracket_sub = {"[" ~ cmd ~ "]"}
+bracket_sub = {"[" ~ inner_cmd ~ "]"}
 // Double-quotes allow you to specify words that contain spaces.
 dquote_escapable_char = { "n" | "r" | "t" | "\\" | "\"" }
 escape_char = ${"\\"}
 dquote_escaped_char = ${ escape_char ~ dquote_escapable_char }
+dquote = {"\""}
+not_dqote = _{!dquote ~ ANY}
 dquote_word = {
-  "\"" ~ (
-    bracket_sub
+  dquote ~ (
+      bracket_sub
     | dollar_sub
     | dquote_escaped_char
-    | (!"\"" ~ ANY)
-  )* ~ "\""
+    | not_dqote
+  )* ~ dquote
 }
 
 // Curly braces provide another way of grouping information into words.
 // They are different from quotes in that no substitutions are performed on the text between the curly braces
-
+opening_brace = {"{"}
+closing_brace = {"}"}
+not_closing_brace = _{!closing_brace ~ ANY}
 brace_word = {
-  "{"
+  opening_brace
   ~ (
-      (escape_char ~ "{")
-      | (!"}" ~ ANY)
+        (escape_char ~ opening_brace)
       | brace_word
-    )+
-  ~ "}"
+      | not_closing_brace
+    )*
+  ~ closing_brace
 }
 
 word = {
-  brace_word
+    brace_word
   | dquote_word
   | bracket_sub
   | dollar_sub
   | identifier
-  | ANY+
+  | op
 }
 
 // special words that should trigger parsing or scraping ///////////////////////
 // should recursively parse as tcl:
-tcl_body = { &brace_word ~ ("{" ~ tcl_script ~ "}") }
+tcl_body = { &brace_word ~ ("{" ~ newline* ~ tcl_script ~ "}") }
 tcl_word = { &word ~ cmd }
 
 // should scrape as candidate sql tests
-sql = {ANY*} // lazy so as not to eat delimiters
-sql_block = { &brace_word ~ ("{" ~ sql ~ "}") }
-sql_dquote = { &dquote_word ~ ("\"" ~ sql ~ "\"") }
-sql_word = {!dollar_sub ~ !bracket_sub ~ &(alpha+) ~ sql}
+sql_block = { brace_word }
+sql_dquote = { dquote_word }
+sql_word = {!dollar_sub ~ !bracket_sub ~ identifier}
 sql_candidate = { sql_block | sql_dquote | sql_word }
 
 // recognizable tcl constructs /////////////////////////////////////////////////
@@ -145,11 +150,14 @@ foreach_loop = {
 comment = { ("#" ~ (!"\n"+ ~ ANY)* ~ "\n"?)+ }
 
 // special testing procs/blocks ////////////////////////////////////////////////
+ifcapable_cond = {"ifcapable" ~ word ~ tcl_body}
 set_sql_cmd = { "set" ~ "sql" ~ (sql_candidate | word) }
 // TODO: filter out dquote values w/ substitutions
 
 // see external/sqlite/test/tester.tcl:1420 @ "proc execsql"
-execsql_cmd = { "execsql" ~ (sql_candidate) ~ (word)? }
+execsql_cmd = { "execsql" ~ sql_candidate ~ (word)? }
+catchsql_cmd = { "catchsql" ~ sql_candidate ~ (word)? }
+
 // see external/sqlite/test/tester.tcl:762 @ "proc do_test"
 do_test_cmd = { "do_test" ~ test_name ~ tcl_body ~ word }
 
@@ -204,6 +212,7 @@ main = { SOI ~ tcl_script ~ EOI }
 test_name = { word }
 
 // ranges: ---------------------------------------------------------------------
+op = {"!" | "&" | "+" | "-"| "/" | "*"}
 alpha = { 'a'..'z' | 'A'..'Z' }
 digit = { '0'..'9' }
 alnum = { alpha | digit }

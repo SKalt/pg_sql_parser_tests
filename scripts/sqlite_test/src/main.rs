@@ -26,15 +26,17 @@ fn unescape(s: &str) -> String {
     s.replace("\\n", "\n").replace("\\r", "\r")
 }
 
-fn walk<F>(pair: Pair<Rule>, line_number: usize, callback: F) -> usize
+fn walk<F>(pair: Pair<Rule>, path: &str, line_number: usize, callback: F)
 where
-    F: Fn(Pair<Rule>, usize) -> usize,
+    F: Copy + Fn(&Pair<Rule>, &str, usize),
 {
-    let mut line_number = line_number;
-    for pair in pair.into_inner() {
-        line_number += walk(pair, line_number, callback);
+    callback(&pair, path, line_number);
+    let mut inner_line_number = line_number;
+    for pair in pair.clone().into_inner() {
+        let n_lines = pair.as_str().matches("\n").count();
+        walk(pair, path, inner_line_number, callback);
+        inner_line_number += n_lines;
     }
-    return callback(pair, line_number);
 }
 
 fn extract_test_body(test_body: pest::iterators::Pair<Rule>) {
@@ -94,8 +96,9 @@ fn main() -> Result<(), Failure> {
     // almost infallible, but might fail
     let mut unparsed = String::new();
     let mut line_number = 1usize;
-    let callback =
-        |pair: Pair<Rule>, line_number: usize| line_number + pair.as_str().matches("\n").count();
+    let callback = |pair: &Pair<Rule>, path: &str, line_number: usize| {
+        println!("{}:{} {:?}", path, line_number, pair.as_rule());
+    };
     for stmt in statements.clone().into_inner() {
         match stmt.as_rule() {
             // only valid children are statement and EOI
@@ -103,7 +106,7 @@ fn main() -> Result<(), Failure> {
                 break;
             }
             _ => {
-                walk(stmt, line_number, callback);
+                walk(stmt, path, line_number, callback);
             }
             // Rule::statement => {
             //     for s in stmt.into_inner() {
