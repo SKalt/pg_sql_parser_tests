@@ -1,7 +1,7 @@
 extern crate pest;
 #[macro_use]
 extern crate pest_derive;
-use std::{fs, io};
+use std::{cell::RefCell, fs, io, rc::Rc};
 
 use pest::{
     iterators::{Pair, Pairs},
@@ -26,9 +26,9 @@ fn unescape(s: &str) -> String {
     s.replace("\\n", "\n").replace("\\r", "\r")
 }
 
-fn walk<F>(pair: Pair<Rule>, path: &str, line_number: usize, callback: F)
+fn walk<F>(pair: Pair<Rule>, path: &str, line_number: usize, mut callback: F)
 where
-    F: Copy + Fn(&Pair<Rule>, &str, usize),
+    F: Copy + FnMut(&Pair<Rule>, &str, usize),
 {
     callback(&pair, path, line_number);
     let mut inner_line_number = line_number;
@@ -79,6 +79,12 @@ fn extract_test(do_test_stmt: pest::iterators::Pair<Rule>, path: &str, line_numb
     // }
 }
 
+struct Foo<'a> {
+    file: &'a str,
+    line_number: usize,
+    snippet: &'a str,
+}
+
 fn main() -> Result<(), Failure> {
     let cli = clap::App::new("sqlite_test_parser").arg(
         clap::Arg::with_name("input")
@@ -96,7 +102,15 @@ fn main() -> Result<(), Failure> {
     // almost infallible, but might fail
     let mut unparsed = String::new();
     let mut line_number = 1usize;
+    let mut sqls = Vec::<Foo>::new();
+    let shared = Rc::new(RefCell::new(Vec::new()));
     let callback = |pair: &Pair<Rule>, path: &str, line_number: usize| {
+        match pair.as_rule() {
+            Rule::sql_block => shared
+                .borrow_mut()
+                .push((pair.as_str().to_owned(), line_number)),
+            _ => {}
+        }
         println!("{}:{} {:?}", path, line_number, pair.as_rule());
     };
     for stmt in statements.clone().into_inner() {
