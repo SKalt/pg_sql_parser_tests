@@ -1,6 +1,7 @@
 extern crate pest;
 #[macro_use]
 extern crate pest_derive;
+use core::panic;
 use std::{cell::RefCell, fs, io, rc::Rc};
 
 use pest::{
@@ -15,6 +16,7 @@ struct SqliteTestParser;
 #[derive(Debug)]
 enum Failure {
     Io(io::Error),
+    Parse(pest::error::Error<Rule>),
 }
 impl From<io::Error> for Failure {
     fn from(e: io::Error) -> Self {
@@ -79,12 +81,6 @@ fn extract_test(do_test_stmt: pest::iterators::Pair<Rule>, path: &str, line_numb
     // }
 }
 
-struct Foo<'a> {
-    file: &'a str,
-    line_number: usize,
-    snippet: &'a str,
-}
-
 fn main() -> Result<(), Failure> {
     let cli = clap::App::new("sqlite_test_parser").arg(
         clap::Arg::with_name("input")
@@ -95,68 +91,42 @@ fn main() -> Result<(), Failure> {
     let args = cli.get_matches();
     let path = args.value_of("input").unwrap();
     let input = fs::read_to_string(path)?;
-    let statements = SqliteTestParser::parse(Rule::main, input.as_str())
-        .expect("failed to parse")
-        .next()
-        .unwrap();
-    // almost infallible, but might fail
-    let mut unparsed = String::new();
-    let mut line_number = 1usize;
-    let mut sqls = Vec::<Foo>::new();
-    let shared = Rc::new(RefCell::new(Vec::new()));
-    let callback = |pair: &Pair<Rule>, path: &str, line_number: usize| {
-        match pair.as_rule() {
-            Rule::sql_block => shared
-                .borrow_mut()
-                .push((pair.as_str().to_owned(), line_number)),
-            _ => {}
+    match SqliteTestParser::parse(Rule::main, input.as_str()) {
+        Err(e) => {
+            if let pest::error::LineColLocation::Pos((line, col)) = e.line_col {
+                println!("{}:{}:{}", path, line, col)
+            } else {
+                panic!("{}", e);
+            }
+            return Err(Failure::Parse(e));
+            // panic!("{:?}", e);
         }
-        println!("{}:{} {:?}", path, line_number, pair.as_rule());
-    };
-    for stmt in statements.clone().into_inner() {
-        match stmt.as_rule() {
-            // only valid children are statement and EOI
-            Rule::EOI => {
-                break;
+        Ok(mut statements) => {
+            let line_number = 1usize;
+            let mut sqls = Vec::new();
+            let shared = Rc::new(RefCell::new(&mut sqls));
+            let callback = |pair: &Pair<Rule>, path: &str, line_number: usize| match pair.as_rule()
+            {
+                Rule::sql_block => shared
+                    .borrow_mut()
+                    .push((pair.as_str().to_owned(), line_number)),
+                _ => {}
+            };
+            for stmt in statements.next().unwrap().into_inner() {
+                match stmt.as_rule() {
+                    // only valid children are statement and EOI
+                    Rule::EOI => {
+                        break;
+                    }
+                    _ => {
+                        walk(stmt, path, line_number, callback);
+                    }
+                };
             }
-            _ => {
-                walk(stmt, path, line_number, callback);
+            for (sql, line_number) in sqls {
+                println!("{}:{} : {}", path, line_number, sql.as_str());
             }
-            // Rule::statement => {
-            //     for s in stmt.into_inner() {
-            //         match s.as_rule() {
-            //             Rule::other => {
-            //                 unparsed.push_str(unescape(s.as_str()).as_str());
-            //             }
-            //             Rule::do_test_stmt | Rule::do_execsql_test_stmt => {
-            //                 extract_test(s.clone(), path, line_number);
-            //             }
-            //             _ => {
-            //                 if unparsed.len() > 0 {
-            //                     println!("unparsed:\n{:?}\n", unparsed.as_str());
-            //                     unparsed.clear();
-            //                 }
-            //                 if s.as_rule() == Rule::comment {
-            //                     println!("{}:{} : {:?}", path, line_number, s.as_rule());
-            //                 } else {
-            //                     println!("{}:{} : {:?}", path, line_number, s.as_rule());
-            //                     // println!("parsed: ");
-            //                     // println!("{}", unescape(s.as_str()));
-            //                 }
-            //             }
-            //         }
-            //         line_number += s.as_str().matches("\n").count();
-            //     }
-            // }
-            _ => {
-                println!("{:?}", stmt.as_rule());
-            }
-        };
+            return Ok(());
+        }
     }
-    for stmt in statements.into_inner() {}
-    if unparsed.len() > 0 {
-        println!("unparsed:\n{:?}\n", unparsed.as_str());
-        unparsed.clear();
-    }
-    return Ok(());
 }

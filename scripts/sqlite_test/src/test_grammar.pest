@@ -8,10 +8,10 @@
 // Tcl scripts are made up of commands separated by newlines or semicolons.
 newline = @{"\r"? ~ "\n"}
 CMD_END = _{ newline | ";" }
-tcl_script = { cmd+ }
+tcl_script = { newline* ~ cmd+ }
 
 // Each Tcl command consists of one or more words separated by spaces.
-WHITESPACE = _{" "}
+WHITESPACE = _{(" " | "\t" | "\\\n" | "\\\r\n")+}
 
 inner_cmd = _{
   // special scraped sqlite3 test-suite commands
@@ -37,7 +37,6 @@ inner_cmd = _{
   | for_loop
   | foreach_loop
   | while_loop
-  // more special commands go here!
   | word+
 }
 
@@ -57,7 +56,7 @@ dollar_sub = ${ "$" ~ identifier }
 
 // When a [ appears in a command, Tcl treats everything between it and the matching ] as a nested Tcl command.
 // Tcl evaluates the nested command and substitutes its result into the enclosing command in place of the bracketed text.
-bracket_sub = {"[" ~ inner_cmd ~ "]"}
+bracket_sub = {"[" ~ newline* ~ cmd* ~ newline* ~ "]"}
 // Double-quotes allow you to specify words that contain spaces.
 dquote_escapable_char = { "n" | "r" | "t" | "\\" | "\"" }
 escape_char = ${"\\"}
@@ -78,10 +77,15 @@ dquote_word = {
 opening_brace = {"{"}
 closing_brace = {"}"}
 not_closing_brace = _{!closing_brace ~ ANY}
+escaped_backslash = {escape_char ~ escape_char}
+escaped_opening_brace = { escape_char ~ opening_brace}
+escaped_closing_brace = { escape_char ~ closing_brace}
 brace_word = {
   opening_brace
   ~ (
-        (escape_char ~ opening_brace)
+        escaped_backslash
+      | escaped_opening_brace
+      | escaped_closing_brace
       | brace_word
       | not_closing_brace
     )*
@@ -95,6 +99,7 @@ word = {
   | dollar_sub
   | identifier
   | op
+  | (identifier|op|escaped_backslash|escaped_opening_brace|escaped_closing_brace|"'"|"\\"|"("|")"|","|"$")+
 }
 
 // special words that should trigger parsing or scraping ///////////////////////
@@ -150,7 +155,7 @@ foreach_loop = {
 comment = { ("#" ~ (!"\n"+ ~ ANY)* ~ "\n"?)+ }
 
 // special testing procs/blocks ////////////////////////////////////////////////
-ifcapable_cond = {"ifcapable" ~ word ~ tcl_body}
+ifcapable_cond = {"ifcapable" ~ word ~ tcl_body ~ ("else" ~ tcl_body)}
 set_sql_cmd = { "set" ~ "sql" ~ (sql_candidate | word) }
 // TODO: filter out dquote values w/ substitutions
 
@@ -212,7 +217,7 @@ main = { SOI ~ tcl_script ~ EOI }
 test_name = { word }
 
 // ranges: ---------------------------------------------------------------------
-op = {"!" | "&" | "+" | "-"| "/" | "*"}
+op = {("!" | "&" | "+" | "-"| "/" | "*" | "=" | "?" | "%" | ">" | "<" | "|" | "^")+| ":"}
 alpha = { 'a'..'z' | 'A'..'Z' }
 digit = { '0'..'9' }
 alnum = { alpha | digit }
