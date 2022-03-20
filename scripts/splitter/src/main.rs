@@ -1,9 +1,13 @@
+use corpus::{
+    bulk_insert_document_urls, bulk_insert_statement_documents, bulk_insert_statement_fingerprints,
+    bulk_insert_statement_languages, bulk_insert_statements, bulk_insert_urls,
+    doc_already_processed, insert_license, Language, Statement, StatementSource,
+};
 use lazy_static::lazy_static;
 use pg_query_wrapper as pg_query;
 use psql_splitter;
 use regex::Regex;
-use sqlite::doc_already_processed;
-mod sqlite;
+
 use std::collections::HashSet;
 use std::convert::TryInto;
 use std::io::Read;
@@ -39,68 +43,10 @@ impl From<rusqlite::Error> for Failure {
         Failure::Sqlite(e)
     }
 }
-#[derive(Clone, Debug)]
-pub struct Statement {
-    text: String,
-    /// the xxhash3_64 of the overall utf-8 document that this statement is
-    /// drawn from
-    document_id: i64,
-    /// the xxhash3_64 of the text
-    id: i64,
-    /// might include line numbers inside a collection
-    language: Language,
-    // urls: Vec<String>,
-    // start_line: usize,
-    n_lines: usize,
-}
 
-impl Statement {
-    fn new(text: String, language: Language, document_id: i64) -> Self {
-        let n_lines = text.matches("\n").count();
-        Statement {
-            id: xxh3_64(text.as_bytes()) as i64,
-            document_id,
-            text,
-            language,
-            n_lines,
-        }
-    }
-    fn fingerprint(self: &Self) -> Result<i64, Failure> {
-        let (fingerprint, _) = pg_query::fingerprint(self.text.clone().as_str())?;
-        return Ok(fingerprint as i64);
-    }
-    fn with_source(
-        self: &Self,
-        url: &str,
-        start_line: usize,
-        start_offset: usize,
-    ) -> StatementSource {
-        StatementSource {
-            statement_id: self.id,
-            url: url.to_owned(),
-            document_id: self.document_id,
-            start_line,
-            start_offset,
-            end_offset: start_offset + self.text.len(),
-            n_lines: self.n_lines,
-        }
-    }
-}
-
-#[derive(Clone)]
-pub struct StatementSource {
-    statement_id: i64,   //
-    start_line: usize,   // 1-indexed
-    n_lines: usize,      // can be 0
-    start_offset: usize, // 0-indexed length in bytes, **not** unicode code points
-    end_offset: usize,   // = start_offset + statement.len()
-    document_id: i64,    // xxhash3_64 of the overall document from which this statement is drawn
-    url: String,         // TODO: validate; can currently be "" or "file://"
-}
-impl StatementSource {
-    fn url_id(&self) -> i64 {
-        xxh3_64(self.url.as_bytes()) as i64
-    }
+fn fingerprint(stmt: &Statement) -> Result<i64, Failure> {
+    let (fingerprint, _) = pg_query::fingerprint(stmt.text.clone().as_str())?;
+    return Ok(fingerprint as i64);
 }
 
 fn extract_protobuf_string(node: &Box<pg_query::pbuf::Node>) -> String {
@@ -183,19 +129,6 @@ fn extract_pl(input: &str) -> Result<String, Failure> {
 }
 
 // psql stuff ---------------------------------------------------
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-#[repr(i64)]
-pub enum Language {
-    PgSql = 0,
-    PlPgSql = 1,
-    Psql = 2,
-    PlPerl = 3,
-    PlTcl = 4,
-    PlPython2 = 5,
-    PlPython3 = 6,
-    Other = -1,
-}
 
 lazy_static! {
     static ref PLPGSQL_NAME: Regex = Regex::new("(?i)^plpgsql$").unwrap();
@@ -405,7 +338,7 @@ fn process_doc(
         statements.push(stmt);
     }
     for statement in statements.iter().filter(|&s| s.language == Language::PgSql) {
-        if let Ok(fingerprint) = statement.fingerprint() {
+        if let Ok(fingerprint) = fingerprint(statement) {
             statement_fingerprints.push((statement.id, fingerprint));
         }
     }
@@ -561,16 +494,16 @@ fn main() -> Result<(), Failure> {
     let document_id = xxh3_64(buffer.as_bytes()) as i64;
 
     if let Some(output_path) = out {
-        let mut conn = sqlite::connect(output_path)?;
-        let already_processed = doc_already_processed(&mut conn, document_id)?;
+        let mut conn = corpus::connect(output_path)?;
+        // let already_processed = ;
         let spdx = matches.value_of("spdx");
         if let Some(license_path) = matches.value_of("license") {
             let license = fs::read_to_string(license_path)?;
-            sqlite::insert_license(&mut conn, spdx.unwrap(), license).unwrap();
+            insert_license(&mut conn, spdx.unwrap(), license).unwrap();
         }
-        let url_ids = sqlite::bulk_insert_urls(&mut conn, urls.as_slice(), spdx).unwrap();
-        if already_processed {
-            sqlite::bulk_insert_document_urls(&mut conn, document_id, url_ids.as_slice())?;
+        let url_ids = bulk_insert_urls(&mut conn, urls.as_slice(), spdx).unwrap();
+        if doc_already_processed(&mut conn, document_id) {
+            bulk_insert_document_urls(&mut conn, document_id, url_ids.as_slice())?;
             return Ok(());
         }
         let (statements, statement_fingerprints, statement_languages, sources) = process_doc(
@@ -587,10 +520,10 @@ fn main() -> Result<(), Failure> {
         )
         .unwrap();
         // TODO: separate inserting statements from statement_languages
-        sqlite::bulk_insert_statements(&mut conn, statements).unwrap();
-        sqlite::bulk_insert_statement_documents(&mut conn, sources).unwrap();
-        sqlite::bulk_insert_statement_fingerprints(&mut conn, statement_fingerprints).unwrap();
-        sqlite::bulk_insert_statement_languages(&mut conn, statement_languages).unwrap();
+        bulk_insert_statements(&mut conn, statements).unwrap();
+        bulk_insert_statement_documents(&mut conn, sources).unwrap();
+        bulk_insert_statement_fingerprints(&mut conn, statement_fingerprints).unwrap();
+        bulk_insert_statement_languages(&mut conn, statement_languages).unwrap();
         conn.close().unwrap();
     } else {
         println!("no output target")

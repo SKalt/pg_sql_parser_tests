@@ -183,6 +183,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "corpus"
+version = "0.1.0"
+dependencies = [
+ "rusqlite",
+ "xxhash-rust",
+]
+
+[[package]]
 name = "digest"
 version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -787,6 +795,7 @@ name = "splitter"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "corpus",
  "indicatif",
  "lazy_static",
  "nom 7.1.0",

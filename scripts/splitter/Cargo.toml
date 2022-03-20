@@ -9,6 +9,7 @@ edition = "2018"
 [dependencies]
 psql_splitter = { git = "https://github.com/SKalt/psql_splitter.git" }
 pg_query_wrapper = { git = "https://github.com/SKalt/pg_query_wrapper.git" }
+corpus = { path = "../../pkg/corpus" }
 clap = "2.33.3"
 regex = "1.5.4"
 xxhash-rust = { version = "0.8.2", features = ["xxh3"] }

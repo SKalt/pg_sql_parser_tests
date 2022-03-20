@@ -5,7 +5,7 @@ clean:
 bin/parse: scripts/parse/parse.go
 	go build -o bin/parse scripts/parse/parse.go
 
-bin/splitter: scripts/splitter/Cargo.toml ./Cargo.lock scripts/splitter/src/main.rs ./scripts/splitter/src/sqlite.rs ./schema.sql
+bin/splitter: scripts/splitter/Cargo.toml ./Cargo.lock scripts/splitter/src/main.rs ./pkg/corpus/src/lib.rs ./schema.sql
 	cd scripts/splitter && cargo build && cd - && cp ./target/debug/splitter ./bin/
 
 bin/sqlite_test: scripts/sqlite_test/Cargo.toml scripts/sqlite_test/src/main.rs scripts/sqlite_test/src/test_grammar.pest ./Cargo.lock

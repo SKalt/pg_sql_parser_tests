@@ -10,6 +10,7 @@ var Languages = map[string]int64{
 	"pltcl":     4,
 	"plpython2": 5,
 	"plpython3": 6,
+	"sqlite":    7,
 }
 
 func LookupId(language string) int64 {

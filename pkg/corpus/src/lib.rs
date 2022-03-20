@@ -1,36 +1,46 @@
 use rusqlite::Connection;
 use std::path::PathBuf;
+use xxhash_rust::xxh3::xxh3_64;
 
-use crate::{Failure, Language, Statement, StatementSource};
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[repr(i64)]
+pub enum Language {
+    PgSql = 0,
+    PlPgSql = 1,
+    Psql = 2,
+    PlPerl = 3,
+    PlTcl = 4,
+    PlPython2 = 5,
+    PlPython3 = 6,
+    Sqlite3 = 7,
+    Other = -1,
+}
 
 /// connect or else.
-pub fn connect(path: &str) -> Result<Connection, Failure> {
+pub fn connect(path: &str) -> Result<Connection, rusqlite::Error> {
     // TODO: check if path is a file. If a file, check if it's an empty sqlite db
     // else: chuck stuff in :memory:
-    let output_path = PathBuf::from(path);
-    if !output_path.exists() {
+
+    let mut conn = Connection::open(path)?;
+    if !PathBuf::from(path).exists() {
         println!("initializing {}", path);
-        let mut conn = Connection::open(path)?;
         init(&mut conn)?; // try to initialize the schema
-        return Ok(conn); // return Err(format!("output path {} does not exist", path).to_string());
-    } else if output_path.is_file() {
-        let conn = Connection::open(path)?;
-        // check the schema version
-        let version: (u32, u32) =
-            conn.query_row("select major, minor from schema_version;", [], |row| {
-                Ok((row.get(0).unwrap(), row.get(1).unwrap()))
-            })?;
-        assert_eq!(
-            version,
-            (0, 0),
-            "unexpected version: got {}.{}, wanted 1",
-            version.0,
-            version.1
-        );
         return Ok(conn);
-    } else {
-        return Err(Failure::Other(format!("non-file path: {}", path)));
     }
+
+    // check the schema version
+    let version: (u32, u32) =
+        conn.query_row("select major, minor from schema_version;", [], |row| {
+            Ok((row.get(0).unwrap(), row.get(1).unwrap()))
+        })?;
+    assert_eq!(
+        version,
+        (0, 0),
+        "unexpected version: got {}.{}, wanted 1",
+        version.0,
+        version.1
+    );
+    return Ok(conn);
 }
 
 pub fn init(conn: &mut Connection) -> Result<&mut Connection, rusqlite::Error> {
@@ -56,16 +66,17 @@ pub fn bulk_insert_statements(
     return txn.commit();
 }
 
-pub fn doc_already_processed(conn: &mut Connection, doc_id: i64) -> Result<bool, rusqlite::Error> {
-    let result = conn.query_row(
-        "SELECT id FROM documents WHERE id = ?;",
-        &[&doc_id],
-        |row| {
-            let id: i64 = row.get(0)?;
-            return Ok(id);
-        },
-    );
-    return Ok(result.is_ok());
+pub fn doc_already_processed(conn: &mut Connection, doc_id: i64) -> bool {
+    return conn
+        .query_row(
+            "SELECT id FROM documents WHERE id = ?;",
+            &[&doc_id],
+            |row| {
+                let id: i64 = row.get(0)?;
+                return Ok(id);
+            },
+        )
+        .is_ok();
 }
 
 pub fn bulk_insert_statement_languages(
@@ -74,15 +85,13 @@ pub fn bulk_insert_statement_languages(
 ) -> Result<(), rusqlite::Error> {
     let txn = conn.transaction()?;
     {
+        let value_tuples = ",(?,?)".repeat(statement_languages.len());
         let sql = format!(
             "INSERT INTO statement_languages(statement_id, language_id) VALUES {} ON CONFLICT DO NOTHING;",
-            ",(?,?)"
-                .repeat(statement_languages.len())
-                .trim_start_matches(',')
+            value_tuples.trim_start_matches(',')
         );
         let mut params: Vec<i64> = Vec::with_capacity(2 * statement_languages.len());
 
-        // txn.execute(sql.as_str(), params)
         for row in statement_languages {
             params.push(row.0);
             params.push(row.1 as i64)
@@ -112,7 +121,6 @@ pub fn bulk_insert_urls(
     urls: &[&str],
     license_id: Option<&str>,
 ) -> Result<Vec<i64>, rusqlite::Error> {
-    use xxhash_rust::xxh3::xxh3_64;
     let ids: Vec<i64> = urls
         .iter()
         .map(|url| xxh3_64(url.as_bytes()) as i64)
@@ -228,4 +236,64 @@ pub fn bulk_insert_statement_fingerprints(
         insert.execute(rusqlite::params_from_iter(params.iter()))?;
     }
     return txn.commit();
+}
+
+#[derive(Clone, Debug)]
+pub struct Statement {
+    pub text: String,
+    /// the xxhash3_64 of the overall utf-8 document that this statement is
+    /// drawn from
+    pub document_id: i64,
+    /// the xxhash3_64 of the text
+    pub id: i64,
+    /// might include line numbers inside a collection
+    pub language: Language,
+    // urls: Vec<String>,
+    // start_line: usize,
+    pub n_lines: usize,
+}
+
+impl Statement {
+    pub fn new(text: String, language: Language, document_id: i64) -> Self {
+        let n_lines = text.matches("\n").count();
+        Statement {
+            id: xxh3_64(text.as_bytes()) as i64,
+            document_id,
+            text,
+            language,
+            n_lines,
+        }
+    }
+    pub fn with_source(
+        self: &Self,
+        url: &str,
+        start_line: usize,
+        start_offset: usize,
+    ) -> StatementSource {
+        StatementSource {
+            statement_id: self.id,
+            url: url.to_owned(),
+            document_id: self.document_id,
+            start_line,
+            start_offset,
+            end_offset: start_offset + self.text.len(),
+            n_lines: self.n_lines,
+        }
+    }
+}
+
+#[derive(Clone)]
+pub struct StatementSource {
+    pub statement_id: i64,   //
+    pub start_line: usize,   // 1-indexed
+    pub n_lines: usize,      // can be 0
+    pub start_offset: usize, // 0-indexed length in bytes, **not** unicode code points
+    pub end_offset: usize,   // = start_offset + statement.len()
+    pub document_id: i64, // xxhash3_64 of the overall document from which this statement is drawn
+    pub url: String,      // TODO: validate; can currently be "" or "file://"
+}
+impl StatementSource {
+    pub fn url_id(&self) -> i64 {
+        xxh3_64(self.url.as_bytes()) as i64
+    }
 }
