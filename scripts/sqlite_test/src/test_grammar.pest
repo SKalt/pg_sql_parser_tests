@@ -3,221 +3,325 @@
 // pest grammar reference at https://pest.rs/book/grammars/syntax.html
 
 // running lowest-level -> top-level:.....................................................
+// ranges: -------------------------------------------------------------------------------
+  op = {("!" | "&" | "+" | "-"| "/" | "*" | "=" | "?" | "%" | ">" | "<" | "|" | "^")+ | ":"}
+  alpha = { 'a'..'z' | 'A'..'Z' }
+  digit = { '0'..'9' }
+  alnum = { alpha | digit }
 
 // https://tcl.tk/about/language.html ----------------------------------------------------
-// Tcl scripts are made up of commands separated by newlines or semicolons.
-newline = @{"\r"? ~ "\n"}
-CMD_END = _{ newline | ";" }
-tcl_script = { newline* ~ cmd+ }
+  // Tcl scripts are made up of commands separated by newlines or semicolons.
+  WHITESPACE = _{(" " | "\t" | "\\\n" | "\\\r\n")+}
+  newline = @{"\r"? ~ "\n"}
+  CMD_END = _{ newline | ";" }
 
-// Each Tcl command consists of one or more words separated by spaces.
-WHITESPACE = _{(" " | "\t" | "\\\n" | "\\\r\n")+}
+  tcl_script = { newline* ~ cmd+ }
 
-inner_cmd = _{
-  // special scraped sqlite3 test-suite commands
-    set_sql_cmd
-  | execsql_cmd
-  | catchsql_cmd
-  | do_test_cmd
-  | do_execsql_test_cmd
-  | do_catchsql_test_cmd
-  | do_explain_query_plan_test_cmd
-  | do_select_tests_cmd
-  | eqp_cmd
-  | test_expr_cmd
-  | test_expr2_cmd
-  | db_eval_cmd
-  | single_sql
-  | ifcapable_cond
-  // general tcl constructs
-  | comment
-  | set_variable
-  | get_variable
-  | proc_def
-  | for_loop
-  | foreach_loop
-  | while_loop
-  | word+
-}
+  // Each Tcl command consists of one or more words separated by spaces.
+  inner_cmd = _{
+    // special scraped sqlite3 test-suite commands
+      set_sql_cmd
+    | execsql_cmd
+    | catchsql_cmd
+    | do_test_cmd
+    | do_execsql_test_cmd
+    | do_explain_query_plan_test_cmd
+    | do_select_tests_cmd
+    | do_sortcount_test_cmd
+    | do_write_test_cmd
+    | do_plansql_test_cmd
+    | do_vtab_test_cmd
+    | errorsql_test_cmd
+    | parameter_test_cmd
+    | do_test_13_cmd
+    | do_explain_query_plan_test_cmd
+    | do_auth_test_cmd
+    | do_distinct_op_test
+    | do_vmstep_test_cmd
+    | eqp_cmd
+    | test_expr_cmd
+    | test_expr2_cmd
+    | db_eval_cmd
+    | single_sql
+    | ifcapable_cond
+    // general tcl constructs
+    | comment
+    | set_variable
+    | get_variable
+    | proc_def
+    | for_loop
+    | foreach_loop
+    | while_loop
+    | word+
+  }
+  cmd = { inner_cmd ~ CMD_END* }
 
-cmd = { inner_cmd ~ CMD_END* }
-
-// Tcl allows you to store values in variables and use the values later in commands.
-// The set command is used to write and read variables.
-// You can read the value of a variable by invoking set with only a single argument
-identifier = @{(alnum | ":" | "-" | "_" | ".")+ }
-set_variable = {"set" ~ identifier ~ word }
-get_variable = {"set" ~ identifier }
+  // Tcl allows you to store values in variables and use the values later in commands.
+  // The set command is used to write and read variables.
+  // You can read the value of a variable by invoking set with only a single argument
+  identifier = @{(alnum | ":" | "-" | "_" | ".")+ }
+  set_variable = {"set" ~ identifier ~ word }
+  get_variable = {"set" ~ identifier }
 
 
-// When a $ appears in a command, Tcl treats the letters and digits following it as a
-// variable name, and substitutes the value of the variable in place of the name.
-dollar_sub = ${ "$" ~ identifier }
+  // When a $ appears in a command, Tcl treats the letters and digits following it as a
+  // variable name, and substitutes the value of the variable in place of the name.
+  dollar_sub = ${ "$" ~ identifier }
 
-// When a [ appears in a command, Tcl treats everything between it and the matching ] as a nested Tcl command.
-// Tcl evaluates the nested command and substitutes its result into the enclosing command in place of the bracketed text.
-bracket_sub = {"[" ~ newline* ~ cmd* ~ newline* ~ "]"}
-// Double-quotes allow you to specify words that contain spaces.
-dquote_escapable_char = { "n" | "r" | "t" | "\\" | "\"" }
-escape_char = ${"\\"}
-dquote_escaped_char = ${ escape_char ~ dquote_escapable_char }
-dquote = {"\""}
-not_dqote = _{!dquote ~ ANY}
-dquote_word = {
-  dquote ~ (
-      bracket_sub
+  // When a [ appears in a command, Tcl treats everything between it and the matching ] as a nested Tcl command.
+  // Tcl evaluates the nested command and substitutes its result into the enclosing command in place of the bracketed text.
+  bracket_sub = {"[" ~ newline* ~ cmd* ~ newline* ~ "]"}
+  // Double-quotes allow you to specify words that contain spaces.
+  dquote_escapable_char = { "n" | "r" | "t" | "\\" | "\"" }
+  escape_char = ${"\\"}
+  dquote_escaped_char = ${ escape_char ~ dquote_escapable_char }
+  dquote = {"\""}
+  not_dqote = _{!dquote ~ ANY}
+  dquote_word = {
+    dquote ~ (
+        bracket_sub
+      | dollar_sub
+      | dquote_escaped_char
+      | not_dqote
+    )* ~ dquote
+  }
+
+  // Curly braces provide another way of grouping information into words.
+  // They are different from quotes in that no substitutions are performed on the text between the curly braces
+  opening_brace = {"{"}
+  closing_brace = {"}"}
+  not_closing_brace = _{!closing_brace ~ ANY}
+  escaped_backslash = {escape_char ~ escape_char}
+  escaped_opening_brace = { escape_char ~ opening_brace}
+  escaped_closing_brace = { escape_char ~ closing_brace}
+  brace_word = {
+    opening_brace
+    ~ (
+          escaped_backslash
+        | escaped_opening_brace
+        | escaped_closing_brace
+        | brace_word
+        | not_closing_brace
+      )*
+    ~ closing_brace
+  }
+
+  word = {
+      brace_word
+    | dquote_word
+    | bracket_sub
     | dollar_sub
-    | dquote_escaped_char
-    | not_dqote
-  )* ~ dquote
-}
+    | identifier
+    | op
+    | (identifier|op|escaped_backslash|escaped_opening_brace|escaped_closing_brace|"'"|"\\"|"("|")"|","|"$")+
+  }
 
-// Curly braces provide another way of grouping information into words.
-// They are different from quotes in that no substitutions are performed on the text between the curly braces
-opening_brace = {"{"}
-closing_brace = {"}"}
-not_closing_brace = _{!closing_brace ~ ANY}
-escaped_backslash = {escape_char ~ escape_char}
-escaped_opening_brace = { escape_char ~ opening_brace}
-escaped_closing_brace = { escape_char ~ closing_brace}
-brace_word = {
-  opening_brace
-  ~ (
-        escaped_backslash
-      | escaped_opening_brace
-      | escaped_closing_brace
-      | brace_word
-      | not_closing_brace
-    )*
-  ~ closing_brace
-}
+  // special words that should trigger parsing or scraping ///////////////////////
+  // should recursively parse as tcl:
+  tcl_body = { &brace_word ~ ("{" ~ newline* ~ tcl_script ~ "}") }
+  tcl_word = { &word ~ cmd }
 
-word = {
-    brace_word
-  | dquote_word
-  | bracket_sub
-  | dollar_sub
-  | identifier
-  | op
-  | (identifier|op|escaped_backslash|escaped_opening_brace|escaped_closing_brace|"'"|"\\"|"("|")"|","|"$")+
-}
-
-// special words that should trigger parsing or scraping ///////////////////////
-// should recursively parse as tcl:
-tcl_body = { &brace_word ~ ("{" ~ newline* ~ tcl_script ~ "}") }
-tcl_word = { &word ~ cmd }
-
-// should scrape as candidate sql tests
-sql_block = { brace_word }
-sql_dquote = { dquote_word }
-sql_word = {!dollar_sub ~ !bracket_sub ~ identifier}
-sql_candidate = { sql_block | sql_dquote | sql_word }
 
 // recognizable tcl constructs /////////////////////////////////////////////////
+  // aliases that should scraped as candidate sql tests
+  sql_block = { brace_word }
+  sql_dquote = { dquote_word }
+  sql_word = {!dollar_sub ~ !bracket_sub ~ identifier}
+  sql_candidate = { sql_block | sql_dquote | sql_word }
 
-// https://tcl.tk/man/tcl8.6/TclCmd/proc.htm
-proc_def = { "proc" ~ identifier ~ arg_list ~ tcl_body }
-arg_list = { &brace_word ~ ("{" ~ (identifier)* ~ "}") }
+  // https://tcl.tk/man/tcl8.6/TclCmd/proc.htm
+  proc_def = { "proc" ~ identifier ~ arg_list ~ tcl_body }
+  arg_list = { &brace_word ~ ("{" ~ (identifier)* ~ "}") }
 
-// https://tcl.tk/man/tcl8.6/TclCmd/if.htm
-if_cond = {
-  ("if" ~ word ~ "then"? ~ tcl_body)
-  ~ ("elseif" ~ word ~ "then"? ~ tcl_body)*
-  ~ ("else" ~ word ~ "then"? ~ tcl_body)?
-}
-while_loop = { "while" ~ word ~ tcl_body }
+  // https://tcl.tk/man/tcl8.6/TclCmd/if.htm
+  if_cond = {
+    ("if" ~ word ~ "then"? ~ tcl_body)
+    ~ ("elseif" ~ word ~ "then"? ~ tcl_body)*
+    ~ ("else" ~ word ~ "then"? ~ tcl_body)?
+  }
+  while_loop = { "while" ~ word ~ tcl_body }
 
-// https://tcl.tk/man/tcl8.6/TclCmd/for.htm
-for_loop = {
-  "for"
-  ~ tcl_body // start
-  ~ word     // test
-  ~ tcl_body // next
-  ~ tcl_body // body
-}
+  // https://tcl.tk/man/tcl8.6/TclCmd/for.htm
+  for_loop = {
+    "for"
+    ~ tcl_body // start
+    ~ word     // test
+    ~ tcl_body // next
+    ~ tcl_body // body
+  }
 
-// https://tcl.tk/man/tcl8.6/TclCmd/foreach.htm
-foreach_loop = {
-  "foreach" ~ (
-      (
-        identifier // varname
-        ~ word // list
+  // https://tcl.tk/man/tcl8.6/TclCmd/foreach.htm
+  foreach_loop = {
+    "foreach" ~ (
+        (
+          identifier // varname
+          ~ word // list
+          ~ tcl_body // loop body
+        )
+      | (
+        word // varlist
+        ~ word // list of tuples
         ~ tcl_body // loop body
       )
-    | (
-      word // varlist
-      ~ word // list
-      ~ tcl_body
     )
-  )
-}
+  }
+  // TODO: search for foreach loops with variables named "sql"
 
-comment = { ("#" ~ (!"\n"+ ~ ANY)* ~ "\n"?)+ }
+  comment = { ("#" ~ (!"\n"+ ~ ANY)* ~ "\n"?)+ }
 
 // special testing procs/blocks ////////////////////////////////////////////////
-ifcapable_cond = {"ifcapable" ~ word ~ tcl_body ~ ("else" ~ tcl_body)}
-set_sql_cmd = { "set" ~ "sql" ~ (sql_candidate | word) }
-// TODO: filter out dquote values w/ substitutions
+  ifcapable_cond = {"ifcapable" ~ word ~ tcl_body ~ ("else" ~ tcl_body)}
+  set_sql_cmd = { "set" ~ "sql" ~ (sql_candidate | word) }
+  // TODO: filter out dquote values w/ substitutions
 
-// see external/sqlite/test/tester.tcl:1420 @ "proc execsql"
-execsql_cmd = { "execsql" ~ sql_candidate ~ (word)? }
-catchsql_cmd = { "catchsql" ~ sql_candidate ~ (word)? }
+  // see scripts/find_sqlite_test_procs.sh
 
-// see external/sqlite/test/tester.tcl:762 @ "proc do_test"
-do_test_cmd = { "do_test" ~ test_name ~ tcl_body ~ word }
+  // see external/sqlite/test/tester.tcl:1420 @ "proc execsql"
+  execsql_cmd = { "execsql" ~ sql_candidate ~ (word)? }
+  catchsql_cmd = { "catchsql" ~ sql_candidate ~ (word)? }
 
-do_execsql_test_cmd = {
-  // see external/sqlite/test/tester.tcl:953 @ "proc do_execsql_test"
-  ("do_execsql_test"| "do_timed_execsql_test")
-  ~ ("-db" ~ word)?
-  ~ test_name ~ sql_candidate ~ word?
-}
+  // see external/sqlite/test/tester.tcl:762 @ "proc do_test"
+  do_test_cmd = { "do_test" ~ test_name ~ tcl_body ~ word }
 
-do_catchsql_test_cmd = {
-  // see external/sqlite/test/tester.tcl:988 @ "proc do_catchsql_test"
-  "do_catchsql_test" ~ test_name ~ sql_candidate ~ word?
-}
+  do_execsql_test_cmd = {
+    (
+      "do_execsql_test"
+        // see external/sqlite/test/tester.tcl:953
+        // see external/sqlite/ext/repair/test/test.tcl:53
+      | "execsql_test" // see external/sqlite/test/pg_common.tcl:72
+      | "do_timed_execsql_test" // see external/sqlite/test/tester.tcl:993
+      | "do_execsql_test_if_vtab"
+        // see external/sqlite/test/without_rowid1.test:20
+        // see external/sqlite/test/without_rowid7.test:18
+        // see external/sqlite/test/without_rowid6.test:19
+      | "do_fb_test" // external/sqlite/ext/fts5/test/fts5dlidx.test:31
+      | "do_stmt_test" // see external/sqlite/test/malloc4.test:42
+      | "do_hasmj_test" // see external/sqlite/test/mjournal.test:114
+      | "do_execsql_test_if_vtab"
+        // see external/sqlite/test/without_rowid1.test:20:1
+        // see external/sqlite/test/without_rowid7.test:18:1
+        // see external/sqlite/test/without_rowid6.test:19:1
+      | "do_vfilter4_test" // see external/sqlite/test/rowvaluevtab.test:44:1
+      | "do_searchcount_test" // see external/sqlite/test/whereD.test:106:1
+      | "do_uses_op_next_test" // see external/sqlite/test/notnull.test:574:1
+      | "do_trace_test" // see external/sqlite/test/trace2.test:35:1
+      | "do_trace_select_test" // see external/sqlite/test/trace2.test:44:1
+      | "do_changes_test" // see external/sqlite/test/e_changes.test:20:1
+      | "do_tc_test" // see external/sqlite/test/e_totalchanges.test:20
+      | "do_ordercount_test"  // see external/sqlite/test/window1.test:989
+      | "do_sqluses_test" // see external/sqlite/test/index9.test:29:1
+      | "do_preupdate_test" // see external/sqlite/test/hook.test:476:1
+      | "do_select_test" // see external/sqlite/test/malloc_common.tcl:561
+      | "do_restart_select_test" // see external/sqlite/test/malloc_common.tcl:565
+      | "do_error_test" // see external/sqlite/test/malloc_common.tcl:569
+      | "do_fileopen_test" // see external/sqlite/test/misc7.test:73
+      | "do_detail_test" // see external/sqlite/test/e_fkey.test:37
+      | "do_execsql_sync_test" // see external/sqlite/test/sync2.test:44
+      | "do_diskfull_test" // see external/sqlite/test/diskfull.test:56
+      | "do_tblsread_test" // see external/sqlite/test/fkey7.test:42
+      | "do_catchsql_test" // see external/sqlite/test/tester.tcl:988
+      | "read_test" // external/sqlite/test/e_fts3.test:33
+      | "error_test" // external/sqlite/test/e_fts3.test:36
+      | "do_extract_hints_test" // see external/sqlite/test/cursorhint2.test:47
+      | "do_ccsql_test" // see external/sqlite/test/columncount.test:25
+      | "do_preupdate_test" // see external/sqlite/test/hook2.test:24
+      | "ddl_test" // see external/sqlite/test/e_fts3.test:27
+      | "execsql_float_test"	// see/external/sqlite/test/pg_common.tcl
+    )
+    ~ ("-db" ~ word)?
+    ~ test_name ~ sql_candidate ~ word? // last one is a result
+  }
 
-do_explain_query_plan_test_cmd = {
-  // see external/sqlite/test/tester.tcl @ "proc do_eqp_test"
-  "do_eqp_test" ~ test_name ~ sql_candidate ~ word
-}
+  do_sortcount_test_cmd = {
+    // see external/sqlite/test/orderbyA.test:21:1
+    "do_sortcount_test" ~ test_name ~ sql_candidate ~ word ~ word
+  }
+  do_write_test_cmd = {
+    // see external/sqlite/test/malloc_common.tcl:655
+    "do_write_test" ~ test_name ~ word ~ sql_candidate
+  }
+  do_plansql_test_cmd = {
+    // see external/sqlite/test/fts3aux1.test:407:1          	{tn       	sql   	r1          	r2}
+    "do_plansql_test" ~ test_name ~ sql_candidate ~ word ~ word
+  }
+  do_vtab_test_cmd = {
+    // see external/sqlite/test/bestindex8.test:410
+    "do_vtab_test" ~ test_name ~ sql_candidate ~ word ~ word?
+  }
 
-selectish_test = {test_name ~ sql_candidate ~ word }
-do_select_tests_cmd = {
-  // see external/sqlite/test/tester.tcl 
-  "do_select_tests"
-    ~ test_name
-    ~ (&"-" ~ word)*
-    ~ (&brace_word ~ ("{" ~ (selectish_test ~ "\n"?)+ ~ "}"))
-}
+  errorsql_test_cmd = {
+    // see external/sqlite/test/pg_common.tcl
+    "errorsql_test" ~ test_name ~ sql_candidate
+  }
+  parameter_test_cmd = {
+    // see/external/sqlite/test/e_expr.test:470:1
+    "parameter_test" ~ test_name ~ sql_candidate ~ word ~ word
+  }
 
-eqp_cmd = {^"eqp" ~ sql_candidate ~ (word)? }
+  do_test_13_cmd = {
+    // see/external/sqlite/test/minmax.test:572
+    ( "do_test_13_opt" | "do_test_13_noopt")
+    ~ test_name ~ sql_candidate ~ sql_candidate ~ word
+  }
+  // do_catchsql_test_cmd = {
+  //   "do_catchsql_test" ~ test_name ~ sql_candidate ~ word?
+  // }
+
+  do_explain_query_plan_test_cmd = {
+    // see
+    // - external/sqlite/test/tester.tcl:1062 @ "proc do_eqp_test"
+    // - external/sqlite/test/eqp.test:654
+    ("do_eqp_test" | "do_peqp_test") ~ test_name ~ sql_candidate ~ word
+  }
+
+  do_auth_test_cmd = {
+    // see external/sqlite/test/alterauth2.test:32
+    "do_auth_test" ~ test_name ~ sql_candidate ~ word // list of auth codes
+  }
+
+  do_distinct_op_test = {
+    // see external/sqlite/test/distinct.test:44
+    ("do_distinct_noop_test" | "do_distinct_not_noop_test") ~ sql_candidate
+  }
+
+  do_vmstep_test_cmd = {
+
+    // see external/sqlite/test/notnull2.test:31:1
+    "do_vmstep_test" ~ test_name ~ sql_candidate ~ word // nstep
+    ~ word? // {res 	{}}}
+  }
+
+  selectish_test = {test_name ~ sql_candidate ~ word }
+  do_select_tests_cmd = {
+    // see external/sqlite/test/tester.tcl 
+    "do_select_tests"
+      ~ test_name
+      ~ (&"-" ~ word)*
+      ~ (&brace_word ~ ("{" ~ (selectish_test ~ "\n"?)+ ~ "}"))
+  }
+
+  eqp_cmd = {^"eqp" ~ sql_candidate ~ (word)? }
 
 
-test_expr_cmd = {
-  // see external/sqlite/test/expr.test
-  "test_expr" ~ test_name
-  ~ word // settings
-  ~ word // expr
-  ~ word // result
-  // TODO scrape the foramatted expr, result
-}
+  test_expr_cmd = {
+    // see external/sqlite/test/expr.test
+    "test_expr" ~ test_name
+    ~ word // settings
+    ~ word // expr
+    ~ word // result
+    // TODO scrape the foramatted expr, result
+  }
 
-test_expr2_cmd = {
-  // see external/sqlite/test/expr.test
-  "test_expr2" ~ test_name ~ word ~ word // expr, result
-}
+  test_expr2_cmd = {
+    // see external/sqlite/test/expr.test
+    "test_expr2" ~ test_name ~ word ~ word // expr, result
+  }
 
-db_eval_cmd = {word ~ "eval" ~ sql_candidate ~ tcl_body?}
-single_sql = { ("sql1" | "sql2" | "sql3"| "evalsql" ) ~ sql_candidate}
+  db_eval_cmd = {word ~ "eval" ~ sql_candidate ~ tcl_body?}
+  single_sql = { ("sql1" | "sql2" | "sql3"| "evalsql" ) ~ sql_candidate}
+
 // /////////////////////////////////////////////////////////////////////////////
 
 main = { SOI ~ tcl_script ~ EOI }
 test_name = { word }
 
-// ranges: ---------------------------------------------------------------------
-op = {("!" | "&" | "+" | "-"| "/" | "*" | "=" | "?" | "%" | ">" | "<" | "|" | "^")+| ":"}
-alpha = { 'a'..'z' | 'A'..'Z' }
-digit = { '0'..'9' }
-alnum = { alpha | digit }

@@ -3,6 +3,7 @@ extern crate pest;
 extern crate pest_derive;
 use core::panic;
 use std::{cell::RefCell, fs, io, rc::Rc};
+use textwrap::dedent;
 
 use pest::{
     iterators::{Pair, Pairs},
@@ -28,58 +29,33 @@ fn unescape(s: &str) -> String {
     s.replace("\\n", "\n").replace("\\r", "\r")
 }
 
-fn walk<F>(pair: Pair<Rule>, path: &str, line_number: usize, mut callback: F)
+fn walk<F>(pair: Pair<Rule>, n: usize, mut callback: F) -> usize
 where
-    F: Copy + FnMut(&Pair<Rule>, &str, usize),
+    F: Copy + FnMut(&Pair<Rule>, usize) -> usize,
 {
-    callback(&pair, path, line_number);
-    let mut inner_line_number = line_number;
+    callback(&pair, n);
+    let mut inner_line_number = n;
     for pair in pair.clone().into_inner() {
         let n_lines = pair.as_str().matches("\n").count();
-        walk(pair, path, inner_line_number, callback);
+        walk(pair, inner_line_number, callback);
         inner_line_number += n_lines;
     }
+    return inner_line_number;
 }
 
-fn extract_test_body(test_body: pest::iterators::Pair<Rule>) {
-    for inner in test_body.into_inner() {
-        match inner.as_rule() {
-            // Rule::body_scan => {
-            //     println!("{}", inner.as_str());
-            // }
-            _ => {
-                println!("{:?}", inner.as_rule());
-            }
+fn contains_rule(pair: Pair<Rule>, rule: Rule) -> bool {
+    let callback = |pair: &Pair<Rule>, n: usize| {
+        if pair.as_rule() == rule {
+            return 1;
+        } else {
+            return 0;
         }
-    }
+    };
+    let mut n_found = walk(pair, 0, callback);
+    return n_found > 0;
 }
 
-// should extract test name, test sql
-fn extract_test(do_test_stmt: pest::iterators::Pair<Rule>, path: &str, line_number: usize) -> () {
-    // if do_test_stmt.as_rule() != Rule::do_test_stmt {
-    //     panic!(
-    //         "passed {:?}, only `do_test_statement` allowed",
-    //         do_test_stmt.as_rule(),
-    //     );
-    // }
-    // for stmt in do_test_stmt.into_inner() {
-    //     match stmt.as_rule() {
-    //         Rule::do_test => {
-    //             println!("{}", stmt.as_str());
-    //         }
-    //         Rule::test_name => {
-    //             println!("{}:{} test name: {}", path, line_number, stmt.as_str());
-    //         }
-    //         Rule::test_body => {
-    //             println!("test body:");
-    //             extract_test_body(stmt)
-    //         }
-    //         _ => {
-    //             println!("{:?}", stmt.as_rule());
-    //         }
-    //     }
-    // }
-}
+fn trim_word() {}
 
 fn main() -> Result<(), Failure> {
     let cli = clap::App::new("sqlite_test_parser").arg(
@@ -105,26 +81,29 @@ fn main() -> Result<(), Failure> {
             let line_number = 1usize;
             let mut sqls = Vec::new();
             let shared = Rc::new(RefCell::new(&mut sqls));
-            let callback = |pair: &Pair<Rule>, path: &str, line_number: usize| match pair.as_rule()
-            {
-                Rule::sql_block => shared
-                    .borrow_mut()
-                    .push((pair.as_str().to_owned(), line_number)),
-                _ => {}
+            let callback = |pair: &Pair<Rule>, line_number: usize| {
+                match pair.as_rule() {
+                    Rule::sql_block => shared
+                        .borrow_mut()
+                        .push((pair.as_str().to_owned(), line_number)),
+                    _ => {}
+                }
+                return 0;
             };
             for stmt in statements.next().unwrap().into_inner() {
                 match stmt.as_rule() {
-                    // only valid children are statement and EOI
+                    // only valid children are SOI, cmd, and EOI
                     Rule::EOI => {
                         break;
                     }
                     _ => {
-                        walk(stmt, path, line_number, callback);
+                        walk(stmt, line_number, callback);
                     }
                 };
             }
+            println!("found {} sqls", &sqls.len());
             for (sql, line_number) in sqls {
-                println!("{}:{} : {}", path, line_number, sql.as_str());
+                // println!("{}:{} : {}", path, line_number, sql.as_str());
             }
             return Ok(());
         }

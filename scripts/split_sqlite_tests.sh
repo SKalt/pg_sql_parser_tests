@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eu
-for f in ./external/sqlite/**/*.test; do
+for f in ./external/sqlite/**/a*.test; do
   if (bin/sqlite_test --input "$f" >>/tmp/test_results); then
     echo "$f"
   else
