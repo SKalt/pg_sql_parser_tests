@@ -58,6 +58,8 @@ fn contains_rule(pair: Pair<Rule>, rule: Rule) -> bool {
 fn trim_word() {}
 
 fn main() -> Result<(), Failure> {
+    use std::time::Instant;
+    let start_time = Instant::now();
     let cli = clap::App::new("sqlite_test_parser").arg(
         clap::Arg::with_name("input")
             .short("-i")
@@ -101,10 +103,15 @@ fn main() -> Result<(), Failure> {
                     }
                 };
             }
-            println!("found {} sqls", &sqls.len());
-            for (sql, line_number) in sqls {
-                // println!("{}:{} : {}", path, line_number, sql.as_str());
-            }
+            println!(
+                "{:5} test-cases found in {} in {:.2?}",
+                &sqls.len(),
+                path,
+                start_time.elapsed()
+            );
+            // for (sql, line_number) in sqls {
+            //     // println!("{}:{} : {}", path, line_number, sql.as_str());
+            // }
             return Ok(());
         }
     }
