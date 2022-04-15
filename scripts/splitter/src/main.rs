@@ -59,7 +59,6 @@ fn extract_protobuf_string(node: &Box<pg_query::pbuf::Node>) -> String {
 fn parse_pl(nodes: &Vec<pg_query::pbuf::Node>) -> String {
     use pg_query::pbuf::node::Node;
 
-    // let mut content: String = "".into();
     let mut lang: String = "plpgsql".into();
     for node in nodes {
         // unwrapping aggressively to catch unexpected structures via panics

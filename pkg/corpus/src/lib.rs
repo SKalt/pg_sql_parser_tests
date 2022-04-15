@@ -13,6 +13,7 @@ pub enum Language {
     PlPython2 = 5,
     PlPython3 = 6,
     Sqlite3 = 7,
+    Sqlite3Cli = 8,
     Other = -1,
 }
 
@@ -238,8 +239,11 @@ pub fn bulk_insert_statement_fingerprints(
     return txn.commit();
 }
 
+/// for insertion into the statements table; see `bulk_insert_statements()`
 #[derive(Clone, Debug)]
 pub struct Statement {
+    /// should include the trailing semicolon or newline that terminates the
+    /// statement
     pub text: String,
     /// the xxhash3_64 of the overall utf-8 document that this statement is
     /// drawn from
@@ -248,8 +252,6 @@ pub struct Statement {
     pub id: i64,
     /// might include line numbers inside a collection
     pub language: Language,
-    // urls: Vec<String>,
-    // start_line: usize,
     pub n_lines: usize,
 }
 
@@ -282,15 +284,22 @@ impl Statement {
     }
 }
 
+/// For insertion into the document_statements table; see `bulk_insert_statement_documents()`
 #[derive(Clone)]
 pub struct StatementSource {
-    pub statement_id: i64,   //
-    pub start_line: usize,   // 1-indexed
-    pub n_lines: usize,      // can be 0
-    pub start_offset: usize, // 0-indexed length in bytes, **not** unicode code points
-    pub end_offset: usize,   // = start_offset + statement.len()
-    pub document_id: i64, // xxhash3_64 of the overall document from which this statement is drawn
-    pub url: String,      // TODO: validate; can currently be "" or "file://"
+    pub statement_id: i64, //
+    /// 1-indexed
+    pub start_line: usize,
+    /// can be 0
+    pub n_lines: usize,
+    /// 0-indexed length in bytes, **not** unicode code points
+    pub start_offset: usize,
+    /// = start_offset + statement.len()
+    pub end_offset: usize,
+    /// xxhash3_64 of the overall document from which this statement is drawn
+    pub document_id: i64,
+    /// TODO: validate; can currently be "" or "file://"
+    pub url: String,
 }
 impl StatementSource {
     pub fn url_id(&self) -> i64 {

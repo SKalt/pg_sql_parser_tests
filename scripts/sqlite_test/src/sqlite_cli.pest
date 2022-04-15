@@ -1,4 +1,4 @@
-program = {SOI ~ statement* ~ EOI}
+program = {SOI ~ newline* ~ (statement ~ newline*)* ~ newline* ~ EOI}
 
 statement = {
     cli_comment
@@ -7,8 +7,8 @@ statement = {
 }
 
 sql_statement = {
-  sql_comment*
-  ~ sql* ~ (";" ~ sql_comment? | &EOI)
+  (sql_comment* ~ sql+ ~ (";" ~ sql_comment?)?)
+  | ";"
 }
 
 sql = {
@@ -18,6 +18,8 @@ sql = {
   | op
   | word
   | string
+  | newline
+  | bracket_quote
 }
 
 string = {single_quote_string | double_quote_string}
@@ -25,21 +27,21 @@ single_quote_string = {"'" ~ (!"'" ~ ANY)* ~ "'"}
 double_quote_string = {"\"" ~ (!"\"" ~ ANY)* ~ "\""}
 semicolon = @{";" ~ (" " | "\t")* ~ sql_comment?}
 
-cli_comment =  {"#"  ~ not_newline* ~ newline}
-dot_command = @{"."  ~ not_newline* ~ newline}
-sql_comment =  {"--" ~ not_newline* ~ newline}
+cli_comment =  {"#"  ~ not_newline* ~ newline*}
+dot_command = @{"."  ~ not_newline* ~ newline*}
+sql_comment =  {"--" ~ not_newline* ~ newline*}
 c_comment =    {"/*" ~(!"*/" ~ ANY)* ~ "*/" }
+bracket_quote = { "[" ~ (!"]" ~ ANY)* ~ "]" }
+word = {(alnum | "." | "_")+}
 
-word = {(alnum | ".")+}
+numeric = _{('0'..'9')+}
+alpha = _{('a'..'z' | 'A'..'Z')+}
+alnum = _{alpha | numeric}
+parens = {"(" ~ sql* ~ ")"}
 
-numeric = {'0'..'9'}
-alpha = {'a'..'z' | 'A'..'Z'}
-alnum = {alpha | numeric}
-parens = {"(" ~ sql ~ ")"}
-
-op = {"!" | "$" | "%" | "&" | '*'..'/' | ":" | '<'..'@' | '{'..'~'}
+op = {"!" | "$" | "%" | "&" | '*'..'/' | ":" | '<'..'@' | '{'..'~' }
 
 newline = @{"\r"? ~ "\n"}
-not_newline = {!newline ~ ANY}
+not_newline = _{!newline ~ ANY}
 
-WHITESPACE = _{(" " | "\t" | "\\\n" | "\\\r\n")+}
+WHITESPACE = _{(" " | "\t")+}

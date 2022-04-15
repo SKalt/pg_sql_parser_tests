@@ -813,9 +813,11 @@ name = "sqlite_test"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "corpus",
  "pest",
  "pest_derive",
  "textwrap 0.15.0",
+ "xxhash-rust",
 ]
 
 [[package]]

@@ -55,8 +55,9 @@ CREATE TABLE statement_fingerprints(
   , statement_id INTEGER REFERENCES statements(id)
   , CONSTRAINT statement_fingerprints_pkey PRIMARY KEY (statement_id, fingerprint)
 );
+-- TODO: add fingerprinters table <- referenced by fingerprinter_id column
 
--- TODO: delete?
+-- TODO: delete? It might be possible to replace this directly with an index
 CREATE TABLE statement_versions(
     statement_id INT8 REFERENCES statements(id)
   , version_id INT8 REFERENCES versions(id)
