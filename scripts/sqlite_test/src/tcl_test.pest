@@ -129,6 +129,8 @@
   sql_word = {!dollar_sub ~ !bracket_sub ~ identifier}
   sql_candidate = { sql_block | sql_dquote | sql_word }
 
+  test_result = { word }
+
   // https://tcl.tk/man/tcl8.6/TclCmd/proc.htm
   proc_def = { "proc" ~ identifier ~ arg_list ~ tcl_body }
   arg_list = { &brace_word ~ ("{" ~ (identifier)* ~ "}") }
@@ -181,7 +183,7 @@
   catchsql_cmd = { "catchsql" ~ sql_candidate ~ (word)? }
 
   // see external/sqlite/test/tester.tcl:762 @ "proc do_test"
-  do_test_cmd = { "do_test" ~ test_name ~ tcl_body ~ word }
+  do_test_cmd = { "do_test" ~ test_name ~ tcl_body ~ test_result }
 
   do_execsql_test_cmd = {
     (
@@ -197,10 +199,17 @@
       | "do_fb_test" // external/sqlite/ext/fts5/test/fts5dlidx.test:31
       | "do_stmt_test" // see external/sqlite/test/malloc4.test:42
       | "do_hasmj_test" // see external/sqlite/test/mjournal.test:114
+      | "maketest" // external/sqlite/test/boundary4.tcl:211
+      | "test_is_explain" // external/sqlite/test/capi3d.test
       | "do_execsql_test_if_vtab"
         // see external/sqlite/test/without_rowid1.test:20:1
         // see external/sqlite/test/without_rowid7.test:18:1
         // see external/sqlite/test/without_rowid6.test:19:1
+      | "filecount" // external/sqlite/test/stmt.test:78
+      | "test_compound_select" // external/sqlite/test/select9.test:103
+      | "test_compound_select_flippable" // ^^
+      | "test_is_readonly" // external/sqlite/test/capi3d.test:95
+      | "do_vtab_query_test" // external/sqlite/test/bestindex5.test:113
       | "do_vfilter4_test" // see external/sqlite/test/rowvaluevtab.test:44:1
       | "do_searchcount_test" // see external/sqlite/test/whereD.test:106:1
       | "do_uses_op_next_test" // see external/sqlite/test/notnull.test:574:1
@@ -229,54 +238,63 @@
       | "execsql_float_test"	// see/external/sqlite/test/pg_common.tcl
     )
     ~ ("-db" ~ word)?
-    ~ test_name ~ sql_candidate ~ word? // last one is a result
+    ~ test_name ~ sql_candidate ~ test_result? // last one is a result
   }
 
   do_sortcount_test_cmd = {
     // see external/sqlite/test/orderbyA.test:21:1
-    "do_sortcount_test" ~ test_name ~ sql_candidate ~ word ~ word
+    "do_sortcount_test" ~ test_name ~ sql_candidate ~ word ~ test_result
   }
   do_write_test_cmd = {
     // see external/sqlite/test/malloc_common.tcl:655
     "do_write_test" ~ test_name ~ word ~ sql_candidate
   }
   do_plansql_test_cmd = {
-    // see external/sqlite/test/fts3aux1.test:407:1          	{tn       	sql   	r1          	r2}
-    "do_plansql_test" ~ test_name ~ sql_candidate ~ word ~ word
+    // see external/sqlite/test/fts3aux1.test:407
+    "do_plansql_test" ~ test_name ~ sql_candidate ~ test_result ~ word
   }
   do_vtab_test_cmd = {
     // see external/sqlite/test/bestindex8.test:410
-    "do_vtab_test" ~ test_name ~ sql_candidate ~ word ~ word?
+    "do_vtab_test" ~ test_name ~ sql_candidate ~ word ~ test_result?
   }
-
+  test_join_cmd = {
+    // external/sqlite/test/e_select2.test:308
+    "test_join" ~ word // expr 
+    ~ word
+  }
+  do_join_test_cmd = {
+    "do_join_test" ~ test_name ~ word // <-
+    ~ test_result
+  }
   errorsql_test_cmd = {
     // see external/sqlite/test/pg_common.tcl
     "errorsql_test" ~ test_name ~ sql_candidate
   }
   parameter_test_cmd = {
     // see/external/sqlite/test/e_expr.test:470:1
-    "parameter_test" ~ test_name ~ sql_candidate ~ word ~ word
+    "parameter_test" ~ test_name ~ sql_candidate ~ word ~ test_result
   }
 
   do_test_13_cmd = {
-    // see/external/sqlite/test/minmax.test:572
-    ( "do_test_13_opt" | "do_test_13_noopt")
-    ~ test_name ~ sql_candidate ~ sql_candidate ~ word
+    // see external/sqlite/test/minmax.test:572
+    // external/sqlite/test/selectB.test:76
+    ( "do_test_13_opt" | "do_test_13_noopt" | "test_transform")
+    ~ test_name ~ sql_candidate ~ sql_candidate ~ test_result
   }
   // do_catchsql_test_cmd = {
   //   "do_catchsql_test" ~ test_name ~ sql_candidate ~ word?
   // }
 
   do_explain_query_plan_test_cmd = {
-    // see
-    // - external/sqlite/test/tester.tcl:1062 @ "proc do_eqp_test"
-    // - external/sqlite/test/eqp.test:654
-    ("do_eqp_test" | "do_peqp_test") ~ test_name ~ sql_candidate ~ word
+    // see external/sqlite/test/tester.tcl:1062 @ "proc do_eqp_test"
+    // see external/sqlite/test/eqp.test:654
+    // external/sqlite/test/eqp.test:33
+    ("do_eqp_test" | "do_peqp_test" | "det") ~ test_name ~ sql_candidate ~ test_result
   }
 
   do_auth_test_cmd = {
     // see external/sqlite/test/alterauth2.test:32
-    "do_auth_test" ~ test_name ~ sql_candidate ~ word // list of auth codes
+    "do_auth_test" ~ test_name ~ sql_candidate ~ test_result // list of auth codes
   }
 
   do_distinct_op_test = {
@@ -288,24 +306,38 @@
 
     // see external/sqlite/test/notnull2.test:31:1
     "do_vmstep_test" ~ test_name ~ sql_candidate ~ word // nstep
-    ~ word? // {res 	{}}}
+    ~ test_result? // {res 	{}}}
   }
 
   selectish_test = {test_name ~ sql_candidate ~ word }
   do_select_tests_cmd = {
-    // see external/sqlite/test/tester.tcl 
-    "do_select_tests"
+    (
+      "do_select_tests" // see external/sqlite/test/tester.tcl
+      | "do_createtable_tests" // external/sqlite/test/e_createtable.test:31
+      | "do_delete_tests" // external/sqlite/test/e_delete.test:23
+      | "do_droptrigger_tests" // external/sqlite/test/e_droptrigger.test:23
+      | "do_dropview_tests" // external/sqlite/test/e_dropview.test:70
+      | "do_insert_tests" //  external/sqlite/test/e_insert.test:49
+      | "do_reindex_tests" // external/sqlite/test/e_reindex.test:19
+      | "do_update_tests" // external/sqlite/test/e_update.test:49
+
+    )
       ~ test_name
-      ~ (&"-" ~ word)*
-      ~ (&brace_word ~ ("{" ~ (selectish_test ~ "\n"?)+ ~ "}"))
+      ~ (
+        (("-errorformat"|"-tclquery"|"-repair") ~ word)
+        | ("-query" ~ sql_candidate)
+        |"-count"
+      )*
+      ~ (&brace_word ~ ("{" ~ newline* ~ (selectish_test ~ "\n"?)+ ~ newline * ~ "}"))
   }
+
 
   eqp_cmd = {^"eqp" ~ sql_candidate ~ (word)? }
 
 
   test_expr_cmd = {
     // see external/sqlite/test/expr.test
-    "test_expr" ~ test_name
+    ("test_expr"|"test_realnum_expr") ~ test_name
     ~ word // settings
     ~ word // expr
     ~ word // result

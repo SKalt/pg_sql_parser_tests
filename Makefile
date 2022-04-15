@@ -8,12 +8,23 @@ bin/parse: scripts/parse/parse.go
 bin/splitter: scripts/splitter/Cargo.toml ./Cargo.lock scripts/splitter/src/main.rs ./pkg/corpus/src/lib.rs ./schema.sql
 	cd scripts/splitter && cargo build && cd - && cp ./target/debug/splitter ./bin/
 
-bin/sqlite_test: scripts/sqlite_test/Cargo.toml scripts/sqlite_test/src/main.rs scripts/sqlite_test/src/test_grammar.pest ./Cargo.lock
+bin/sqlite_test:                          \
+	scripts/sqlite_test/Cargo.toml          \
+	./Cargo.lock                            \
+	scripts/sqlite_test/src/main.rs         \
+	scripts/sqlite_test/src/tcl_test.pest   \
+	scripts/sqlite_test/src/tcl_test.rs     \
+	scripts/sqlite_test/src/sqlite_cli.pest \
+	scripts/sqlite_test/src/sqlite_cli.rs   \
+
 	cd scripts/sqlite_test && cargo build && cd - && cp ./target/debug/sqlite_test ./bin/
 
-/tmp/test_results: bin/sqlite_test
-	echo "" > /tmp/test_results
-	./scripts/split_sqlite_tests.sh
+/tmp/test_results:              \
+	bin/sqlite_test               \
+	scripts/split_sqlite_tests.sh \
+	
+	rm -f /tmp/test_results
+	./scripts/split_sqlite_tests.sh 2>&1 | tee /tmp/timings
 
 predict_go =  ./scripts/predict/main.go
 predict_go += ./pkg/oracles/postgres/psql/oracle.go

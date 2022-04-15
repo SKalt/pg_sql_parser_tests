@@ -1,0 +1,45 @@
+program = {SOI ~ statement* ~ EOI}
+
+statement = {
+    cli_comment
+  | dot_command
+  | sql_statement
+}
+
+sql_statement = {
+  sql_comment*
+  ~ sql* ~ (";" ~ sql_comment? | &EOI)
+}
+
+sql = {
+    c_comment
+  | sql_comment
+  | parens
+  | op
+  | word
+  | string
+}
+
+string = {single_quote_string | double_quote_string}
+single_quote_string = {"'" ~ (!"'" ~ ANY)* ~ "'"}
+double_quote_string = {"\"" ~ (!"\"" ~ ANY)* ~ "\""}
+semicolon = @{";" ~ (" " | "\t")* ~ sql_comment?}
+
+cli_comment =  {"#"  ~ not_newline* ~ newline}
+dot_command = @{"."  ~ not_newline* ~ newline}
+sql_comment =  {"--" ~ not_newline* ~ newline}
+c_comment =    {"/*" ~(!"*/" ~ ANY)* ~ "*/" }
+
+word = {(alnum | ".")+}
+
+numeric = {'0'..'9'}
+alpha = {'a'..'z' | 'A'..'Z'}
+alnum = {alpha | numeric}
+parens = {"(" ~ sql ~ ")"}
+
+op = {"!" | "$" | "%" | "&" | '*'..'/' | ":" | '<'..'@' | '{'..'~'}
+
+newline = @{"\r"? ~ "\n"}
+not_newline = {!newline ~ ANY}
+
+WHITESPACE = _{(" " | "\t" | "\\\n" | "\\\r\n")+}

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
-for f in ./external/sqlite/**/a*.test; do
-  if ! bin/sqlite_test --input "$f" >>/tmp/test_results; then
+for f in ./external/sqlite/**/*.test; do
+  if ! bin/sqlite_test --debug --input "$f" >>/tmp/test_results; then
     (
       tput setaf 1
       echo "$f"
