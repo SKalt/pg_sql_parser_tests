@@ -1,4 +1,4 @@
-use rusqlite::Connection;
+use rusqlite::{Connection, ToSql};
 use std::path::PathBuf;
 use xxhash_rust::xxh3::xxh3_64;
 
@@ -282,6 +282,141 @@ impl Statement {
             n_lines: self.n_lines,
         }
     }
+}
+
+pub struct Oracle {}
+
+pub struct PredictionSet {
+    statement_ids: Vec<i64>,
+    oracle_ids: Vec<i64>,
+    language_ids: Vec<Language>,
+    errs: Vec<String>,
+    messages: Vec<String>,
+}
+
+impl PredictionSet {
+    pub fn new() -> Self {
+        PredictionSet {
+            statement_ids: vec![],
+            oracle_ids: vec![],
+            language_ids: vec![],
+            errs: vec![],
+            messages: vec![],
+        }
+    }
+    pub fn with_capacity(n: usize) -> Self {
+        PredictionSet {
+            statement_ids: Vec::with_capacity(n),
+            oracle_ids: Vec::with_capacity(n),
+            language_ids: Vec::with_capacity(n),
+            errs: Vec::with_capacity(n),
+            messages: Vec::with_capacity(n),
+        }
+    }
+
+    pub fn push(
+        mut self,
+        statement_id: i64,
+        oracle_id: i64,
+        language: Language,
+        err: String,
+        message: String,
+    ) {
+        self.statement_ids.push(statement_id);
+        self.oracle_ids.push(oracle_id);
+        self.language_ids.push(language);
+        self.language_ids.push(language);
+        self.errs.push(err);
+        self.messages.push(message);
+    }
+    fn len(&self) -> usize {
+        return self.statement_ids.len();
+    }
+}
+
+pub struct Predictions {
+    valid: PredictionSet,
+    invalid: PredictionSet,
+}
+
+// impl IntoIterator for PredictionSet {
+//     type Item = (&PredictionId, &'a PredictionContent);
+//     type IntoIter<'a> =
+//         Zip<std::slice::Iter<'a, PredictionId>, std::slice::Iter<'a, PredictionContent>>;
+
+//     fn into_iter(&self) -> Self::IntoIter {
+//         let ids = self.ids.iter();
+//         let content = self.contents.iter();
+//         let result = ids.zip(content);
+//         return result;
+//     }
+// }
+
+const bulk_insert_predictions_sql: &str = include_str!("../sql/insert_prediction.sql");
+
+fn extract_params() -> (&'static str, &'static str) {
+    let start = bulk_insert_predictions_sql
+        .match_indices("(")
+        .nth(1)
+        .unwrap()
+        .0;
+    let end = bulk_insert_predictions_sql
+        .match_indices(")")
+        .nth(1)
+        .unwrap()
+        .0;
+    let base = &bulk_insert_predictions_sql[..start];
+    let params = &bulk_insert_predictions_sql[start + 1..end];
+    return (base, params);
+}
+
+#[test]
+fn test_params() {
+    println!("{}", extract_params().0);
+    assert_eq!(extract_params().1, "\n    ? -- 1: statement_id\n  , ? -- 2: oracle_id\n  , ? -- 3: language_id\n  , ? -- 4: message\n  , ? -- 5: error\n  , ? -- 6: whether the statement is explicitly valid/not\n");
+}
+
+fn bulk_insert_prediction_set(
+    conn: &mut Connection,
+    predictions: PredictionSet,
+    valid: bool,
+) -> Result<(), rusqlite::Error> {
+    let txn = conn.transaction()?;
+    let (base, bare_param_tuple) = extract_params();
+    let base_sql = format!("{} ({})", base, bare_param_tuple);
+    let param_tuple_template = format!(", ({})", bare_param_tuple);
+    let construct_insert_sql = |n: usize| format!("{}{}", base_sql, param_tuple_template.repeat(n));
+    let mut params = Vec::<Box<dyn ToSql>>::with_capacity(predictions.statement_ids.len() * 6);
+    for i in 0..predictions.statement_ids.len() {
+        params[i * 6 + 0] = Box::new(predictions.statement_ids[i]);
+        params[i * 6 + 1] = Box::new(predictions.oracle_ids[i]);
+        params[i * 6 + 2] = Box::new(predictions.language_ids[i] as i64);
+        params[i * 6 + 3] = Box::new(predictions.errs[i].as_str());
+        params[i * 6 + 4] = Box::new(predictions.messages[i].as_str());
+        params[i * 6 + 5] = Box::new(valid);
+    }
+
+    {
+        let mut sql = construct_insert_sql(999);
+        let mut stmt = txn.prepare_cached(sql.as_str())?;
+        let mut chunks = params.as_slice().chunks_exact(5 * 1000);
+        loop {
+            if let Some(chunk) = chunks.next() {
+                stmt.execute(rusqlite::params_from_iter(chunk.iter()))?;
+            } else {
+                let remainder = chunks.remainder();
+                if remainder.len() == 0 {
+                    break;
+                }
+
+                sql = construct_insert_sql(remainder.len());
+                stmt = txn.prepare_cached(sql.as_str())?;
+                stmt.execute(rusqlite::params_from_iter(remainder.iter()))?;
+                break;
+            }
+        }
+    }
+    return txn.commit();
 }
 
 /// For insertion into the document_statements table; see `bulk_insert_statement_documents()`
